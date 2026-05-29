@@ -14,7 +14,7 @@
 /* -----------------------------------------------------------------------
    Configuration — adjust the path if your working directory differs
    ----------------------------------------------------------------------- */
-%let datadir = &_USERHOME./data/sas-hackathon-boot-camp-2026/use-case-financial-services/data;
+%let datadir = &_USERHOME./sas-hackathon-boot-camp-2026/use-case-financial-services/data;
 
 /* ========================================================================
    1. LOAD THE DATA

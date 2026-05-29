@@ -28,7 +28,7 @@ Now as the first step you will clone the GitHub repository to your SAS Studio en
 
 ```SAS
 data _null_;
-    rc = git_clone('https://github.com/sascommunities/sas-hackathon-boot-camp-2026.git', "&_USERHOME./data/sas-hackathon-boot-camp-2026");
+    rc = git_clone('https://github.com/sascommunities/sas-hackathon-boot-camp-2026.git', "&_USERHOME./sas-hackathon-boot-camp-2026");
 run;
 ```
 
@@ -66,11 +66,11 @@ The final ABT will be saved as a CSV file that can then be promoted into CAS for
 
 Pick **one** language and run its script. You do not need to run all three — they each produce the same output. If you are unsure which to choose, pick the one you are most comfortable with.
 
-| Language   | File                                                         | How to Run                                                   |
-| ---------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **SAS**    | [`data_preparation_studio.sas`](data_preparation_studio.sas) | Open the file and click the **Run** button in the toolbar above the editor |
-| **Python** | [`data_preparation_studio.py`](data_preparation_studio.py)   | Open the file and click the **Run** button in the toolbar above the editor |
-| **R**      | [`data_preparation_studio.R`](data_preparation_studio.R)     | R scripts do not have a toolbar Run button. Open a terminal (*Terminal > New Terminal*) and run: `Rscript data_preparation.R` |
+| Language   | File                                                         |
+| ---------- | ------------------------------------------------------------ |
+| **SAS**    | [`data_preparation_studio.sas`](data_preparation_studio.sas) |
+| **Python** | [`data_preparation_studio.py`](data_preparation_studio.py)   |
+| **R**      | [`data_preparation_studio.R`](data_preparation_studio.R)     |
 
 All three scripts produce the same output: a file called **`financial_services_abt.csv`** in the `data/` folder. After the script finishes, **refresh the Explorer pane** to see the new file.
 

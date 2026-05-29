@@ -18,7 +18,7 @@ import os
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-DATA_DIR = SAS.symget('_USERHOME') + '/data/sas-hackathon-boot-camp-2026/use-case-financial-services/data'
+DATA_DIR = SAS.symget('_USERHOME') + '/sas-hackathon-boot-camp-2026/use-case-financial-services/data'
 OUTPUT_PATH = os.path.join(DATA_DIR, 'financial_services_abt.csv')
 
 # ============================================================================

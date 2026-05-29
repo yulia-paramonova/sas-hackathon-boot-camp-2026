@@ -11,11 +11,11 @@ SAS Studio gives you the freedom to code in the language of your choice or build
 The four CSV files are available in the same folder structure from Step 1:
 
 ```
-SAS-Hackathon-Bootcamp-2026/use-case-life-sciences/data
-├── patients.csv          (500 records)
-├── admissions.csv        (500 records)
-├── clinical_measures.csv (500 records)
-└── medications.csv       (326 records)
+SAS-Hackathon-Bootcamp-2026/use-case-retail/data
+├── customers.csv          (1,000 records)
+├── transactions.csv       (~5,000 records)
+├── sessions.csv           (~10,000 records)
+└── support_tickets.csv    (~400 records)
 ```
 
 ---
@@ -53,10 +53,10 @@ For numeric columns, compute descriptive statistics (mean, median, standard devi
 
 The four datasets each capture a different dimension of loan risk. To build a predictive model we need to aggregate these into a single loan-level table where each row is one loan and each column is a feature. The key transformations are:
 
-- **Medication features:** total medication count per patient, high-risk medication count, polypharmacy flag (5+ medications), unique medication classes
-- **Clinical features:** BMI categories (underweight/normal/overweight/obese), blood pressure classification (normal/elevated/hypertension stage 1/hypertension stage 2), glucose level categories, clinical risk score
-- **Admission features:** length of stay categories (short/medium/long), emergency admission flag, discharge disposition encoding
-- **Patient features:** age, gender, insurance type, primary diagnosis category, comorbidity count
+- **Transaction features:** total spend, average order value, purchase frequency, days since last purchase, product category diversity
+- **Session features:** total sessions, average session duration, pages viewed, cart abandonment rate, mobile usage rate
+- **Support features:** total tickets, high-priority ticket count, average resolution time, satisfaction score
+- **Customer features:** age, account age, subscription tier, email opt-in status
 
 The final ABT will be saved as a CSV file that can then be promoted into CAS for use in SAS Visual Analytics and SAS Model Studio.
 
@@ -72,7 +72,7 @@ Pick **one** language and run its script. You do not need to run all three — t
 | **Python** | [`data_preparation_studio.py`](data_preparation_studio.py)   |
 | **R**      | [`data_preparation_studio.R`](data_preparation_studio.R)     |
 
-All three scripts produce the same output: a file called **`life_sciences_abt.csv`** in the `data/` folder. After the script finishes, **refresh the Explorer pane** to see the new file.
+All three scripts produce the same output: a file called **`retail_abt.csv`** in the `data/` folder. After the script finishes, **refresh the Explorer pane** to see the new file.
 
 ---
 
@@ -82,8 +82,8 @@ After running any of the scripts you will have:
 
 | File | Description |
 |------|-------------|
-| `data/life_sciences_abt.csv` | The joined, feature-engineered, patient-level dataset ready for modeling |
-| Console output | Data card information, summary statistics, and readmission distribution for review |
+| `data/retail_abt.csv` | The joined, feature-engineered, customer-level dataset ready for modeling |
+| Console output | Data card information, summary statistics, and churn distribution for review |
 
 ---
 

@@ -1,8 +1,8 @@
 # Step 2: Prepare
 
-In this step you will work in **SAS Viya Workbench** to load the four Metro City datasets, profile them, and join them into a single **Analytical Base Table (ABT)** that is ready for exploration in SAS Visual Analytics and modeling in SAS Model Studio.
+In this step you will work in **SAS Studio** to load the four PremierBank datasets, profile them, and join them into a single **Analytical Base Table (ABT)** that is ready for exploration in SAS Visual Analytics and modeling in SAS Model Studio.
 
-SAS Viya Workbench gives you the freedom to code in the language of your choice. We provide equivalent code in **SAS**, **Python**, and **R** — pick the one you are most comfortable with or try all three.
+SAS Studio gives you the freedom to code in the language of your choice or build a visual flow. We provide equivalent code in **SAS**, **Python**, and **R** — pick the one you are most comfortable with or try all three.
 
 ---
 
@@ -22,27 +22,21 @@ SAS-Hackathon-Bootcamp-2026/use-case-public-sector/data
 
 ## What You Will Do
 
-### 1. Setup your Environment in SAS Viya Workbench
+### 1. Load the Data & Use Cases
 
-Once you are logged into SAS Viya Workbench you will first have to chose the programming environment that you want to use and which languages. Once you do that a second tab will open up and you will have to wait for moment until the programming environment shows up. ![image-20260527164013080](img/README/image-20260527164013080.png)
+Now as the first step you will clone the GitHub repository to your SAS Studio environment by first opening up a SAS program and running the below code which will clone the repository to the file system:
 
-### 2. Load the Data & Use Cases
-
-Now as the first step you will clone the GitHub repository to your SAS Viya Workbench environment by first opening up a terminal and running the git clone command below: 
-
-```bash
-git clone https://github.com/sascommunities/sas-hackathon-boot-camp-2026.git
+```SAS
+data _null_;
+    rc = git_clone('https://github.com/sascommunities/sas-hackathon-boot-camp-2026.git', "&_USERHOME./sas-hackathon-boot-camp-2026");
+run;
 ```
 
-If you are in Visual Studio Code you can try to either use the keyboard shortcut CTRL+´ or if that doesn't work for you follow the click path in the screenshot below:
+Once you have run this code snippet navigate to the SAS Server pane and the expand the *SAS Server > Home > data > sas-hackathon-bootcamp-2026* from here the familiar structure of this repository are available.
 
-![image-20260527164702224](img/README/image-20260527164702224.png)
+![image-20260528135335744](img/SAS-Studio/image-20260528135335744.png)
 
-After you have run the git clone command you should the following folder structure and from there just navigate to your use case and the 2-prepare to see the files.
-
-![image-20260527170112447](img/README/image-20260527170112447.png)
-
-### 3. Create a Data Card
+### 2. Create a Data Card
 
 A **data card** is a concise summary document that describes each dataset — its purpose, size, column names, data types, and any quality notes. Data cards are a best practice in responsible AI because they provide transparency about the data flowing into models. For each table you will produce:
 
@@ -51,11 +45,11 @@ A **data card** is a concise summary document that describes each dataset — it
 - Count of missing values per column
 - Sample rows
 
-### 4. Get Basic Summary Statistics
+### 3. Get Basic Summary Statistics
 
 For numeric columns, compute descriptive statistics (mean, median, standard deviation, min, max). For categorical columns, compute frequency counts. This gives you a first look at distributions and potential data quality issues before you begin feature engineering.
 
-### 5. Engineer Features and Build the Analytical Base Table
+### 4. Engineer Features and Build the Analytical Base Table
 
 The four datasets each capture a different dimension of Metro City's service delivery. To build a predictive model we need to combine these into a single request-level table where each row is one service request and each column is a feature. The key transformations are:
 
@@ -75,11 +69,11 @@ The final ABT will be saved as a CSV file that can then be promoted into CAS for
 
 Pick **one** language and run its script. You do not need to run all three — they each produce the same output. If you are unsure which to choose, pick the one you are most comfortable with.
 
-| Language | File | How to Run |
-|----------|------|------------|
-| **SAS** | [`data_preparation.sas`](data_preparation.sas) | Open the file and click the **Run** button in the toolbar above the editor |
-| **Python** | [`data_preparation.py`](data_preparation.py) | Open the file and click the **Run** button in the toolbar above the editor |
-| **R** | [`data_preparation.R`](data_preparation.R) | R scripts do not have a toolbar Run button. Open a terminal (*Terminal > New Terminal*) and run: `Rscript data_preparation.R` |
+| Language   | File                                                         |
+| ---------- | ------------------------------------------------------------ |
+| **SAS**    | [`data_preparation_studio.sas`](data_preparation_studio.sas) |
+| **Python** | [`data_preparation_studio.py`](data_preparation_studio.py)   |
+| **R**      | [`data_preparation_studio.R`](data_preparation_studio.R)     |
 
 All three scripts produce the same output: a file called **`public_sector_abt.csv`** in the `data/` folder. After the script finishes, **refresh the Explorer pane** to see the new file.
 
