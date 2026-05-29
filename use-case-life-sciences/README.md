@@ -1,5 +1,9 @@
 # Patient Readmission Risk Prediction
 
+While this use case has a structure to it, please feel free to explore left and right of the path! Try out your own ideas, ask new questions or skip things that aren't of interest to you!
+
+First you will get a quick introduction to the use case, then an overview of the five steps you will take while going through this SAS Hackathon Bootcamp experience, then follow a structure of the repository, an overview of the data sets and the five topic areas that will be covered. After that there is a deeper dive into the business use case, feel free to explore that as you see fit.
+
 ## Life Sciences Use Case — Data and AI Life Cycle
 
 This use case walks you through the complete **Data and AI Life Cycle** using a realistic patient readmission risk prediction scenario, powered by SAS Viya technology.
@@ -59,6 +63,14 @@ use-case-life-sciences/
 | `clinical_measures.csv` | 500 | Vital signs and lab results |
 | `medications.csv` | 326 | Medication orders and risk flags |
 
+### Data Quality Notes
+
+- Data covers patient admissions in 2025
+- Readmission label available in patients.csv (`readmitted_30days` column: 1 = readmitted, 0 = not readmitted)
+- All datasets can be joined via `patient_id`
+- Not every patient has medication records (326 medication rows across 500 patients)
+- Clinical measures are one record per patient at time of admission
+
 ## Topic Areas Covered
 
 - **Synthetic Data** — Generate privacy-safe data with SAS Data Maker
@@ -66,3 +78,72 @@ use-case-life-sciences/
 - **Copilots** — AI-assisted exploration, modeling, and decisioning
 - **Trustworthy AI** — Fairness assessment and model governance
 - **Agentic AI** — Decisions as tools for agents and autonomous decision workflows
+
+## Business Understanding
+
+### Organization Background
+
+**MedCare Health System** is a regional healthcare network operating 12 hospitals and 45 outpatient facilities, serving over 2 million patients annually across medical, surgical, and cardiac service lines. MedCare's mission is to deliver high-quality, patient-centered care while maintaining operational efficiency.
+
+### Problem Statement
+
+MedCare is experiencing a **18.2% 30-day readmission rate**, significantly exceeding the national benchmark of 15.5%. This gap is costing the organization an estimated **$12.4 million per year** in Centers for Medicare & Medicaid Services (CMS) penalties under the Hospital Readmissions Reduction Program (HRRP).
+
+**What does this mean in practice?** For every 1,000 discharged patients, roughly 182 return to the hospital within 30 days — many of these readmissions are preventable with the right post-discharge support. Beyond the financial penalties, readmissions signal gaps in care transitions: patients may be discharged without adequate medication reconciliation, follow-up appointments, or understanding of their self-care instructions. If MedCare can identify high-risk patients before they leave the hospital, care teams can intervene with targeted discharge planning, follow-up calls, home health referrals, and medication management — reducing both costs and patient suffering.
+
+### Business Objectives
+
+1. **Primary Goal:** Reduce the 30-day readmission rate from 18.2% to 14.5% within 18 months
+2. **Secondary Goals:**
+    - Identify the top clinical and operational drivers of readmission
+    - Create an at-discharge risk scoring system for care teams
+    - Enable proactive care coordination for high-risk patients
+    - Reduce CMS penalties from $12.4M to $7.5M annually
+
+### Success Criteria
+
+- Readmission prediction model with **AUC-ROC >= 0.75**
+- High-risk patient identification with **sensitivity >= 0.80** (catch at least 80% of patients who will be readmitted)
+- Clinically interpretable model outputs that care teams can trust and act on
+- All analytics compliant with HIPAA regulations
+
+### Initial Hypotheses
+
+Based on clinical domain knowledge and preliminary exploration, we hypothesize:
+
+| #    | Hypothesis                                                   | Metrics to Test                                              |
+| ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| H1   | **Comorbidity Burden Drives Readmission** — Patients with higher comorbidity counts are more likely to be readmitted due to complex care needs | Readmission rate by comorbidity_count, comorbidity distribution |
+| H2   | **Length of Stay Signals Severity** — Patients with very short stays (premature discharge) or very long stays (severe illness) are at higher risk | Readmission rate by length_of_stay categories, average LOS by readmission status |
+| H3   | **Emergency Admissions Carry Higher Risk** — Emergency admissions, reflecting acute or unplanned events, are associated with higher readmission rates than elective admissions | Readmission rate by admission_type                           |
+| H4   | **Medication Complexity Increases Risk** — Patients on more medications, especially high-risk medications, face higher readmission rates due to adherence challenges and drug interactions | Medication count per patient, high-risk medication count, readmission rate by polypharmacy status |
+| H5   | **Abnormal Clinical Measures Predict Readmission** — Patients with abnormal lab results, elevated blood pressure, high glucose, or extreme BMI are at higher readmission risk | Readmission rate by lab_results_flag, BP classification, glucose level, BMI category |
+
+## Scope
+
+### In Scope
+
+- Patient admissions during the 2025 observation period
+- All four data sources (patients, admissions, clinical measures, medications)
+- Binary classification: readmitted within 30 days (1) vs. not readmitted (0)
+- Fairness assessment on insurance type
+- HIPAA-compliant analytics workflow
+
+### Out of Scope
+
+- Clinical trial data and research protocols
+- Real-time patient monitoring and alerting
+- Outpatient-only encounters (no inpatient admission)
+- Specific physician performance evaluation
+
+## Stakeholder Alignment
+
+Before building models, confirm alignment with key stakeholders:
+
+| Stakeholder                         | What They Need                                               |
+| ----------------------------------- | ------------------------------------------------------------ |
+| **Chief Medical Officer**           | Clinical validity of the model, patient safety assurance, clinician trust |
+| **Director of Quality Improvement** | Measurable readmission rate reduction, CMS HRRP compliance evidence |
+| **VP of Data Analytics**            | Model performance targets, scalability to production, HIPAA-compliant workflow |
+| **Director of Care Transitions**    | Actionable risk scores at discharge, clear intervention recommendations |
+| **Chief Information Officer**       | EHR integration plan, data governance compliance, HIPAA audit trail |
