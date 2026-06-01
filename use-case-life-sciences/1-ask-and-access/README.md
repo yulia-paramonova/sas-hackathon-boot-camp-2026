@@ -49,7 +49,7 @@ Follow these steps to create your synthetic dataset:
 #### 2. Import Source Data
 
 1. Within your data plan, click **Add Data Source**
-2. Navigate to the `Bootcamp/use-case-life-sciences/data` folder
+2. Navigate to the `Bootcamp/use-case-life-sciences/csv` folder
 3. This will import all four CSV files:
    - `patients.csv` — this is your primary entity table
    - `admissions.csv` — related table linked by `patient_id`

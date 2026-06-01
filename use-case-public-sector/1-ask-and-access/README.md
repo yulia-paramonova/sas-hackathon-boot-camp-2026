@@ -49,7 +49,7 @@ The SAS Hackathon Bootcamp mentors will provide you with three links, a username
 
 1. Within your data plan, click **Add Data Source**
 
-2. Navigate to the `Bootcamp/use-case-public-sector/data` folder
+2. Navigate to the `Bootcamp/use-case-public-sector/csv` folder
 
 3. This will import all four CSV files:
    - `service_requests.csv` — this is your primary request-level table
