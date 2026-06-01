@@ -65,54 +65,60 @@ Quel que soit le cas d’usage choisi, vous explorerez tout au long du hackathon
 - L’**IA agentique (Agentic AI)** est le moyen de déployer des agents à grande échelle au sein de votre organisation pour accroître la productivité. Dans ce bootcamp, nous nous concentrerons sur la [prise de décision agentique](https://www.sas.com/en_us/solutions/ai/agentic-ai.html) pour automatiser les processus.
 
 
-## The 5 Steps
 
-Each use case is separated into five steps, where each one of the steps is task to complete. The steps usually follow each other and build on each other, but for this bootcamp we have created them all in such a way that you can complete them in any order that suits your interests. If you are unsure where to start we recommend the order described below, but it is not required.
+## 🚀 Les 5 étapes
 
-| Steps | Purpose |
-|-------|---------|
-| **1. Ask & Access** | Understand the business problem, identify data sources, form initial hypotheses |
-| **2. Prepare** | Collect, clean, transform, and organize raw data for analysis |
-| **3. Explore** | Explore variable relationships, select analytical methods, create datasets |
-| **4. Model** | Build and run analytical models |
-| **5. Deploy & Act** | Deploy the solution into production, monitor performance. Visualize findings through dashboards, charts, and reports for stakeholders |
+Chaque cas d’usage est structuré en cinq étapes, chacune correspondant à une tâche à réaliser.  
+Ces étapes s’enchaînent généralement et se construisent les unes sur les autres. Cependant, pour ce bootcamp, elles ont été conçues de manière à ce que vous puissiez les aborder dans l’ordre qui correspond le mieux à vos intérêts.  
 
-The lifecycle is **iterative** — teams often move backward and forward between the described steps as new insights emerge. During this bootcamp we will not have the time to do that, but if you are interested in having a follow up on that topic specifically please reach out by talking to your onsite SAS Hackathon Bootcamp mentor directly.
+Si vous ne savez pas par où commencer, nous vous recommandons de suivre l’ordre ci-dessous — mais cela reste totalement libre.
 
-## The Environment
+| Étapes | Objectif |
+|--------|----------|
+| **1. Ask & Access** | Comprendre le problème métier, identifier les sources de données et formuler les premières hypothèses |
+| **2. Prepare** | Collecter, nettoyer, transformer et structurer les données pour l’analyse |
+| **3. Explore** | Explorer les données, analyser les relations entre variables et sélectionner les méthodes analytiques |
+| **4. Model** | Construire et exécuter les modèles analytiques |
+| **5. Deploy & Act** | Déployer la solution en production, suivre les performances et restituer les résultats via des tableaux de bord, graphiques et rapports |
 
-Access to the SAS Viya environment, SAS Viya Workbench and SAS Data Maker will be provided onsite at the SAS Hackathon Bootcamp event. Please do not forget to bring your own laptop.
+Le cycle de vie est **itératif** : les équipes font souvent des allers-retours entre les différentes étapes à mesure que de nouveaux insights émergent.  
 
-It is recommended to open up the URLs in a Incognito tab in your browser, as that ensures you are not logged into another SAS property.
+Dans le cadre de ce bootcamp, nous n’aurons pas le temps d’explorer ces itérations. Toutefois, si vous souhaitez approfondir ce sujet, n’hésitez pas à échanger directement avec votre mentor SAS présent sur place.
 
-### Logging into SAS Data Maker
 
-Please use the URL for SAS Data Maker provided by your local SAS Hackathon Bootcamp mentors - this link will include the word *datamaker* in the URL. Once you have opened up that link you will see the following screen where you have to selected *SAS Managed Trials*:
+## 🚀 Les environnements
+L’accès à l’environnement **SAS Viya**, à **SAS Viya Workbench** et à **SAS Data Maker** sera fourni sur place lors du SAS Hackathon Bootcamp. Merci de ne pas oublier d’apporter votre ordinateur portable.  
+
+Il est recommandé d’ouvrir les URL dans un onglet de navigation privée (incognito) de votre navigateur, afin de vous assurer que vous n’êtes pas déjà connecté à un autre service SAS.  
+
+### Connexion à SAS Data Maker
+Veuillez utiliser l’URL de **SAS Data Maker** fournie par vos mentors locaux du SAS Hackathon Bootcamp — ce lien contiendra le mot *datamaker* dans l’URL. Une fois cette URL ouverte, vous verrez l’écran suivant où vous devrez sélectionner ***SAS Managed Trials*** :
 
 ![image-20260527175528517](img/README/image-20260527175528517.png)
 
-Then you get redirected to a login screen where you will have to first enter the provided username and then the password.
+Vous serez ensuite redirigé vers un écran de connexion où vous devrez d’abord saisir le nom d’utilisateur fourni, puis le mot de passe.
 
 ![image-20260527175642540](img/README/image-20260527175642540.png)
 
-Once you have entered the password and the login was successful you will be redirected to SAS Data Maker.
+Une fois le mot de passe saisi et la connexion réussie, vous serez redirigé vers **SAS Data Maker**.
 
-### Logging into SAS Viya Workbench
+### Connexion à SAS Viya Workbench
 
-Please use the URL for SAS Viya Workbench provided by your local SAS Hackathon Bootcamp mentors - this link will include the word *workbench* in the URL. If you already logged into SAS Data Maker than the next steps can be skipped, as you should be redirected to SAS Viya Workbench directly.
+Veuillez utiliser l’URL de **SAS Viya Workbench** fournie par vos mentors locaux du SAS Hackathon Bootcamp — ce lien contiendra le mot *workbench* dans l’URL. Si vous êtes déjà connecté à **SAS Data Maker**, vous pouvez ignorer les étapes suivantes, car vous serez automatiquement redirigé vers SAS Viya Workbench.  
 
-On this login screen you will have to first enter the provided username and then the password.
-
-![image-20260527175642540](img/README/image-20260527175642540.png)
-
-Once you have entered the password and the login was successful you will be redirected to SAS Viya Workbench.
-
-### Logging into SAS Viya
-
-Please use the URL for SAS Viya provided by your local SAS Hackathon Bootcamp mentors - this link will include the word *bootcamp* in the URL. If you already logged into SAS Data Maker or SAS Viya Workbench than the next steps can be skipped, as you should be redirected to SAS Viya directly.
-
-On this login screen you will have to first enter the provided username and then the password.
+Sur cet écran de connexion, vous devrez d’abord saisir le nom d’utilisateur fourni, puis le mot de passe.  
 
 ![image-20260527175642540](img/README/image-20260527175642540.png)
 
-Once you have entered the password and the login was successful you will be redirected to SAS Viya.
+Une fois le mot de passe saisi et la connexion réussie, vous serez redirigé vers **SAS Viya Workbench**.
+
+
+### Connexion à SAS Viya
+
+Veuillez utiliser l’URL de **SAS Viya** fournie par vos mentors locaux du SAS Hackathon Bootcamp — ce lien contiendra le mot *bootcamp* dans l’URL. Si vous êtes déjà connecté à **SAS Data Maker** ou à **SAS Viya Workbench**, vous pouvez ignorer les étapes suivantes, car vous serez automatiquement redirigé vers SAS Viya.  
+
+Sur cet écran de connexion, vous devrez d’abord saisir le nom d’utilisateur fourni, puis le mot de passe.
+
+![image-20260527175642540](img/README/image-20260527175642540.png)
+
+Une fois le mot de passe saisi et la connexion réussie, vous serez redirigé vers **SAS Viya**.
