@@ -1,38 +1,69 @@
 # SAS Hackathon Bootcamp 2026
 
-Welcome to the SAS Hackathon Bootcamp 2026 experience. In this session you will have the choice of one of four use cases that all cover the full **Data and AI Life Cycle**.
+Bienvenue au **SAS Hackathon Bootcamp 2026** ! 🚀  
+Préparez-vous à relever le défi : au cours de cette session, vous plongerez au cœur du **cycle de vie des données et de l’intelligence artificielle** à travers quatre cas d’usage concrets.  
 
-A description of each use case and its associated industry can be found below. Choose the once you are most interested in or that most closely matches your companies profile. While each use case is different they will all follow the same principals, utilize similar techniques and explain SAS Viya technology along the way.
+Explorez les scénarios proposés ci-dessous, chacun représentant un secteur d’activité distinct. Faites votre choix : celui qui vous intrigue le plus, vous challenge… ou correspond le mieux à votre réalité métier.  
 
-## The 4 Use Cases
+Quel que soit le cas choisi, une chose est sûre : vous allez expérimenter, tester, apprendre et construire. Tous les parcours partagent une base commune, s’appuient sur des techniques similaires et vous guideront pas à pas dans la découverte de la plateforme SAS Viya.  
 
-All data used for these use cases is fictional.
+**À vous de jouer !** 💡
 
-### [E-Commerce Customer Churn Prediction (Retail)](./use-case-retail)
 
-**ShopEase**, a fictional online retail platform, is losing customers at a 12 % monthly churn rate. The goal is to predict which customers will leave and why — then act before they do.
+## 🚀 Les 4 cas d’usage
 
-### [Loan Default Prediction (Financial Services)](./use-case-financial-services)
+Toutes les données utilisées dans ces scénarios sont fictives.
 
-**PremierBank**, a regional bank with $2.1 B in assets, faces an 8.5 % loan default rate — well above the 5.2 % industry average — costing an estimated $12.8 M per year. The model must predict high-risk applicants *and* satisfy fair-lending regulations.
 
-### [Citizen Service Request Prioritization (Public)](./use-case-public-sector)
+### 💡 [Prédiction du churn en e-commerce (Retail)](./use-case-retail)
 
-**Metro City** (pop. 850,000) receives 15,000 service requests per month. Today those requests are triaged manually, causing 40 % response-time variance between districts and longer waits in underserved areas. The model must predict urgency *and* ensure equitable outcomes.
+**ShopEase**, une plateforme e-commerce fictive, fait face à un taux de churn de 12 % par mois.  
+Votre mission : identifier les clients à risque, comprendre les causes de leur départ… et agir **avant qu’il ne soit trop tard**.
 
-### [Patient Readmission Risk Prediction (Health & Life Sciences)](./use-case-life-sciences)
 
-**MedCare Health System** (12 hospitals, 2 M+ patients/year) has an 18.2 % 30-day readmission rate — above the national 15.5 % benchmark — costing $12.4 M in annual CMS penalties alone. Predicting which patients are at risk before discharge can save lives and millions.
 
-## The 5 Topic Areas
+### 💳 [Prédiction du risque de défaut (Services financiers)](./use-case-financial-services)
 
-While each use case is focused on a particular industry while going through them we will be hitting the following five topics:
+**PremierBank**, une banque régionale américaine (2,1 milliards de dollars d’actifs), affiche un taux de défaut de 8,5 % — bien au-dessus de la moyenne du secteur (5,2 %).  
+Résultat : 12,8 millions de dollars de pertes par an.
 
--   Synthetic Data enables us to generate more data or data that can be used in non-production systems. For synthetic data generation we will be using [SAS Data Maker](https://www.sas.com/en_us/software/data-maker.html).
--   Developer Experience and Open-Source enable us to code in different language. For this we are going to make use of [SAS Viya Workbench](https://www.sas.com/en_us/23289/2323/workbench.html) so that you can decide if you want to code in Python, R or SAS.
--   [Trustworthy AI](https://developer.sas.com/solutions/trustworthy_ai) is the foundation of running processes in production that are touching people and have impact on them. Being able to explain model outputs, understand fairness and mask data to ensure data privacy.
--   Copilots are an essential piece to get more out of your existing software faster. With the [SAS Viya Copilot](https://www.sas.com/en_ph/software/viya/copilot.html) we will explore some of its capabilities and see how it can help us build.
--   Agentic AI is the way to scale agents in your organization to increase productivity. Within our use case we will be focusing on the power of [agentic decisioning](https://www.sas.com/en_us/solutions/ai/agentic-ai.html) to automate processes.
+Votre défi : prédire les profils à haut risque **tout en respectant les contraintes réglementaires et d’équité**.
+
+
+
+### 🏙️ [Priorisation des demandes citoyens (Secteur public)](./use-case-public-sector)
+
+**Metro City** (850 000 habitants) reçoit plus de 15 000 demandes par mois.  
+Aujourd’hui, le tri manuel entraîne des écarts de 40 % dans les délais de réponse selon les quartiers.
+
+Votre objectif : automatiser la priorisation, prédire l’urgence… et garantir un traitement **équitable pour tous**.
+
+
+
+### 🏥 [Risque de réadmission des patients (Santé & sciences de la vie)](./use-case-life-sciences)
+
+**MedCare Health System** (12 hôpitaux, 2 millions de patients/an) affiche un taux de réadmission à 30 jours de 18,2 %, au-dessus du benchmark national (15,5 %).  
+Impact : 12,4 millions de dollars de pertes financières annuelles.
+
+Votre mission : identifier les patients à risque **avant leur sortie** pour améliorer les soins… et réduire les coûts.
+
+
+
+## 🚀 Les 5 thèmes clés du bootcamp
+
+Quel que soit le cas d’usage choisi, vous explorerez tout au long du hackathon cinq thèmes essentiels au cœur des projets data & IA modernes :
+
+
+- Les **données synthétiques (Synthetic Data)** vous permettront de générer des jeux de données supplémentaires ou exploitables dans des environnements hors production. Pour cela, nous utiliserons [SAS Data Maker](https://www.sas.com/en_us/software/data-maker.html) afin de créer et enrichir vos données.
+
+- L’**expérience développeur et l’open source (Developer Experience & Open Source)** vous donneront la liberté de coder dans le langage de votre choix. Avec [SAS Studio](https://www.sas.com/en_us/software/studio.html) ou [SAS Viya Workbench](https://www.sas.com/en_us/23289/2323/workbench.html), vous pourrez développer en **Python, R ou SAS** selon vos préférences.
+
+- L’**IA de confiance** ([Trustworthy AI](https://developer.sas.com/solutions/trustworthy_ai)) est le fondement de l'exécution en production de processus qui touchent les personnes et ont un impact sur elles. Vous apprendrez à expliquer les résultats, évaluer l’équité des modèles et protéger les données afin de garantir leur confidentialité.
+
+- Les **copilotes (Copilots)** vous aideront à tirer plus rapidement parti de vos outils et à améliorer votre productivité. Grâce à [SAS Viya Copilot](https://www.sas.com/en_ph/software/viya/copilot.html), vous découvrirez comment l’IA peut vous assister efficacement dans vos développements.
+
+- L’**IA agentique (Agentic AI)** est le moyen de déployer des agents à grande échelle au sein de votre organisation pour accroître la productivité. Dans ce bootcamp, nous nous concentrerons sur la [prise de décision agentique](https://www.sas.com/en_us/solutions/ai/agentic-ai.html) pour automatiser les processus.
+
 
 ## The 5 Steps
 
