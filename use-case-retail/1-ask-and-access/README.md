@@ -35,7 +35,7 @@ Follow these steps to create your synthetic dataset:
 #### 2. Import Source Data
 
 1. Within your data plan, click **Add Data Source**
-2. Navigate to the `Bootcamp/use-case-retail/data` folder
+2. Navigate to the `Bootcamp/use-case-retail/csv` folder
 3. This will import all four CSV files:
    - `customers.csv` — this is your primary entity table
    - `transactions.csv` — child table linked by `customer_id` (multiple transactions per customer)
