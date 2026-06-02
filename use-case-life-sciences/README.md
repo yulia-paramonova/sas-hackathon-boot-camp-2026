@@ -107,8 +107,7 @@ MedCare connaît un **taux de réadmission à 30 jours de 18,2 %**, dépassant s
 - Permettre une coordination proactive des soins pour les patients à haut risque  
 - Réduire les pénalités CMS de 12,4 M$ à 7,5 M$ par an
 
-
-### Success Criteria
+### Critères de succès
 
 - Readmission prediction model with **AUC-ROC >= 0.75**
 - High-risk patient identification with **sensitivity >= 0.80** (catch at least 80% of patients who will be readmitted)
