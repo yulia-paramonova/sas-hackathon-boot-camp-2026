@@ -86,13 +86,14 @@ use-case-life-sciences/
 
 ## Compréhension métier
 
-### Organization Background
 
-**MedCare Health System** is a regional healthcare network operating 12 hospitals and 45 outpatient facilities, serving over 2 million patients annually across medical, surgical, and cardiac service lines. MedCare's mission is to deliver high-quality, patient-centered care while maintaining operational efficiency.
+### Contexte de l’organisation
 
-### Problem Statement
+**MedCare Health System** est un réseau régional de santé exploitant 12 hôpitaux et 45 établissements de soins ambulatoires, desservant plus de 2 millions de patients par an dans les domaines médicaux, chirurgicaux et cardiologiques. La mission de MedCare est de fournir des soins de haute qualité centrés sur le patient, tout en maintenant une efficacité opérationnelle.
 
-MedCare is experiencing a **18.2% 30-day readmission rate**, significantly exceeding the national benchmark of 15.5%. This gap is costing the organization an estimated **$12.4 million per year** in Centers for Medicare & Medicaid Services (CMS) penalties under the Hospital Readmissions Reduction Program (HRRP).
+### Énoncé du problème
+
+MedCare connaît un **taux de réadmission à 30 jours de 18,2 %**, dépassant significativement le benchmark national de 15,5 %. Cet écart coûte à l’organisation environ **12,4 millions de dollars par an** en pénalités imposées par les Centers for Medicare & Medicaid Services (CMS) dans le cadre du Hospital Readmissions Reduction Program (HRRP).
 
 **What does this mean in practice?** For every 1,000 discharged patients, roughly 182 return to the hospital within 30 days — many of these readmissions are preventable with the right post-discharge support. Beyond the financial penalties, readmissions signal gaps in care transitions: patients may be discharged without adequate medication reconciliation, follow-up appointments, or understanding of their self-care instructions. If MedCare can identify high-risk patients before they leave the hospital, care teams can intervene with targeted discharge planning, follow-up calls, home health referrals, and medication management — reducing both costs and patient suffering.
 
