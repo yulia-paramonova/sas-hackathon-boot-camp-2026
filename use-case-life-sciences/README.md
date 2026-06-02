@@ -154,6 +154,6 @@ Avant de construire les modèles, il est essentiel de valider l’alignement ave
 | **Directeur médical (Chief Medical Officer)**   | Validité clinique du modèle, garantie de la sécurité des patients, confiance des cliniciens |
 | **Directeur de l’amélioration de la qualité** | Objectifs de performance du modèle, passage à l’échelle en production, workflow conforme HIPAA |
 | **Vice-président de l’analytique des données(VP Data Analytics)** | Recommandations de priorisation exploitables et visibilité sur la répartition de la charge de travail |
-| ****Directeur des transitions de soins** ** | Scores de risque exploitables à la sortie, recommandations d’intervention claires |
+| **Directeur des transitions de soins** | Scores de risque exploitables à la sortie, recommandations d’intervention claires |
 | **Directeur des systèmes d’information (CIO)** | Plan d’intégration au dossier médical électronique (EHR), conformité à la gouvernance des données, traçabilité HIPAA |
 
