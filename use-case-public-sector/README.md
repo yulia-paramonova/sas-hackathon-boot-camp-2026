@@ -55,7 +55,7 @@ use-case-public-sector/
     └── README.md                    # SAS Intelligent Decisioning guide
 ```
 
-## Datasets
+## Jeux de données
 
 | Jeu de données | Nombre de lignes | Description |
 |---------|---------|-------------|
@@ -116,7 +116,7 @@ Metro City présente un **écart de 40 % dans les temps de réponse moyens entre
 
 Sur la base des connaissances métier et d’une première exploration, nous formulons les hypothèses suivantes :  
 
-| # | Hypothèse  | Indicateurs à teste |
+| # | Hypothèse  | Indicateurs à tester |
 |---|-----------|-----------------|
 | H1 | **Le type de demande influence l’urgence** — Certains types de demandes (ex. : rupture de canalisation, problèmes de sécurité) sont intrinsèquement plus urgents que d’autres (ex. : réparations esthétiques, demandes de permis) | Taux d’urgence par type de demande, temps de réponse par type de demande |
 | H2 | **La capacité des services impacte la réponse** — Les services ayant une charge de travail élevée, des effectifs réduits ou un budget fortement consommé présentent des délais de réponse plus longs et des taux de résolution plus faibles | Temps de réponse moyen vs effectifs, nombre de demandes par agent, utilisation du budget vs taux de résolution |
