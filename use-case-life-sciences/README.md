@@ -12,7 +12,9 @@ Ce cas d’usage vous guide à travers l’ensemble du **cycle de vie des donné
 ## Contexte métier
 
 **Organisation:** MedCare Health System (réseau régional de santé fictif — 12 hôpitaux, plus de 2 millions de patients par an)
+
 **Problème:** un taux de réadmission à 30 jours de 18,2 %, supérieur au benchmark national de 15,5 %, entraînant 12,4 M$ de pénalités annuelles du CMS
+
 **Objectif:** prédire quels patients présentent un risque élevé de réadmission dans les 30 jours, comprendre les facteurs explicatifs et automatiser les interventions post‑sortie afin de réduire le taux à 14,5 % en 18 mois
 
 ## Les 5 étapes
