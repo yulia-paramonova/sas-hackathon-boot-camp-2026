@@ -1,18 +1,19 @@
-# Patient Readmission Risk Prediction
+# Prédiction du risque de réadmission des patients
 
-While this use case has a structure to it, please feel free to explore left and right of the path! Try out your own ideas, ask new questions or skip things that aren't of interest to you!
+Bien que ce cas d’usage suive une structure définie, n’hésitez pas à explorer librement ! Testez vos propres idées, posez de nouvelles questions ou passez ce qui vous semble moins pertinent.  
 
-First you will get a quick introduction to the use case, then an overview of the five steps you will take while going through this SAS Hackathon Bootcamp experience, then follow a structure of the repository, an overview of the data sets and the five topic areas that will be covered. After that there is a deeper dive into the business use case, feel free to explore that as you see fit.
+Vous commencerez par une courte introduction au cas d’usage, suivie d’un aperçu des cinq étapes que vous allez parcourir durant cette expérience de SAS Hackathon Bootcamp. Vous découvrirez ensuite la structure du répertoire Git, une présentation des jeux de données ainsi que les cinq thèmes principaux abordés. Enfin, une analyse plus approfondie du contexte métier vous sera proposée — à vous de l’explorer selon vos besoins.
 
-## Life Sciences Use Case — Data and AI Life Cycle
 
-This use case walks you through the complete **Data and AI Life Cycle** using a realistic patient readmission risk prediction scenario, powered by SAS Viya technology.
+## Cas d’usage en sciences de la vie — Cycle de vie des données et de l’IA
 
-## Business Context
+Ce cas d’usage vous guide à travers l’ensemble du **cycle de vie des données et de l’IA** en utilisant un scénario réaliste de prédiction du risque de réadmission des patients, basé sur la technologie SAS Viya.
 
-**Organization:** MedCare Health System (fictional regional healthcare network — 12 hospitals, 2M+ patients/year)
-**Problem:** 30-day readmission rate of 18.2% exceeds the 15.5% national benchmark, resulting in $12.4M in annual CMS penalties
-**Goal:** Predict which patients are at high risk of readmission within 30 days, understand the drivers, and automate post-discharge interventions to reduce the rate to 14.5% within 18 months
+## Contexte métier
+
+**Organisation:** MedCare Health System (réseau régional de santé fictif — 12 hôpitaux, plus de 2 millions de patients par an)
+**Problème:** un taux de réadmission à 30 jours de 18,2 %, supérieur au benchmark national de 15,5 %, entraînant 12,4 M$ de pénalités annuelles du CMS
+**Objectif:** prédire quels patients présentent un risque élevé de réadmission dans les 30 jours, comprendre les facteurs explicatifs et automatiser les interventions post‑sortie afin de réduire le taux à 14,5 % en 18 mois
 
 ## Les 5 étapes
 
