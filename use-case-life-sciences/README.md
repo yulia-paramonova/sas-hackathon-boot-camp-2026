@@ -127,26 +127,27 @@ Sur la base des connaissances métier et d’une première exploration, nous for
 | H4   | **La complexité des traitements médicamenteux augmente le risque** — Les patients prenant un plus grand nombre de médicaments, en particulier des médicaments à haut risque, présentent des taux de réadmission plus élevés en raison des difficultés d’observance et des interactions médicamenteuses | Nombre de médicaments par patient, nombre de médicaments à haut risque, taux de réadmission selon le statut de polymédication |
 | H5   | **Les mesures cliniques anormales prédisent la réadmission** — Les patients présentant des résultats de laboratoire anormaux, une pression artérielle élevée, une glycémie élevée ou un IMC extrême ont un risque de réadmission plus élevé | Taux de réadmission selon `lab_results_flag`, classification de la pression artérielle, niveau de glucose, catégorie d’IMC |
 
-## Scope
+## Périmètre
 
-### In Scope
+### Inclus dans le périmètre
 
-- Patient admissions during the 2025 observation period
-- All four data sources (patients, admissions, clinical measures, medications)
-- Binary classification: readmitted within 30 days (1) vs. not readmitted (0)
-- Fairness assessment on insurance type
-- HIPAA-compliant analytics workflow
+- Admissions de patients pendant la période d’observation de 2025  
+- Les quatre sources de données (patients, admissions, mesures cliniques, médicaments)  
+- Classification binaire : réadmis dans les 30 jours (1) vs non réadmis (0)  
+- Évaluation de l’équité selon le type d’assurance  
+- Workflow d’analytique conforme à la réglementation HIPAA
 
-### Out of Scope
 
-- Clinical trial data and research protocols
-- Real-time patient monitoring and alerting
-- Outpatient-only encounters (no inpatient admission)
-- Specific physician performance evaluation
+### Hors périmètre
 
-## Stakeholder Alignment
+- Données d’essais cliniques et protocoles de recherche  
+- Suivi des patients en temps réel et systèmes d’alerte  
+- Consultations exclusivement ambulatoires (sans admission en hospitalisation)  
+- Évaluation spécifique de la performance des médecins
 
-Before building models, confirm alignment with key stakeholders:
+## Alignement des parties prenantes
+
+Avant de construire les modèles, il est essentiel de valider l’alignement avec les principales parties prenantes :  
 
 | Stakeholder                         | What They Need                                               |
 | ----------------------------------- | ------------------------------------------------------------ |
