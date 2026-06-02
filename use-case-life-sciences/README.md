@@ -68,13 +68,13 @@ use-case-life-sciences/
 | `clinical_measures.csv` | 500 | Signes vitaux et résultats de laboratoire |
 | `medications.csv` | 326 | Prescriptions médicamenteuses et indicateurs de risques |
 
-### Data Quality Notes
+### Notes sur la qualité des données
 
-- Data covers patient admissions in 2025
-- Readmission label available in patients.csv (`readmitted_30days` column: 1 = readmitted, 0 = not readmitted)
-- All datasets can be joined via `patient_id`
-- Not every patient has medication records (326 medication rows across 500 patients)
-- Clinical measures are one record per patient at time of admission
+- Les données couvrent les admissions de patients en 2025
+- L’étiquette de réadmission est disponible dans patients.csv (colonne `readmitted_30days` : 1 = réadmis, 0 = non réadmis)
+-Tous les jeux de données peuvent être joints via `patient_id`
+-Tous les patients ne disposent pas de dossiers de médication (326 enregistrements de médication pour 500 patients)
+-Les mesures cliniques correspondent à un enregistrement par patient au moment de l’admission
 
 ## Topic Areas Covered
 
