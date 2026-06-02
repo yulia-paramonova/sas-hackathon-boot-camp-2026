@@ -109,12 +109,13 @@ MedCare connaît un **taux de réadmission à 30 jours de 18,2 %**, dépassant s
 
 ### Critères de succès
 
-- Readmission prediction model with **AUC-ROC >= 0.75**
-- High-risk patient identification with **sensitivity >= 0.80** (catch at least 80% of patients who will be readmitted)
-- Clinically interpretable model outputs that care teams can trust and act on
-- All analytics compliant with HIPAA regulations
+- Modèle de prédiction de réadmission avec un **AUC-ROC >= 0,75**  
+- Identification des patients à haut risque avec une **sensibilité >= 0,80** (identifier au moins 80 % des patients qui seront réadmis)  
+- Résultats de modèle interprétables cliniquement, auxquels les équipes de soins peuvent faire confiance et sur lesquels elles peuvent agir  
+- Toutes les analyses conformes aux réglementations HIPAA
 
-### Initial Hypotheses
+
+### Hypothèses initiales
 
 Based on clinical domain knowledge and preliminary exploration, we hypothesize:
 
