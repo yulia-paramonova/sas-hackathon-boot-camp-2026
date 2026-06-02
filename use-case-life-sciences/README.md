@@ -149,10 +149,11 @@ Sur la base des connaissances métier et d’une première exploration, nous for
 
 Avant de construire les modèles, il est essentiel de valider l’alignement avec les principales parties prenantes :  
 
-| Stakeholder                         | What They Need                                               |
-| ----------------------------------- | ------------------------------------------------------------ |
-| **Chief Medical Officer**           | Clinical validity of the model, patient safety assurance, clinician trust |
-| **Director of Quality Improvement** | Measurable readmission rate reduction, CMS HRRP compliance evidence |
-| **VP of Data Analytics**            | Model performance targets, scalability to production, HIPAA-compliant workflow |
-| **Director of Care Transitions**    | Actionable risk scores at discharge, clear intervention recommendations |
-| **Chief Information Officer**       | EHR integration plan, data governance compliance, HIPAA audit trail |
+| Partie prenante | Besoins |
+|------------|---------------|
+| **Directeur médical (Chief Medical Officer)**   | Validité clinique du modèle, garantie de la sécurité des patients, confiance des cliniciens |
+| **Directeur de l’amélioration de la qualité** | Objectifs de performance du modèle, passage à l’échelle en production, workflow conforme HIPAA |
+| **Vice-président de l’analytique des données(VP Data Analytics)** | Recommandations de priorisation exploitables et visibilité sur la répartition de la charge de travail |
+| ****Directeur des transitions de soins** ** | Scores de risque exploitables à la sortie, recommandations d’intervention claires |
+| **Directeur des systèmes d’information (CIO)** | Plan d’intégration au dossier médical électronique (EHR), conformité à la gouvernance des données, traçabilité HIPAA |
+
