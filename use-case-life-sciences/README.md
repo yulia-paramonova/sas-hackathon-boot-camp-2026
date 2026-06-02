@@ -72,11 +72,8 @@ use-case-life-sciences/
 
 - Les données couvrent les admissions de patients en 2025
 - L’étiquette de réadmission est disponible dans patients.csv (colonne `readmitted_30days` : 1 = réadmis, 0 = non réadmis)
-  
--Tous les jeux de données peuvent être joints via `patient_id`
-
+- -Tous les jeux de données peuvent être joints via `patient_id`
 -Tous les patients ne disposent pas de dossiers de médication (326 enregistrements de médication pour 500 patients)
-
 -Les mesures cliniques correspondent à un enregistrement par patient au moment de l’admission
 
 ## Topic Areas Covered
