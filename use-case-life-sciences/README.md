@@ -76,15 +76,15 @@ use-case-life-sciences/
 - Tous les patients ne disposent pas de dossiers de médication (326 enregistrements de médication pour 500 patients)
 - Les mesures cliniques correspondent à un enregistrement par patient au moment de l’admission
 
-## Topic Areas Covered
+## Les 5 thèmes clés du bootcamp
+- **Données synthétiques** — Générer des données respectueuses de la confidentialité avec SAS Data Maker  
+- **Expérience développeur** — Coder en SAS, Python ou R dans SAS Viya Workbench ou SAS Studio 
+- **Copilotes** — Exploration, modélisation et prise de décision assistées par l’IA  
+- **IA de confiance** — Évaluation de l’équité et gouvernance des modèles  
+- **IA agentique** — Décisions exposées comme des capacités utilisables par les agents pour orchestrer des workflows autonomes  
 
-- **Synthetic Data** — Generate privacy-safe data with SAS Data Maker
-- **Developer Experience** — Code in SAS, Python, or R in SAS Viya Workbench
-- **Copilots** — AI-assisted exploration, modeling, and decisioning
-- **Trustworthy AI** — Fairness assessment and model governance
-- **Agentic AI** — Decisions as tools for agents and autonomous decision workflows
 
-## Business Understanding
+## Compréhension métier
 
 ### Organization Background
 
