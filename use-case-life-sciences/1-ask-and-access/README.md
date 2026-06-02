@@ -24,45 +24,49 @@ Ces réglementations impliquent qu’au-delà de la construction d’un modèle 
 
 Les données synthétiques sont des données générées artificiellement qui **reproduisent les propriétés statistiques, les patterns et la structure de données réelles — sans contenir aucun enregistrement issu du jeu de données original**. Elles sont produites à l’aide de modèles génératifs capables d’apprendre les distributions, les corrélations et les relations présentes dans les données réelles, puis de créer de nouveaux enregistrements entièrement originaux, **représentatifs sur le plan statistique mais impossibles à rattacher à un individu spécifique**. Ces dernières années, les données synthétiques sont devenues un outil essentiel dans de nombreux secteurs, alors que les organisations font face à une pression croissante liée à la confidentialité des données, à la conformité réglementaire et au défi pratique d’obtenir des données de haute qualité en quantité suffisante pour l’analytique et le machine learning.
 
-Pour un cas d’usage comme la prédiction des réadmissions de patients chez MedCare Health System, les données synthétiques offrent plusieurs avantages concrets particulièrement importants dans le secteur de la santé. Tout d’abord, elles permettent aux équipes de développer, tester et itérer sur des modèles sans exposer d’informations de santé protégées (PHI) — une exigence fondamentale dans le cadre de la HIPAA. Les dossiers réels des patients, contenant des diagnostics, des traitements, des signes vitaux et des informations d’assurance, font partie des catégories de données les plus sensibles qui existent ; la génération synthétique élimine totalement le risque de ré‑identification, permettant ainsi aux analystes, data scientists et collaborateurs externes de travailler librement, sans nécessiter d’accords de type Business Associate Agreements ni de processus de désidentification.Deuxièmement, les données synthétiques peuvent enrichir des scénarios cliniques sous‑représentés : si le jeu de données contient très peu de cas de réadmission pour des patients présentant des diagnostics rares ou des combinaisons inhabituelles de comorbidités, la génération synthétique peut produire des exemples supplémentaires réalistes afin d’améliorer l’entraînement des modèles sur ces cas limites.
-
-Third, it enables multi-site collaboration — hospitals across the MedCare network, external research partners, and technology vendors can all work with realistic clinical data without the legal and ethical overhead of sharing actual patient records. Finally, synthetic data supports clinical simulation: what if readmission rates doubled for cardiac patients? What if a new high-risk medication class entered formulary? These scenarios can be modeled synthetically before they materialize, enabling proactive care pathway design.
+Pour un cas d’usage comme la prédiction des réadmissions de patients chez MedCare Health System, les données synthétiques offrent plusieurs avantages concrets particulièrement importants dans le secteur de la santé. Tout d’abord, elles permettent aux équipes de développer, tester et itérer sur des modèles sans exposer d’informations de santé protégées (PHI) — une exigence fondamentale dans le cadre de la HIPAA. Les dossiers réels des patients, contenant des diagnostics, des traitements, des signes vitaux et des informations d’assurance, font partie des catégories de données les plus sensibles qui existent ; la génération synthétique élimine totalement le risque de ré‑identification, permettant ainsi aux analystes, data scientists et collaborateurs externes de travailler librement, sans nécessiter d’accords de type Business Associate Agreements ni de processus de désidentification. Deuxièmement, les données synthétiques peuvent enrichir des scénarios cliniques sous‑représentés : si le jeu de données contient très peu de cas de réadmission pour des patients présentant des diagnostics rares ou des combinaisons inhabituelles de comorbidités, la génération synthétique peut produire des exemples supplémentaires réalistes afin d’améliorer l’entraînement des modèles sur ces cas limites. Troisièmement, les données synthétiques facilitent la collaboration multi‑sites — les hôpitaux du réseau MedCare, les partenaires de recherche externes et les fournisseurs de technologies peuvent travailler avec des données cliniques réalistes sans les contraintes juridiques et éthiques liées au partage de dossiers patients réels. Enfin, les données synthétiques permettent la simulation clinique : que se passerait‑il si les taux de réadmission doublaient pour les patients cardiaques ? Et si une nouvelle classe de médicaments à haut risque était introduite dans le formulaire thérapeutique ? Ces scénarios peuvent être modélisés de manière synthétique avant de se produire, permettant ainsi de concevoir de manière proactive des parcours de soins adaptés.
 
 ---
 
-## Working with SAS Data Maker
+## Travailler avec SAS Data Maker
 
-[SAS Data Maker](https://www.sas.com/en_us/software/data-maker.html) is the SAS platform for generating high-quality synthetic data. In this section you will pull the MedCare datasets into SAS Data Maker and create a synthetic version that preserves the statistical relationships across all four tables.
+[SAS Data Maker](https://www.sas.com/en_us/software/data-maker.html) est la plateforme SAS dédiée à la génération de données synthétiques de haute qualité. Dans cette section, vous allez importer les jeux de données MedCare dans SAS Data Maker et créer une version synthétique qui préserve les relations statistiques entre les quatre tables.
 
-### Log into SAS Data Maker
+### Se connecter à SAS Data Maker
 
-The SAS Hackathon Bootcamp mentors will provide you with three links, a username and a password. Your username and password are consistent across all three environments. In order to access SAS Data Maker please enter the link that contains the word Data Maker. Here you will be asked to sign in using an Username/E-Mail and then enter a password - these are the once provided to you by the mentors. Please note if you have a SAS Communities profile do not log in using those credentials and if you see an error trying to log in, try to use an incognito browser tab, as you might still be logged into SAS somewhere.
+Les mentors du SAS Hackathon Bootcamp vous fourniront trois liens, ainsi qu’un identifiant et un mot de passe. Ces identifiants sont identiques pour les trois environnements. Pour accéder à SAS Data Maker, utilisez le lien contenant la mention *Data Maker*. Une page de connexion vous demandera de saisir un identifiant (nom d’utilisateur ou adresse e-mail) puis un mot de passe — ceux qui vous ont été communiqués par les mentors.
 
-### Generating Synthetic Data with SAS Data Maker
+Veuillez noter que si vous disposez déjà d’un compte SAS Communities, vous ne devez pas utiliser ces identifiants pour vous connecter. En cas d’erreur lors de la connexion, essayez d’ouvrir une fenêtre de navigation en mode privé (incognito), car vous pourriez déjà être connecté à un autre environnement SAS.
 
-Follow these steps to create your synthetic dataset:
+### Générer des données synthétiques avec SAS Data Maker
 
-#### 1. Create a Project
+Suivez les étapes suivantes pour créer votre jeu de données synthétique:
 
-1. Open **SAS Data Maker**
-2. Click **New project** to start a new project
-3. Give it a descriptive name, e.g., *MedCare Readmission — Synthetic Generation*
+#### 1. Créer un projet
+
+1. Ouvrir **SAS Data Maker**
+2. Cliquer sur **New project** pour créer un nouveau projet
+3. Donner un nom explicite, par exemple : *MedCare Readmission — Synthetic Generation*
     ![image-20260529104507157](img/README/image-20260529104507157.png)
+   
+#### 2. Importer les données sources
 
-#### 2. Import Source Data
+1. Dans votre plan de données, cliquer sur **Add Data Source**  
+2. Naviguer vers le dossier `Bootcamp/use-case-life-sciences/csv` 
+3. Cela permettra d’importer les quatre fichiers CSV suivants :
+   
+- `patients.csv` — table principale (entité primaire)  
+- `admissions.csv` — table liée via `patient_id`  
+- `clinical_measures.csv` — table liée via `patient_id`  
+- `medications.csv` — table enfant liée via `patient_id` (plusieurs médicaments par patient)
 
-1. Within your data plan, click **Add Data Source**
-2. Navigate to the `Bootcamp/use-case-life-sciences/csv` folder
-3. This will import all four CSV files:
-   - `patients.csv` — this is your primary entity table
-   - `admissions.csv` — related table linked by `patient_id`
-   - `clinical_measures.csv` — related table linked by `patient_id`
-   - `medications.csv` — child table linked by `patient_id` (multiple medications per patient)
-4. SAS Data Maker will profile each table and display column types, distributions, and summary statistics
+
+4. SAS Data Maker va analyser chaque table et afficher les types de colonnes, les distributions ainsi que des statistiques descriptives
 
 ![image-20260529104609945](img/README/image-20260529104609945.png)
 
-Next you will see a loading bar like the one below that, this should finish in less than two minutes - feel free to start reading the next step already while you wait for this to finish:
+ Vous verrez ensuite une barre de chargement semblable à celle ci-dessous. Cette étape prend généralement moins de deux minutes — vous pouvez déjà commencer à consulter l’étape suivante pendant le chargement:
+
 
 ![image-20260529104639475](img/README/image-20260529104639475.png)
 
