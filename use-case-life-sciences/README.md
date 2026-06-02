@@ -91,20 +91,22 @@ use-case-life-sciences/
 
 **MedCare Health System** est un réseau régional de santé exploitant 12 hôpitaux et 45 établissements de soins ambulatoires, desservant plus de 2 millions de patients par an dans les domaines médicaux, chirurgicaux et cardiologiques. La mission de MedCare est de fournir des soins de haute qualité centrés sur le patient, tout en maintenant une efficacité opérationnelle.
 
-### Énoncé du problème
+### Problématique
 
 MedCare connaît un **taux de réadmission à 30 jours de 18,2 %**, dépassant significativement le benchmark national de 15,5 %. Cet écart coûte à l’organisation environ **12,4 millions de dollars par an** en pénalités imposées par les Centers for Medicare & Medicaid Services (CMS) dans le cadre du Hospital Readmissions Reduction Program (HRRP).
 
-**What does this mean in practice?** For every 1,000 discharged patients, roughly 182 return to the hospital within 30 days — many of these readmissions are preventable with the right post-discharge support. Beyond the financial penalties, readmissions signal gaps in care transitions: patients may be discharged without adequate medication reconciliation, follow-up appointments, or understanding of their self-care instructions. If MedCare can identify high-risk patients before they leave the hospital, care teams can intervene with targeted discharge planning, follow-up calls, home health referrals, and medication management — reducing both costs and patient suffering.
+**Concrètement, qu’est-ce que cela signifie ?**  Pour 1 000 patients sortis de l’hôpital, environ 182 y retournent dans les 30 jours — et nombre de ces réadmissions pourraient être évitées avec un accompagnement post‑sortie adéquat. Au‑delà des pénalités financières, les réadmissions révèlent des lacunes dans la continuité des soins : les patients peuvent sortir sans une conciliation médicamenteuse appropriée, sans rendez‑vous de suivi, ou sans bien comprendre les consignes d’autosoins. Si MedCare est capable d’identifier les patients à haut risque avant leur sortie de l’hôpital, les équipes de soins peuvent intervenir via une planification de sortie ciblée, des appels de suivi, des orientations vers des soins à domicile et une meilleure gestion des traitements — réduisant ainsi à la fois les coûts et la souffrance des patients.
 
-### Business Objectives
+### Objectifs métiers
 
-1. **Primary Goal:** Reduce the 30-day readmission rate from 18.2% to 14.5% within 18 months
-2. **Secondary Goals:**
-    - Identify the top clinical and operational drivers of readmission
-    - Create an at-discharge risk scoring system for care teams
-    - Enable proactive care coordination for high-risk patients
-    - Reduce CMS penalties from $12.4M to $7.5M annually
+1. **Objectif principal:** Réduire le taux de réadmission à 30 jours de 18,2 % à 14,5 % en 18 mois
+2. **Objectifs secondaires**
+    
+- Identifier les principaux facteurs cliniques et opérationnels de réadmission  
+- Créer un système de scoring du risque au moment de la sortie pour les équipes de soins  
+- Permettre une coordination proactive des soins pour les patients à haut risque  
+- Réduire les pénalités CMS de 12,4 M$ à 7,5 M$ par an
+
 
 ### Success Criteria
 
