@@ -1,21 +1,21 @@
 # Step 1: Ask & Access
 
-Welcome to **MedCare Health System**, a fictional regional healthcare network. In this step you will gain insights into the current business challenges, learn about the value of synthetic data in healthcare, and pull your data into **SAS Data Maker** to generate a synthetic version of the dataset.
+Bienvenue chez **MedCare Health System**, un réseau régional de santé fictif. À cette étape, vous découvrirez les défis métier actuels, apprendrez la valeur des données synthétiques dans le domaine de la santé, et chargerez vos données dans **SAS Data Maker** afin de générer une version synthétique du jeu de données.
 
 ---
 
-## Regulatory Context
+## Contexte réglementaire
 
-Healthcare analytics operate under strict regulatory and ethical oversight. Key regulations that apply to this use case include:
+L’analytique de santé est soumise à une supervision réglementaire et éthique stricte. Les principales réglementations applicables à ce cas d’usage incluent :
 
-| Regulation | What It Requires |
+| Réglementation | Exigences |
 |-----------|-----------------|
-| **HIPAA** (Health Insurance Portability and Accountability Act) | Protects patient health information; requires safeguards for PHI access, use, and disclosure |
-| **HITECH Act** | Strengthens HIPAA enforcement; requires breach notification for unsecured PHI |
-| **CMS HRRP** (Hospital Readmissions Reduction Program) | Penalizes hospitals with excess readmissions for specific conditions; directly motivates this use case |
-| **Joint Commission Standards** | Requires evidence-based care transition processes and quality measurement |
+| **HIPAA** (Health Insurance Portability and Accountability Act) | Protège les informations de santé des patients ; impose des mesures de sécurité pour l’accès, l’utilisation et la divulgation des données de santé protégées (PHI) |
+| **HITECH Act** |  Renforce l’application de la HIPAA ; impose la notification des violations en cas de données de santé non sécurisées |
+| **CMS HRRP** (Hospital Readmissions Reduction Program) | Pénalise les hôpitaux présentant des taux de réadmission excessifs pour certaines pathologies ; constitue une motivation directe pour ce cas d’usage |
+| **Joint Commission Standards** |  Exige des processus de transition des soins fondés sur des preuves et la mesure de la qualité |
 
-These regulations mean that beyond building an accurate model, the analytics workflow must protect patient privacy, produce clinically interpretable outputs, and support the quality improvement documentation required by CMS and accreditation bodies.
+Ces réglementations impliquent qu’au-delà de la construction d’un modèle précis, le workflow analytique doit protéger la confidentialité des patients, produire des résultats interprétables d’un point de vue clinique, et soutenir la documentation d’amélioration de la qualité exigée par le CMS et les organismes d’accréditation. 
 
 ---
 
