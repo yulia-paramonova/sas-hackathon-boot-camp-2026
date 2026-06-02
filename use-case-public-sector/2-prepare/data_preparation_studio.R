@@ -15,7 +15,7 @@
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-DATA_DIR = paste(symget("_USERHOME"), "sas-hackathon-boot-camp-2026/use-case-public-sector/data", sep="/")
+data_dir = paste(symget("_USERHOME"), "sas-hackathon-boot-camp-2026/use-case-public-sector/data", sep="/")
 output_path    <- file.path(data_dir, "public_sector_abt.csv")
 reference_date <- as.Date("2024-12-31")
 

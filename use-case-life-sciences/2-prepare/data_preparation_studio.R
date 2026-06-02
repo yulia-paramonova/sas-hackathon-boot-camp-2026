@@ -15,7 +15,7 @@
 # ---------------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------------
-DATA_DIR = <- paste(symget("_USERHOME"), "sas-hackathon-boot-camp-2026/use-case-life-sciences/data", sep="/")
+data_dir = <- paste(symget("_USERHOME"), "sas-hackathon-boot-camp-2026/use-case-life-sciences/data", sep="/")
 output_path <- file.path(data_dir, "life_sciences_abt.csv")
 
 # ============================================================================
