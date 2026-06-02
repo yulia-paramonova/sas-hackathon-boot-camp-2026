@@ -1,84 +1,76 @@
-# Step 3: Explore
+# Étape 3: Explore
 
-In this step you will use **SAS Visual Analytics** and its built-in **Copilot** to visually explore the Analytical Base Table (ABT) you created in Step 2. The goal is to understand the patterns behind loan default before building a predictive model.
-
----
-
-## Prerequisites
-
-The analytical base table should already be loaded into the **Public** CAS library. If you completed Step 2 the data was saved as `financial_services_abt.csv`. Your bootcamp environment has this pre-loaded as a CAS table named **`FINANCIAL_SERVICES_ABT`** in the **Public** caslib.
+Dans cette étape, vous allez utiliser **SAS Visual Analytic**s et son **Copilot** intégré pour explorer visuellement l’Analytical Base Table (ABT) que vous avez créée à l’Étape 2. L’objectif est de comprendre les schémas liés au défaut de paiement avant de construire un modèle prédictif.
 
 ---
 
-## Accessing the Data in SAS Visual Analytics
+## Prérequis
+L’analytical base table doit déjà être chargée dans la bibliothèque CAS **Public**. Si vous avez terminé l’Étape 2, les données ont été enregistrées sous `financial_services_abt.csv`. Votre environnement Bootcamp contient déjà cette table CAS préchargée sous le nom **`FINANCIAL_SERVICES_ABT`** dans la caslib **Public** .
 
-1. Open **SAS Visual Analytics** from the SAS Viya home page (or use the main menu in the top right corner and click on *Explore and Visualize*)
-2. Click **New Report**
-3. In the data panel click on the Add Data button and from the available tables please select **FINANCIAL_SERVICES_ABT**
+---
+
+## Accéder aux données dans SAS Visual Analytics
+1. Ouvrez **SAS Visual Analytics** depuis la page d’accueil SAS Viya (ou via le menu principal en haut à droite → *Explore and Visualize*)
+2. Cliquez sur **New Report**
+3. Dans le panneau de données, cliquez sur Add Data et sélectionnez **FINANCIAL_SERVICES_ABT**
     ![image-20260528142033207](img/README/image-20260528142033207.png)
-4. Add it as your data source — you should see all the features from Step 2 listed in the data items pane on the left
+4. Ajoutez-la comme source de données — vous devriez voir toutes les variables créées à l’Étape 2 dans le panneau de gauche
 
-> **Tip:** If the table does not appear in the Public caslib, ask your SAS Mentor to help promote it. You can also load it directly by uploading the CSV through the **Manage Data** interface.
+> **Astuce:** Si la table n’apparaît pas dans la caslib Public, demandez à un mentor SAS de vous aider à la promouvoir.
+Vous pouvez aussi la charger directement en important le CSV via **Manage Data**.
 
 ---
 
-## Using the SAS Visual Analytics Copilot
+## Utiliser le Copilot de SAS Visual Analytics
 
-SAS Visual Analytics includes a **Copilot** — an AI assistant that helps you explore data faster. You can find the Copilot icon in the top right hand corner. The Copilot can:
+SAS Visual Analytics inclut un **Copilot** - un assistant IA qui accélère l’exploration des données. L’icône du Copilot se trouve en haut à droite. Il peut :
+- **Suggérer des visualisations** selon les variables sélectionnées
+- **Répondre à des questions** sur vos données en langage naturel
+- **Générer des insights** en détectant automatiquement des schémas intéressants
+- **Créer des graphiques** à partir de requêtes en langage courant 
 
-- **Suggest visualizations** based on the variables you select
-- **Answer questions** about your data in natural language
-- **Generate insights** by automatically scanning for interesting patterns
-- **Build charts** from plain-language prompts
-
-### How to Use the Copilot
-
-1. Click the **Copilot** icon to open the assistant panel
-2. Type a question or request in natural language
-3. The Copilot will suggest or create a visualization directly in your report
-4. You can refine the result by following up with additional prompts
-5. You can right click into the chat panel and get suggestions on prompts to help you.
+### Comment utiliser le Copilot
+1. Cliquez sur l’icône **Copilot** pour ouvrir le panneau
+2. Tapez une question ou une demande en langage naturel
+3. Le Copilot suggère ou crée une visualisation dans votre rapport
+4. Vous pouvez affiner le résultat avec des requêtes supplémentaires
+5. Un clic droit dans le panneau de chat vous propose des suggestions de prompts pour vous aider.
 
 ![image-20260528142508361](img/README/image-20260528142508361.png)
 
 ---
 
-## Guided Exploration: Questions to Ask
+## Exploration guidée : Questions à poser
+Travaillez sur les questions suivantes pour comprendre les schémas de défaut. Pour chaque question, essayez de créer la visualisation manuellement **et/ou** via le Copilot.
 
-Work through the following questions to build your understanding of the default patterns. For each question, try creating the visualization manually **and/or** by asking the Copilot.
+### Comprendre la variable cible
+**Objectif:** Obtenir une compréhension de base du défaut dans le jeu de données.
 
-### Understanding the Target Variable
+- *"Montre-moi la distribution des prêts en défaut"*
+- *"Quel pourcentage des prêts sont en défaut ?"*
 
-**Goal:** Get a baseline understanding of default in the dataset.
+Créez un **diagramme en barres** ou un **diagramme circulaire** de la variable 'defaulted'.
+Vous devriez observer environ 25–26 % de défauts et 74–75 % de prêts courants — indiquant un problème de classification modérément déséquilibré.
 
-- *"Show me the distribution of defaulted loans"*
-- *"What percentage of loans have defaulted?"*
+### Hypothèse 1 : Le score de crédit influence le défaut
+**Objectif** : Vérifier si les scores FICO plus faibles sont associés à un taux de défaut plus élevé.
+-*"Compare le score de crédit moyen entre prêts en défaut et prêts courants"*
+-*"Montre-moi le taux de défaut par bande FICO"*
+-*"Quelle est la distribution des scores de crédit selon le statut de défaut?"*
 
-Create a **bar chart** or **pie chart** of the `defaulted` variable. You should see roughly 25-26% defaulted and 74-75% current — confirming this is a moderately imbalanced classification problem.
+Créez des **boîtes à moustaches** de 'credit_score' groupé par 'defaulted'. Créez un **diagramme en barres** du taux de défaut par bande FICO (colonnes `fico_Excellent`, `fico_Good`, `fico_Fair`, `fico_Poor`, `fico_VeryPoor`).
 
-### Hypothesis 1: Credit Score Drives Default
+> **À observer** : Les bandes Very Poor et Poor FICO devraient présenter des taux de défaut nettement plus élevés. Un seuil critique peut apparaître autour de 650.
 
-**Goal:** Validate whether lower FICO scores correlate with higher default rates.
+### Hypothèse 2 : Le ratio dette/revenu influence le défaut
+**Objectif** : Déterminer si la pression financière prédit le défaut.
+-*"Montre-moi la distribution de debt_to_income selon le statut de défaut"*
+-*"Compare le debt-to-income moyen entre prêts en défaut et prêts courants"*
+-*"Existe-t-il une relation entre debt_service_ratio et le défaut ?"*
 
-- *"Compare the average credit score between defaulted and current loans"*
-- *"Show me default rate by FICO score band"*
-- *"What is the distribution of credit scores for defaulted vs. current loans?"*
+Créez un **histogramme** de debt_to_income coloré par `defaulted`. Créez un **nuage de points** debt_to_income vs credit_score coloré avec `defaulted` comme coleur.
 
-Create **box plots** of `credit_score` grouped by `defaulted`. Create a **bar chart** showing default rate by FICO band (use the `fico_Excellent`, `fico_Good`, `fico_Fair`, `fico_Poor`, `fico_VeryPoor` columns).
-
-> **What to look for:** Loans with Very Poor and Poor FICO scores should have noticeably higher default rates. There may be a threshold effect around the 650 mark.
-
-### Hypothesis 2: Debt-to-Income Impacts Default
-
-**Goal:** Determine whether financial strain predicts default.
-
-- *"Show me the distribution of debt_to_income by default status"*
-- *"Compare average debt-to-income ratio between defaulted and current loans"*
-- *"Is there a relationship between debt_service_ratio and default?"*
-
-Create a **histogram** of `debt_to_income` colored by `defaulted`. Also create a **scatter plot** of `debt_to_income` vs. `credit_score` with `defaulted` as the color.
-
-> **What to look for:** Defaulted loans likely have higher DTI ratios. A DTI above 43% is a common regulatory threshold that indicates elevated risk.
+> **À observer** : Les prêts en défaut ont souvent un DTI plus élevé. Un DTI > 43 % est un seuil réglementaire courant indiquant un risque accru.
 
 ### Hypothesis 3: Payment Behavior Predicts Future Default
 
