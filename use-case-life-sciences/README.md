@@ -59,14 +59,14 @@ use-case-life-sciences/
     └── README.md                    # SAS Intelligent Decisioning guide
 ```
 
-## Datasets
+## Jeux de données
 
-| Dataset | Records | Description |
+| Jeu de données | Nombre de lignes | Description |
 |---------|---------|-------------|
-| `patients.csv` | 500 | Patient demographics with readmission labels |
-| `admissions.csv` | 500 | Admission and discharge details |
-| `clinical_measures.csv` | 500 | Vital signs and lab results |
-| `medications.csv` | 326 | Medication orders and risk flags |
+| `patients.csv` | 500 | Données démographiques des patients avec étiquettes de réadmission |
+| `admissions.csv` | 500 | Détails d’admission et de sortie |
+| `clinical_measures.csv` | 500 | Signes vitaux et résultats de laboratoire |
+| `medications.csv` | 326 | Prescriptions médicamenteuses et indicateurs de risques |
 
 ### Data Quality Notes
 
