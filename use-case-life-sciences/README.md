@@ -117,15 +117,15 @@ MedCare connaît un **taux de réadmission à 30 jours de 18,2 %**, dépassant s
 
 ### Hypothèses initiales
 
-Based on clinical domain knowledge and preliminary exploration, we hypothesize:
+Sur la base des connaissances métier et d’une première exploration, nous formulons les hypothèses suivantes :  
 
-| #    | Hypothesis                                                   | Metrics to Test                                              |
+| #    | Hypothèse                                                   | Indicateurs à tester                                              |
 | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| H1   | **Comorbidity Burden Drives Readmission** — Patients with higher comorbidity counts are more likely to be readmitted due to complex care needs | Readmission rate by comorbidity_count, comorbidity distribution |
-| H2   | **Length of Stay Signals Severity** — Patients with very short stays (premature discharge) or very long stays (severe illness) are at higher risk | Readmission rate by length_of_stay categories, average LOS by readmission status |
-| H3   | **Emergency Admissions Carry Higher Risk** — Emergency admissions, reflecting acute or unplanned events, are associated with higher readmission rates than elective admissions | Readmission rate by admission_type                           |
-| H4   | **Medication Complexity Increases Risk** — Patients on more medications, especially high-risk medications, face higher readmission rates due to adherence challenges and drug interactions | Medication count per patient, high-risk medication count, readmission rate by polypharmacy status |
-| H5   | **Abnormal Clinical Measures Predict Readmission** — Patients with abnormal lab results, elevated blood pressure, high glucose, or extreme BMI are at higher readmission risk | Readmission rate by lab_results_flag, BP classification, glucose level, BMI category |
+| H1   | **Le fardeau des comorbidités entraîne les réadmissions** — Les patients présentant un nombre élevé de comorbidités sont plus susceptibles d’être réadmis en raison de besoins de soins complexes | Taux de réadmission selon `comorbidity_count`, distribution des comorbidités |
+| H2   | **La durée de séjour indique la gravité** — Les patients avec des séjours très courts (sortie prématurée) ou très longs (maladie sévère) présentent un risque plus élevé | Taux de réadmission par catégories de `length_of_stay`, durée moyenne de séjour selon le statut de réadmission |
+| H3   | **Les admissions en urgence présentent un risque plus élevé** — Les admissions en urgence, reflétant des événements aigus ou non planifiés, sont associées à des taux de réadmission plus élevés que les admissions programmées | Taux de réadmission par `admission_type` |                           |
+| H4   | **La complexité des traitements médicamenteux augmente le risque** — Les patients prenant un plus grand nombre de médicaments, en particulier des médicaments à haut risque, présentent des taux de réadmission plus élevés en raison des difficultés d’observance et des interactions médicamenteuses | Nombre de médicaments par patient, nombre de médicaments à haut risque, taux de réadmission selon le statut de polymédication |
+| H5   | **Les mesures cliniques anormales prédisent la réadmission** — Les patients présentant des résultats de laboratoire anormaux, une pression artérielle élevée, une glycémie élevée ou un IMC extrême ont un risque de réadmission plus élevé | Taux de réadmission selon `lab_results_flag`, classification de la pression artérielle, niveau de glucose, catégorie d’IMC |
 
 ## Scope
 
