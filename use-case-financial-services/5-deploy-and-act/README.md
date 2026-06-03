@@ -1,175 +1,178 @@
-# Step 5: Deploy & Act
+# Étape 5 : Déployer & Agir
 
-In this final step you will use **SAS Intelligent Decisioning** to operationalize your loan default prediction model by embedding it in an automated loan approval decision flow. You will also explore its **Copilot** and learn how decisions can function as **tools in agentic workflows** — or become agentic workflows themselves.
-
----
-
-## Prerequisites
-
-Your champion model should be registered in **SAS Model Manager** from Step 4. SAS Intelligent Decisioning will pull the model directly from the Model Manager registry. If you did not register your own do not worry a default one is provided.
+Dans cette dernière étape, vous utiliserez **SAS Intelligent Decisioning** pour opérationnaliser votre modèle de prédiction de défaut de prêt en l’intégrant dans un flux décisionnel automatisé d’approbation de prêt. Vous explorerez également son **Copilot** et apprendrez comment les décisions peuvent fonctionner comme des **outils dans des workflows agentiques** — ou devenir elles-mêmes des workflows agentiques.
 
 ---
 
-## What is SAS Intelligent Decisioning?
+## Prérequis
 
-SAS Intelligent Decisioning is the platform for creating, managing, and executing business decisions that combine analytical models, business rules, and contextual logic into a single decision flow. Instead of just scoring a loan application with a model, a decision flow can:
-
-- Score the application's default probability
-- Classify it into a risk tier
-- Apply business rules (e.g., "never approve if LTV > 95%")
-- Determine the appropriate action (approve, review, decline)
-- Generate adverse action reason codes for declines
-- Return a complete lending recommendation
-
-This turns a model prediction into an **actionable lending decision**.
-
-If you have any questions around SAS Intelligent Decisioning activate the SAS Viya copilot within the application via the icon in the top right hand corner next to your profile or ask one of the onsite SAS Mentors.
+Votre modèle champion doit être enregistré dans **SAS Model Manager** depuis l’étape 4. SAS Intelligent Decisioning récupérera directement le modèle à partir du registre Model Manager. Si vous n’avez pas enregistré le vôtre, ne vous inquiétez pas : un modèle par défaut est fourni.
 
 ---
 
-## Creating a Loan Approval Decision
+## Qu’est-ce que SAS Intelligent Decisioning ?
 
-### 1. Open SAS Intelligent Decisioning
+SAS Intelligent Decisioning est une plateforme permettant de créer, gérer et exécuter des décisions métier qui combinent des modèles analytiques, des règles métier et une logique contextuelle dans un seul flux de décision. Au lieu de simplement scorer une demande de prêt avec un modèle, un flux décisionnel peut :
 
-1. From the SAS Viya main menu, navigate to **SAS Intelligent Decisioning** (under *Build Decisions*)
+- Évaluer la probabilité de défaut de la demande
+- La classer dans une catégorie de risque
+- Appliquer des règles métier (ex : « ne jamais approuver si LTV > 95 % »)
+- Déterminer l’action appropriée (approuver, examiner, refuser)
+- Générer des codes de motifs de refus
+- Retourner une recommandation complète de prêt
 
-2. Click **New Decision**
+Cela transforme une prédiction de modèle en une **décision de prêt exploitable**.
 
-3. Name it: *PremierBank Loan Approval Decision*
+Si vous avez des questions sur SAS Intelligent Decisioning, activez le Copilot SAS Viya dans l’application via l’icône en haut à droite, ou adressez-vous à un mentor SAS sur place.
 
-4. Leave the Description, Location and Workflow on default and click OK
+---
+
+
+## Création d’une décision d’approbation de prêt
+
+### 1. Ouvrir SAS Intelligent Decisioning
+
+1. Depuis le menu principal de SAS Viya, accédez à **SAS Intelligent Decisioning** (section *Build Decisions*)
+
+2. Cliquez sur **New Decision**
+
+3. Nommez-la : *PremierBank Loan Approval Decision*
+
+4. Laissez Description, Emplacement et Workflow par défaut, puis cliquez sur OK
+
     ![image-20260529080155689](img/README/image-20260529080155689.png)
 
-5. Navigate to the *Variables* tab, click on the *Add variable* dropdown and either select *Custom variable* if you want to add them all yourself or *Decision* if you want to copy it from the template (this is faster). The manual steps are described in the below sub steps 1 & 2 while the copy is described in step 3:
+5. Allez dans l’onglet *Variables*, cliquez sur *Add variable* puis choisissez *Custom variable* pour les saisir manuellement *(étape 1 et 2)* ou *Decision* pour les copier depuis un modèle (plus rapide) *(étape 3)*. 
+
     ![image-20260529080338969](img/README/image-20260529080338969.png)
     
-    1. Define the **input variables** (these will be passed in when the decision is called) - The structure is: `name` (data type):
-        1. `loan_id` (character)
-        2. `credit_score` (decimal)
-        3. `debt_to_income` (decimal)
-        4. `loan_to_value` (decimal)
-        5. `annual_income` (decimal)
-        6. `income_verified` (decimal)
-        7. `loan_amount` (decimal)
+    1. Définissez les **variables d'entrée** (celles-ci seront transmises lorsque la décision sera prise) - La structure est: `nom` (type de donnée):
+        1. `loan_id` (charactère)
+        2. `credit_score` (décimal)
+        3. `debt_to_income` (décimal)
+        4. `loan_to_value` (décimal)
+        5. `annual_income` (décimal)
+        6. `income_verified` (décimal)
+        7. `loan_amount` (décimal)
         
-    2. Define the **output variables** (what the decision returns)  - The structure is: `name` (data type) - Explanation (this is just for us as context):
-        1. `decision` (character) - Approve, Review, or Decline
-        2. `risk_tier` (character) - risk classification
-        3. `conditions` (character) - any conditions attached to approval
-        4. `reason` (character) - why a credit was declined
-        5. `rate_adjustment` (decimal) - basis point adjustment to base rate
-        6. Now click OK to add all of them
+    2. Définissez les **variables de sortie** (celles-ci seront renvoyées par la décision)  - La structure est: `nom` (type de donnée) - Explication (juste pour nous pour le context):
+        1. `decision` (charactère) - Approuver, Examiner, or Refuser
+        2. `risk_tier` (charactère) - classification du risque
+        3. `conditions` (charactère) - conditions associés
+        4. `reason` (charactère) - motif de refus
+        5. `rate_adjustment` (décimal) - ajustement du taux
+        6. Cliquez OK pour ajouter toutes les variables
         
         ![image-20260529080742531](img/README/image-20260529080742531.png)
         
-    3. Copy the **variables** from the template decision:
-        1. Click on the folder icon in the *Decision* input field
-        2. Navigate to *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Financial Services* select *PremierBank Loan Approval Decision* and click OK
-        3. Click on the *Add all* icon in the middle of the dialogue to bring all the variables into your decision and then click the Add button
+    3. Copiez les **variables** depuis un template de décision:
+        1. Cliquez sur le fichier *Decision* 
+        2. Naviguez vers *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Financial Services* sélectionnez *PremierBank Loan Approval Decision* et cliquez sur OK
+        3. Cliquez sur *Add all* au milieu du dialogue pour impoter toutes les varibales dans votre décision puis appuyez sur le boutton *Add*
 
-Once you have added the variables (no matter which way you choose) please click on the save icon in the upper right hand corner. It is recommended that anytime you change something about the variables before you continue to quickly use this icon to save the changes.
+Une fois les variables ajoutées, pensez à cliquer sur l'icon *enregistrer* en haut à droite. Il est recommandé que vous enregistriez votre fichier dès que vous changez quelque chose en lien avec des variables.
 
+Vous pouvez également activer le Copilot SAS Viya à travers l'icon en haut à droite pour poser des questions sur SAS Intelligent Decisioning pour approfondir votre compréhension de l'application.
 
-From here you can also always activate the SAS Viya Copilot via the icon in the top right hand corner to ask questions about SAS Intelligent Decisioning to deepen your understanding of the application.
+### 2. Ajoutez le nœud Modèle
 
-### 2. Add the Model Node
-
-1. Switch to the *Decision Flow* tab.
-2. In the decision flow canvas, you can either right click the *Start* node and from the context menu select *Add below > Model* or on the right hand side click on the icon that looks a little bit like a postcard and from that side bar drag & drop a model node onto the *Start* node.
+1. Passez à l’onglet *Decision Flow*.
+2. Dans le canvas de flux de décision, vous pouvez soit faire un clic droit sur le nœud *Star*t et dans le menu contextuel sélectionner *Add below > Model*, soit sur le côté droit cliquer sur l’icône qui ressemble un peu à une carte postale et depuis cette barre latérale glisser-déposer un nœud modèle sur le nœud *Start*.
     ![image-20260529081910125](img/README/image-20260529081910125.png)
-3. Select your registered champion model from SAS Model Manager or the pre-registered champion model by navigating to *DM Repository > PremierBank Loan Default Prediction > Version 1 > Gradient Boosting (1) (SAS Automatically Generated Pipeline* and click OK.
+3. Sélectionnez votre modèle champion enregistré depuis SAS Model Manager ou le modèle champion pré‑enregistré en naviguant vers *DM Repository > PremierBank Loan Default Prediction > Version 1 > Gradient Boosting (1) (SAS Automatically Generated Pipeline* puis cliquez sur OK.
     ![image-20260529082551202](img/README/image-20260529082551202.png)
-4. Upon doing this you will see a little red error icon next to the model and that is because it is missing variable inputs and outputs - we will address this in the next steps.
-5. Map the input variables to the model's expected features:
-    1. For the inputs map `income_verified` and the `loan_id` should be mapped automatically.
+4. Après cela, vous verrez une petite icône d’erreur rouge à côté du modèle, et cela est dû au fait qu’il manque des variables d’entrée et de sortie — nous allons corriger cela dans les étapes suivantes.
+5. Associez les variables d’entrée aux caractéristiques attendues du modèle :
+    1. Pour les entrées, `income_verified` et `loan_id` devraient être associés automatiquement.
         ![image-20260529093617886](img/README/image-20260529093617886.png)
-    2. For the outputs we are going to be clicking the *More* menu up top and select *Add missing variables* this will add all of the required output variables to our decision - if you copied the variables using the template they are already present - in the dialogue please make sure to deselect them from the Output as we will create our own custom outputs - and since we changed something about the variables remember to click the save icon (you will be asked to remove not used variables just select no, as we will be using those in the next steps).
+    2. Pour les sorties, nous allons cliquer sur le menu *More* en haut puis sélectionner *Add missing variables*. Cela ajoutera toutes les variables de sortie requises à notre décision — si vous avez copié les variables en utilisant le modèle, elles sont déjà présentes — dans la boîte de dialogue, assurez‑vous de les désélectionner de la sortie car nous allons créer nos propres sorties personnalisées — et comme nous avons modifié quelque chose concernant les variables, n’oubliez pas de cliquer sur l’icône de sauvegarde (il vous sera demandé de supprimer les variables non utilisées, sélectionnez simplement non, car nous les utiliserons dans les étapes suivantes).
         ![image-20260529082952817](img/README/image-20260529082952817.png)
 
 
-### 3. Add Business Rules
+### 3.  Ajouter des règles métier
+Après que le modèle ait évalué la demande, ajoutez des nœuds **Rule Set** pour déterminer la décision de prêt. Pour cela, assurez‑vous d’abord d’avoir cliqué sur l’icône de sauvegarde de votre décision, puis nous ajouterons des Rule Sets à notre décision.
 
-After the model scores the application, add **Rule Set** nodes to determine the lending decision. For this make first sure that you have clicked the save icon of your decision and than we will be adding Rule Sets to our decision.
+Il existe deux façons d’ajouter des **Rule Sets** à la décision :
 
-There are two ways of adding **Rule Sets** to the decision:
+1. _La méthode simple_, où vous utilisez les rule sets préconstruits en cliquant sur les trois points verticaux du nœud modèle puis en sélectionnant _Add > Rule Set_, ensuite dans la boîte de dialogue allez dans _SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Financial Services_ et ajoutez le rule set comme indiqué ci-dessous.
+2.    _La méthode pédagogique_, si vous voulez les créer vous-même, vous pouvez cliquer à droite sur _Objects_ (icône carte postale) puis glisser-déposer un Rule Set sur le nœud précédent. Cela ouvre une boîte de dialogue où vous devez nommer votre décision en conséquence ; laissez l'emplacement par défaut (_My Folder_), puis ajoutez les variables de la décision créée et commencez à construire les Rule Sets comme décrit ci-dessous. Les variables requises sont indiquées soit dans les colonnes, soit dans **Rule Conditions**. Le premier rule set à construire inclut des notes et des captures d'écran pour vous guider.
 
-1.    *The easy way*, where you use the pre build rule sets by clicking on the three vertical dots on the model node and selecting *Add > Rule Set*, then in the dialogue navigate to *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Financial Services* and add the rule set as specified below.
-2.   *The learning way*, if you want to create them yourself you can go to the right hand side click on the *Objects* (postcard icon) and drag & drop a Rule Set onto the previous node. This will open up a dialogue where you should name your decision correspondingly, please leave the location as the default (*My Folder*) - then add the variables from the decision you created and start building the Rule Sets as described below - the required variables are noted either as the columns or in the **Rule Conditions**. The first rule set we will be building has notes and screenshots attached on how to do this.
+Nous vous recommandons d'essayer de construire au moins un de ces rule sets vous-même pour comprendre la démarche. Si vous avez des questions sur SAS Intelligent Decisioning, activez le copilot SAS Viya dans l'application via l'icône en haut à droite à côté de votre profil, ou demandez à l'un des mentors SAS présents sur site.
 
-We recommend you try to build at least one of these rule sets yourself to get an understanding of how it is done. If you have any questions around SAS Intelligent Decisioning activate the SAS Viya copilot within the application via the icon in the top right hand corner next to your profile or ask one of the onsite SAS Mentors.
+**Rule Set: Classification du niveau de risque**
 
-**Rule Set: Risk Tier Classification**
-
-1.   From the *Objects* side panel drag and drop a *Rule Set* node onto the *Model* node you already have in your decision. Then enter the name from above and click *Save*
+1.   Depuis le panneau latéral _Objects_, glissez-déposez un nœud _Rule Set_ sur le nœud _Model_ déjà présent dans votre décision. Saisissez ensuite le nom ci-dessus et cliquez sur _Save_.
      ![image-20260529084455924](img/README/image-20260529084455924.png)
 
-2.   Now on the right hand side you will see the *Properties* pane for this new *Rule Set* and there is a button *Open* that will take you to the *Rule set editor* so that you can build the decision so click on that button.
+2.   Sur la droite, vous verrez le panneau _Properties_ pour ce nouveau _Rule Set_ avec un bouton _Open_ qui vous amène au _Rule set editor_ afin de construire la logique de décision ; cliquez sur ce bouton.
 
-3.   A new UI opened up for you on the *Variables* tab for the *Rule Set*, under *Add variable* select, via the folder icon navigate to *My Folder* and select the *PremierBank Loan Approval Decision* that you have already created. Select the **P_defaulted1** & **risk_tier** variables and add it to the Rule Set - the **P_defaulted1** variable is specified in the Rule Conditions column in the table below and the **risk_tier** variable has its own column as it gets assigned values.
+3.   Une nouvelle interface s'ouvre sur l'onglet _Variables_ du _Rule Set_. Sous _Add variable_, utilisez l'icône dossier pour naviguer vers _My Folder_ et sélectionnez *PremierBank Loan Approval Decision* que vous avez déjà créé. Sélectionnez les variables **P_defaulted1** & **risk_tier** puis ajoutez-les au Rule Set : - the **P_defaulted1** est utilisée dans la colonne Rule Conditions du tableau ci-dessous, et **risk_tier** a sa propre colonne car elle reçoit des valeurs.
 
      ![image-20260529085521013](img/README/image-20260529085521013.png)
 
-4.   For the **P_defaulted1** change it so that it is required as an input and then click on the save icon to add this change. The **risk_tier** currently doesn't have any value from the decision so we can just leave it as an output.
+4.   Pour **P_defaulted1**, modifiez-la pour qu'elle soit requise en entrée puis cliquez sur l'icône de sauvegarde pour enregistrer ce changement. La variable **risk_tier** n'a pas encore de valeur provenant de la décision, vous pouvez donc la laisser en sortie.
      ![image-20260529085655407](img/README/image-20260529085655407.png)
 
-5.   Navigate to the *Rule set* tab and click on the *Add rule* button
+5.   Allez dans l'onglet _Rule set_ puis cliquez sur le bouton _Add rule_.
      ![image-20260529085113436](img/README/image-20260529085113436.png)
 
-6.   Change the operator from the default of equal to greater than and then enter the comparison in the *IF* condition, in the THEN assignment change the variable to **risk_tier** and enter the corresponding value into the field enclosed in single quotes.
+6.   Remplacez l'opérateur par défaut (égal) par plus grand que *greater than* puis saisissez la comparaison dans la condition _IF_. Dans l'affectation THEN, choisissez la variable **risk_tier** et saisissez la valeur correspondante entre guillemets simples. 
      ![image-20260529085835981](img/README/image-20260529085835981.png)
 
-7.   Next click on *Add rule* and click on the *IF* statement dropdown and change it to an *ELSE* condition. This will combine the additional condition into one rule. From here continue to enter all the rest of the conditions and assignments as listed below and once you are done click on the save icon and then either use the little *x* icon in the right hand corner or click on *** PremierBank Loan Approval Decision (1.0)* in the breadcrumb navigation up top to navigate back to the decision.
+7. Cliquez ensuite sur _Add rule_, puis dans la liste déroulante de l'instruction _IF_, passez à une condition _ELSE_. Cela permet de combiner les conditions supplémentaires dans une seule règle. Continuez ensuite à saisir le reste des conditions et affectations comme indiqué ci-dessous. Une fois terminé, cliquez sur l'icône de sauvegarde puis utilisez soit la petite croix _x_ en haut à droite, soit *** PremierBank Loan Approval Decision (1.0)* dans le fil d'Ariane en haut, pour revenir à la décision.
      ![image-20260529090304262](img/README/image-20260529090304262.png)
 
 | Rule Conditions | risk_tier |
 |-----------|-----------|
-| P_defaulted1 >= 0.40 | Very High |
-| P_defaulted1 >= 0.25 | High |
-| P_defaulted1 >= 0.15 | Moderate |
-| P_defaulted1 >= 0.08 | Low |
-| P_defaulted1 < 0.08 | Very Low |
+| P_defaulted1 >= 0.40 | Très élevé |
+| P_defaulted1 >= 0.25 | Élevé  |
+| P_defaulted1 >= 0.15 | Modéré |
+| P_defaulted1 >= 0.08 | Faible |
+| P_defaulted1 < 0.08 | Très faible |
 
-**Rule Set: Lending Decision**
+**Rule Set: Décision de prêt**
 
-| risk_tier | credit_score | decision | conditions |
+| risk_tier | credit_score | décision | conditions |
 |-----------|-------------|----------|------------|
-| Very High | Any | Decline | Generate adverse action codes |
-| High | < 620 | Decline | Generate adverse action codes |
-| High | >= 620 | Review | Manual underwriter review required |
-| Moderate | Any | Review | Verify employment and income |
-| Low | Any | Approve | Standard terms |
-| Very Low | Any | Approve | Preferred rate eligible |
+| Très élevé | Tous | Refuser | Codes de refus |
+| Élevé | < 620 | Refuser | Codes de refus |
+| Élevé | >= 620 | Examiner | Revue manuelle |
+| Modéré | Tous | Examiner | Vérifier revenus |
+| Faible | Tous | Approuver | Conditions standard |
+| Très faible | Tous | Approuver | Taux préférentiel |
 
-**Rule Set: Rate Adjustment (Risk-Based Pricing)**
 
-The period for the rate_adjustment when the risk_tier is *Very High* indicates represents a missing value.
+**Rule Set: Ajustement du taux (Risk-Based Pricing)**
+
+La période pour le *rate_adjustment* où le *risk_tier_ est *Très élevé* indique la présence de valeurs manquauntes.
 
 | risk_tier | rate_adjustment |
 |-----------|-----------------------|
-| Very High | . |
-| High | 200 |
-| Moderate | 100 |
-| Low | 0 |
-| Very Low | -25 |
+| Très élevé | . |
+| Élevé | 200 |
+| Modéré | 100 |
+| Faible | 0 |
+| Très faible | -25 |
 
-**Rule Set: Hard Cutoff Rules**
 
-These rules override the model-based decision regardless of score:
+**Rule Set: Règles de coupure stricte**
 
-| Rule Conditions | decision | reason |
-|-----------|----------|--------|
-| loan_to_value > 0.95 | Decline | Insufficient equity |
-| debt_to_income > 0.50 | Decline | Excessive debt burden |
-| credit_score < 500 | Decline | Credit score below minimum |
-| loan_amount > 10 x annual_income | Decline | Loan exceeds income multiple |
+Ces règles prévalent sur la décision basée sur le modèle, quel que soit le score :
 
-### 4. Adding an LLM to the Mix
+|Condition | Décision | Motif |
+|----------|----------|-------|
+| loan_to_value > 0.95 | Refuser | Fonds propres insuffisants |
+| debt_to_income > 0.50 | Refuser | Endettement excessif |
+| credit_score < 500 | Refuser | Score trop faible |
+| loan_amount < 10 × revenu | Refuser |Prêt dépasse le multiple du revenu |
 
-We are going to be adding a Large Language Model to our decision now. For this please open up the *Objects* side bar (postcard icon) and drag & drop a Call LLM node onto the *End* node. Then go ahead and add the missing variables like you did for the model node (do not make the prompt a required input for the decision) - and make sure to click on the save icon.
+### 4. Ajouter un LLM
+
+Nous allons maintenant ajouter un Large Language Model à notre décision. Pour cela, ouvrez le panneau latéral _Objects_ (icône carte postale) et glissez-déposez un nœud Call LLM sur le nœud _End_. Ajoutez ensuite les variables manquantes comme pour le nœud modèle (ne rendez pas le prompt obligatoire en entrée de la décision), puis cliquez sur l'icône de sauvegarde.
 
 ![image-20260529093914801](img/README/image-20260529093914801.png)
 
-Now you can either add the *Prompt Assignment* Rule Set to the decision just like you added the other Rule Sets before or you can create it yourself. If you choose to create it yourself, please add the following variables from your decision as inputs to it:
+Vous pouvez maintenant soit ajouter le Rule Set _Prompt Assignment_ à la décision comme les autres Rule Sets, soit le créer vous-même. Si vous choisissez de le créer manuellement, ajoutez les variables suivantes de votre décision en entrée :
 
 -   annual_income
 -   conditions
@@ -177,10 +180,13 @@ Now you can either add the *Prompt Assignment* Rule Set to the decision just lik
 -   decision
 -   reason
 -   risk_tier
+-   
+Et en sortie, ajoutez la variable prompt (n'oubliez pas de cliquer sur l'icône de sauvegarde). Passez ensuite à l'onglet _Rule set_, cliquez sur le bouton _Add other_, sélectionnez le type de règle _Assignment_ puis cliquez sur _OK_ : ici, nous ne voulons pas définir de condition, mais simplement renseigner notre prompt avec une valeur longue.
 
-And as output add the prompt variable (do not forget to click the save icon). Then switch to the *Rule set* tab, click on the *Add other* button, select the Rule type of *Assignment* and click *OK* - as we do not want to do a condition, but rather just fill in our prompt with a long value.![image-20260529095501952](img/README/image-20260529095501952.png)
+![image-20260529095501952](img/README/image-20260529095501952.png)
 
-Next you are going to assign the prompt value by clicking on the pencil icon, in the *Expression Editor* removing all the values from the main editor and the copy and paste the value from below into it, then click the *Save* button, the save icon on the *Rule set* and return to the main decision.
+Ensuite, affectez la valeur du prompt en cliquant sur l'icône crayon. Dans l'_Expression Editor_, supprimez toutes les valeurs de l'éditeur principal puis copiez-collez la valeur ci-dessous. Cliquez sur le bouton _Save_, puis sur l'icône de sauvegarde du _Rule set_, et revenez à la décision principale.
+
 
 ```
 prompt = CAT('You are a professional PremierBank loan advisor. Using the loan application data below, write a warm, respectful, and clearly structured long-form explanation (3 to 5 paragraphs) that an applicant with no financial background can read to understand the outcome of their application and what it means for them. Do not expose internal codes or jargon verbatim — translate them into plain consumer-friendly language. Do not promise that the decision can be overturned, and do not provide legal or regulatory advice. Application and decision context: Annual income: $', annual_income, '. Credit score: ', credit_score, '. Assigned risk tier: ', risk_tier, '. Final decision: ', decision, '. Internal reason code: ', reason, '. Conditions attached to this decision: ', conditions, '. Structure your response as follows. First, open with a personal respectful acknowledgment that PremierBank has reached a decision of ', decision, ' on the application, and thank the applicant for choosing PremierBank Second, explain in plain language what a risk tier of ', risk_tier, ' means in the context of a credit score of ', credit_score, ' and a reported annual income of $', annual_income, '. Describe how these two indicators, combined with the overall profile, shape how PremierBank assesses repayment capacity. Third, expand the internal reason ', reason, ' into a clear, empathetic explanation of why the decision came out the way it did. Avoid financial jargon — translate terms such as debt-to-income, loan-to-value, or adverse action codes into everyday language. Fourth, describe the conditions attached to this decision — ', conditions, ' — and explain exactly what the applicant needs to do (documents to provide, verifications to complete underwriter steps) for those conditions to be satisfied. If no conditions apply, briefly say so. Fifth, close with constructive, forward-looking next steps tailored to the decision ', decision, '. If declined, suggest 2 to 3 concrete, realistic actions the applicant can take over the next 6 to 12 months to strengthen a future application (for example, improving credit score, reducing debt obligations, or increasing documented income). If approved or sent to review, outline what the applicant should expect next and how they will be contacted. Tone: warm, professional, encouraging, and never condescending Length: 350 to 500 words. Write in the second person (you, your application).')
@@ -188,18 +194,18 @@ prompt = CAT('You are a professional PremierBank loan advisor. Using the loan ap
 
 ![image-20260529100009632](img/README/image-20260529100009632.png)
 
-This is a very simplistic approach to prompt engineering and also doesn't provide you with the ability to test and compare different large languages models. That is why SAS provides the [SAS Agentic AI Accelerator](https://github.com/sassoftware/sas-agentic-ai-accelerator) open-source project, which enables you to connect any LLM and do extensive prompt engineering & monitoring, but here we have a hard coded LLM (OpenAI GPT 5.4) available.
+Il s'agit d'une approche très simplifiée du prompt engineering et elle ne vous permet pas de tester et comparer différents grands modèles de langage. C'est pourquoi SAS propose le projet open source [SAS Agentic AI Accelerator](https://github.com/sassoftware/sas-agentic-ai-accelerator), qui permet de connecter n'importe quel LLM et de faire du prompt engineering ainsi que du monitoring avancés. Ici, nous disposons d'un LLM codé en dur (OpenAI GPT 5.4).
 
-### 5. Test the Decision
+### 5. Tester la décision
 
-1. In the decision click on the *Scoring* tab and then in there click on the *Scenarios* sub tab
+1. Dans la décision, cliquez sur l'onglet _Scoring_ puis sur le sous-onglet _Scenarios_
 
-2. Click on the *New test* button
+2. Cliquez sur le bouton _New test_
     ![image-20260529094624231](img/README/image-20260529094624231.png)
 
-3. In the *New Scenario* window leave the name on the provided default, set the location to *My Folder* and the output table location to your *CASUSER* - see screenshot below
+3. Dans la fenêtre *New Scenario* laissez le nom par défualt, choisissez *My folder* comme emplacement et l'emplacement de a table dans votre *CASUSER*.
 
-4. Enter sample values:
+4. Saisissez des valeurs d'exemple :
 
    - annual_income: 55000
    - credit_score: 610
@@ -211,13 +217,13 @@ This is a very simplistic approach to prompt engineering and also doesn't provid
 
    ![image-20260529094455401](img/README/image-20260529094455401.png)
 
-5. Review the output by clicking on the Results icon once the *Status* as switched to a green check mark
+5. Consultez la sortie en cliquant sur l'icône Results une fois que le _Status_ est passé à une coche verte
     ![image-20260529101227029](img/README/image-20260529101227029.png)
 
-6. Fell free to further test with different scenarios to validate the logic:
-   - A strong applicant (high score, low DTI, low LTV) should be approved with preferred rate
-   - A borderline applicant should be sent to review
-   - A high-risk applicant should be declined with clear reason codes
+6.  N'hésitez pas à tester d'autres scénarios pour valider la logique :
+- Un candidat solide (score élevé, DTI faible, LTV faible) devrait être approuvé au taux préférentiel.
+- Un candidat limite devrait être soumis à un examen approfondi.
+- Un candidat à haut risque devrait être refusé avec des motifs clairs.
 
 ### 6. Publish the Decision
 
