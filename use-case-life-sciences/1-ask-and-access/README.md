@@ -102,13 +102,15 @@ Pour connecter correctement les tables, cliquez sur chaque table puis, dans le p
 
 ![image-20260529105403150](img/README/image-20260529105403150.png)
 
-#### 5. Evaluation
 
-On the Evaluation tab we get a lot of insights into our Synthetic Data Generation Model, how it compares to the input sources and not just on a per table basis but also across the different tables.
+#### 5. Évaluation
+
+Dans l’onglet **Evaluation**, vous pouvez obtenir de nombreux insights sur votre modèle de génération de données synthétiques, notamment sur sa capacité à reproduire les caractéristiques des données sources, non seulement table par table, mais également dans les relations entre les différentes tables.
 
 ![image-20260529105834928](img/README/image-20260529105834928.png)
 
-Please take your time and explore these results to gain an understanding of how closely the synthetic data will match the original data sources. Feel free to discuss these results in the group and also reach out to SAS Mentors on site if you have question or consult the [SAS Documentation](https://go.documentation.sas.com/doc/en/sdgcdc/v_001/sdgug/p0ki9glx7acxpyn1wttognicd7qi.htm).
+Prenez le temps d’explorer ces résultats afin de comprendre à quel point les données synthétiques reflètent fidèlement les données d’origine. N’hésitez pas à en discuter en groupe, à solliciter les mentors SAS présents sur place en cas de questions, ou à consulter la [Documentation SAS](https://go.documentation.sas.com/doc/en/sdgcdc/v_001/sdgug/p0ki9glx7acxpyn1wttognicd7qi.htm).
+
 
 #### 6. Generation
 
