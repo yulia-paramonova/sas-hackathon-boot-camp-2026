@@ -94,11 +94,11 @@ Pour connecter correctement les tables, cliquez sur chaque table puis, dans le p
 
 #### 4. Training Settings
 
-1.   **Random state**, is optional and can be set to a seed variable. Why not try a classic like 42?
-2.   **Model type**, we can choose between `PrivBayes` and `SMOTE` , we will be using PrivBayes here to make use of the differential privacy feature
-3.   **Use differential privacy**, this will help us to reduce the privacy impact on each individual in the data. Increasing the privacy is a great way to enhance your Trustworthy AI as it increases the trust in you as a data processor
-4.   The rest of the values we can leave at the default values and click the Start training button. If you want to feel free to explore the options though in more detail there is inline hints, or reach out to one of the SAS Mentors on site.
-5.   The training process will take a moment and once it is done and all the metrics are calculated we can move to the next step which is `Evaluation`
+1.   **Random state** : cette option est facultative et peut être définie à une valeur initiale du nombre aléatoire (seed). Pourquoi ne pas essayer un grand classique comme 42 ?
+2.   **Model type** :  nous pouvons choisir entre `PrivBayes` et `SMOTE`; nous utiliserons ici PrivBayes pour tirer parti de la fonctionnalité de confidentialité différentielle
+3. **Use differential privacy**: cette option permet de mieux protéger les données individuelles en limitant les risques liés à la confidentialité. Plus le niveau de protection est élevé, plus vos modèles d’IA seront perçus comme fiables et responsables, ce qui renforce la confiance dans votre utilisation des données.
+4.   Les autres paramètres peuvent rester à leurs valeurs par défaut — vous pouvez ensuite cliquer sur le bouton **Start training**. N’hésitez pas à explorer les options plus en détail : des aides contextuelles sont disponibles directement dans l’outil, ou vous pouvez solliciter un mentor SAS sur place  
+5.   Le processus d’entraînement prendra un certain temps ; une fois terminé et les métriques calculées, vous pourrez passer à l’étape suivante : **Evaluation**
 
 ![image-20260529105403150](img/README/image-20260529105403150.png)
 
