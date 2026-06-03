@@ -1,16 +1,16 @@
-# Step 2: Prepare
+# Étape 2: Prepare
 
-In this step you will work in **SAS Studio** to load the four PremierBank datasets, profile them, and join them into a single **Analytical Base Table (ABT)** that is ready for exploration in SAS Visual Analytics and modeling in SAS Model Studio.
+Dans cette étape, vous allez travailler dans **SAS Studio** pour charger les quatre jeux de données ShopEase, les profiler et les joindre dans une **Analytical Base Table (ABT)** prête pour l’exploration dans SAS Visual Analytics et la modélisation dans SAS Model Studio.
 
-SAS Studio gives you the freedom to code in the language of your choice or build a visual flow. We provide equivalent code in **SAS**, **Python**, and **R** — pick the one you are most comfortable with or try all three.
+SAS Studio vous offre la liberté de coder dans le langage de votre choix ou de construire un flux visuel. Nous fournissons un code équivalent en **SAS**, **Python** et **R** — choisissez celui avec lequel vous êtes le plus à l’aise ou essayez les trois.
 
 ---
 
-## Accessing the Data
+## Accès aux données
 
-The four CSV files are available in the same folder structure from Step 1:
+Les quatre fichiers CSV sont disponibles dans la même structure de dossiers que dans l’Étape 1 :
 
-```
+```text
 SAS-Hackathon-Bootcamp-2026/use-case-retail/data
 ├── customers.csv          (1,000 records)
 ├── transactions.csv       (~5,000 records)
@@ -20,11 +20,11 @@ SAS-Hackathon-Bootcamp-2026/use-case-retail/data
 
 ---
 
-## What You Will Do
+## Ce que vous allez faire
 
-### 1. Load the Data & Use Cases
+### 1. Charger les données et les cas d’usage
 
-Now as the first step you will clone the GitHub repository to your SAS Studio environment by first opening up a SAS program and running the below code which will clone the repository to the file system:
+Dans un premier temps, clonez le dépôt GitHub dans votre environnement SAS Studio en ouvrant un programme SAS puis en exécutant le code ci-dessous, qui clone le dépôt dans le système de fichiers :
 
 ```SAS
 data _null_;
@@ -32,39 +32,39 @@ data _null_;
 run;
 ```
 
-Once you have run this code snippet navigate to the SAS Server pane and the expand the *SAS Server > Home > data > sas-hackathon-bootcamp-2026* from here the familiar structure of this repository are available.
+Une fois ce code exécuté, allez dans le panneau SAS Server puis développez _SAS Server > Home > data > sas-hackathon-bootcamp-2026_. Vous y retrouverez la structure habituelle du dépôt.
 
 ![image-20260528135335744](img/SAS-Studio/image-20260528135335744.png)
 
-### 2. Create a Data Card
+### 2. Créer une Data Card
 
-A **data card** is a concise summary document that describes each dataset — its purpose, size, column names, data types, and any quality notes. Data cards are a best practice in responsible AI because they provide transparency about the data flowing into models. For each table you will produce:
+Une **data card** est un document synthétique qui décrit chaque jeu de données : son objectif, sa taille, les noms de colonnes, les types de données et les éventuelles notes de qualité. Les data cards sont une bonne pratique d’IA responsable car elles apportent de la transparence sur les données utilisées dans les modèles. Pour chaque table, vous produirez :
 
-- Number of rows and columns
-- Column names with data types
-- Count of missing values per column
-- Sample rows
+- Nombre de lignes et de colonnes
+- Noms des colonnes avec types de données
+- Nombre de valeurs manquantes par colonne
+- Exemples de lignes
 
-### 3. Get Basic Summary Statistics
+### 3. Obtenir des statistiques descriptives de base
 
-For numeric columns, compute descriptive statistics (mean, median, standard deviation, min, max). For categorical columns, compute frequency counts. This gives you a first look at distributions and potential data quality issues before you begin feature engineering.
+Pour les colonnes numériques, calculez des statistiques descriptives (moyenne, médiane, écart-type, min, max). Pour les colonnes catégorielles, calculez les fréquences. Cela donne une première vue des distributions et des éventuels problèmes de qualité des données avant de commencer la feature engineering.
 
-### 4. Engineer Features and Build the Analytical Base Table
+### 4. Faire de la feature engineering et construire l’Analytical Base Table
 
-The four datasets each capture a different dimension of customer behavior. To build a predictive model we need to aggregate these into a single customer-level table where each row is one customer and each column is a feature. The key transformations are:
+Les quatre jeux de données capturent chacun une dimension différente du comportement client. Pour construire un modèle prédictif, nous devons les agréger dans une table unique au niveau client, où chaque ligne représente un client et chaque colonne une variable. Les transformations clés sont :
 
-- **Transaction features:** total spend, average order value, purchase frequency, days since last purchase, product category diversity
-- **Session features:** total sessions, average session duration, pages viewed, cart abandonment rate, mobile usage rate
-- **Support features:** total tickets, high-priority ticket count, average resolution time, satisfaction score
-- **Customer features:** age, account age, subscription tier, email opt-in status
+- **Variables transactionnelles :** dépense totale, valeur moyenne de commande, fréquence d’achat, jours depuis le dernier achat, diversité des catégories produits
+- **Variables de session :** nombre total de sessions, durée moyenne de session, pages vues, taux d’abandon panier, taux d’usage mobile
+- **Variables de support :** nombre total de tickets, nombre de tickets haute priorité, temps moyen de résolution, score de satisfaction
+- **Variables client :** âge, ancienneté du compte, niveau d’abonnement, statut d’opt-in e-mail
 
-The final ABT will be saved as a CSV file that can then be promoted into CAS for use in SAS Visual Analytics and SAS Model Studio.
+L’ABT finale sera enregistrée au format CSV, puis pourra être promue dans CAS pour une utilisation dans SAS Visual Analytics et SAS Model Studio.
 
 ---
 
-## Choose Your Language
+## Choisissez votre langage
 
-Pick **one** language and run its script. You do not need to run all three — they each produce the same output. If you are unsure which to choose, pick the one you are most comfortable with.
+Choisissez **un** langage et exécutez son script. Vous n’avez pas besoin d’exécuter les trois — ils produisent tous la même sortie. Si vous hésitez, choisissez celui avec lequel vous êtes le plus à l’aise.
 
 | Language   | File                                                         |
 | ---------- | ------------------------------------------------------------ |
@@ -72,21 +72,21 @@ Pick **one** language and run its script. You do not need to run all three — t
 | **Python** | [`data_preparation_studio.py`](data_preparation_studio.py)   |
 | **R**      | [`data_preparation_studio.R`](data_preparation_studio.R)     |
 
-All three scripts produce the same output: a file called **`retail_abt.csv`** in the `data/` folder. After the script finishes, **refresh the Explorer pane** to see the new file.
+Les trois scripts produisent la même sortie : un fichier appelé **`retail_abt.csv`** dans le dossier `data/`. Une fois le script terminé, **rafraîchissez le panneau Explorer** pour voir le nouveau fichier.
 
 ---
 
-## Output
+## Résultat
 
-After running any of the scripts you will have:
+Après avoir exécuté l’un des scripts, vous obtiendrez :
 
-| File | Description |
-|------|-------------|
-| `data/retail_abt.csv` | The joined, feature-engineered, customer-level dataset ready for modeling |
-| Console output | Data card information, summary statistics, and churn distribution for review |
+| File                  | Description                                                                              |
+| --------------------- | ---------------------------------------------------------------------------------------- |
+| `data/retail_abt.csv` | Jeu de données joint, enrichi et au niveau client, prêt pour la modélisation             |
+| Console output        | Informations de data card, statistiques descriptives et distribution du churn pour revue |
 
 ---
 
-## Next Steps
+## Prochaines étapes
 
-Proceed to **[Step 3: Explore](../3-explore/)** to visually explore the data in SAS Visual Analytics using its built-in Copilot.
+Passez à **[Étape 3: Explore](../3-explore/)** pour explorer visuellement les données dans SAS Visual Analytics avec son Copilot intégré.
