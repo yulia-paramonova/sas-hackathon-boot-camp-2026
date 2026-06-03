@@ -192,67 +192,67 @@ L'évaluation de l'équité permet de s'assurer que le modèle fonctionne de man
 | **Predictive Parity (Parité prédictive)** | La précision est-elle similaire pour les plus de 65 ans et les moins de 65 ans ? | Différence < 0.10 |
 | **Calibration (Calibrage)** | Une probabilité prédite de 70 % signifie-t-elle une urgence réelle de 70 % pour les deux groupes ? | Pente proche de 1.0 |
 
-### Interpreting Results
+### Interprétation des résultats
 
-- If **Demographic Parity** is below 0.80, the model disproportionately flags one age group as urgent while under-flagging the other
-- If **Equal Opportunity** difference exceeds 0.10, the model catches urgent requests for one age group better than the other — meaning one group gets worse triage
-- Review the **Score Distribution** by group — both groups should have similarly shaped curves
+- Si **la parité démographique (Demographic Parity)** est inférieur à 0,80, le modèle signale de manière disproportionnée un groupe d'âge comme urgent tout en sous-signalant l'autre
+- Si l'écart en matière d'**égalité des chances (Equal Opportunity)** dépasse 0,10, le modèle détecte mieux les demandes urgentes pour un groupe d'âge que pour l'autre — ce qui signifie qu'un groupe bénéficie d'un triage moins efficace
+- Examinez la **répartition des scores (Score Distribution)** par groupe : les courbes des deux groupes devraient présenter une forme similaire
 
-### The Value of Fairness Assessment
+### L'importance de l'évaluation de l'équité
 
-Fairness assessment in public sector AI is not just an ethical consideration — it is a governance requirement with direct impact on citizens:
+L'évaluation de l'équité dans l'IA du secteur public n'est pas seulement une question d'éthique : c'est une exigence de gouvernance ayant un impact direct sur les citoyens :
 
-1. **Equitable service:** Every demographic group deserves the same quality of urgency prediction
-2. **Public trust:** Citizens trust government algorithms more when there is documented evidence of fairness testing
-3. **Legal compliance:** Algorithmic bias prevention is increasingly part of municipal AI governance frameworks and may be required under local ordinances
-4. **Accountability:** Documented fairness assessment provides an audit trail for public records requests and oversight bodies
-5. **Better outcomes:** A model that performs equitably across groups leads to more effective resource allocation citywide
+1. **Service équitable :** chaque groupe démographique mérite la même qualité de prédiction de l'urgence
+2. **Confiance du public :** les citoyens font davantage confiance aux algorithmes gouvernementaux lorsqu'il existe des preuves documentées de tests d'équité
+3. **Conformité légale :** la prévention des biais algorithmiques fait de plus en plus partie des cadres de gouvernance municipaux en matière d'IA et peut être exigée par les arrêtés locaux
+4. **Responsabilité :** une évaluation documentée de l'équité fournit une piste d'audit pour les demandes d'accès aux documents publics et les organismes de contrôle
+5. **Meilleurs résultats :** un modèle qui fonctionne de manière équitable entre les groupes permet une allocation plus efficace des ressources à l'échelle de la ville
 
-> **Tip:** Ask the Copilot *"Is my model fair across age groups?"* to get a plain-language interpretation of the fairness metrics.
 
+> **Astuce :** demandez au Copilot *« Mon modèle est-il équitable entre les groupes d'âge ? »* `Is my model fair across age groups?` pour obtenir une interprétation en langage clair des indicateurs d'équité.
 ---
 
-## Registering to SAS Model Manager
+## Enregistrement dans SAS Model Manager
 
-Once you have selected your champion model and reviewed its fairness, register it to **SAS Model Manager** for governance, version control, and deployment.
+Une fois que vous avez sélectionné votre modèle champion et vérifié son équité, enregistrez-le dans **SAS Model Manager** à des fins de gouvernance, de contrôle des versions et de déploiement.
 
-### Steps to Register
+### Étapes d'enregistrement
 
-1. In the Pipeline Comparison tab, identify your overall **champion model** (the one with the best KS (Youden))
-2. Right-click the champion model and select **Register Model** (or use the menu: *Actions* > *Register Model*)
+1. Dans l'onglet « Pipeline Comparison », identifiez votre **modèle champion** global (celui qui présente le meilleur KS (Youden))
+2. Faites un clic droit sur le modèle champion et sélectionnez **Enregistrer le modèle** (ou utilisez le menu : *Actions* > *Enregistrer le modèle*)
     ![image-20260529153304379](img/README/image-20260529153304379.png)
-3. Confirm the Location which is /Model Repositories/DM Repository and click OK
-4. Wait for the registration to finish in this pop up, then you can close and right click the model again and select **Manage Models**
-5. Now we will be navigated into SAS Model Manager where we can review the Model Card of this model
-6. Explore the Model Card that is populated automatically as you develop and manage the model on SAS Viya. The Overview tab offers a high-level summary of the model, including an overview of the model's training accuracy, training fairness, generalizability, and influential variables.
+3. Confirmez l'emplacement, qui est `/Model Repositories/DM Repository`, puis cliquez sur OK
+4. Attendez que l'enregistrement se termine dans cette fenêtre contextuelle, puis vous pouvez la fermer, cliquer à nouveau avec le bouton droit sur le modèle et sélectionner **Gérer les modèles**
+5. Vous serez alors redirigé vers **SAS Model Manager**, où vous pourrez consulter la fiche de ce modèle
+6. Explorez la fiche du modèle, qui est remplie automatiquement au fur et à mesure que vous développez et gérez le modèle sur SAS Viya. L'onglet Aperçu (Overview) offre un résumé général du modèle, y compris un aperçu de la précision d'apprentissage, de l'équité d'apprentissage, de la capacité de généralisation et des variables influentes du modèle.
     ![image-20260529153337755](img/README/image-20260529153337755.png)
 
-### What Registration Provides
+### Avantages de l'enregistrement
 
-Once registered in SAS Model Manager, your model benefits from:
+Une fois enregistré dans SAS Model Manager, votre modèle bénéficie des avantages suivants :
 
-- **Version control:** Track changes across model iterations
-- **Performance monitoring:** Set up automated performance tracking over time
-- **Governance:** Maintain an audit trail of who built the model, what data was used, and what fairness checks were performed
-- **Deployment readiness:** The model can be published to CAS, MAS (Micro Analytic Service), or a container for scoring
-- **Model card:** Auto-generated documentation capturing inputs, outputs, performance, and lineage
+- **Contrôle des versions :** suivez les modifications apportées au fil des itérations du modèle
+- **Surveillance des performances :** configurez un suivi automatisé des performances au fil du temps
+- **Gouvernance :** conservez une piste d'audit indiquant qui a créé le modèle, quelles données ont été utilisées et quels contrôles d'équité ont été effectués
+- **Préparation au déploiement :** le modèle peut être publié sur CAS, MAS (Micro Analytic Service) ou dans un conteneur à des fins de scoring
+- **Fiche de modèle :** documentation générée automatiquement qui répertorie les entrées, les sorties, les performances et la traçabilité
 
-> **Tip:** Ask the Copilot *"Register this model to Model Manager"* and it will walk you through the process.
-
----
-
-## Summary
-
-At this point you have:
-
-1. Built models using AutoML and/or custom pipelines
-2. Compared models on accuracy, recall, AUC, and other metrics
-3. Assessed fairness across age groups (`age_65+`) to ensure equitable service for older citizens
-4. Registered your champion model to SAS Model Manager
-5. Viewed the Model Card in SAS Model Manager
+> **Astuce :** demandez au Copilot *« Enregistrer ce modèle dans Model Manager »* `Register this model to Model Manager` et il vous guidera tout au long du processus.
 
 ---
 
-## Next Steps
+## Résumé
 
-Proceed to **[Step 5: Deploy & Act](../5-deploy-and-act/)** to create a decision flow in SAS Intelligent Decisioning that operationalizes your model.
+À ce stade, vous avez :
+
+1. Créé des modèles à l'aide d'AutoML et/ou de pipelines personnalisés
+2. Comparé les modèles en termes de précision, de rappel, d'AUC et d'autres indicateurs
+3. Évalué l'équité entre les groupes d'âge (`age_65+`) afin de garantir un service équitable aux citoyens âgés
+4. Enregistré votre modèle champion dans SAS Model Manager
+5. Consulté la fiche du modèle dans SAS Model Manager
+
+---
+
+##  Étapes suivantes
+
+Passez à l'**[Étape 5 : Deploy & Act](../5-deploy-and-act/)** pour créer un flux décisionnel dans SAS Intelligent Decisioning qui permettra de mettre votre modèle en pratique.
