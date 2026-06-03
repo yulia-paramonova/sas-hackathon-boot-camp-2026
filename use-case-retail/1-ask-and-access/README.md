@@ -37,12 +37,12 @@ Suivez les étapes suivantes pour créer votre jeu de données synthétiques :
 #### 2. Importer les données sources
 
 1. Dans votre plan de données, cliquez sur **Add Data Source**
-2. Naviguez vers le dossier Bootcamp/use-case-retail/csv
+2. Naviguez vers le dossier `Bootcamp/use-case-retail/csv`
 3. Importez les quatre fichiers CSV suivants :
-    - customers.csv — table entité principale
-    - transactions.csv — table enfant liée via customer_id (plusieurs transactions par client)
-    - sessions.csv — table enfant liée via customer_id (plusieurs sessions par client)
-    - support_tickets.csv — table enfant liée via customer_id
+    - `customers.csv` — table entité principale
+    - `transactions.csv` — table enfant liée via customer_id (plusieurs transactions par client)
+    - `sessions.csv` — table enfant liée via customer_id (plusieurs sessions par client)
+    - `support_tickets.csv` — table enfant liée via customer_id
 4. SAS Data Maker analysera chaque table et affichera les types de colonnes, les distributions et les statistiques descriptives
 
 ![image-20260529142229808](img/README/image-20260529142229808.png)
@@ -57,24 +57,24 @@ Le traitement lancé pour analyser les tables tentera également de détecter le
 
 ![image-20260529142317563](img/README/image-20260529142317563.png)
 
-1. Pour customers, définissez customer_id comme clé primaire
-2. Pour transactions, définissez transaction_id comme clé primaire et customer_id comme clé étrangère
-3. Pour sessions, définissez session_id comme clé primaire et customer_id comme clé étrangère
-4. Pour support_tickets, définissez ticket_id comme clé primaire et customer_id comme clé étrangère
-5. Toutes les tables sont de type Tabular
-6. Vérifiez les relations clés suivantes :
-    - transactions.customer_id -> customers.customer_id
-    - sessions.customer_id -> customers.customer_id
-    - support_tickets.customer_id -> customers.customer_id
-7. Ces relations garantissent que les données synthétiques conservent une intégrité référentielle : chaque transaction synthétique sera associée à un client synthétique valide
+1. Pour `customers`, définissez `customer_id` comme clé primaire
+2. Pour `transactions`, définissez `transaction_id` comme clé primaire et `customer_id` comme clé étrangère
+3. Pour `sessions`, définissez `session_id` comme clé primaire et `customer_id` comme clé étrangère
+4. Pour `support_tickets`, définissez ticket_id comme clé primaire et `customer_id` comme clé étrangère
+6. Toutes les tables sont de type Tabular
+7. Vérifiez les relations clés suivantes :
+    - `transactions.customer_id` -> `customers.customer_id`
+    - `sessions.customer_id` -> `customers.customer_id`
+    - `support_tickets.customer_id` -> `customers.customer_id`
+8. Ces relations garantissent que les données synthétiques conservent une intégrité référentielle : chaque transaction synthétique sera associée à un client synthétique valide
 
 #### 4. Paramètres d’entraînement
 
 1. **Random state** : option facultative qui peut être définie avec une graine. Pourquoi ne pas essayer un classique comme 42 ?
-2. **Model type** : vous pouvez choisir entre PrivBayes et SMOTE ; ici, nous utiliserons PrivBayes pour tirer parti de la confidentialité différentielle
+2. **Model type** : vous pouvez choisir entre `PrivBayes` et `SMOTE` ; ici, nous utiliserons PrivBayes pour tirer parti de la confidentialité différentielle
 3. **Use differential privacy** : cette option aide à réduire l’impact sur la vie privée de chaque individu présent dans les données. Renforcer la confidentialité est un excellent moyen d’améliorer la confiance dans votre IA responsable
 4. Les autres paramètres peuvent rester à leurs valeurs par défaut, puis cliquez sur **Start training**. N’hésitez pas à explorer les options plus en détail : des aides contextuelles sont disponibles dans l’outil, ou vous pouvez solliciter un mentor SAS sur place
-5. Le processus d’entraînement prendra un moment ; une fois terminé et les métriques calculées, vous pourrez passer à l’étape suivante : **Evaluation**
+5. Le processus d’entraînement prendra un moment ; une fois terminé et les métriques calculées, vous pourrez passer à l’étape suivante : `Evaluation`
 
 ![image-20260529142348543](img/README/image-20260529142348543.png)
 
@@ -88,7 +88,7 @@ Prenez le temps d’explorer ces résultats afin de comprendre à quel point les
 
 #### 6. Génération
 
-1. **Output destination** : sélectionnez le chemin datamakerdemodata:output et définissez le format de sortie selon votre préférence (par exemple parquet)
+1. **Output destination** : sélectionnez le chemin `datamakerdemodata:output` et définissez le format de sortie selon votre préférence (par exemple parquet) 
 2. Laissez toutes les autres options par défaut et cliquez sur le bouton **Generate**
 
 ![image-20260529142602160](img/README/image-20260529142602160.png)
