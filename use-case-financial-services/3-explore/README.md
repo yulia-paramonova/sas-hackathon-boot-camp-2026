@@ -1,174 +1,158 @@
-# Step 3: Explore
+# Étape 3: Explore
 
-In this step you will use **SAS Visual Analytics** and its built-in **Copilot** to visually explore the Analytical Base Table (ABT) you created in Step 2. The goal is to understand the patterns behind loan default before building a predictive model.
-
----
-
-## Prerequisites
-
-The analytical base table should already be loaded into the **Public** CAS library. If you completed Step 2 the data was saved as `financial_services_abt.csv`. Your bootcamp environment has this pre-loaded as a CAS table named **`FINANCIAL_SERVICES_ABT`** in the **Public** caslib.
+Dans cette étape, vous allez utiliser **SAS Visual Analytic**s et son **Copilot** intégré pour explorer visuellement l’Analytical Base Table (ABT) que vous avez créée à l’Étape 2. L’objectif est de comprendre les schémas liés au défaut de paiement avant de construire un modèle prédictif.
 
 ---
 
-## Accessing the Data in SAS Visual Analytics
+## Prérequis
+L’analytical base table doit déjà être chargée dans la bibliothèque CAS **Public**. Si vous avez terminé l’Étape 2, les données ont été enregistrées sous `financial_services_abt.csv`. Votre environnement Bootcamp contient déjà cette table CAS préchargée sous le nom **`FINANCIAL_SERVICES_ABT`** dans la caslib **Public** .
 
-1. Open **SAS Visual Analytics** from the SAS Viya home page (or use the main menu in the top right corner and click on *Explore and Visualize*)
-2. Click **New Report**
-3. In the data panel click on the Add Data button and from the available tables please select **FINANCIAL_SERVICES_ABT**
+---
+
+## Accéder aux données dans SAS Visual Analytics
+1. Ouvrez **SAS Visual Analytics** depuis la page d’accueil SAS Viya (ou via le menu principal en haut à droite → *Explore and Visualize*)
+2. Cliquez sur **New Report**
+3. Dans le panneau de données, cliquez sur Add Data et sélectionnez **FINANCIAL_SERVICES_ABT**
     ![image-20260528142033207](img/README/image-20260528142033207.png)
-4. Add it as your data source — you should see all the features from Step 2 listed in the data items pane on the left
+4. Ajoutez-la comme source de données — vous devriez voir toutes les variables créées à l’Étape 2 dans le panneau de gauche
 
-> **Tip:** If the table does not appear in the Public caslib, ask your SAS Mentor to help promote it. You can also load it directly by uploading the CSV through the **Manage Data** interface.
+> **Astuce:** Si la table n’apparaît pas dans la caslib Public, demandez à un mentor SAS de vous aider à la promouvoir.
+Vous pouvez aussi la charger directement en important le CSV via **Manage Data**.
 
 ---
 
-## Using the SAS Visual Analytics Copilot
+## Utiliser le Copilot de SAS Visual Analytics
 
-SAS Visual Analytics includes a **Copilot** — an AI assistant that helps you explore data faster. You can find the Copilot icon in the top right hand corner. The Copilot can:
+SAS Visual Analytics inclut un **Copilot** - un assistant IA qui accélère l’exploration des données. L’icône du Copilot se trouve en haut à droite. Il peut :
+- **Suggérer des visualisations** selon les variables sélectionnées
+- **Répondre à des questions** sur vos données en langage naturel
+- **Générer des insights** en détectant automatiquement des schémas intéressants
+- **Créer des graphiques** à partir de requêtes en langage courant 
 
-- **Suggest visualizations** based on the variables you select
-- **Answer questions** about your data in natural language
-- **Generate insights** by automatically scanning for interesting patterns
-- **Build charts** from plain-language prompts
-
-### How to Use the Copilot
-
-1. Click the **Copilot** icon to open the assistant panel
-2. Type a question or request in natural language
-3. The Copilot will suggest or create a visualization directly in your report
-4. You can refine the result by following up with additional prompts
-5. You can right click into the chat panel and get suggestions on prompts to help you.
+### Comment utiliser le Copilot
+1. Cliquez sur l’icône **Copilot** pour ouvrir le panneau
+2. Tapez une question ou une demande en langage naturel
+3. Le Copilot suggère ou crée une visualisation dans votre rapport
+4. Vous pouvez affiner le résultat avec des requêtes supplémentaires
+5. Un clic droit dans le panneau de chat vous propose des suggestions de prompts pour vous aider.
 
 ![image-20260528142508361](img/README/image-20260528142508361.png)
 
 ---
 
-## Guided Exploration: Questions to Ask
+## Exploration guidée : Questions à poser
+Travaillez sur les questions suivantes pour comprendre les schémas de défaut. Pour chaque question, essayez de créer la visualisation manuellement **et/ou** via le Copilot.
 
-Work through the following questions to build your understanding of the default patterns. For each question, try creating the visualization manually **and/or** by asking the Copilot.
+### Comprendre la variable cible
+**Objectif:** Obtenir une compréhension de base du défaut dans le jeu de données.
 
-### Understanding the Target Variable
+- *"Montre-moi la distribution des prêts en défaut"*
+- *"Quel pourcentage des prêts sont en défaut ?"*
 
-**Goal:** Get a baseline understanding of default in the dataset.
+Créez un **diagramme en barres** ou un **diagramme circulaire** de la variable `defaulted`.
+Vous devriez observer environ 25–26 % de défauts et 74–75 % de prêts courants — indiquant un problème de classification modérément déséquilibré.
 
-- *"Show me the distribution of defaulted loans"*
-- *"What percentage of loans have defaulted?"*
+### Hypothèse 1 : Le score de crédit influence le défaut
+**Objectif** : Vérifier si les scores FICO plus faibles sont associés à un taux de défaut plus élevé.
 
-Create a **bar chart** or **pie chart** of the `defaulted` variable. You should see roughly 25-26% defaulted and 74-75% current — confirming this is a moderately imbalanced classification problem.
+- *"Compare le score de crédit moyen entre prêts en défaut et prêts courants"*
+- *"Montre-moi le taux de défaut par bande FICO"*
+- *"Quelle est la distribution des scores de crédit selon le statut de défaut?"*
 
-### Hypothesis 1: Credit Score Drives Default
+Créez des **boîtes à moustaches** de 'credit_score' groupé par 'defaulted'. Créez un **diagramme en barres** du taux de défaut par bande FICO (colonnes `fico_Excellent`, `fico_Good`, `fico_Fair`, `fico_Poor`, `fico_VeryPoor`).
 
-**Goal:** Validate whether lower FICO scores correlate with higher default rates.
+> **À observer** : Les bandes Very Poor et Poor FICO devraient présenter des taux de défaut nettement plus élevés. Un seuil critique peut apparaître autour de 650.
 
-- *"Compare the average credit score between defaulted and current loans"*
-- *"Show me default rate by FICO score band"*
-- *"What is the distribution of credit scores for defaulted vs. current loans?"*
+### Hypothèse 2 : Le ratio dette/revenu influence le défaut
+**Objectif** : Déterminer si la pression financière prédit le défaut.
+- *"Montre-moi la distribution de debt_to_income selon le statut de défaut"*
+- *"Compare le debt-to-income moyen entre prêts en défaut et prêts courants"*
+- *"Existe-t-il une relation entre debt_service_ratio et le défaut ?"*
 
-Create **box plots** of `credit_score` grouped by `defaulted`. Create a **bar chart** showing default rate by FICO band (use the `fico_Excellent`, `fico_Good`, `fico_Fair`, `fico_Poor`, `fico_VeryPoor` columns).
+Créez un **histogramme** de debt_to_income coloré par `defaulted`. Créez un **nuage de points** debt_to_income vs credit_score coloré avec `defaulted` comme coleur.
 
-> **What to look for:** Loans with Very Poor and Poor FICO scores should have noticeably higher default rates. There may be a threshold effect around the 650 mark.
+> **À observer** : Les prêts en défaut ont souvent un DTI plus élevé. Un DTI > 43 % est un seuil réglementaire courant indiquant un risque accru.
 
-### Hypothesis 2: Debt-to-Income Impacts Default
+### Hypothèse 3 : Le comportement de paiement prédit le défaut futur
 
-**Goal:** Determine whether financial strain predicts default.
+**Objectif:** Explorer si les comportements de paiements passés signalent un risque futur.
+- *" Montre-moi le taux moyen de retard pour défaut vs courant "*
+- *"Comment le severe_delinquency_flag est-il lié au défaut ? "*
+- *"Quelle est la distribution de avg_days_late selon le statut de défaut ? "*
 
-- *"Show me the distribution of debt_to_income by default status"*
-- *"Compare average debt-to-income ratio between defaulted and current loans"*
-- *"Is there a relationship between debt_service_ratio and default?"*
+Créez une **heatmap** ou **crosstab** de `severe_delinquency_flag` par `defaulted`.
+Créez une **boîte à moustaches** de `avg_days_late` par `defaulted`.
 
-Create a **histogram** of `debt_to_income` colored by `defaulted`. Also create a **scatter plot** of `debt_to_income` vs. `credit_score` with `defaulted` as the color.
+> **À observer:** Toute délinquance sévère (60+ jours) augmente fortement le risque de défaut. Le risque de paiement en retard est sûrement une des variables les plus importantes.
 
-> **What to look for:** Defaulted loans likely have higher DTI ratios. A DTI above 43% is a common regulatory threshold that indicates elevated risk.
+### Hypothèse 4 : La stabilité de l’emploi influence le risque
+**Objectif:** Vérifier si les caractéristiques d’emploi affectent le défaut.
+- *" Quel est le taux de défaut par bande de revenu ? "*
+- *"Compare les taux de défaut pour emploi vérifié vs non vérifié "*
+- *"Montre-moi le taux de défaut par bande d’années d’emploi "*
 
-### Hypothesis 3: Payment Behavior Predicts Future Default
+Créez des **diagrammes en barres empilées** pour les bandes de revenu et d’ancienneté. Créez un **diagramme en barres** pour `employment_verified` et `income_verified`. 
 
-**Goal:** Explore whether past payment patterns signal default risk.
+**À observer:** Les revenus faibles et l’ancienneté courte sont souvent associés à un risque plus élevé. Le revenu non vérifié peut ajouter un risque additionnel.
 
-- *"Show me the average late payment rate for defaulted vs. current loans"*
-- *"How does the severe delinquency flag relate to default?"*
-- *"What is the distribution of average days late by default status?"*
+### Hypothèse 5 : Les caractéristiques du prêt influencent le risque
+**Objectif:** Comprendre comment la structure du prêt affecte le défaut.
+- *"Montre-moi le taux de défaut par loan-to-value ratio "*
+- *"Compare les montants des prêts entre défaut et courant "*
+- *"Quelle est la relation entre taux d’intérêt et défaut ? "*
 
-Create a **heat map** or **crosstab** of `severe_delinquency_flag` by `defaulted`. Create a **box plot** of `avg_days_late` by `defaulted`.
+Créez un **nuage de points** `loan_to_value` vs. `interest_rate` coloré pars `defaulted`. Créez un **histogramme** de `loan_amount` par statut de défaut.
 
-> **What to look for:** Loans with any severe delinquency (60+ days late) should have dramatically higher default rates. Late payment rate is likely one of the strongest predictors.
+> **À observer:** Les LTV élevés, les taux d’intérêt élevés et les durées longues sont souvent associés à plus de défauts. Le taux d'intérêt lui-même peut être un indicateur de l'évaluation initiale du risque.
 
-### Hypothesis 4: Employment Stability Matters
+### Corrélations et exploration multivariée
+**Objectif:** Identifier les interactions et les prédicteurs les plus forts.
 
-**Goal:** Check if employment characteristics affect default risk.
+- *"Quelles variables sont les plus corrélées au défaut ?"*
+- *"Montre-moi une matrice de corrélation des 10 principales variables numériques "*
+- *"Crée un arbre de décision pour séparer défaut vs courant "*
 
-- *"What is the default rate by income band?"*
-- *"Compare default rates for verified vs. unverified employment"*
-- *"Show me default rate by years employed band"*
+Le Copilot peut **analyser automatiquement** les relations les plus fortes.
 
-Create **stacked bar charts** showing default proportions for each income band and tenure band. Create a **bar chart** comparing default rates by `employment_verified` and `income_verified`.
+>**À observer:** Le Copilot peut révéler des interactions inattendues, par exemple : "`DTI` > 45 % ET `cerdit_score` < 620 → probabilité de défaut > 40 % ".
 
-> **What to look for:** Lower income bands and shorter employment tenure should correlate with higher default. Unverified income may carry additional risk.
+### Considérations réglementaires pour l'exploration
+**Important:** Dans l’exploration de données de crédit, respectez les exigences de fair lending :
 
-### Hypothesis 5: Loan Characteristics Affect Risk
-
-**Goal:** Understand how loan structure relates to default.
-
-- *"Show me default rate by loan-to-value ratio"*
-- *"Compare loan amounts between defaulted and current loans"*
-- *"What is the relationship between interest rate and default?"*
-
-Create a **scatter plot** of `loan_to_value` vs. `interest_rate` with `defaulted` as the color. Create a **histogram** of `loan_amount` by default status.
-
-> **What to look for:** Higher LTV ratios (less equity), higher interest rates, and longer loan terms should correlate with more defaults. Interest rate itself may be a proxy for the lender's initial risk assessment.
-
-### Correlation and Multi-Variable Exploration
-
-**Goal:** Find feature interactions and the strongest predictors.
-
-- *"Which features are most correlated with default?"*
-- *"Show me a correlation matrix of the top 10 numeric features"*
-- *"Create a decision tree to show which factors split defaulted from current loans"*
-
-Use the Copilot's **automated analysis** feature to let it scan for the strongest relationships.
-
-> **What to look for:** The Copilot may surface interactions you wouldn't have checked manually, such as "loans with DTI above 45% AND credit score below 620 have a 40%+ default probability."
-
-### Regulatory Considerations for Exploration
-
-**Important:** When exploring lending data, be mindful of fair lending requirements:
-
-- **Do not visualize default rates by protected classes** (race, ethnicity, gender, age, marital status, national origin) — even in exploratory analysis, this creates compliance risk
-- **Focus on legitimate credit factors:** credit score, DTI, LTV, payment history, employment stability
-- **Document your exploration:** Note which variables show strong separation and which do not — this documentation supports model validation per SR 11-7
-- If you discover that a variable like `income_band` shows dramatically different default rates, flag it for the fairness assessment in Step 4, as income can serve as a proxy for protected characteristics
+- **Ne visualisez pas les taux de défaut par classes protégées** (race, genre, âge, etc.) - même dans l'analyse exploratoire ceci comporte un risque de compliance.
+- **Concentrez-vous sur les facteurs légitimes de crédit:** credit score, DTI, LTV, payment history, employment stability
+- **Documentez votre exploration:** Notez quelles variables montre une séparation importante ou pas - ceci appuie la validation du modèle par SR 11-7
+- Si une variable comme `income_band` montre des écarts extrêmes, gardez-le en tête pour l’évaluation d’équité à l’Étape 4
 
 ---
 
-## Building Your Report
+## Construire votre rapport
+Organisez vos visualisations dans un rapport :
+1. **Page d’ensemble:** distribution du défaut, statistiques clés
+2. **Profil crédit:** bandes FICO, utilisation, historique de délinquance
+3. **Pression financière:** DTI, ratio service de la dette, bandes de revenu
+4. **Comportement de paiement:** retards, délinquance sévère, shortfall
+5. **Caractéristiques du prêt:** LTV, montant, taux, durée
 
-As you work through the questions above, organize your findings into a report:
-
-1. **Overview Page:** Default distribution, key summary stats
-2. **Credit Profile Page:** Credit score bands, utilization, delinquency history
-3. **Financial Strain Page:** DTI, debt service ratio, income bands
-4. **Payment Behavior Page:** Late payment rates, delinquency flags, shortfall ratios
-5. **Loan Characteristics Page:** LTV, loan amount, interest rate, term
-
-Use **filters** and **interactions** between visualizations — clicking a bar in one chart should filter the others. This lets you drill into segments like "loans with DTI above 43% and credit score below 650."
+Utilisez les **filtres** et **interactions** entre graphiques pour explorer des segments spécifiques. Cela vous permet d'examiner des segments comme "prêts avec un DTI supérieur à 43 % et un score de crédit (`credit_socre`) inférieur à 650."
 
 ---
 
-## Key Takeaways to Carry Forward
+## Points clés à retenir
 
-Before moving on to Step 4, summarize what you've learned:
+Avant de passer à l’Étape 4, résumez :
+1. **Quelles hypothèses ont été confirmées ?** (sûrement toutes les 5, avec des concordance qui varient)
+2. **Quelles variables séparent le mieux** défaut vs courant ?
+3. **Y a-t-il des schémas inattendus** que Copilot a mis en avant?
+4. **Quel est l’équilibre des classes ?** (important pour la modélisation - attendez-vous à un léger déséquilibre)
+5. **Y a-t-il des variables proxy** à surveiller pour effectuer des test équitables?
 
-1. **Which hypotheses were confirmed?** (likely all five, with varying strength)
-2. **Which features show the strongest separation** between defaulted and current loans?
-3. **Are there any surprising patterns** the Copilot surfaced?
-4. **What is the class balance?** (important for model training strategy — expect moderate imbalance)
-5. **Are there any proxy variable concerns** to flag for fairness testing?
+Ces points auront un impact sur la création du modèle dans la prochaine étape.
 
-These insights will directly inform the model building approach in the next step.
-
-Finally feel free to save the report, the default location is My Folder, which is ideal here as to not clutter up the workspace for everybody else. You can also give it a name so that it is easier to remember what this report is about.
+Vous pouvez ensuite enregistrer votre rapport dans **My Folder**, pratique pour ne pas polluer les espaces partagés. Vous pouvez également renommer le rapport pour qu'il soit plus facile de s'en souvenir plus tard.
 
 ---
 
-## Next Steps
+## Étapes suivantes
 
-Proceed to **[Step 4: Model](../4-model/)** to build and compare predictive models in SAS Model Studio.
+Passez à **[Étape 4: Model](../4-model/)** pour construire et comparer des modèles prédictifs dans SAS Model Studio.
