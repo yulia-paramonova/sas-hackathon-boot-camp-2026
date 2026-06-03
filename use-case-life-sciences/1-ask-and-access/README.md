@@ -70,15 +70,15 @@ Suivez les étapes suivantes pour créer votre jeu de données synthétique:
 
 ![image-20260529104639475](img/README/image-20260529104639475.png)
 
-#### 3. Define Relationships
+#### 3. Définir les relations
 
-The job that ran to understand the tables also will try to resolve the relationships between the tables. Please review that the relationship is mapped correctly. Your goal is to map a relationship that looks like the one below, but initially it will not look like.
+Le traitement exécuté pour analyser les tables tentera également de détecter les relations entre elles. Veuillez vérifier que ces relations sont correctement établies. Votre objectif est d’obtenir un schéma de relations similaire à celui présenté ci-dessous, même si ce ne sera pas le cas au départ.
 
 ![image-20260529104744233](img/README/image-20260529104744233.png)
 
-In order to connect the tables correctly please click on each table and then on the right hand side under *Foreign keys* change the *Key* and *Target* values as described below
+Pour connecter correctement les tables, cliquez sur chaque table puis, dans le panneau de droite sous *Foreign keys*, modifiez les valeurs *Key* et *Target* comme indiqué ci-dessous :
 
-1. For `patients` set `patient_id` as the Primary key
+1. Pour `patients`, définir `patient_id` comme clé primaire (*Primary key*) 
 2. For `admissions` set `admission_id` as the Primary key and `patient_id` as the Foreign key mapping to `patients`
 3. For `medications` set `medication_id` as the Primary key and `patient_id` as the Foreign key
 4. For `clinical_measures` set `patient_id` as the Primary key
