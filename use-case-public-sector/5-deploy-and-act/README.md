@@ -1,63 +1,62 @@
-# Step 5: Deploy & Act
+# Étape 5: Deploy & Act
 
-In this final step you will use **SAS Intelligent Decisioning** to operationalize your urgency prediction model by embedding it in an automated service request triage decision flow. You will also explore its **Copilot** and learn how decisions can function as **tools in agentic workflows** — or become agentic workflows themselves.
-
----
-
-## Prerequisites
-
-Your champion model should be registered in **SAS Model Manager** from Step 4. SAS Intelligent Decisioning will pull the model directly from the Model Manager registry. If you did not register your own do not worry a default one is provided.
+Dans cette étape finale, vous allez utiliser **SAS Intelligent Decisioning** pour opérationnaliser votre modèle de prédiction de l'urgence en l'intégrant dans un flux décisionnel automatisé de tri des demandes de service. Vous allez aussi explorer son **Copilot** et découvrir comment les décisions peuvent fonctionner comme des **outils dans des workflows agentiques**, ou devenir elles-mêmes des workflows agentiques.
 
 ---
 
-## What is SAS Intelligent Decisioning?
+## Prérequis
 
-SAS Intelligent Decisioning is the platform for creating, managing, and executing business decisions that combine analytical models, business rules, and contextual logic into a single decision flow. Instead of just scoring a service request with a model, a decision flow can:
-
-- Score the request's urgency probability
-- Classify it into an urgency tier
-- Route it to the appropriate department
-- Allocate resources based on priority and availability
-- Flag equity-sensitive cases for escalation
-- Return a complete triage recommendation
-
-This turns a model prediction into an **actionable triage decision**.
-
-If you have any questions around SAS Intelligent Decisioning activate the SAS Viya copilot within the application via the icon in the top right hand corner next to your profile or ask one of the onsite SAS Mentors.
+Votre modèle champion doit être enregistré dans **SAS Model Manager** depuis l'étape 4. SAS Intelligent Decisioning récupérera le modèle directement depuis le registre de Model Manager. Si vous n'avez pas enregistré le vôtre, ne vous inquiétez pas : un modèle par défaut est fourni.
 
 ---
 
-## Creating a Service Request Triage Decision
+## Qu'est-ce que SAS Intelligent Decisioning ?
 
-### 1. Open SAS Intelligent Decisioning
+SAS Intelligent Decisioning est le module permettant de créer, de gérer et d'exécuter des décisions métier qui combinent des modèles analytiques, des règles métier et une logique contextuelle au sein d'un flux décisionnel unique. Au lieu de se contenter d'évaluer une demande de service à l'aide d'un modèle, un flux décisionnel permet :
 
-1. From the SAS Viya main menu, navigate to **SAS Intelligent Decisioning** (under *Build Decisions*)
-2. Click **New Decision**
-3. Name it: *Metro City Service Request Triage*
-4. Leave the Description, Location and Workflow on default and click OK
+- d'évaluer la probabilité d'urgence de la demande
+- de la classer dans un niveau d'urgence
+- de la transmettre au service compétent
+- d'allouer les ressources en fonction de la priorité et de la disponibilité
+- de signaler les cas sensibles en matière d'équité pour qu'ils soient transmis à un niveau supérieur
+- de fournir une recommandation complète de triage
+
+Cela transforme une prédiction de modèle en une **décision de triage exploitable**.  
+
+Si vous avez des questions concernant SAS Intelligent Decisioning, activez le copilote SAS Viya dans l'application via l'icône située dans le coin supérieur droit, à côté de votre profil, ou adressez-vous à l'un des mentors SAS présents sur place.  
+
+---
+
+## Création d'une décision de triage des demandes de service
+
+### 1. Ouvrez SAS Intelligent Decisioning
+
+1. Depuis le menu principal SAS Viya, allez dans **SAS Intelligent Decisioning** (sous **Build Decisions**)
+2. Cliquez sur **New Decision**
+3. Donnez-lui le nom : *Metro City Service Request Triage*
+4. Laissez *Description*, *Location* et *Workflow* avec les valeurs par défaut puis cliquez sur OK
     ![image-20260529172317915](img/README/image-20260529172317915.png)
-5. Navigate to the *Variables* tab, click on the *Add variable* dropdown and either select *Custom variable* if you want to add them all yourself of *Decision* if you want to copy it from the template (this is faster). The manual steps are described in the below sub steps 1 & 2 while the copy is described in step 3:
+5. Allez dans l'onglet _Variables_, cliquez sur la liste déroulante _Add variable_ puis sélectionnez soit _Custom variable_ si vous voulez tout ajouter vous-même, soit _Decision_ pour copier depuis le template (c'est plus rapide). Les étapes manuelles sont décrites dans les sous-étapes 1 et 2 ci-dessous, tandis que la copie est décrite à l'étape 3 :
     ![image-20260529172529128](img/README/image-20260529172529128.png)
-    1. Define the **input variables** (these will be passed in when the decision is called) - The structure is: `name` (data type):
+    1. Définissez les **variables d'entrée/input variables** (elles seront passées lors de l'appel de la décision) - La structure est : `name` (type de données) :
         1. `request_type` (character)
-    2. Define the **output variables** (what the decision returns)  - The structure is: `name` (data type) - Explanation (this is just for us as context):
-        1. `urgency_tier` (character) - the classified priority level
-        2. `assigned_department` (character) - the department to handle the request
-        3. `resource_allocation` (character) - resource level to assign
-        4. `escalation_flag` (character) - whether to escalate to management
-        5. `reason` (character) - why this triage decision was made
-        6. `target_response_hours` (decimal) - the SLA target for this tier
-        7. Now click OK to add all of them
+    2. Définissez les **variables de sortie/output variables** (ce que retourne la décision) - La structure est : `name` (type de données) - Explication (juste pour le contexte) :
+        1. `urgency_tier` (character) - le niveau de priorité attribué
+        2. `assigned_department` (character) - le service chargé de traiter la demande
+        3. `resource_allocation` (character) - niveau de ressource à attribuer
+        4. `escalation_flag` (character) - indique s'il faut escalader vers la direction
+        5. `reason` (character) - raison pour laquelle cette décision de triage a été prise
+        6. `target_response_hours` (decimal) - objectif SLA pour ce niveau de priorité
+        7. Cliquez ensuite sur OK pour toutes les ajouter
             ![image-20260529173207540](img/README/image-20260529173207540.png)
-    3. Copy the **variables** from a template decision:
-        1. Click on the folder icon in the *Decision* input field
-        2. Navigate to *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Public Sector* select *Metro City Service Request Triage* and click OK
-        3. Click on the *Add all* icon in the middle of the dialogue to bring all the variables into your decision and then click the Add button
+    3. Copiez les **variables** depuis une décision template :
+        1. Cliquez sur l'icône dossier dans le champ d'entrée _Decision_
+        2. Naviguez vers *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Public Sector* sélectionnez *Metro City Service Request Triage* et cliquez sur OK
+        3. Cliquez sur l'icône _Add all_ au milieu de la boîte de dialogue pour importer toutes les variables dans votre décision, puis cliquez sur le bouton Add
 
-Once you have added the variables (no matter which way you choose) please click on the save icon in the upper right hand corner. It is recommended that anytime you change something about the variables before you continue to quickly use this icon to save the changes.
+Une fois les variables ajoutées (quelle que soit la méthode), cliquez sur l'icône de sauvegarde en haut à droite. Il est recommandé de l'utiliser rapidement à chaque modification des variables avant de continuer.
 
-
-From here you can also always activate the SAS Viya Copilot via the icon in the top right hand corner to ask questions about SAS Intelligent Decisioning to deepen your understanding of the application.
+À partir d'ici, vous pouvez aussi activer à tout moment le Copilot SAS Viya via l'icône en haut à droite pour poser des questions sur SAS Intelligent Decisioning et approfondir votre compréhension de l'application.
 
 ### 2. Add the Model Node
 
