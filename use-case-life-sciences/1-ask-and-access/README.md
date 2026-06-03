@@ -92,7 +92,7 @@ Pour connecter correctement les tables, cliquez sur chaque table puis, dans le p
     ![image-20260529105336594](img/README/image-20260529105336594.png)
 8. Ces relations garantissent que les données synthétiques conservent une intégrité référentielle — Chaque admission synthétique sera associée à un patient synthétique valide
 
-#### 4. Training Settings
+#### 4. Paramétrage de l’entraînement (Training Settings)
 
 1.   **Random state** : cette option est facultative et peut être définie à une valeur initiale du nombre aléatoire (seed). Pourquoi ne pas essayer un grand classique comme 42 ?
 2.   **Model type** :  nous pouvons choisir entre `PrivBayes` et `SMOTE`; nous utiliserons ici PrivBayes pour tirer parti de la fonctionnalité de confidentialité différentielle
@@ -112,18 +112,18 @@ Dans l’onglet **Evaluation**, vous pouvez obtenir de nombreux insights sur vot
 Prenez le temps d’explorer ces résultats afin de comprendre à quel point les données synthétiques reflètent fidèlement les données d’origine. N’hésitez pas à en discuter en groupe, à solliciter les mentors SAS présents sur place en cas de questions, ou à consulter la [Documentation SAS](https://go.documentation.sas.com/doc/en/sdgcdc/v_001/sdgug/p0ki9glx7acxpyn1wttognicd7qi.htm).
 
 
-#### 6. Generation
+#### 6. Génération
 
-1. **Output destination**, select the path `datamakerdemodata:output` here and set the *Output format* to one that you prefer (for example *parquet*)
-2. Leave all other options at default and click the Generate button
+1. **Output destination** : sélectionnez ici le chemin `datamakerdemodata:output` et définissez le *Format de sortie* selon votre préférence (par exemple *parquet*)
+2. Laissez toutes les autres options par défaut et cliquez sur le bouton Générer
     ![image-20260529105918393](img/README/image-20260529105918393.png)
-3. Now a generation job is triggered that will create the synthetic data for each table for us and make that 
-4. Once the generation has finished we get a summary of everything, a note on where the data is stored and a sample of the synthetic data. The generated data is stored onto a blob storage, don't worry you will not have to download anything onto your laptop as we will provide the data already available in SAS Viya and SAS Viya Workbench so that you can get to work.
+3. Un travail de génération est alors déclenché ; il va créer pour nous les données synthétiques pour chaque table
+4. Une fois la génération terminée, nous obtenons un résumé de l'ensemble, une note indiquant où les données sont stockées et un échantillon des données synthétiques. Les données générées sont stockées dans un blob storage ; ne vous inquiétez pas, vous n'aurez rien à télécharger sur votre ordinateur portable, car nous mettrons les données à votre disposition dans SAS Viya et SAS Viya Workbench afin que vous puissiez continuer le travail.
 
 ![image-20260529110103425](img/README/image-20260529110103425.png)
 
 ---
 
-## Next Steps
+## Étapes suivantes
 
-Proceed to **[Step 2: Prepare](../2-prepare/)** to load, profile, and join the data into an analytical base table using SAS Viya Workbench.
+Passez à l'**[Étape 2: Prepare](../2-prepare/)** pour charger, profiler et joindre les données dans une table de base analytique à l'aide de SAS Studio ou SAS Viya Workbench.
