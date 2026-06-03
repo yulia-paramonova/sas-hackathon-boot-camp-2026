@@ -83,14 +83,14 @@ Pour connecter correctement les tables, cliquez sur chaque table puis, dans le p
 3. Pour `medications`, définir `medication_id` comme clé primaire et `patient_id` comme clé étrangère
 4. Pour `clinical_measures`, définir `patient_id` comme clé primaire
     ![image-20260529104949949](img/README/image-20260529104949949.png)
-5. All tables are of the type Tabular
-6. Review the key relationships between the tables:
+5. Toutes les tables doivent être de type *Tabular* 
+6. Examinez les principales relations entre les tables :
    - `admissions.patient_id` -> `patients.patient_id`
    - `clinical_measures.patient_id` -> `patients.patient_id`
    - `medications.patient_id` -> `patients.patient_id`
-7. Now switch to the *Columns* tab to adjust the *Semantic type* for the three columns in the `medications` table `medication_name`, `medication_class` & `dosage` to the type `Category`
+7. Revenir ensuite dans l’onglet *Columns* pour ajuster le *Semantic type* des trois colonnes de la table `medications` :  `medication_name`, `medication_class` & `dosage` au type `Category`
     ![image-20260529105336594](img/README/image-20260529105336594.png)
-8. These relationships ensure that the synthetic data maintains referential integrity — every synthetic admission will belong to a valid synthetic patient
+8. Ces relations garantissent que les données synthétiques conservent une intégrité référentielle — Chaque admission synthétique sera associée à un patient synthétique valide
 
 #### 4. Training Settings
 
