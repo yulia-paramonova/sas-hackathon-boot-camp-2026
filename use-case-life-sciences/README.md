@@ -29,7 +29,7 @@ Ce cas d’usage vous guide à travers l’ensemble du **cycle de vie des donné
 | [**5. Deploy & Act**](5-deploy-and-act/) | Mettre en place des décisions automatisées et explorer des workflows agentiques | [SAS Intelligent Decisioning](https://www.sas.com/en_us/software/intelligent-decisioning.html) + [SAS Viya Copilot](https://www.sas.com/en_us/software/viya/copilot.html)  |
 
 
-## Project Structure
+## Structure du projet
 
 ```
 use-case-life-sciences/
