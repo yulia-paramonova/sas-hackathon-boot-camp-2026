@@ -79,9 +79,9 @@ Le traitement exécuté pour analyser les tables tentera également de détecter
 Pour connecter correctement les tables, cliquez sur chaque table puis, dans le panneau de droite sous *Foreign keys*, modifiez les valeurs *Key* et *Target* comme indiqué ci-dessous :
 
 1. Pour `patients`, définir `patient_id` comme clé primaire (*Primary key*) 
-2. For `admissions` set `admission_id` as the Primary key and `patient_id` as the Foreign key mapping to `patients`
-3. For `medications` set `medication_id` as the Primary key and `patient_id` as the Foreign key
-4. For `clinical_measures` set `patient_id` as the Primary key
+2. Pour `admissions`, définir `admission_id` comme clé primaire et `patient_id` comme clé étrangère référencée vers  `patients`
+3. Pour `medications`, définir `medication_id` comme clé primaire et `patient_id` comme clé étrangère
+4. Pour `clinical_measures`, définir `patient_id` comme clé primaire
     ![image-20260529104949949](img/README/image-20260529104949949.png)
 5. All tables are of the type Tabular
 6. Review the key relationships between the tables:
