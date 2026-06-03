@@ -5,7 +5,7 @@ Bien que ce cas d’usage suive une structure définie, n’hésitez pas à expl
 Vous commencerez par une courte introduction au cas d’usage, suivie d’un aperçu des cinq étapes que vous allez parcourir durant cette expérience de SAS Hackathon Bootcamp. Vous découvrirez ensuite la structure du répertoire Git, une présentation des jeux de données ainsi que les cinq thèmes principaux abordés. Enfin, une analyse plus approfondie du contexte métier vous sera proposée — à vous de l’explorer selon vos besoins.
 
 
-## Cas d’usage en sciences de la vie — Cycle de vie des données et de l’IA
+## Cas d’usage en sciences de la vie — Cycle de vie Data et IA
 
 Ce cas d’usage vous guide à travers l’ensemble du **cycle de vie des données et de l’IA** en utilisant un scénario réaliste de prédiction du risque de réadmission des patients, basé sur la technologie SAS Viya.
 
