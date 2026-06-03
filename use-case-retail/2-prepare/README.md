@@ -1,100 +1,100 @@
-# Step 2: Prepare
+# Étape 2: Prepare
 
-In this step you will work in **SAS Viya Workbench** to load the four ShopEase datasets, profile them, and join them into a single **Analytical Base Table (ABT)** that is ready for exploration in SAS Visual Analytics and modeling in SAS Model Studio.
+Dans cette étape, vous allez travailler dans **SAS Viya Workbench** pour charger les quatre jeux de données ShopEase, les profiler et les joindre dans une **Analytical Base Table (ABT)** prête pour l’exploration dans SAS Visual Analytics et la modélisation dans SAS Model Studio.
 
-SAS Viya Workbench gives you the freedom to code in the language of your choice. We provide equivalent code in **SAS**, **Python**, and **R** — pick the one you are most comfortable with or try all three.
+SAS Viya Workbench vous offre la liberté de coder dans le langage de votre choix. Nous fournissons un code équivalent en **SAS**, **Python** et **R** — choisissez celui avec lequel vous êtes le plus à l’aise ou essayez les trois.
 
 ---
 
-## Accessing the Data
+## Accès aux données
 
-The four CSV files are available in the same folder structure from Step 1:
+Les quatre fichiers CSV sont disponibles dans la même structure de dossiers que dans l’Étape 1 :
 
 ```
 SAS-Hackathon-Bootcamp-2026/use-case-retail/data
-├── customers.csv          (1,000 records)
-├── transactions.csv       (~5,000 records)
-├── sessions.csv           (~10,000 records)
-└── support_tickets.csv    (~400 records)
+├── customers.csv          (1,000 enregistrements)
+├── transactions.csv       (~5,000 enregistrements)
+├── sessions.csv           (~10,000 enregistrements)
+└── support_tickets.csv    (~400 enregistrements)
 ```
 
-In SAS Viya Workbench, open a new session and navigate to the `use-case-retail` folder. From there you can open any of the provided code files.
+Dans SAS Viya Workbench, ouvrez une nouvelle session et naviguez vers le dossier `use-case-retail`. À partir de là, vous pouvez ouvrir n’importe lequel des fichiers de code fournis.
 
 ---
 
-## What You Will Do
+## Ce que vous allez faire
 
-### 1. Setup your Environment in SAS Viya Workbench
+### 1. Configurer votre environnement dans SAS Viya Workbench
 
-Once you are logged into SAS Viya Workbench you will first have to chose the programming environment that you want to use and which languages. Once you do that a second tab will open up and you will have to wait for moment until the programming environment shows up. ![image-20260527164013080](img/README/image-20260527164013080.png)
+Une fois connecté à SAS Viya Workbench, vous devez d’abord choisir l’environnement de programmation que vous souhaitez utiliser ainsi que les langages. Une fois ce choix effectué, un second onglet s’ouvrira et vous devrez patienter un instant jusqu’à ce que l’environnement de programmation apparaisse. ![image-20260527164013080](img/README/image-20260527164013080.png)
 
-### 2. Load the Data & Use Cases
+### 2. Charger les données et les cas d’usage
 
-Now as the first step you will clone the GitHub repository to your SAS Viya Workbench environment by first opening up a terminal and running the git clone command below: 
+Dans un premier temps, clonez le dépôt GitHub dans votre environnement SAS Viya Workbench en ouvrant un terminal puis en exécutant la commande suivante :
 
 ```bash
 git clone https://github.com/sascommunities/sas-hackathon-boot-camp-2026.git
 ```
 
-If you are in Visual Studio Code you can try to either use the keyboard shortcut CTRL+´ or if that doesn't work for you follow the click path in the screenshot below:
+Si vous êtes dans Visual Studio Code, vous pouvez essayer le raccourci clavier CTRL+´. Si cela ne fonctionne pas, suivez le chemin indiqué dans la capture ci-dessous :
 
 ![image-20260527164702224](img/README/image-20260527164702224.png)
 
-After you have run the git clone command you should the following folder structure and from there just navigate to your use case and the 2-prepare to see the files.
+Après avoir exécuté la commande git clone, vous devriez voir la structure de dossiers correspondante. À partir de là, naviguez vers votre cas d’usage puis dans 2-prepare pour voir les fichiers.
 
 ![image-20260527170112447](img/README/image-20260527170112447.png)
 
-### 3. Create a Data Card
+### 3. Créer une Data Card
 
-A **data card** is a concise summary document that describes each dataset — its purpose, size, column names, data types, and any quality notes. Data cards are a best practice in responsible AI because they provide transparency about the data flowing into models. For each table you will produce:
+Une **data card** est un document synthétique qui décrit chaque jeu de données — son objectif, sa taille, les noms de colonnes, les types de données et les éventuelles notes de qualité. Les data cards sont une bonne pratique d’IA responsable car elles apportent de la transparence sur les données utilisées dans les modèles. Pour chaque table, vous produirez :
 
-- Number of rows and columns
-- Column names with data types
-- Count of missing values per column
-- Sample rows
+- Nombre de lignes et de colonnes
+- Noms des colonnes avec leurs types de données
+- Nombre de valeurs manquantes par colonne
+- Exemples de lignes
 
-### 4. Get Basic Summary Statistics
+### 4. Obtenir des statistiques descriptives de base
 
-For numeric columns, compute descriptive statistics (mean, median, standard deviation, min, max). For categorical columns, compute frequency counts. This gives you a first look at distributions and potential data quality issues before you begin feature engineering.
+Pour les colonnes numériques, calculez des statistiques descriptives (moyenne, médiane, écart-type, min, max). Pour les colonnes catégorielles, calculez les fréquences. Cela donne une première vue des distributions et des éventuels problèmes de qualité des données avant de commencer la feature engineering.
 
-### 5. Engineer Features and Build the Analytical Base Table
+### 5. Faire de la feature engineering et construire l’Analytical Base Table
 
-The four datasets each capture a different dimension of customer behavior. To build a predictive model we need to aggregate these into a single customer-level table where each row is one customer and each column is a feature. The key transformations are:
+Les quatre jeux de données capturent chacun une dimension différente du comportement client. Pour construire un modèle prédictif, nous devons les agréger dans une table unique au niveau client, où chaque ligne représente un client et chaque colonne une variable. Les transformations clés sont :
 
-- **Transaction features:** total spend, average order value, purchase frequency, days since last purchase, product category diversity
-- **Session features:** total sessions, average session duration, pages viewed, cart abandonment rate, mobile usage rate
-- **Support features:** total tickets, high-priority ticket count, average resolution time, satisfaction score
-- **Customer features:** age, account age, subscription tier, email opt-in status
+- **Variables transactionnelles :** dépense totale, valeur moyenne de commande, fréquence d’achat, jours depuis le dernier achat, diversité des catégories produits
+- **Variables de session :** nombre total de sessions, durée moyenne de session, pages vues, taux d’abandon panier, taux d’usage mobile
+- **Variables de support :** nombre total de tickets, nombre de tickets haute priorité, temps moyen de résolution, score de satisfaction
+- **Variables client :** âge, ancienneté du compte, niveau d’abonnement, statut d’opt-in e-mail
 
-The final ABT will be saved as a CSV file that can then be promoted into CAS for use in SAS Visual Analytics and SAS Model Studio.
-
----
-
-## Choose Your Language
-
-Pick **one** language and run its script. You do not need to run all three — they each produce the same output. If you are unsure which to choose, pick the one you are most comfortable with.
-
-| Language | File | How to Run |
-|----------|------|------------|
-| **SAS** | [`data_preparation.sas`](data_preparation.sas) | Open the file and click the **Run** button in the toolbar above the editor |
-| **Python** | [`data_preparation.py`](data_preparation.py) | Open the file and click the **Run** button in the toolbar above the editor |
-| **R** | [`data_preparation.R`](data_preparation.R) | R scripts do not have a toolbar Run button. Open a terminal (*Terminal > New Terminal*) and run: `Rscript data_preparation.R` |
-
-All three scripts produce the same output: a file called **`retail_abt.csv`** in the `data/` folder. After the script finishes, **refresh the Explorer pane** to see the new file.
+L’ABT finale sera enregistrée au format CSV, puis pourra être promue dans CAS pour une utilisation dans SAS Visual Analytics et SAS Model Studio.
 
 ---
 
-## Output
+## Choisissez votre langage
 
-After running any of the scripts you will have:
+Choisissez **un** langage et exécutez son script. Vous n’avez pas besoin d’exécuter les trois — ils produisent tous la même sortie. Si vous hésitez, choisissez celui avec lequel vous êtes le plus à l’aise.
 
-| File | Description |
-|------|-------------|
-| `data/retail_abt.csv` | The joined, feature-engineered, customer-level dataset ready for modeling |
-| Console output | Data card information, summary statistics, and churn distribution for review |
+| Langage    | Fichier                                        | Comment exécuter                                                                                                                                        |
+| ---------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **SAS**    | [`data_preparation.sas`](data_preparation.sas) | Ouvrez le fichier puis cliquez sur le bouton **Run** dans la barre d’outils au-dessus de l’éditeur                                                      |
+| **Python** | [`data_preparation.py`](data_preparation.py)   | Ouvrez le fichier puis cliquez sur le bouton **Run** dans la barre d’outils au-dessus de l’éditeur                                                      |
+| **R**      | [`data_preparation.R`](data_preparation.R)     | Les scripts R n’ont pas de bouton Run dans la barre d’outils. Ouvrez un terminal (_Terminal > New Terminal_) et exécutez : `Rscript data_preparation.R` |
+
+Les trois scripts produisent la même sortie : un fichier appelé **`retail_abt.csv`** dans le dossier `data/`. Une fois le script terminé, **rafraîchissez le panneau Explorer** pour voir le nouveau fichier.
 
 ---
 
-## Next Steps
+## Résultat
 
-Proceed to **[Step 3: Explore](../3-explore/)** to visually explore the data in SAS Visual Analytics using its built-in Copilot.
+Après avoir exécuté l’un des scripts, vous obtiendrez :
+
+| Fichier               | Description                                                                              |
+| --------------------- | ---------------------------------------------------------------------------------------- |
+| `data/retail_abt.csv` | Jeu de données joint, enrichi et au niveau client, prêt pour la modélisation             |
+| Sortie console        | Informations de data card, statistiques descriptives et distribution du churn à examiner |
+
+---
+
+## Prochaines étapes
+
+Passez à **[Étape 3: Explore](../3-explore/)** pour explorer visuellement les données dans SAS Visual Analytics avec son Copilot intégré.
