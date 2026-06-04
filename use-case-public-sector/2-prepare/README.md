@@ -64,7 +64,7 @@ Les quatre jeux de données capturent chacun une dimension différente de la pre
 - **Caractéristiques temporelles:** jour de la semaine, indicateur week-end, mois, trimestre extrait de la date de soumission
 - **Caractéristiques de la demande:** encodage du type de demande, indicateur d’urgence propre au type de demande
 - **Caractéristiques des départements:** temps de réponse moyen,  taux de résolution, nombre d'employés, et charge de travail issus des données de performance du département
-- **Caractéristiques des quartiers:** volume de demandes et schémas historiques de réponse basés sur l’historique des requêtes
+- **Caractéristiques des quartiers:** volume de demandes et schémas historiques de réponse basés sur l’historique des demandes
 - **Caractéristiques des citoyens:** nombre de demandes précédentes, historique de satisfaction, score d’engagement, ancienneté du compte
 
 La variable cible `is_urgent` est dérivée de `priority_level` : 1 si la priorité est Critique ou Élevée, 0 sinon.
