@@ -1,8 +1,6 @@
-# Step 3: Explore
+# Étape 3: Explore
 
-In this step you will use **SAS Visual Analytics** and its built-in **Copilot** to visually explore the Analytical Base Table (ABT) you created in Step 2. The goal is to understand the patterns behind service request urgency and identify equity gaps across districts before building a predictive model.
-
-Dans cette étape, vous allez utiliser **SAS Visual Analytic**s et son **Copilot** intégré pour explorer visuellement l’Analytical Base Table (ABT) que vous avez créée à l’Étape 2. L’objectif est de comprendre les schémas liés au défaut de paiement avant de construire un modèle prédictif.
+Dans cette étape, vous utiliserez **SAS Visual Analytics** et son **Copilot** intégré pour explorer visuellement l’Analytical Base Table (ABT) que vous avez créée à l’Étape 2. L’objectif est de comprendre les schémas qui expliquent l’urgence des demandes de service et d’identifier les écarts d’équité entre quartiers avant de construire un modèle prédictif.
 
 ---
 
