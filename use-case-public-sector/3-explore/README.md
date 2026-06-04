@@ -2,119 +2,124 @@
 
 In this step you will use **SAS Visual Analytics** and its built-in **Copilot** to visually explore the Analytical Base Table (ABT) you created in Step 2. The goal is to understand the patterns behind service request urgency and identify equity gaps across districts before building a predictive model.
 
----
-
-## Prerequisites
-
-The analytical base table should already be loaded into the **Public** CAS library. If you completed Step 2 the data was saved as `public_sector_abt.csv`. Your bootcamp environment has this pre-loaded as a CAS table named **`PUBLIC_SECTOR_ABT`** in the **Public** caslib.
+Dans cette étape, vous allez utiliser **SAS Visual Analytic**s et son **Copilot** intégré pour explorer visuellement l’Analytical Base Table (ABT) que vous avez créée à l’Étape 2. L’objectif est de comprendre les schémas liés au défaut de paiement avant de construire un modèle prédictif.
 
 ---
 
-## Accessing the Data in SAS Visual Analytics
+## Prérequis
 
-1. Open **SAS Visual Analytics** from the SAS Viya home page (or use the main menu in the top right corner and click on *Explore and Visualize*)
-2. Click **New Report**
-3. In the data panel click on the Add Data button and from the available tables please select **PUBLIC_SECTOR_ABT**
+L’analytical base table doit déjà être chargée dans la bibliothèque CAS **Public**. Si vous avez terminé l’Étape 2, les données ont été enregistrées sous `public_sector_abt.csv`. Votre environnement Bootcamp contient déjà cette table CAS préchargée sous le nom **`PUBLIC_SECTOR_ABT`** dans la caslib **Public** .
+
+---
+
+## Accéder aux données dans SAS Visual Analytics
+
+1. Ouvrez **SAS Visual Analytics** depuis la page d’accueil SAS Viya (ou via le menu principal en haut à droite → *Explore and Visualize*)
+2. Cliquez sur **New Report**
+3. Dans le panneau de données, cliquez sur Add Data et sélectionnez **FINANCIAL_SERVICES_ABT**
     ![image-20260528142114059](img/README/image-20260528142114059.png)
-4. Add it as your data source — you should see all the features from Step 2 listed in the data items pane on the left
+4. Ajoutez-la comme source de données — vous devriez voir toutes les variables créées à l’Étape 2 dans le panneau de gauche
 
-> **Tip:** If the table does not appear in the Public caslib, ask your SAS Mentor to help promote it. You can also load it directly by uploading the CSV through the **Manage Data** interface.
+> **Astuce:** Si la table n’apparaît pas dans la caslib Public, demandez à un mentor SAS de vous aider à la promouvoir.
+Vous pouvez aussi la charger directement en important le CSV via **Manage Data**.
 
 ---
 
-## Using the SAS Visual Analytics Copilot
+## Utiliser le Copilot de SAS Visual Analytics
 
-SAS Visual Analytics includes a **Copilot** — an AI assistant that helps you explore data faster. You can find the Copilot icon in the top right hand corner. The Copilot can:
+SAS Visual Analytics inclut un **Copilot** - un assistant IA qui accélère l’exploration des données. L’icône du Copilot se trouve en haut à droite. Il peut :
 
-- **Suggest visualizations** based on the variables you select
-- **Answer questions** about your data in natural language
-- **Generate insights** by automatically scanning for interesting patterns
-- **Build charts** from plain-language prompts
+- **Suggérer des visualisations** selon les variables sélectionnées
+- **Répondre à des questions** sur vos données en langage naturel
+- **Générer des insights** en détectant automatiquement des schémas intéressants
+- **Créer des graphiques** à partir de requêtes en langage courant 
 
-### How to Use the Copilot
+### Comment utiliser le Copilot
 
-1. Click the **Copilot** icon to open the assistant panel
-2. Type a question or request in natural language
-3. The Copilot will suggest or create a visualization directly in your report
-4. You can refine the result by following up with additional prompts
-5. You can right click into the chat panel and get suggestions on prompts to help you.
+1. Cliquez sur l’icône **Copilot** pour ouvrir le panneau
+2. Tapez une question ou une demande en langage naturel
+3. Le Copilot suggère ou crée une visualisation dans votre rapport
+4. Vous pouvez affiner le résultat avec des requêtes supplémentaires
+5. Un clic droit dans le panneau de chat vous propose des suggestions de prompts pour vous aider.
 
 ![image-20260528142454478](img/README/image-20260528142454478.png)
 
-### Copilot Tips and Caveats
+### Conseils et mises en garde Copilot
 
-A few behaviors to be aware of while working through this step:
+Quelques comportements à garder à l’esprit lors de cette étape :
 
-- **Reference columns by their exact name.** The prompts in this guide use backtick-quoted column names (e.g., `` `is_urgent` ``, `` `district_avg_response_time` ``). Copilot works best when you do the same — vague terms like *"district"* or *"request type"* will often fail because those raw columns are not in the ABT.
-- **Charts sometimes land on a different page.** If a generated visualization appears on another report page, drag it to the page you are working on.
-- **Ignore suggestions to reclassify numeric measures as categories.** Copilot occasionally recommends changing numeric columns (e.g., `district_avg_request_count`) to categories. Decline those suggestions — they are measures and should stay that way.
-- **If a chart doesn't answer the question, rephrase.** Ask Copilot for a specific chart type and specific column roles rather than an open-ended question (e.g., *"Create a bar chart with `inherent_urgency` on the x-axis and average `is_urgent` on the y-axis"*).
-
+- **Référez‑vous aux colonnes par leur nom exact.** Les requêtes (prompts) de ce guide utilisent des noms de colonnes entourés d’accents graves  (e.g., `` `is_urgent` ``, `` `district_avg_response_time` ``). Copilot fonctionne mieux lorsque vous faites la même chose. Des termes vagues comme *"district"* ou *"request type"*  échouent souvent, car ces colonnes brutes n’existent pas dans l’ABT.
+- **Les graphiques apparaissent parfois sur une autre page.** Si une visualisation générée apparaît sur une autre page du rapport, faites‑la glisser vers la page sur laquelle vous travaillez.
+- Copilot fonctionne mieux lorsque vous faites de même — des termes vagues comme « district » ou « type de requête » échouent souvent, car ces colonnes brutes n’existent pas dans l’ABT.
+- **Ignorez les suggestions visant à reclasser des mesures numériques en catégories.** Copilot recommande parfois de transformer des colonnes numériques (e.g., `district_avg_request_count`) en catégories. Refusez ces suggestions — ce sont des mesures et elles doivent le rester.
+- **Si un graphique ne répond pas à la question, reformulez.** Demandez à Copilot un type de graphique précis et des rôles de colonnes précis plutôt qu’une question ouverte (e.g., *"Crée un diagramme en barres avec `inherent_urgency` sur l'axe x et la moyenne de `is_urgent` sur l'axe y"*).
+  
 ---
 
-## Guided Exploration: Questions to Ask
+## Exploration guidée : Questions à poser
 
-Work through the following questions to build your understanding of service request urgency patterns. For each question, try creating the visualization manually **and/or** by asking the Copilot.
+Travaillez sur les questions suivantes pour comprendre les schémas d'urgence des demandes de service. Pour chaque question, essayez de créer la visualisation manuellement **et/ou** via le Copilot.
 
-### Understanding the Target Variable
+### Comprendre la variable cible
 
-**Goal:** Get a baseline understanding of urgency in the dataset.
+**Objectif:** Obtenir une compréhension de base de l'urgence dans le jeu de données.
 
-- *"Show me the distribution of urgent vs. non-urgent service requests"*
-- *"What percentage of requests are classified as urgent?"*
+- *"Montre-moi la distribution des demandes de services urgents vs. non-urgents"*
+- *"Quel pourcentage des demandes sont classifiés comme urgent ?"*
 
-Create a **bar chart** or **pie chart** of the `is_urgent` variable. Examine the class balance — this will inform your modeling strategy in Step 4.
+Créez un **diagramme en barres** ou **pie chart** de la variable `is_urgent`. Examinez l’équilibre des classes — cela orientera votre stratégie de modélisation à l’Étape 4.
 
-### Hypothesis 1: Inherent Urgency Predicts Urgency
+### Hypothèse 1: L'urgence inhérente prédit l'ugence réelle
 
-**Goal:** Validate that the `inherent_urgency` flag (derived from request type during feature engineering) is a strong predictor of whether a request is truly urgent.
+**Objectif:** Vérifier que l'indicateur `inherent_urgency` (dérivé du type de demande pendant le feature engineering) est un bon prédicteur du caractère réellement urgent de la demande.
 
-- *"Show the average of `is_urgent` grouped by `inherent_urgency`"*
-- *"Compare the distribution of `response_time_hours` for `inherent_urgency`=1 vs `inherent_urgency`=0"*
-- *"What percentage of requests with `inherent_urgency`=1 are marked `is_urgent`=1?"*
+- *"Affiche la moyenne de `is_urgent` regroupée par `inherent_urgency`"*
+- *"Compare la distribution de `response_time_hours` pour `inherent_urgency`=1 vs `inherent_urgency`=0"*
+- *"Quel pourcentage de la demande avec `inherent_urgency`=1 sont marquées`is_urgent`=1?"*
 
-Create a **bar chart** of `is_urgent` (as a measure, aggregated as average) grouped by `inherent_urgency`. The raw `request_type` column was one-hot encoded into features like `inherent_urgency` during Step 2, so we analyze the engineered signal directly.
+Créez un **bar chart** de is_urgent (en tant que mesure, agrégée en moyenne) regroupé par `inherent_urgency`. La colonne brute `request_type` a été transformée en variables dérivées comme `inherent_urgency` lors de l’Étape 2, donc nous analysons directement ce signal construit.
 
-> **What to look for:** Requests flagged as inherently urgent (safety hazards, water main breaks) should have a much higher average `is_urgent` value than non-inherent ones. If the gap is small, the flag is not pulling its weight as a predictor.
+> **À observer:** Les demandes signalées comme intrinsèquement urgentes (dangers pour la sécurité, ruptures de conduites d’eau) devraient présenter une moyenne de `is_urgent`  nettement plus élevée que les autres. Si l’écart est faible, cet indicateur n’apporte pas une contribution suffisante en tant que prédicteur.
 
-### Hypothesis 2: Department Capacity Affects Response
+### Hypothesis 2: a capacité des départements influence la rapidité de réponse
 
-**Goal:** Determine whether department workload and staffing affect response times.
+**Objectif:** Déterminer si la charge de travail et les effectifs des départements ont un impact sur les temps de réponse.
 
-- *"Show the correlation between `dept_avg_staff_count` and `dept_avg_response_time`"*
-- *"Show the correlation between `dept_avg_budget_util` and `dept_avg_resolution_rate`"*
-- *"Show the distribution of `dept_avg_overtime` across requests"*
+- *"Affiche la corrélation entre `dept_avg_staff_count` et `dept_avg_response_time`"*
+- *"Affiche la corrélation entre `dept_avg_budget_util` et `dept_avg_resolution_rate`"*
+- *"Affiche la distribution de `dept_avg_overtime` à travers les demandes"*
 
-Create a **scatter plot** of `dept_avg_staff_count` (x) vs. `dept_avg_response_time` (y). Create a second scatter plot of `dept_avg_overtime` (x) vs. `dept_avg_resolution_rate` (y). The raw `department` column was dropped in Step 2 — the `dept_avg_*` aggregates are what carry forward into the model, so we analyze those directly.
+Créez un **scatter plot** de `dept_avg_staff_count` (x) vs. `dept_avg_response_time` (y). Créez un second scatter plot de `dept_avg_overtime` (x) vs. `dept_avg_resolution_rate` (y). La colonne brute `department` a été supprimée dans l’Étape 2 — the `dept_avg_*` aggregates are what carry forward into the model, so we analyze those directly.
 
-> **What to look for:** Negative correlation between staff count and response time (more staff = faster response). Departments with high overtime and low resolution rates are the bottlenecks.
+> **À observer:** Une corrélation négative entre le nombre d’employés et le temps de réponse (plus d’effectifs = réponse plus rapide).
+Les départements avec beaucoup d’heures supplémentaires et de faibles taux de résolution constituent les goulots d’étranglement.
 
-### Hypothesis 3: District Equity
+### Hypothèse 3: Équité entre quartiers
 
-**Goal:** Identify whether some districts consistently receive slower or worse service.
+**Objectif:** Identifier si certains quartiers reçoivent systématiquement un service plus lent ou de moins bonne qualité.
 
-- *"Show the distribution of `district_avg_response_time` across requests"*
-- *"Show the correlation between `district_avg_request_count` and `district_avg_response_time`"*
-- *"Show the correlation between `district_avg_resolution_rate` and `response_time_hours`"*
-- *"Show the sum of `district_total_critical` and `district_total_high` across all requests"*
+- *"Affiche la distribution de `district_avg_response_time` à travers les demandes"*
+- *"Affiche la corrélation entre `district_avg_request_count` er `district_avg_response_time`"*
+- *"Affiche la corrélation entre `district_avg_resolution_rate` et `response_time_hours`"*
+- *"Affiche la somme de `district_total_critical` et `district_total_high` à travers l'ensemble des demandes"*
 
-Create a **histogram** of `district_avg_response_time` to see the spread of district-level service speed. Create a **scatter plot** of `district_avg_request_count` (x) vs. `district_avg_response_time` (y) to check whether high-volume districts are slower. The raw `location_district` label was dropped in Step 2 — each request still carries the aggregate metrics for the district it came from, so district-level equity analysis is done through those aggregates.
+Créez un **histogram** de `district_avg_response_time` pour visualiser la dispersion de la rapidité de service au niveau des quartiers. Créez un **scatter plot** de `district_avg_request_count` (x) vs. `district_avg_response_time` (y) afin de vérifier si les quartiers à fort volume de demandes sont plus lents. Le label brut `location_district`a été supprimée à l’Étape 2 — chaque demande conserve toutefois les métriques agrégées du quartier d’origine, donc l’analyse d’équité entre quartiers se fait via ces agrégats.
 
-> **What to look for:** Wide spread in `district_avg_response_time` indicates the 40% variance problem is real. A strong positive correlation with request volume suggests capacity, not bias, is the driver; a weak correlation suggests uneven service allocation.
+> **À observer:** Une large dispersion de `district_avg_response_time` indique que le problème de variance de 40 % est réel. Une forte corrélation positive avec le volume de demandes suggère que la capacité, et non un biais, est le facteur déterminant ; une corrélation faible suggère une allocation inégale du service.
 
-### Hypothesis 4: Seasonal Patterns
+### Hypothèse 4: Schémas saisonniers
 
-**Goal:** Explore whether request volumes and urgency vary by season.
+**Objectif:** Explore whether request volumes and urgency vary by season.
 
-- *"Show the count of requests grouped by `submit_month`"*
-- *"Show the average of `is_urgent` grouped by `submit_month`"*
-- *"Show the average of `response_time_hours` grouped by `submit_quarter`"*
+- *"Affiche le nombre de demandes regroupées par `submit_month`"*
+- *"Affiche la moyenne de `is_urgent` regroupée par `submit_month`"*
+- *"Affiche la moyenne de `response_time_hours` regroupée par `submit_quarter`"*
 
-Create a **line chart** with `submit_month` on the x-axis and count of requests on the y-axis. Create a second chart with `submit_month` on the x-axis and average `is_urgent` as a secondary measure.
+Créez un **line chart** avec `submit_month` sur l'axe x et le nombre de demandes sur l'axe y. Create a second chart with `submit_month` on the x-axis and average `is_urgent` as a secondary measure.
 
 > **What to look for:** Monthly spikes in volume or urgency point to seasonal pressure on departments. Months with high average `response_time_hours` are the stressed periods.
 
-### Hypothesis 5: Citizen Satisfaction Patterns
+### Hypothèse 5: Citizen Satisfaction Patterns
 
 **Goal:** Understand what drives `citizen_satisfaction` and how it relates to urgency.
 
