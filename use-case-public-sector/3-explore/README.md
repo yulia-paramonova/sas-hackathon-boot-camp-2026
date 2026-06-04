@@ -107,32 +107,32 @@ Créez un **histogram** de `district_avg_response_time` pour visualiser la dispe
 
 ### Hypothèse 4: Schémas saisonniers
 
-**Objectif:** Explore whether request volumes and urgency vary by season.
+**Objectif:** Explorer si les volumes de demandes et leur niveau d’urgence varient selon la saison.
 
 - *"Affiche le nombre de demandes regroupées par `submit_month`"*
 - *"Affiche la moyenne de `is_urgent` regroupée par `submit_month`"*
 - *"Affiche la moyenne de `response_time_hours` regroupée par `submit_quarter`"*
 
-Créez un **line chart** avec `submit_month` sur l'axe x et le nombre de demandes sur l'axe y. Create a second chart with `submit_month` on the x-axis and average `is_urgent` as a secondary measure.
+Créez un **line chart** avec `submit_month` sur l'axe x et le nombre de demandes sur l'axe y. Créez un second graphique avec `submit_month` sur l’axe x et la moyenne de `is_urgent` comme mesure secondaire.
 
-> **What to look for:** Monthly spikes in volume or urgency point to seasonal pressure on departments. Months with high average `response_time_hours` are the stressed periods.
+**À observer:** Des pics mensuels de volume ou d’urgence indiquent une pression saisonnière sur les départements. Les mois présentant une moyenne élevée de `response_time_hours` correspondent aux périodes les plus sous tension.
 
-### Hypothèse 5: Citizen Satisfaction Patterns
+### Hypothèse 5: Schémas de satisfaction des citoyens
 
-**Goal:** Understand what drives `citizen_satisfaction` and how it relates to urgency.
+**Objectif:** Comprendre ce qui influence `citizen_satisfaction` et comment cela se relie à l’urgence.
 
-- *"Show the distribution of `citizen_satisfaction`"*
-- *"Show the average of `citizen_satisfaction` grouped by `is_urgent`"*
-- *"Show the correlation between `response_time_hours` and `citizen_satisfaction`"*
-- *"Show the correlation between `citizen_previous_requests` and `citizen_satisfaction`"*
+- *"Affiche la distribution de `citizen_satisfaction`"*
+- *"Affiche la moyenne de `citizen_satisfaction` regroupée par `is_urgent`"*
+- *"Affiche la corrélation entre `response_time_hours` et `citizen_satisfaction`"*
+- *"Affiche la corrélation entre `citizen_previous_requests` et `citizen_satisfaction`"*
 
-Create a **scatter plot** with `response_time_hours` on the x-axis and `citizen_satisfaction` on the y-axis. Create a **bar chart** of average `citizen_satisfaction` grouped by `is_urgent`.
+Créez un **scatter plot** avec un `response_time_hours` sur l’axe x et `citizen_satisfaction` sur l’axe y. Créez un **bar chart** de la moyenne de `citizen_satisfaction` regroupée par `is_urgent`.
 
-> **What to look for:** A strong negative correlation between `response_time_hours` and `citizen_satisfaction` (faster = happier). `is_urgent`=1 requests resolved quickly should maintain satisfaction; slow urgent requests are the worst customer experience.
+> **À observer:** Une forte corrélation négative entre `response_time_hours` et `citizen_satisfaction` (plus rapide = plus heureux). Les demandes `is_urgent`=1 résolues rapidement devraient maintenir un bon niveau de satisfaction ; les demandes urgentes traitées lentement offrent la pire expérience client.
 
-### Equity-Focused Deep Dive
+### Analyse approfondie axée sur l’équité
 
-**Goal:** Specifically assess service equity across district aggregates and age groups.
+**Objectif:** Évaluer spécifiquement l’équité du service entre les quartiers et selon les groupes d’âge.
 
 - *"Show the scatter plot of `district_avg_response_time` vs `response_time_hours` filtered where `is_urgent`=1"*
 - *"Show the correlation between `age_65+` and `citizen_satisfaction`"*
