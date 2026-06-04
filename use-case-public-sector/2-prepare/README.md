@@ -77,7 +77,7 @@ L’ABT finale sera enregistrée en fichier CSV, puis pourra être promue dans C
 
 Choisissez **un** langage et exécutez son script. Vous n’avez pas besoin d’exécuter les trois — ils produisent tous le même résultat. Si vous hésitez, prenez celui que vous maîtrisez le mieux.
 
-| Language | Fichier | Comment exécuter |
+| Langage | Fichier | Comment exécuter |
 |----------|------|------------|
 | **SAS** | [`data_preparation.sas`](data_preparation.sas) |Ouvrez le fichier et cliquez sur **Run** dans la barre d’outils |
 | **Python** | [`data_preparation.py`](data_preparation.py) | Ouvrez le fichier et cliquez sur **Run** dans la barre d’outils |
