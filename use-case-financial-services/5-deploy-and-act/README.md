@@ -144,7 +144,7 @@ Nous vous recommandons d'essayer de construire au moins un de ces rule sets vous
 
 **Rule Set: Ajustement du taux (Risk-Based Pricing)**
 
-La période pour le *rate_adjustment* où le *risk_tier_ est *Très élevé* indique la présence de valeurs manquauntes.
+La période pour le *rate_adjustment* où le *risk_tier* est *Très élevé* indique la présence de valeurs manquauntes.
 
 | risk_tier | rate_adjustment |
 |-----------|-----------------------|
@@ -225,93 +225,98 @@ Il s'agit d'une approche très simplifiée du prompt engineering et elle ne vous
 - Un candidat limite devrait être soumis à un examen approfondi.
 - Un candidat à haut risque devrait être refusé avec des motifs clairs.
 
-### 6. Publish the Decision
+### 6. Publier la décision
 
-1. Click the **Validate** button and then **Publish** to make the decision available as a callable service
-2. Choose a **destination:**
-   - **CAS** — for batch scoring of the entire loan portfolio
-   - **MAS (Micro Analytic Service)** — for real-time API calls during the loan application process - only one available here!
-   - **Container** — for deployment in the bank's loan origination system
-3. Please make sure to give it a unique name
-3. Once published, the decision is available as a REST API endpoint
-
----
-
-## Using the SAS Intelligent Decisioning Copilot
-
-The Copilot in SAS Intelligent Decisioning is a conversational assistant that can answer questions about the documentation for **SAS Intelligent Decisioning**, **SAS Container Runtime**, and **SAS Micro Analytic Service**. Use it to quickly find information about how these products work without leaving the application.
-
-### What the Copilot Can Do
-
-- **Answer documentation questions** about SAS Intelligent Decisioning features, concepts, and workflows
-- **Explain SAS Micro Analytic Service (MAS)** deployment options, configuration, and API usage
-- **Clarify SAS Container Runtime** setup, publishing, and management
-- **Help you navigate** product capabilities by describing how specific features work
-- **Provide guidance** on decision flow concepts, rule set configuration, and publishing options based on the official documentation
-
-### Example Copilot Prompts
-
-- *"How do I publish a decision to MAS?"*
-- *"What is the difference between CAS and MAS as publishing destinations?"*
-- *"How does SAS Container Runtime work for deploying decisions?"*
-- *"What types of nodes can I add to a decision flow?"*
-- *"How do I configure input and output variables for a decision?"*
-- *"What are the options for generating adverse action codes in a decision flow?"*
-
-The Copilot is a useful reference tool for quickly getting answers about the platform's capabilities while you are building your decision flows.
+1. Cliquez sur le boutton **Validate** puis sur **Publish** pour rendre la décision disponible par appel
+2. Choisissez une **destination** :
+   - **CAS** - pour le calcul par lots *(batch)* de l'ensemble du portefeuille de prêts
+   - **MAS (Micro Analytic Service)** - pour les appels API en temps réel pendant le processus de demande de prêt - un seul est disponible ici !
+   - **Container** -  pour déploiement dans le système d'octroi de prêts de la banque
+3. Faites bien attention à lui attribuer un **nom unique**
+4. Une fois publiée, la décision est disponible en tant qu'un point de terminaison *(endpoint)* de REST API
 
 ---
 
-## Decisions as Tools in Agentic Workflows
+## Utilisation du Copilot de SAS Intelligent Decisioning 
 
-A published SAS Intelligent Decisioning decision is exposed as a **REST API endpoint**. This means it can be called as a **tool** by any AI agent — including large language model (LLM) agents that use tool-calling capabilities.
+Le Copilot de SAS Intelligent Decisioning est un assistant conversationnel qui peut répondre à des questions sur la documentation de **SAS Intelligent Decisioning**, **SAS Container Runtime**, et **SAS Micro Analytic Service**. Utilisez-le pour trouver rapidement des informations sur le fonctionnement de ces produits sans quitter l'application.
 
-### How This Works
+### Ce que le Copilot peut faire
+
+- **Répondre à des questions de documentation** sur les fonctionnalités, concepts et workflows de SAS Intelligent Decisioning
+- **Expliquer SAS Micro Analytic Service (MAS)**, ses options de déploiement, sa configuration et l'usage de ses API
+- **Clarifier SAS Container Runtime** concernant la mise en place, la publication et la gestion
+- **Vous aider à naviguer** dans les capacités du produit en décrivant le fonctionnement des fonctionnalités spécifiques
+- **Fournir des conseils** sur les concepts de flux de décision, la configuration des rule sets et les options de publication basés sur la documentation officielle
+
+### Exemples de prompts Copilot 
+
+- "Comment publier une décision dans le MAS?"
+    - *"How do I publish a decision to MAS?"*
+- "Quelle est la différence entre CAS et MAS lorsque je publie une décision?"
+    - *"What is the difference between CAS and MAS as publishing destinations?"*
+- "Comment SAS Container Runtime fonctionne-t-il pour le déploiement des décisions ?"
+    - *"How does SAS Container Runtime work for deploying decisions?"*
+- - *Quels types de nœuds puis-je ajouter à un flux de décision ?*
+    - *"What types of nodes can I add to a decision flow?"*
+- *Comment configurer les variables d'entrée et de sortie d'une décision ?*
+    - *"How do I configure input and output variables for a decision?"*
+- *Quelles sont les options pour générer des codes d'action défavorable dans un flux de décision ?*
+    - *"What are the options for generating adverse action codes in a decision flow?"*
+
+Le Copilot est un outil de référence utile pour obtenir rapidement des réponses sur les capacités de la plateforme pendant que vous construisez vos flux de décision.
+
+---
+
+## Les décisions comme outils dans des workflows agentiques
+
+Une décision SAS Intelligent Decisioning publiée est exposée via un **endpoint API REST**. Cela signifie qu'elle peut être appelée comme un **outil** par n'importe quel agent IA, y compris les agents basés sur des *large language models* (LLM) qui utilisent des capacités d'appel d'outils.
+
+### Comment cela fonctionne
 
 ```
-┌──────────────┐     ┌─────────────────────────┐     ┌──────────────────┐
-│   AI Agent   │────>│  SAS Intelligent         │────>│  Lending         │
-│  (Loan       │     │  Decisioning API         │     │  Decision        │
-│   Officer    │     │  /decisions/loanApproval  │     │  + Adverse       │
-│   Agent)     │<────│                          │<────│  Action Codes    │
-└──────────────┘     └─────────────────────────┘     └──────────────────┘
+┌──────────────┐     ┌─────────────────────────┐     ┌────────────────┐
+│   Agent IA   │────>│  SAS Intelligent        │────>│  Décision      │
+│  (Loan       │     │  API de décision        │     │  de prêts      │
+│   Officer    │     │  /decisions/loanApproval│     │  + Adverse     │
+│   Agent)     │<────│                         │<────│  Action Codes  │
+└──────────────┘     └─────────────────────────┘     └────────────────┘
 ```
+**Exemple de scénario :** Un conseiller en prêts (titulaire d’un LLM) accompagne un demandeur tout au long du processus de demande en ligne. Le conseiller peut :
 
-**Example scenario:** A loan officer agent (powered by an LLM) is assisting an applicant through the digital application process. The agent can:
+1. Recueillir les informations du demandeur via une interface conversationnelle.
+2. **Appeler l'API SAS Intelligent Decisioning** avec les données de la demande.
+3. Recevoir la réponse : " Refusé – AA01 : Score de crédit trop faible ; AA03 : Antécédents de retards de paiement ".
+4. Communiquer la décision au demandeur en lui fournissant l'avis de refus requis.
+5. Si la décision est « À examiner » *(Review)*, transmettre le dossier à un analyste de crédit avec l'évaluation complète des risques.
 
-1. Collect the applicant's information through a conversational interface
-2. **Call the SAS Intelligent Decisioning API** with the application data
-3. Receive back: "Decline — AA01: Credit score too low; AA03: History of late payments"
-4. Communicate the decision to the applicant with the required adverse action notice
-5. If the decision is "Review," escalate to a human underwriter with the full risk assessment
+La décision devient un **outil** dans la boîte à outils de l'agent, comme une fonction de recherche de documents ou une recherche de clients. Cela crée un pont entre les modèles analytiques et l'IA conversationnelle dans une industrie fortement réglementée.
 
-The decision becomes a **tool** in the agent's toolkit, just like a document retrieval function or a customer lookup. This bridges the gap between analytical models and conversational AI in a heavily regulated industry.
+### Pour c'est important
 
-### Why This Matters for Financial Services
-
-- **Consistency:** Every application receives the same decision logic — no variance between loan officers or branches
-- **Governance:** The decision is version-controlled and auditable in SAS Intelligent Decisioning, not buried in an LLM's system prompt
-- **Regulatory compliance:** The decision flow enforces adverse action notice generation, hard cutoff rules, and fairness guardrails — the LLM agent cannot override these
-- **Separation of concerns:** Data scientists own the model, credit risk owns the rules, compliance owns the fairness constraints, and the AI agent just calls the endpoint
-- **Real-time execution:** MAS endpoints return in milliseconds, fast enough for real-time application processing
+- **Cohérence :** Chaque interaction d'agent utilise la même logique de décision - aucune différence entre les agents de crédit ou les succursales
+- **Gouvernance :** La décision est versionnée et auditable dans SAS Intelligent Decisioning, au lieu d'être enfouie dans le prompt système d'un LLM
+- **Conformité réglementaire :** Le processus décisionnel impose la génération d’avis de décision défavorable, des règles de coupure strictes et des garde-fous d’équité ; l’agent LLM ne peut pas passer outre ces éléments.
+- **Séparation des responsabilités :** Les data scientists pilotent le modèle, e risque de crédit définit les règles, la conformité définit les contraintes d'équité, et l'agent IA se contente d'appeler le point de terminaison *(endpoint)*.
+- **Exécution en temps réel :** Les endpoints MAS répondent en millisecondes, suffisamment vite pour le traitement des applications en temps réel
 
 ---
 
-## Decisions as Agentic Workflows
+## Les décisions comme workflows agentiques
 
-Beyond being called as tools, SAS Intelligent Decisioning can itself orchestrate **agentic workflows** — multi-step processes that autonomously execute a chain of decisions and actions.
+Au-delà de leur rôle d'outils appelables, SAS Intelligent Decisioning peut lui-même orchestrer des **workflows agentiques** : des processus en plusieurs étapes qui exécutent de façon autonome une chaîne de décisions et d'actions.
 
-### How a Decision Becomes an Agent
+### Comment une décision devient un agent
 
-An agentic decision flow goes beyond simple "input -> rules -> output." It can:
+Un flux de décision agentique va au-delà d'un simple "entrée → règles → sortie". Il peut :
 
-1. **Observe:** Receive a trigger event (e.g., a borrower has missed their second consecutive payment)
-2. **Reason:** Score the borrower's updated default probability, check their current risk tier, review their payment history trend
-3. **Decide:** Select the optimal intervention — modify terms, offer forbearance, escalate to collections, or continue monitoring
-4. **Act:** Trigger downstream actions — send a letter, create a workout case, adjust the loan's risk rating, notify the loan officer
-5. **Monitor:** Track whether the borrower resumes payments and feed that outcome back into future decisions
+1. **Observer :** Recevoir un événement déclencheur (par ex. un demandeur a manqué son deuxième paiement consécutif)
+2. **Raisonner :** Évaluez la probabilité de défaut actualisée du demandeur, vérifiez son niveau de risque actuel et analysez son historique de paiement
+3. **Décider :** Choisissez l'intervention optimale : modifier les conditions, accorder un délai de grâce, faire appel au recouvrement ou poursuivre la surveillance
+4. **Agir :** Déclencher des actions aval : envoyer un courrier, constituer un dossier de restructuration, ajuster la cote de risque du prêt, informer le chargé de prêt
+5. **Surveiller :** Suivre si l'emprunteur reprend ses paiements et intégrer ce résultat dans les décisions futures
 
-### Example: Automated Portfolio Monitoring Agent
+### Exemple : Agent de surveillance automatisée de portefeuille
 
 ```
 ┌─────────────┐     ┌──────────────────┐     ┌──────────────────┐
@@ -333,49 +338,48 @@ An agentic decision flow goes beyond simple "input -> rules -> output." It can:
                     │  Update model.   │
                     └──────────────────┘
 ```
+C'est **agentique** parce que le système, de manière autonome :
+- Détecte la condition de déclenchement (paiement manquant)
+- Prend des décisions sans intervention humaine
+- Exécute des actions dans le monde réel (rappel, changement de taux...)
+- Apprend à partir des résultats (l'intervention a-t-elle marché?)
 
-This is **agentic** because the system autonomously:
-- Detects the trigger condition (missed payment event)
-- Makes decisions without human intervention
-- Executes real-world actions (notices, case creation, rating changes)
-- Learns from outcomes (did the intervention work?)
+### Passage à l'échelle de la décision agentique
 
-### Scaling Agentic Decisioning
+En environnement de production, ce workflow agentique peut traiter **des milliers de prêts par jour** sans intervention manuelle :
 
-In a production environment, this agentic workflow can process **thousands of loans per day** without manual intervention:
+- **Mode batch :** Chaque lundi, scorer tout le portefeuille de prêts, identifier ceux à risque, puis déclencher les actions
+- **Mode événementiel :** Dès qu'un paiement est manqué ou qu'une alerte est déclenchée par un bureau de crédit, activez le processus en temps réel
+- **Chaînage multi-décisions :** Un flux de décisions en déclenche un autre : par exemple, la décision relative au risque de défaut déclenche une décision relative à une "stratégie d’atténuation des pertes", qui à son tour déclenche une décision relative à l’"optimisation des canaux et du calendrier".
+- **Déclarations réglementaires :** Génération automatique des données nécessaires aux déclarations de rapports d’appel, aux calculs CECL et aux rapports sur les pratiques de prêt équitables.
 
-- **Batch mode:** Every week, re-score the entire loan portfolio, identify deteriorating loans, trigger interventions
-- **Event-driven mode:** As soon as a payment is missed or a credit bureau alert fires, trigger the flow in real time
-- **Multi-decision chaining:** One decision flow calls another — e.g., the default risk decision calls a "loss mitigation strategy" decision which calls a "channel and timing optimization" decision
-- **Regulatory reporting:** Automatically generate the data needed for Call Report filings, CECL calculations, and fair lending reports
-
-SAS Intelligent Decisioning provides the orchestration layer that turns individual models and rules into **enterprise-scale autonomous agents** — while maintaining the governance, auditability, and compliance controls that financial services demands.
-
----
-
-## Summary
-
-In this step you have:
-
-1. **Created a loan approval decision flow** that combines your default model with underwriting rules to produce actionable lending decisions
-2. **Implemented adverse action notice generation** to comply with FCRA/ECOA requirements
-3. **Used the Copilot** to get answers about SAS Intelligent Decisioning, MAS, and Container Runtime documentation
-4. **Published the decision** as a callable API endpoint
-5. **Learned how decisions work as tools** for LLM-powered loan officer agents
-6. **Explored agentic workflows** where decisions autonomously monitor the portfolio, detect risk, and trigger interventions
+SAS Intelligent Decisioning fournit la couche d'orchestration qui transforme des modèles et règles individuels en **agents autonomes à l'échelle de l'entreprise** - tout en maintenant la gouvernance, l'auditabilité et les contrôles de conformité qu'exigent les services financiers.
 
 ---
 
-## Congratulations!
+## Résumé
 
-You have completed the full Data and AI Life Cycle for the PremierBank loan default use case:
+Dans cette étape, vous avez :
 
-| Step | What You Did | SAS Technology |
-|------|-------------|---------------|
-| 1. Ask & Access | Understood the problem, generated synthetic data | SAS Data Maker |
-| 2. Prepare | Loaded, profiled, and joined data into an ABT | SAS Viya Workbench |
-| 3. Explore | Visually explored patterns with AI assistance | SAS Visual Analytics + Copilot |
-| 4. Model | Built, compared, and fairness-tested models | SAS Model Studio + Copilot |
-| 5. Deploy & Act | Operationalized with automated lending decisions | SAS Intelligent Decisioning + Copilot |
+1. **Créé un flux de décision d'approbation de prêt** combinant votre modèle de défaut avec les règles de souscription pour générer des décisions de prêt exploitables.
+2. **Mis en œuvre une génération d'avis de refus** pour se conformer aux exigences FCRA/ECOA.
+3. **Utilisé le Copilot** pour obtenir des réponses concernant la documentation de SAS Intelligent Decisioning, MAS et Container Runtime.
+4. **Publié la décision** en tant que point de terminaison API accessible.
+5. **Appris le fonctionnement des décisions en tant qu'outils** pour les agents de crédit utilisant LLM.
+6. **Exploré les flux de travail automatisés** où les décisions surveillent le portefeuille de manière autonome, détectent les risques et déclenchent des interventions.
 
-If you have time remaining, explore another use case or dive deeper into any step. Talk to your bootcamp mentor for follow-up topics or to share feedback.
+---
+
+## Félicitations !
+
+Vous avez terminé l'ensemble du cycle de vie Data & IA pour le cas d'usage service financier :
+
+| Étape           | Ce que vous avez fait                                         | Technologie SAS                       |
+| --------------- | ------------------------------------------------------------- | ------------------------------------- |
+| 1. Ask & Access | Compréhension du problème, génération de données synthétiques | SAS Data Maker                        |
+| 2. Prepare      | Chargement, profilage et jointure des données dans un ABT     | SAS Viya Workbench                    |
+| 3. Explore      | Exploration visuelle des schémas avec assistance IA           | SAS Visual Analytics + Copilot        |
+| 4. Model        | Construction, comparaison et test d'équité des modèles        | SAS Model Studio + Copilot            |
+| 5. Deploy & Act | Opérationnalisation via des décisions automatisées            | SAS Intelligent Decisioning + Copilot |
+
+S'il vous reste du temps, explorez un autre cas d'usage ou approfondissez n'importe quelle étape. Échangez avec votre mentor bootcamp pour des sujets de suivi ou pour partager vos retours.
