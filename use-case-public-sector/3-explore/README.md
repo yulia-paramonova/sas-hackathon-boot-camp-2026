@@ -71,8 +71,8 @@ Créez un **diagramme en barres** ou **pie chart** de la variable `is_urgent`. E
 
 **Objectif:** Vérifier que l'indicateur `inherent_urgency` (dérivé du type de demande pendant le feature engineering) est un bon prédicteur du caractère réellement urgent de la demande.
 
-- *"Afficher la moyenne de `is_urgent` regroupée par `inherent_urgency`"*
-- *"Comparer la distribution de `response_time_hours` pour `inherent_urgency`=1 vs `inherent_urgency`=0"*
+- *"Affiche la moyenne de `is_urgent` regroupée par `inherent_urgency`"*
+- *"Compare la distribution de `response_time_hours` pour `inherent_urgency`=1 vs `inherent_urgency`=0"*
 - *"Quel pourcentage de la demande avec `inherent_urgency`=1 sont marquées`is_urgent`=1?"*
 
 Créez un **bar chart** de is_urgent (en tant que mesure, agrégée en moyenne) regroupé par `inherent_urgency`. La colonne brute `request_type` a été transformée en variables dérivées comme `inherent_urgency` lors de l’Étape 2, donc nous analysons directement ce signal construit.
@@ -83,9 +83,9 @@ Créez un **bar chart** de is_urgent (en tant que mesure, agrégée en moyenne) 
 
 **Objectif:** Déterminer si la charge de travail et les effectifs des départements ont un impact sur les temps de réponse.
 
-- *"Afficher la corrélation entre `dept_avg_staff_count` et `dept_avg_response_time`"*
-- *"Afficher la corrélation entre `dept_avg_budget_util` et `dept_avg_resolution_rate`"*
-- *"Afficher la distribution de `dept_avg_overtime` à travers les demandes"*
+- *"Affiche la corrélation entre `dept_avg_staff_count` et `dept_avg_response_time`"*
+- *"Affiche la corrélation entre `dept_avg_budget_util` et `dept_avg_resolution_rate`"*
+- *"Affiche la distribution de `dept_avg_overtime` à travers les demandes"*
 
 Créez un **scatter plot** de `dept_avg_staff_count` (x) vs. `dept_avg_response_time` (y). Créez un second scatter plot de `dept_avg_overtime` (x) vs. `dept_avg_resolution_rate` (y). La colonne brute `department` a été supprimée dans l’Étape 2 — the `dept_avg_*` aggregates are what carry forward into the model, so we analyze those directly.
 
@@ -96,10 +96,10 @@ Les départements avec beaucoup d’heures supplémentaires et de faibles taux d
 
 **Objectif:** Identifier si certains quartiers reçoivent systématiquement un service plus lent ou de moins bonne qualité.
 
-- *"Afficher la distribution de `district_avg_response_time` à travers les demandes"*
-- *"Afficher la corrélation entre `district_avg_request_count` er `district_avg_response_time`"*
-- *"Afficher la corrélation entre `district_avg_resolution_rate` et `response_time_hours`"*
-- *"Afficher la somme de `district_total_critical` et `district_total_high` à travers l'ensemble des demandes"*
+- *"Affiche la distribution de `district_avg_response_time` à travers les demandes"*
+- *"Affiche la corrélation entre `district_avg_request_count` er `district_avg_response_time`"*
+- *"Affiche la corrélation entre `district_avg_resolution_rate` et `response_time_hours`"*
+- *"Affiche la somme de `district_total_critical` et `district_total_high` à travers l'ensemble des demandes"*
 
 Créez un **histogram** de `district_avg_response_time` pour visualiser la dispersion de la rapidité de service au niveau des quartiers. Créez un **scatter plot** de `district_avg_request_count` (x) vs. `district_avg_response_time` (y) afin de vérifier si les quartiers à fort volume de demandes sont plus lents. Le label brut `location_district`a été supprimée à l’Étape 2 — chaque demande conserve toutefois les métriques agrégées du quartier d’origine, donc l’analyse d’équité entre quartiers se fait via ces agrégats.
 
@@ -109,9 +109,9 @@ Créez un **histogram** de `district_avg_response_time` pour visualiser la dispe
 
 **Objectif:** Explorer si les volumes de demandes et leur niveau d’urgence varient selon la saison.
 
-- *"Afficher le nombre de demandes regroupées par `submit_month`"*
-- *"Afficher la moyenne de `is_urgent` regroupée par `submit_month`"*
-- *"Afficher la moyenne de `response_time_hours` regroupée par `submit_quarter`"*
+- *"Affiche le nombre de demandes regroupées par `submit_month`"*
+- *"Affiche la moyenne de `is_urgent` regroupée par `submit_month`"*
+- *"Affiche la moyenne de `response_time_hours` regroupée par `submit_quarter`"*
 
 Créez un **line chart** avec `submit_month` sur l'axe x et le nombre de demandes sur l'axe y. Créez un second graphique avec `submit_month` sur l’axe x et la moyenne de `is_urgent` comme mesure secondaire.
 
@@ -121,10 +121,10 @@ Créez un **line chart** avec `submit_month` sur l'axe x et le nombre de demande
 
 **Objectif:** Comprendre ce qui influence `citizen_satisfaction` et comment cela se relie à l’urgence.
 
-- *"Afficher la distribution de `citizen_satisfaction`"*
-- *"Afficher la moyenne de `citizen_satisfaction` regroupée par `is_urgent`"*
-- *"Afficher la corrélation entre `response_time_hours` et `citizen_satisfaction`"*
-- *"Afficher la corrélation entre `citizen_previous_requests` et `citizen_satisfaction`"*
+- *"Affiche la distribution de `citizen_satisfaction`"*
+- *"Affiche la moyenne de `citizen_satisfaction` regroupée par `is_urgent`"*
+- *"Affiche la corrélation entre `response_time_hours` et `citizen_satisfaction`"*
+- *"Affiche la corrélation entre `citizen_previous_requests` et `citizen_satisfaction`"*
 
 Créez un **scatter plot** avec un `response_time_hours` sur l’axe x et `citizen_satisfaction` sur l’axe y. Créez un **bar chart** de la moyenne de `citizen_satisfaction` regroupée par `is_urgent`.
 
@@ -134,10 +134,10 @@ Créez un **scatter plot** avec un `response_time_hours` sur l’axe x et `citiz
 
 **Objectif:** Évaluer spécifiquement l’équité du service entre les quartiers et selon les groupes d’âge.
 
-- *"Afficher le scatter plot de `district_avg_response_time` vs `response_time_hours` filtré par `is_urgent`=1"*
-- *"Afficher la corrélation entre `age_65+` et `citizen_satisfaction`"*
-- *"Afficher la corrélation entre `age_18-24` et `citizen_satisfaction`"*
-- *"Afficher la corrélation entre `district_avg_request_count` et `district_avg_resolution_rate`"*
+- *"Affiche le scatter plot de `district_avg_response_time` vs `response_time_hours` filtré par `is_urgent`=1"*
+- *"Affiche la corrélation entre `age_65+` et `citizen_satisfaction`"*
+- *"Affiche la corrélation entre `age_18-24` et `citizen_satisfaction`"*
+- *"Affiche la corrélation entre `district_avg_request_count` et `district_avg_resolution_rate`"*
 
 Créez un **scatter plot** de `district_avg_response_time` vs. par rapport aux valeurs individuelles de `response_time_hours`, filtré sur `is_urgent`=1. Créez un **bar chart** montrant la moyenne de `citizen_satisfaction`pour chaque variable indicatrice (dummy) de groupe d'âge (de `age_18-24` à `age_65+`, là où la valeur est égale à 1).
 
@@ -147,9 +147,9 @@ Créez un **scatter plot** de `district_avg_response_time` vs. par rapport aux v
 
 **Objectif:** Trouver les interactions entre les variables (features) et les prédicteurs les plus forts de `is_urgent`.
 
-- *"Afficher la matrice de corrélation pour `is_urgent`, `inherent_urgency`, `response_time_hours`, `dept_avg_response_time`, `district_avg_response_time`, `citizen_satisfaction`"*
-- *"Afficher l'importance des variables de toutes les features pour la prédiction de `is_urgent`"*
-- *"Créer un arbre de décision avec `is_urgent` comme cible"*
+- *"Affiche la matrice de corrélation pour `is_urgent`, `inherent_urgency`, `response_time_hours`, `dept_avg_response_time`, `district_avg_response_time`, `citizen_satisfaction`"*
+- *"Affiche l'importance des variables de toutes les features pour la prédiction de `is_urgent`"*
+- *"Crée un arbre de décision avec `is_urgent` comme cible"*
 
 Utilisez la fonctionnalité **d'analyse automatisée** du Copilot pour rechercher les relations les plus fortes.
 
@@ -162,7 +162,7 @@ Utilisez la fonctionnalité **d'analyse automatisée** du Copilot pour recherche
 Organisez vos visualisations dans un rapport :
 
 1. **Page d’ensemble:** distribution de `is_urgent`, statistiques descriptives clés
-2. **Page des motifs d'urgence (Urgency Patterns):** `is_urgent` par `inherent_urgency`, motifs temporels basés sur `day_of_week` / `submit_month`
+2. **Page des schémas d'urgence:** `is_urgent` par `inherent_urgency`, schémas temporels basés sur `day_of_week` / `submit_month`
 3. **Page de performance des départements:** relations entre `dept_avg_response_time`, `dept_avg_staff_count`, `dept_avg_overtime`
 4. **Page de l'équité par quartier:** `district_avg_response_time`, `district_avg_resolution_rate`, `district_total_critical` / `district_total_high`
 5. **Page de l'expérience citoyenne:** facteurs déterminants de `citizen_satisfaction`, variables indicatrices de groupes d'âge, `citizen_engagement_score`
