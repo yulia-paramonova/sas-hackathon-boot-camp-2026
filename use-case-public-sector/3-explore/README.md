@@ -134,12 +134,12 @@ Créez un **scatter plot** avec un `response_time_hours` sur l’axe x et `citiz
 
 **Objectif:** Évaluer spécifiquement l’équité du service entre les quartiers et selon les groupes d’âge.
 
-- *"Show the scatter plot of `district_avg_response_time` vs `response_time_hours` filtered where `is_urgent`=1"*
-- *"Show the correlation between `age_65+` and `citizen_satisfaction`"*
-- *"Show the correlation between `age_18-24` and `citizen_satisfaction`"*
-- *"Show the correlation between `district_avg_request_count` and `district_avg_resolution_rate`"*
+- *"Affiche le scatter plot de `district_avg_response_time` vs `response_time_hours` filtré par `is_urgent`=1"*
+- *"Affiche la corrélation entre `age_65+` et `citizen_satisfaction`"*
+- *"Affiche la corrélation entre `age_18-24` et `citizen_satisfaction`"*
+- *"Affiche la corrélation entre `district_avg_request_count` et `district_avg_resolution_rate`"*
 
-Create a **scatter plot** of `district_avg_response_time` vs. the individual `response_time_hours`, filtered to `is_urgent`=1. Create a **bar chart** showing average `citizen_satisfaction` for each age-group dummy (`age_18-24` through `age_65+`, where the value is 1).
+Créez un **scatter plot** de `district_avg_response_time` vs. par rapport aux valeurs individuelles de `response_time_hours`, filtré sur `is_urgent`=1. Créez un **bar chart** montrant la moyenne de `citizen_satisfaction`pour chaque variable indicatrice (dummy) de groupe d'âge (de `age_18-24` à `age_65+`, là où la valeur est égale à 1).
 
 > **What to look for:** If districts with high `district_avg_response_time` also have high individual `response_time_hours` for urgent requests, the slowness is systemic. If certain age-group dummies have markedly lower average satisfaction, that is a demographic equity signal to carry into the fairness assessment in Step 4.
 
@@ -187,8 +187,9 @@ These insights will directly inform the model building approach and fairness ass
 
 Finally feel free to save the report, the default location is My Folder, which is ideal here as to not clutter up the workspace for everybody else. You can also give it a name so that it is easier to remember what this report is about.
 
+
 ---
 
-## Next Steps
+## Étapes suivantes
 
-Proceed to **[Step 4: Model](../4-model/)** to build and compare predictive models in SAS Model Studio.
+Passez à **[Étape 4: Model](../4-model/)** pour construire et comparer des modèles prédictifs dans SAS Model Studio.
