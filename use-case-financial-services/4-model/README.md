@@ -1,46 +1,51 @@
-# Step 4: Model
+# Étape 4: Model
 
-In this step you will use **SAS Model Studio** to build, compare, and evaluate loan default prediction models. SAS Model Studio provides a visual pipeline interface, a built-in **Copilot**, **AutoML** capabilities, and tools for custom model building — all with integrated fairness assessment. At the end you will register your champion model to **SAS Model Manager** with adverse action code documentation.
-
----
-
-## Prerequisites
-
-The analytical base table (`FINANCIAL_SERVICES_ABT`) should be available in the **Public** CAS library. If you went through Step 2 & Step 3 before this one you will have a comprehensive understanding of the data already, if not take a second longer to read through the columns to get an understanding of the data.
+Dans cette étape, vous utiliserez **SAS Model Studio** pour construire, comparer et évaluer des modèles de prédiction de l’urgence des demandes de service. SAS Model Studio offre une interface visuelle de pipeline, un **Copilot** intégré, des capacités d’**AutoML**, ainsi que des outils pour le développement de modèles personnalisés — le tout avec une évaluation intégrée de l’équité. À la fin, vous enregistrerez votre modèle champion dans **SAS Model Manager**.
 
 ---
 
-## Opening SAS Model Studio
+## Prérequis
 
-1. From the SAS Viya home page, open **SAS Model Studio** (under *Build Models* in the main menu)
-2. Click **New Project**
-3. Configure the project:
+La table de base analytique (`FINANCIAL_SERVICES_ABT`) doit être disponible dans la bibliothèque CAS **Public**. Si vous avez déjà réalisé les étapes 2 et 3, vous avez une bonne compréhension des données ; sinon, prenez un peu de temps pour parcourir les colonnes afin de mieux les comprendre.
+
+---
+
+## Ouverture de SAS Model Studio
+
+1. Depuis la page d’accueil SAS Viya, ouvrez **SAS Model Studio** (dans *Build Models* du menu principal)
+2.  Cliquez sur **New Project**
+3. Configurez le projet :
    - **Name:** *PremierBank Loan Default Prediction*
    - **Project Type:** *Data Mining and Machine Learning*
-   - **Data Source:** Select `FINANCIAL_SERVICES_ABT` from the Public caslib
-   - Leave the **Template, Location & Description** as they are by default
-   - **Target Variable:** `defaulted`
-4. Click **Save**
+   - **Data Source:** sélectionnez `FINANCIAL_SERVICES_ABT` depuis le caslib Public
+   - Laissez **Template, Location & Description** par défaut
+   - **Target Variable** (variable cible/à expliquer) : `defaulted`
+4. Cliquez sur **Save**## Opening SAS Model Studio
     ![image-20260529074341035](img/README/image-20260529074341035.png)
-5. Once the SAS Model Studio project has opened on the Data tab, select the variable `defaulted` and set its Role to ´Target´
+5. Une fois le projet ouvert sur l’onglet Data, sélectionnez la variable `is_urgent` et définissez son rôle sur `Target`
     ![image-20260529074433687](img/README/image-20260529074433687.png)
-6. On the same tab look for the variable `inc_Low` and activate the checkbox `Assess this variable for bias`, this will enable us to talk more about the Trustworthy AI features of SAS Model Studio and then click over to the *Pipelines* tab to get started.
+6. Sur le même onglet, trouvez la variable `inc_Low` et activez la case `Assess this variable for bias`. Cela permettra d’illustrer les fonctionnalités de Trustworthy AI dans SAS Model Studio. Passez ensuite à l’onglet *Pipelines* pour commencer. 
     ![image-20260529074547357](img/README/image-20260529074547357.png)
 
-The project is now ready for us to start modelling.
+Le projet est maintenant prêt pour commencer la modélisation.
 
 ---
 
-## Using the SAS Model Studio Copilot
+## Utilisation du Copilot de SAS Model Studio
 
-SAS Model Studio includes a **Copilot** that acts as your AI-powered modeling assistant. Access it from the Copilot icon in the toolbar.
+SAS Model Studio inclut un **Copilot** qui agit comme un assistant de modélisation basé sur l’IA. Accédez-y via l’icône Copilot dans la barre d’outils.  
 
-### What the Copilot Can Do
+*Pour le moment, SAS Viya Copilot fonctionne uniquement en anglais. Nous vous recommandons donc de formuler vos requêtes (prompts) en anglais afin d’obtenir des résultats fiables et de qualité.*
 
-- **Recommend pipeline configurations** — ask it to suggest the best approach for a binary classification problem with imbalanced data
-- **Explain model results** — ask it to interpret feature importance, model comparison metrics, or fairness reports
-- **Generate pipeline nodes** — describe what you want and the Copilot can add nodes to your pipeline
-- **Answer methodology questions** — ask about techniques like "What is gradient boosting?" or "Why is logistic regression preferred for regulatory models?"
+### Ce que le Copilot peut faire
+
+- **Recommander des configurations de pipeline** — demandez-lui de proposer la meilleure approche pour un problème de classification binaire avec un déséquilibre des classe.   
+*Suggest the best approach for a binary classification problem with imbalanced data*
+- **Expliquer les résultats des modèles** — demandez-lui d’interpréter l’importance des variables, les métriques de comparaison des modèles  
+*Interpret feature importance, model comparison metrics*
+- **Générer des nœuds de pipeline** — décrivez votre besoin et le Copilot peut ajouter des nœuds
+- **Répondre à des questions méthodologiques** — par exemple « Qu’est-ce que le gradient boosting ? » ou « Pourquoi la régression logistique est-elle préférée pour les modèles réglementaires ? »  
+*"What is gradient boosting?" or "Why is logistic regression preferred for regulatory models?"*
 
 ### Example Copilot Prompts
 
@@ -53,208 +58,199 @@ SAS Model Studio includes a **Copilot** that acts as your AI-powered modeling as
 
 ---
 
-## Approach 1: AutoML (Recommended Starting Point)
+## Approche 1 : AutoML (Point de départ recommandé)
 
-AutoML automatically trains and compares multiple algorithms, handles preprocessing, and selects the best model. This is the fastest way to establish a strong baseline.
+AutoML entraîne et compare automatiquement plusieurs algorithmes, gère le prétraitement et sélectionne le meilleur modèle. C’est la façon la plus rapide d’obtenir une baseline solide.
 
-### Setting Up AutoML
+### Configuration d’AutoML
 
-1. In your project pipeline, click **New Pipeline** and select **Automatically generate the pipeline**
-2. Configure AutoML settings:
-   - **Maximum Time:** Set a time budget (e.g., 5 minutes for the bootcamp)
-3. Click **Save**
-4. Now the Pipeline is going to be built for us.
+1. Dans votre pipeline, cliquez sur **New Pipeline** puis sélectionnez **Automatically generate the pipeline**
+2. Configurez :  
+   - **Maximum Time :** définissez la durée (ex. 5 minutes pour le bootcamp) 
+3. Cliquez sur **Save**
+4. Le pipeline est ensuite généré automatiquement
 
-### What AutoML Does
+### Ce que fait AutoML
 
-AutoML will automatically:
+AutoML va automatiquement :
 
-- Test multiple algorithms (logistic regression, decision trees, random forests, gradient boosting, neural networks, support vector machines)
-- Handle feature preprocessing (missing value imputation, encoding)
-- Tune hyperparameters
-- Compare models on the validation set
-- Rank models by the chosen optimization metric
+- Tester plusieurs algorithmes (régression logistique, arbres, forêts aléatoires, gradient boosting, réseaux neuronaux, SVM)  
+- Gérer le prétraitement (valeurs manquantes, encodage)  
+- Optimiser les hyperparamètres  
+- Comparer les modèles sur l’échantillon de validation  
+- Classer les modèles selon la métrique choisie
 
-### Reviewing AutoML Results
+### Analyse des résultats AutoML
 
-After the run completes:
+Après exécution :  
 
-1. Open the **Model Comparison** node to see all models ranked by AUC
-2. Click on individual models to see:
-   - **Fit Statistics:** AUC, misclassification rate, Gini coefficient, KS statistic
-   - **ROC Chart:** Visual comparison of model discrimination
-   - **Variable Importance:** Which features matter most
-   - **Score Rankings:** How well the model separates high-risk from low-risk loans
-3. The top model is automatically selected as the **champion**
+1. Ouvrez le nœud **Model Comparison** pour voir le classement des modèles 
+2. Cliquez sur un modèle pour voir :  
+   - **Fit Statistics :** AUC, taux d’erreur, Gini, KS  
+   - **ROC Chart :** comparaison visuelle de la capacité de discrimination du modèle  
+   - **Variable Importance :** quelles sont les caractéristiques les plus importantes  
+   - **Score Rankings :** dans quelle mesure le modèle distingue les prêts à haut risque des prêts et risque faible
+3. Le meilleur modèle est automatiquement défini comme **champion**  
 
-> **What to expect:** For this dataset, gradient boosting or random forest models typically achieve an AUC of 0.82-0.90. Logistic regression is usually close behind at 0.78-0.85.
+> **À quoi s'attendre :** pour cet ensemble de données, les modèles de gradient boosting ou de forêt aléatoire atteignent généralement un AUC compris entre 0,82 et 0,90. La régression logistique est généralement peu derrière avec un AUC entre 0,78 et 0,85.
 
 ---
 
-## Approach 2: Custom Pipeline Building
+## Approche 2 : Création d'un pipeline personnalisé
 
-If you want more control — or need a specific model type for regulatory reasons — build a custom pipeline step by step.
+Si vous souhaitez disposer d'un plus grand contrôle — ou si vous souhaitez tester des types de modèles spécifiques —, créez un pipeline personnalisé étape par étape.
 
-### Why Logistic Regression for Regulatory Models
+### Pourquoi la régression logistique est privilégiée par les régulateurs
 
-In financial services, **logistic regression** holds a special status:
+Dans les services financiers, la **régression logistique** occupe un statut particulier :
+- **Interprétabilité:** Chaque coefficient correspond directement à la contribution d'une caractéristique à la probabilité de défaut, ce qui facilite son explication aux régulateurs et aux demandeurs.
+- **Génération des adverse action codes:** Les coefficients du modèle peuvent être classés par ordre de rang pour produire les principales raisons d'une décision de crédit (exigé par le FCRA/ECOA)
+- **Familiarité réglementaire:** Les examinateurs ont de l'expérience avec la régression logistique et ses méthodes de validation
+- **Conformité SR 11-7:** La gestion du risque lié aux modèles est simple lorsque le modèle est entièrement transparent
 
-- **Interpretability:** Every coefficient maps directly to a feature's contribution to default probability, making it easy to explain to regulators and applicants
-- **Adverse action codes:** The model's coefficients can be rank-ordered to produce the top reasons for a credit decision (required by FCRA/ECOA)
-- **Regulatory familiarity:** Examiners are experienced with logistic regression and its validation methods
-- **SR 11-7 compliance:** Model risk management is straightforward when the model is fully transparent
+Cela ne veut pas dire que les modèles d’ensemble ne peuvent pas être utilisés, mais la régression logistique doit servir de référence.
 
-This does not mean you cannot use ensemble methods — but you should benchmark against logistic regression and be prepared to justify the incremental lift.
+### Nœuds de pipeline recommandés
 
-### Recommended Pipeline Nodes
+Ajoutez ces nœuds dans l'ordre en cliquant sur **Add Node** dans l'espace de travail du pipeline :
 
-Add these nodes in sequence by clicking **Add Node** in the pipeline canvas:
+1. **Data** —  Votre table d'entrée (déjà connectée)
+3. **Imputation** — Traite les valeurs manquantes restantes (moyenne pour les valeurs numériques, mode pour les valeurs catégorielles)
+5. **Model Nodes** —  Ajoutez un ou plusieurs des nœuds suivants :
+   - **Logistic Regression** — Modèle de référence interprétable
+   - **Forest** — Ensemble de forêts aléatoires
+   - **Gradient Boosting** — Souvent le plus performant
+6. **Model Comparison** — Compare automatiquement tous les nœuds de modèle et sélectionne le meilleur
 
-1. **Data** — Your input table (already connected)
-3. **Imputation** — Handle any remaining missing values (mean for numeric, mode for categorical)
-5. **Model Nodes** — Add one or more of the following:
-   - **Logistic Regression** — Interpretable baseline (regulatory gold standard)
-   - **Forest** — Random forest ensemble
-   - **Gradient Boosting** — Often the best performer for AUC
-6. **Model Comparison** — Automatically compares all model nodes and selects the champion
-
-### Configuring Individual Models
+### Configuration des modèles individuels
 
 **Logistic Regression:**
-- Selection-process stopping criterion: Significance level
-- Entry significance level: 0.05
-- This gives you interpretable coefficients for each feature and directly supports adverse action reason code generation
+- Critère d'arrêt du processus de sélection : niveau de significativité    
+*Selection-process stopping criterion: Significance level*
+- Niveau de significativité d'entrée : 0,05  
+*Entry significance level: 0.05*
+- Cela vous donne des coefficients interprétables pour chaque caractéristique
 
 **Forest (Random Forest):**
-- Number of trees: 200
-- Maximum depth: 10
-- Go to the Post-training Properties and activate *HyperSHAP* under the Local Interpretability section. This is used to explain the model predictions
+- Nombre d'arbres (*Number of trees*) : 200
+- Profondeur maximale (*Maximum depth*) : 10
+- Accédez aux propriétés post-entraînement et activez *HyperSHAP* dans la section Interprétabilité locale. Cela sert à expliquer les prédictions du modèle  
 
 **Gradient Boosting:**
+- Nombre d'arbres (*Number of trees*) : 150
+- Taux d'apprentissage (*Learning rate*) : 0.1
+- Profondeur maximale (*Maximum depth*) : 5
+- Taux de sous-échantillonnage (*Subsample rate*) : 0.8
+### Exécution du pipeline personnalisé
 
-- Number of trees: 150
-- Learning rate: 0.1
-- Maximum depth: 5
-- Subsample rate: 0.8
-
-### Running the Custom Pipeline
-
-1. Verify all nodes are connected in the pipeline canvas
-2. Click **Run Pipeline** (or right-click the Model Comparison node and select *Run*)
-3. Wait for all models to finish training
+1. Vérifiez que tous les nœuds sont connectés dans le canevas du pipeline
+2. Cliquez sur **Run Pipeline** (ou cliquez avec le bouton droit sur le nœud Comparaison des modèles et sélectionnez *Run*)
+3. Attendez que tous les modèles aient terminé leur apprentissage
 
 ---
 
-## Comparing Models
+## Comparaison des modèles
 
-Once both (or either) approach has completed, open the **Model Comparison** results:
+Une fois que les deux approches (ou l'une d'entre elles) ont été terminées, ouvrez les résultats du **Model Comparison** :
 
-| Metric | What It Tells You | Target |
-|--------|-------------------|--------|
-| **AUC-ROC** | Overall ability to distinguish defaulted from current loans | >= 0.82 |
-| **Misclassification Rate** | Percentage of incorrect predictions | <= 0.15 |
-| **KS Statistic** | Maximum separation between cumulative distributions | >= 0.45 |
-| **Gini Coefficient** | 2 x AUC - 1; measures discrimination power | >= 0.64 |
-| **F1 Score** | Harmonic mean of precision and recall | >= 0.50 |
+| Indicateur | Ce qu'il indique | Cible |
+|------------|------------------|--------|
+| **AUC-ROC** | Capacité globale à distinguer les demandes urgentes des non urgentes | >= 0.82 |
+| **Misclassification Rate** - Taux de mauvaise de classification | Pourcentage de prédictions incorrectes | <= 0.15 |
+| **F1 Score** | Moyenne harmonique de la précision et du rappel | >= 0.80 |
+| **KS Statistic** | Séparation maximale entre les distributions cumulées | >= 0.45 |
+| **Gini Coefficient** | 2 x AUC - 1; mesira le pouvoir de discrimination | >= 0.64 |
 
-Review the **ROC Overlay Chart** to visually compare how well each model separates the two classes. The model closest to the top-left corner performs best.
+Consultez le **ROC Overlay Chart** (graphique de superposition ROC) pour comparer visuellement la capacité de chaque modèle à séparer les deux classes. Le modèle le plus proche du coin supérieur gauche est celui qui offre les meilleures performances.  
 
-Review the **Variable Importance** chart for your champion model — the top predictors should align with what you found in Step 3 (likely `credit_score`, `late_payment_rate`, `debt_to_income`, `severe_delinquency_flag`, `loan_to_value`).
-
----
-
-## Fairness Assessment
-
-Trustworthy AI requires that models do not discriminate unfairly against protected groups. In lending, this is not just an ethical best practice — it is a **legal requirement** under ECOA and the Fair Housing Act. In this use case we will assess fairness with respect to **income band** as a proxy variable.
-
-### Why Income Band?
-
-While income is not a legally protected class per se, it can serve as a **proxy for protected characteristics** such as race and national origin. Research has consistently shown that income is correlated with race and ethnicity in the United States. If the model systematically treats low-income borrowers differently in ways that are not justified by their actual credit risk, this could constitute **disparate impact** — a form of discrimination that is illegal even when unintentional.
-
-Fair lending regulations require lenders to:
-
-1. **Test for disparate impact:** Do approval rates or pricing differ across groups defined by protected characteristics or their proxies?
-2. **Justify with business necessity:** If disparate impact exists, is it driven by legitimate credit risk factors?
-3. **Search for less discriminatory alternatives:** Even if the impact is justified, is there a model or policy that achieves similar risk prediction with less disparate impact?
-
-### Running the Fairness Assessment
-
-1. As we set the `inc_Low` variable to be assess for fairness we get this assessments with every model
-4. Review the fairness metrics:
-
-| Metric | What It Measures | Acceptable Range |
-|--------|-----------------|------------------|
-| **Demographic Parity** | Are default predictions distributed equally across income bands? | Ratio > 0.80 |
-| **Equal Opportunity** | Is the true positive rate (catching actual defaults) similar across income bands? | Difference < 0.10 |
-| **Predictive Parity** | Is the precision similar across income bands? | Difference < 0.10 |
-| **Calibration** | Does a 20% predicted default probability mean 20% actual default for both groups? | Slope close to 1.0 |
-
-### Interpreting Results
-
-- If **Demographic Parity** is below 0.80, the model disproportionately flags one income group as high-risk
-- If **Equal Opportunity** difference exceeds 0.10, the model catches defaults in one income group better than the other
-- Review the **Score Distribution** by group — both groups should have similarly shaped curves
-- If you find evidence of disparate impact, consider:
-  - Removing proxy variables
-  - Reweighting the training data
-  - Using a constrained optimization approach
-  - Switching to a model that achieves similar AUC with less disparity
-
-### The Value of Fairness Assessment in Lending
-
-Fairness assessment provides both compliance and business value:
-
-1. **Regulatory compliance:** Fair lending exams specifically look for disparate impact — documented fairness assessment is your defense
-2. **Adverse action accuracy:** Fair models produce more accurate adverse action reason codes, reducing applicant confusion and complaint volume
-3. **Legal risk reduction:** Proactively identifying and mitigating bias prevents costly enforcement actions and class-action lawsuits
-4. **Community trust:** Demonstrable fairness strengthens the bank's reputation in the communities it serves
-5. **Better decisions:** A model that performs equitably across segments produces more accurate risk assessments for everyone
-
-> **Tip:** Ask the Copilot *"Is my model fair across income bands?"* to get a plain-language interpretation of the fairness metrics.
+Consultez le graphique **Variable Importance** (Importance des variables) de votre modèle gagnant : les principaux prédicteurs devraient correspondre à ce que vous avez identifié à l'étape 3 (probablement `credit_score`, `late_payment_rate`, `debt_to_income`, `severe_delinquency_flag`, `loan_to_value`).
 
 ---
 
-## Registering to SAS Model Manager
+##  Évaluation de l'équité
 
-Once you have selected your champion model and reviewed its fairness, register it to **SAS Model Manager** for governance, version control, and deployment.
+Une IA digne de confiance exige que les modèles ne discriminent pas injustement certains groupes. Dans le domaine du crédit, il ne s’agit pas seulement d’une bonne pratique éthique — c’est une **obligation légale** au titre de l’ECOA et du Fair Housing Act. Dans ce cas d’usage, nous allons évaluer l’équité par rapport à la **tranche de revenu**, utilisée comme variable proxy. 
 
-### Steps to Register
+### Pourquoi la tranche de revenu ?
 
-1. In the Pipeline Comparison tab, identify your overall **champion model** (the one with the best KS (Youden))
-2. Right-click the champion model and select **Register Model** (or use the menu: *Actions* > *Register Model*)
+Bien que le revenu ne soit pas une classe légalement protégée en soi, il peut servir de **proxy pour des caractéristiques protégées** telles que la race et l’origine nationale. Les recherches montrent de manière constante que le revenu est corrélé à la race et à l’ethnicité aux États‑Unis. Si le modèle traite systématiquement les emprunteurs à faible revenu différemment d’une manière qui n’est pas justifiée par leur risque de crédit réel, cela pourrait constituer un **impact disparate** — une forme de discrimination illégale même lorsqu’elle est involontaire.
+
+Les réglementations sur le crédit équitable exigent que les prêteurs :
+
+1. **Testent l’impact disparate:** Les taux d’approbation ou les prix diffèrent‑ils entre les groupes définis par des caractéristiques protégées ou leurs proxys ?
+2. **Justifient par une nécessité commerciale:** Si un impact disparate existe, est‑il dû à des facteurs légitimes de risque de crédit ?
+3. **Cherchent des alternatives moins discriminatoires:** Même si l’impact est justifié, existe‑t‑il un modèle ou une politique permettant une prédiction du risque similaire avec moins de disparités ?
+
+### Exécuter l’évaluation d’équité
+1. En définissant la variable `inc_Low` comme variable à évaluer pour l’équité, nous obtenons cette évaluation pour chaque modèle.
+2. Examiner les indicateurs d’équité (onglet `Fairness and Bias` dans les résultats de chaque modèle)::
+
+| Indicateur | Ce qu'il mesure | Valeurs acceptables |
+|--------|---------------|------------------|
+| **Demographic Parity (Parité démographique)** | Les prédictions d'urgence sont-elles réparties de manière égale entre les tranches de revenus ? | Ratio > 0.80 |
+| **Equal Opportunity (Égalité des chances)** | Le taux de vrais positifs(détection des défauts réels) est-il similaire pour toutes les tranches de revenu ? | Différence < 0.10 |
+| **Predictive Parity (Parité prédictive)** | La précision est-elle similaire pour toutes les tranches de revenu ? | Différence < 0.10 |
+| **Calibration (Calibrage)** | Une probabilité prédite de 20 % signifie-t-elle une urgence réelle de 70 % pour les deux groupes ? | Pente proche de 1.0 |
+
+### Interpréter les résultats
+- Si la **parité démographique** *(Demographic Parity)* est inférieure à 0,80, le modèle signale de manière disproportionnée un groupe de revenu comme étant à haut risque.
+- Si la **différence d’égalité des chances** *(Equal Opportunity difference)* dépasse 0,10, le modèle détecte mieux les défauts dans un groupe de revenu que dans l’autre.
+- Examiner la **distribution des scores** *(Score Distribution)* par groupe — les deux groupes devraient présenter des courbes de forme similaire.
+- Si vous trouvez des preuves d’impact disparate, envisagez:
+   - de supprimer les variables proxy
+   - de ré‑équilibrer les données d’entraînement
+   - d’utiliser une approche d’optimisation contrainte
+   - de passer à un modèle offrant une AUC similaire avec moins de disparités
+
+### La valeur de l’évaluation d’équité dans le crédit
+L’évaluation d’équité apporte à la fois conformité et valeur commerciale :
+
+1. **Conformité réglementaire:** Les audits de crédit équitable recherchent spécifiquement l’impact disparate — une évaluation documentée est votre meilleure défense.
+2. **Exactitude des motifs d’action défavorable:** Des modèles équitables produisent des motifs plus précis, réduisant la confusion et les réclamations des demandeurs.
+3. **Réduction du risque juridique:** Identifier et atténuer proactivement les biais évite des actions coercitives coûteuses et des recours collectifs.
+4. **Confiance communautaire:** Une équité démontrable renforce la réputation de la banque dans les communautés qu’elle sert.
+5. **Meilleures décisions:** Un modèle performant de manière équitable entre segments produit des évaluations de risque plus fiables pour tous.
+
+> **Astuce:** Demandez à Copilot *" Mon modèle est‑il équitable entre les tranches de revenu ? "* pour obtenir une interprétation en langage clair des métriques d’équité.
+
+---
+
+## Enregistrement dans SAS Model Manager
+
+Une fois votre modèle champion sélectionné et son équité vérifiée, enregistrez‑le dans **SAS Model Manager** pour la gouvernance, le contrôle de version et le déploiement.
+
+### Étapes d’enregistrement
+
+1. Dans l’onglet Pipeline Comparison, identifiez votre *modèle champion* (celui avec le meilleur KS (Youden))
+2. Faites un clic droit sur le modèle champion et sélectionnez **Register Model** (ou via le menu : *Actions* > *Register Model*)
     ![image-20260529075650887](img/README/image-20260529075650887.png)
-3. Confirm the Location which is /Model Repositories/DM Repository and click OK
-4. Wait for the registration to finish in this pop up, then you can close and right click the model again and select **Manage Models**
-5. Now we will be navigated into SAS Model Manager where we can review the Model Card of this model
-6. Explore the Model Card that is populated automatically as you develop and manage the model on SAS Viya. The Overview tab offers a high-level summary of the model, including an overview of the model’s training accuracy, training fairness, generalizability, and influential variables.
+3. Confirmez l’emplacement /Model Repositories/DM Repository puis cliquez sur OK
+4. Attendez la fin de l’enregistrement dans la fenêtre contextuelle, puis fermez‑la. Faites ensuite un clic droit sur le modèle et sélectionnez **Manage Models**
+5. Vous êtes maintenant redirigé vers SAS Model Manager où vous pouvez consulter la *Model Card* du modèle
+6.Explorez la Model Card générée automatiquement au fur et à mesure du développement et de la gestion du modèle dans SAS Viya. L’onglet Overview fournit un résumé de haut niveau : précision d’entraînement, équité d’entraînement, généralisabilité et variables influentes.
     ![image-20260529075909381](img/README/image-20260529075909381.png)
 
-### What Registration Provides
-
-Once registered in SAS Model Manager, your model benefits from:
-
-- **Version control:** Track changes across model iterations
-- **Performance monitoring:** Set up automated performance tracking over time
-- **Governance:** Maintain an audit trail of who built the model, what data was used, and what fairness checks were performed
-- **Deployment readiness:** The model can be published to CAS, MAS (Micro Analytic Service), or a container for scoring
-- **Model card:** Auto-generated documentation capturing inputs, outputs, performance, and lineage — critical for SR 11-7 compliance
-
-> **Tip:** Ask the Copilot *"Register this model to Model Manager"* and it will walk you through the process.
+### Ce que l’enregistrement apporte
+Une fois enregistré dans SAS Model Manager, votre modèle bénéficie de :
+- **Contrôle de version:** Suivi des modifications entre itérations
+- **Surveillance des performances:** Mise en place d’un suivi automatisé dans le temps.
+- **Gouvernance:** Traçabilité complète : auteur, données utilisées, contrôles d’équité effectués.
+- **Préparation au déploiement:** Publication possible vers CAS, MAS (Micro Analytic Service) ou un conteneur pour le scoring.
+- **Model Card:** Documentation auto‑générée incluant entrées, sorties, performances et lignage — essentielle pour la conformité SR 11‑7
+> **Astuce:** Demandez à Copilot « Enregistre ce modèle dans Model Manager » pour être guidé pas à pas.
 
 ---
 
-## Summary
-
-At this point you have:
-
-1. Built models using AutoML and/or custom pipelines
-2. Compared models on AUC, Gini, KS, and other metrics
-3. Assessed fairness across income bands for fair lending compliance
-4. Registered your champion model to SAS Model Manager
-5. Viewed the Model Card in SAS Model Manager
+## Résumé
+À ce stade, vous avez :
+1. Construit des modèles via AutoML et/ou des pipelines personnalisés
+2. Comparé les modèles selon l’AUC, le Gini, le KS et d’autres métriques
+3. Évalué l’équité entre tranches de revenu pour la conformité au crédit équitable
+4. Enregistré votre modèle champion dans SAS Model Manager
+5. Consulté la Model Card dans SAS Model Manager
 
 ---
 
-## Next Steps
+## Prochaines étapes 
 
-Proceed to **[Step 5: Deploy & Act](../5-deploy-and-act/)** to create a loan decision flow in SAS Intelligent Decisioning that operationalizes your model.
+Passez à l'**[Étape 5: Deploy & Act](../5-deploy-and-act/)** pour créer un flux de décision de prêt dans SAS Intelligent Decisioning et opérationnaliser votre modèle.
