@@ -74,7 +74,7 @@ Créez un **diagramme en barres** ou **diagramme circulaire** de la variable `is
 - *"Compare la distribution de `response_time_hours` pour `inherent_urgency`=1 vs `inherent_urgency`=0"*
 - *"Quel pourcentage de la demande avec `inherent_urgency`=1 sont marquées`is_urgent`=1?"*
 
-Créez un **diagramme en barres** de is_urgent (en tant que mesure, agrégée en moyenne) regroupé par `inherent_urgency`. La colonne brute `request_type` a été transformée en variables dérivées comme `inherent_urgency` lors de l’Étape 2, donc nous analysons directement ce signal construit.
+Créez un **diagramme en barres** de `is_urgent` (en tant que mesure, agrégée en moyenne) regroupé par `inherent_urgency`. La colonne brute `request_type` a été transformée en variables dérivées comme `inherent_urgency` lors de l’Étape 2, donc nous analysons directement ce signal construit.
 
 > **À observer:** Les demandes signalées comme intrinsèquement urgentes (dangers pour la sécurité, ruptures de conduites d’eau) devraient présenter une moyenne de `is_urgent`  nettement plus élevée que les autres. Si l’écart est faible, cet indicateur n’apporte pas une contribution suffisante en tant que prédicteur.
 
