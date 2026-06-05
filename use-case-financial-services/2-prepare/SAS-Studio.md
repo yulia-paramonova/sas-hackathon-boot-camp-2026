@@ -1,14 +1,14 @@
-# Step 2: Prepare
+# Étape 2: Prepare
 
-In this step you will work in **SAS Studio** to load the four PremierBank datasets, profile them, and join them into a single **Analytical Base Table (ABT)** that is ready for exploration in SAS Visual Analytics and modeling in SAS Model Studio.
+Dans cette étape, vous allez travailler dans **SAS Studio** pour charger les quatre jeux de données PremierBank, les profiler et les joindre dans une **Analytical Base Table (ABT)** prête pour l’exploration dans SAS Visual Analytics et la modélisation dans SAS Model Studio.
 
-SAS Studio gives you the freedom to code in the language of your choice or build a visual flow. We provide equivalent code in **SAS**, **Python**, and **R** — pick the one you are most comfortable with or try all three.
+SAS Viya Workbench vous offre la liberté de coder dans le langage de votre choix. Nous fournissons un code équivalent en **SAS**, **Python** et **R** — choisissez celui avec lequel vous êtes le plus à l’aise ou essayez les trois.
 
 ---
 
-## Accessing the Data
+## Accès aux données
 
-The four CSV files are available in the same folder structure from Step 1:
+Les quatre fichiers CSV sont disponibles dans la même structure de dossiers que dans l’Étape 1 :
 
 ```
 SAS-Hackathon-Bootcamp-2026/use-case-financial-services/data
@@ -20,11 +20,10 @@ SAS-Hackathon-Bootcamp-2026/use-case-financial-services/data
 
 ---
 
-## What You Will Do
+## Ce que vous allez faire
+### 1. Charger les données et les cas d’usage
 
-### 1. Load the Data & Use Cases
-
-Now as the first step you will clone the GitHub repository to your SAS Studio environment by first opening up a SAS program and running the below code which will clone the repository to the file system:
+La première étape consiste à cloner le dépôt GitHub dans votre environnement SAS Studio en ouvrant d’abord un programme SAS et en exécutant le code ci‑dessous, qui clonera le dépôt dans le système de fichiers:
 
 ```SAS
 data _null_;
@@ -32,61 +31,56 @@ data _null_;
 run;
 ```
 
-Once you have run this code snippet navigate to the SAS Server pane and the expand the *SAS Server > Home > data > sas-hackathon-bootcamp-2026* from here the familiar structure of this repository are available.
+Une fois cet extrait de code exécuté, accédez au panneau SAS Server, puis développez *SAS Server > Home > data > sas-hackathon-bootcamp-2026*. À partir de là, la structure familière de ce dépôt est disponible.
 
 ![image-20260528135335744](img/SAS-Studio/image-20260528135335744.png)
 
-### 2. Create a Data Card
+### 2. Créer une Data Card
+Une **data card** est un document synthétique décrivant chaque jeu de données — son objectif, sa taille, les noms de colonnes, les types de données et toute remarque de qualité. Les data cards sont une bonne pratique en matière d’IA responsable, car elles apportent de la transparence sur les données utilisées dans les modèles. Pour chaque table, vous produirez :
+- Nombre de lignes et de colonnes
+- Noms des colonnes et types de données
+- Nombre de valeurs manquantes par colonne
+- Exemples de lignes
 
-A **data card** is a concise summary document that describes each dataset — its purpose, size, column names, data types, and any quality notes. Data cards are a best practice in responsible AI because they provide transparency about the data flowing into models. For each table you will produce:
+### 3. Obtenir des statistiques descriptives de base
+Pour les colonnes numériques, calculez les statistiques descriptives (moyenne, médiane, écart-type, min, max). Pour les colonnes catégorielles, calculez les fréquences. Cela vous donne une première vue des distributions et des éventuels problèmes de qualité avant de commencer l’ingénierie des variables.
 
-- Number of rows and columns
-- Column names with data types
-- Count of missing values per column
-- Sample rows
+### 4. Créer des variables et construire l’Analytical Base Table
+Les quatre jeux de données capturent chacun une dimension différente du risque de prêt. Pour construire un modèle prédictif, nous devons les agréger dans une table unique au niveau du prêt, où chaque ligne représente un prêt et chaque colonne une variable. Les transformations clés sont :
 
-### 3. Get Basic Summary Statistics
+- **Variables de comportement de paiement** : taux de retard, indicateur de retard sévère (60+ jours), moyenne des jours de retard, ratio de paiement insuffisant
+- **Variables de crédit** : bandes de score FICO, catégories d’utilisation du crédit, indicateurs de faillite et de délinquance, nombre d’enquêtes
+- **Variables d’emploi** : bandes de revenu, ratio service de la dette, statut de vérification emploi/revenu, bandes d’années d’emploi
+- **Variables de prêt** : ratio prêt/valeur, ratio dette/revenu, montant du prêt, durée, taux d’intérêt, objectif, type de propriété
 
-For numeric columns, compute descriptive statistics (mean, median, standard deviation, min, max). For categorical columns, compute frequency counts. This gives you a first look at distributions and potential data quality issues before you begin feature engineering.
+L’ABT finale sera enregistrée en fichier CSV, puis pourra être promue dans CAS pour une utilisation dans SAS Visual Analytics et SAS Model Studio.
 
-### 4. Engineer Features and Build the Analytical Base Table
-
-The four datasets each capture a different dimension of loan risk. To build a predictive model we need to aggregate these into a single loan-level table where each row is one loan and each column is a feature. The key transformations are:
-
-- **Payment behavior features:** late payment rate, severe delinquency flag (60+ days late), average days late, payment shortfall ratio
-- **Credit features:** FICO score bands, credit utilization categories, bankruptcy and delinquency flags, inquiries
-- **Employment features:** income bands, debt service ratio, employment and income verification status, years employed bands
-- **Loan features:** loan-to-value ratio, debt-to-income ratio, loan amount, term, interest rate, purpose, property type
-
-The final ABT will be saved as a CSV file that can then be promoted into CAS for use in SAS Visual Analytics and SAS Model Studio.
 
 ---
 
-## Choose Your Language
+## Choisissez votre langage
+Choisissez **un** langage et exécutez son script. Vous n’avez pas besoin d’exécuter les trois — ils produisent tous le même résultat. Si vous hésitez, prenez celui que vous maîtrisez le mieux.
 
-Pick **one** language and run its script. You do not need to run all three — they each produce the same output. If you are unsure which to choose, pick the one you are most comfortable with.
-
-| Language   | File                                                         |
+| Language | Fichier |
+|----------|------|
 | ---------- | ------------------------------------------------------------ |
 | **SAS**    | [`data_preparation_studio.sas`](data_preparation_studio.sas) |
 | **Python** | [`data_preparation_studio.py`](data_preparation_studio.py)   |
 | **R**      | [`data_preparation_studio.R`](data_preparation_studio.R)     |
 
-All three scripts produce the same output: a file called **`financial_services_abt.csv`** in the `data/` folder. After the script finishes, **refresh the Explorer pane** to see the new file.
+Les trois scripts produisent le même fichier : **`financial_services_abt.csv`** dans le dossier `data/`. Après exécution, **rafraîchissez le panneau Explorer** pour voir le nouveau fichier.
 
 ---
 
-## Output
+## Résultat
+Après avoir exécuté l’un des scripts, vous obtiendrez :
 
-After running any of the scripts you will have:
-
-| File                              | Description                                                  |
-| --------------------------------- | ------------------------------------------------------------ |
-| `data/financial_services_abt.csv` | The joined, feature-engineered, loan-level dataset ready for modeling |
-| Console output                    | Data card information, summary statistics, and default distribution for review |
+| Fichier | Description |
+|------|-------------|
+| `data/financial_services_abt.csv` | Le jeu de données joint, enrichi et prêt pour la modélisation |
+| Sortie console | Informations de data card, statistiques descriptives et distribution des défauts |
 
 ---
 
-## Next Steps
-
-Proceed to **[Step 3: Explore](../3-explore/)** to visually explore the data in SAS Visual Analytics using its built-in Copilot.
+## Prochaines étapes
+Passez à  **[Étape 3: Explore](../3-explore/)** pour explorer visuellement les données dans SAS Visual Analytics grâce à son Copilot intégré.
