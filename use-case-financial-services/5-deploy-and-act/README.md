@@ -70,14 +70,14 @@ Si vous avez des questions sur SAS Intelligent Decisioning, activez le Copilot S
         2. Naviguez vers *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Financial Services* sélectionnez *PremierBank Loan Approval Decision* et cliquez sur OK
         3. Cliquez sur *Add all* au milieu du dialogue pour impoter toutes les varibales dans votre décision puis appuyez sur le boutton *Add*
 
-Une fois les variables ajoutées, pensez à cliquer sur l'icon *enregistrer* en haut à droite. Il est recommandé que vous enregistriez votre fichier dès que vous changez quelque chose en lien avec des variables.
+Une fois les variables ajoutées, pensez à cliquer sur l'icône *enregistrer* en haut à droite. Il est recommandé que vous enregistriez votre fichier dès que vous changez quelque chose en lien avec des variables.
 
-Vous pouvez également activer le Copilot SAS Viya à travers l'icon en haut à droite pour poser des questions sur SAS Intelligent Decisioning pour approfondir votre compréhension de l'application.
+Vous pouvez également activer le Copilot SAS Viya à travers l'icône en haut à droite pour poser des questions sur SAS Intelligent Decisioning pour approfondir votre compréhension de l'application.
 
 ### 2. Ajoutez le nœud Modèle
 
 1. Passez à l’onglet *Decision Flow*.
-2. Dans le canvas de flux de décision, vous pouvez soit faire un clic droit sur le nœud *Star*t et dans le menu contextuel sélectionner *Add below > Model*, soit sur le côté droit cliquer sur l’icône qui ressemble un peu à une carte postale et depuis cette barre latérale glisser-déposer un nœud modèle sur le nœud *Start*.
+2. Dans le canvas de flux de décision, vous pouvez soit faire un clic droit sur le nœud *Start* et dans le menu contextuel sélectionner *Add below > Model*, soit sur le côté droit cliquer sur l’icône qui ressemble un peu à une carte postale et depuis cette barre latérale glisser-déposer un nœud modèle sur le nœud *Start*.
     ![image-20260529081910125](img/README/image-20260529081910125.png)
 3. Sélectionnez votre modèle champion enregistré depuis SAS Model Manager ou le modèle champion pré‑enregistré en naviguant vers *DM Repository > PremierBank Loan Default Prediction > Version 1 > Gradient Boosting (1) (SAS Automatically Generated Pipeline* puis cliquez sur OK.
     ![image-20260529082551202](img/README/image-20260529082551202.png)
