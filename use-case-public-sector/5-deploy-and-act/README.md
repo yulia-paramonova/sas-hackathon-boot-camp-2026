@@ -58,55 +58,57 @@ Une fois les variables ajoutées (quelle que soit la méthode), cliquez sur l'ic
 
 À partir d'ici, vous pouvez aussi activer à tout moment le Copilot SAS Viya via l'icône en haut à droite pour poser des questions sur SAS Intelligent Decisioning et approfondir votre compréhension de l'application.
 
-### 2. Add the Model Node
+### 2. Ajoutez le nœud Modèle
 
-1. Switch to the *Decision Flow* tab.
-2. In the decision flow canvas, you can either right click the *Start* node and from the context menu select *Add below > Model* or on the right hand side click on the icon that looks a little bit like a postcard and from that side bar drag & drop a model node onto the *Start* node.
+1. Passez à l’onglet *Decision Flow*.
+2. Dans le canvas de flux de décision, vous pouvez soit faire un clic droit sur le nœud *Start* et dans le menu contextuel sélectionner *Add below > Model*, soit sur le côté droit cliquer sur l’icône qui ressemble un peu à une carte postale et depuis cette barre latérale glisser-déposer un nœud modèle sur le nœud *Start*.
     ![image-20260529173330775](img/README/image-20260529173330775.png)
-3. Select your registered champion model from SAS Model Manager or the pre-registered champion model by navigating to *DM Repository > Metro City Service Request Urgency Prediction_1 > Version 1 > Gradient Boosting (SAS Automatically Generated Pipeline* and click OK.
+3. Sélectionnez votre modèle champion enregistré depuis SAS Model Manager ou le modèle champion pré‑enregistré en naviguant vers *DM Repository > Metro City Service Request Urgency Prediction_1 > Version 1 > Gradient Boosting (SAS Automatically Generated Pipeline* puis cliquez sur OK.
     ![image-20260529173444298](img/README/image-20260529173444298.png)
-4. Upon doing this you will see a little red error icon next to the model and that is because it is missing variable inputs and outputs - we will address this in the next steps.
-5. There are a lot of variables missing for the model to run. We are going to be clicking the *More* menu up top and select *Add missing variables* this will add all of the required output variables to our decision - if you copied the variables using the template they are already present - in the dialogue please make sure to deselect them from the Output as we will create our own custom outputs. The Inputs should be left in place.
+4. Après cela, vous verrez une petite icône d’erreur rouge à côté du modèle, et cela est dû au fait qu’il manque des variables d’entrée et de sortie — nous allons corriger cela dans les étapes suivantes.
+5. Il manque plusieurs variables pour que le modèle puisse s’exécuter. Nous allons cliquer sur le menu *More* en haut, puis sélectionner *Add missing variables*. Cette action ajoutera toutes les variables de sortie requises à notre décision. Si vous avez copié les variables à partir du template, elles sont déjà présentes. Dans ce cas, veillez à les désélectionner dans les sorties (Output), car nous allons créer nos propres sorties personnalisées.
+Les entrées (Inputs) doivent être conservées telles quelles. 
     ![image-20260529173747543](img/README/image-20260529173747543.png)
 
 
-### 3. Add Business Rules
+### 3. Ajouter des règles métier
 
-After the model scores the application, add **Rule Set** nodes to determine the lending decision. For this make first sure that you have clicked the save icon of your decision and than we will be adding Rule Sets to our decision.
+Après que le modèle ait évalué la demande, ajoutez des nœuds **Rule Set** pour déterminer le niveau d'urgence. Pour cela, assurez‑vous d’abord d’avoir cliqué sur l’icône de sauvegarde de votre décision, puis nous ajouterons des Rule Sets à notre décision.
 
-There are two ways of adding **Rule Sets** to the decision:
 
-1.    *The easy way*, where you use the pre build rule sets by clicking on the three vertical dots on the model node and selecting *Add > Rule Set*, then in the dialogue navigate to *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Public Sector* and add the rule set as specified below.
-2.    *The learning way*, if you want to create them yourself you can go to the right hand side click on the *Objects* (postcard icon) and drag & drop a Rule Set onto the previous node. This will open up a dialogue where you should name your decision correspondingly, please leave the location as the default (*My Folder*) - then add the variables from the decision you created and start building the Rule Sets as described below - the required variables are noted either as the columns or in the **Rule Conditions**. The first rule set we will be building has notes and screenshots attached on how to do this.
+Il existe deux façons d’ajouter des **Rule Sets** à la décision :
 
-We recommend you try to build at least one of these rule sets yourself to get an understanding of how it is done. If you have any questions around SAS Intelligent Decisioning activate the SAS Viya copilot within the application via the icon in the top right hand corner next to your profile or ask one of the onsite SAS Mentors.
+1.     _La méthode simple_, où vous utilisez les rule sets préconstruits en cliquant sur les trois points verticaux du nœud modèle puis en sélectionnant _Add > Rule Set_, ensuite dans la boîte de dialogue allez dans _SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Public Sector_ et ajoutez le rule set comme indiqué ci-dessous.
+2.    _La méthode pédagogique_, si vous voulez les créer vous-même, vous pouvez cliquer à droite sur _Objects_ (icône carte postale) puis glisser-déposer un Rule Set sur le nœud précédent. Cela ouvre une boîte de dialogue où vous devez nommer votre décision en conséquence ; laissez l'emplacement par défaut (_My Folder_), puis ajoutez les variables de la décision créée et commencez à construire les Rule Sets comme décrit ci-dessous. Les variables requises sont indiquées soit dans les colonnes, soit dans **Rule Conditions**. Le premier rule set à construire inclut des notes et des captures d'écran pour vous guider.
 
-**Rule Set: Urgency Tier Classification**
+Nous vous recommandons d'essayer de construire au moins un de ces rule sets vous-même pour comprendre la démarche. Si vous avez des questions sur SAS Intelligent Decisioning, activez le copilot SAS Viya dans l'application via l'icône en haut à droite à côté de votre profil, ou demandez à l'un des mentors SAS présents sur site.
 
-1.   From the *Objects* side panel drag and drop a *Rule Set* node onto the *Model* node you already have in your decision. Then enter the name from above and click *Save*
+**Rule Set: Classification du niveau d'Urgence**
+
+1.   Depuis le panneau latéral _Objects_, glissez-déposez un nœud _Rule Set_ sur le nœud _Model_ déjà présent dans votre décision. Saisissez ensuite le nom ci-dessus et cliquez sur _Save_.
      ![image-20260529174004365](img/README/image-20260529174004365.png)
-2.   Now on the right hand side you will see the *Properties* pane for this new *Rule Set* and there is a button *Open* that will take you to the *Rule set editor* so that you can build the decision so click on that button.
-3.   A new UI opened up for you on the *Variables* tab for the *Rule Set*, under *Add variable* select, via the folder icon navigate to *My Folder* and select the *PremierBank Loan Approval Decision* that you have already created. Select the **P_is_urgent1, target_response_hours ** & **urgency_tier** variables and add it to the Rule Set - the **P_is_urgent1 ** variable is specified in the Rule Conditions column in the table below and the **urgency_tier** and **target_response_hours** variables have their own column as it gets assigned values.
+2.   Sur la droite, vous verrez le panneau _Properties_ pour ce nouveau _Rule Set_ avec un bouton _Open_ qui vous amène au _Rule set editor_ afin de construire la logique de décision ; cliquez sur ce bouton.
+3.   Une nouvelle interface s'ouvre sur l'onglet _Variables_ du _Rule Set_. Sous _Add variable_, utilisez l'icône dossier pour naviguer vers _My Folder_ et sélectionnez *Metro City Service Request Triage* que vous avez déjà créé.  Sélectionnez les variables **P_is_urgent1, target_response_hours** & **urgency_tier** puis ajoutez-les au Rule Set : **P_is_urgent1** est utilisée dans la colonne Rule Conditions du tableau ci-dessous, **urgency_tier** et **target_response_hours** ont leur propre colonne car elles reçoivent des valeurs.
      ![image-20260529174331866](img/README/image-20260529174331866.png)
-4.   For the **P_is_urgent1 ** change it so that it is required as an input and then click on the save icon to add this change. The **risk_tier** & **target_response_hours** currently doesn't have any value from the decision so we can just leave it as an output.
+4.   Pour **P_is_urgent1 **, modifiez-la pour qu'elle soit requise en entrée puis cliquez sur l'icône de sauvegarde pour enregistrer ce changement. Les variables **urgency_tier** & **target_response_hours** n'ont pas encore de valeurs provenants de la décision, vous pouvez donc les laisser en sortie.
      ![image-20260529174428872](img/README/image-20260529174428872.png)
-5.   Navigate to the *Rule set* tab and click on the *Add rule* button
+5.   Allez dans l'onglet _Rule set_ puis cliquez sur le bouton _Add rule_.
      ![image-20260529174505488](img/README/image-20260529174505488.png)
-6.   Change the operator from the default of equal to greater than and then enter the comparison in the *IF* condition, in the THEN assignment change the variable to **risk_tier** and enter the corresponding value into the field enclosed in single quotes. Then as you are hovering over the THEN assignment there is a plus icon at the end of the row, click it to add an additional one, where you can assign the value for the **target_response_hours**
+6.   Remplacez l'opérateur par défaut (égal) par plus grand que *greater than* puis saisissez la comparaison dans la condition _IF_. Dans l'affectation THEN, choisissez la variable **urgency_tier** et saisissez la valeur correspondante entre guillemets simples. Ensuite, lorsque vous survolez l’assignation dans le THEN, une icône `+` apparaît à la fin de la ligne. Cliquez dessus pour en ajouter une nouvelle, afin d’assigner la valeur de **target_response_hours**.
      ![image-20260529174608572](img/README/image-20260529174608572.png)
-7.   Next click on *Add rule* and click on the *IF* statement dropdown and change it to an *ELSE* condition. This will combine the additional condition into one rule. From here continue to enter all the rest of the conditions and assignments as listed below and once you are done click on the save icon and then either use the little *x* icon in the right hand corner or click on *** Metro City Service Request Triage (1.0)* in the breadcrumb navigation up top to navigate back to the decision.
+7.   Cliquez ensuite sur _Add rule_, puis dans la liste déroulante de l'instruction _IF_, passez à une condition _ELSE_. Cela permet de combiner les conditions supplémentaires dans une seule règle. Continuez ensuite à saisir le reste des conditions et affectations comme indiqué ci-dessous. Une fois terminé, cliquez sur l'icône de sauvegarde puis utilisez soit la petite croix _x_ en haut à droite, soit ***Metro City Service Request Triage (1.0)* dans le fil de navigation pour revenir à la décision.
      ![image-20260529174819697](img/README/image-20260529174819697.png)
 
-| Rule Conditions | urgency_tier | target_response_hours |
-|-----------|-------------|-----------------|
+| Conditions de règle | urgency_tier | target_response_hours |
+|--------------------|-------------|----------------------|
 | P_is_urgent1 >= 0.90 | Critical | 4 |
 | P_is_urgent1 >= 0.70 | High | 12 |
 | P_is_urgent1 >= 0.40 | Medium | 36 |
 | P_is_urgent1 < 0.40 | Low | 72 |
 
-**Rule Set: Department Routing**
+**Rule Set: Affectation au service**
 
-| urgency_tier | Rule Conditions | assigned_department | resource_allocation |
+| urgency_tier | Conditions de règle | assigned_department | resource_allocation |
 |--------------|-----------------------|--------------------|---------------------|
 | Critical | request_type contains 'water' OR 'sewer' OR 'gas' | Public Works (Emergency) | Emergency crew + supervisor |
 | Critical | request_type contains 'traffic' OR 'road' | Transportation (Emergency) | Emergency crew + supervisor |
@@ -115,9 +117,9 @@ We recommend you try to build at least one of these rule sets yourself to get an
 | Medium | Any | Original department (standard queue) | Standard staffing |
 | Low | Any | Original department (scheduled queue) | Standard staffing |
 
-**Rule Set: Escalation Rules**
+**Rule Set: Gestion des cas urgents**
 
-| Rule Conditions | escalation_flag |
+| Conditions de règle | escalation_flag |
 |-----------|-----------|
 | urgency_tier = 'Critical' | Immediate: notify department head and city operations center |
 | urgency_tier = 'High' AND response_time_hours > 24 | Escalate: flag for equity review |
@@ -125,11 +127,11 @@ We recommend you try to build at least one of these rule sets yourself to get an
 | urgency_tier = 'Low' AND response_time_hours > 72 | Auto-escalate to Medium tier |
 | Otherwise | No escalation |
 
-**Rule Set: Reason Assignment**
+**Rule Set: Attribution du motif**
 
 These rules capture the dominant driver behind the triage decision and populate the `reason` variable used downstream by the LLM:
 
-| Rule Conditions | reason |
+| Conditions de règle | reason *(motif)* |
 |-----------|----------|
 | urgency_tier = 'Critical' AND (request_type contains 'water' OR 'gas') | Imminent safety hazard |
 | urgency_tier = 'Critical' AND request_type contains 'traffic' | Public safety risk on roadways |
@@ -141,11 +143,11 @@ These rules capture the dominant driver behind the triage decision and populate 
 
 ### 4. Adding an LLM to the Mix
 
-We are going to be adding a Large Language Model to our decision now. For this please open up the *Objects* side bar (postcard icon) and drag & drop a Call LLM node onto the *End* node. Then go ahead and add the missing variables like you did for the model node (do not make the prompt a required input for the decision) - and make sure to click on the save icon.
+Nous allons maintenant ajouter un Large Language Model à notre décision. Pour cela, ouvrez le panneau latéral _Objects_ (icône carte postale) et glissez-déposez un nœud Call LLM sur le nœud _End_. Ajoutez ensuite les variables manquantes comme pour le nœud modèle (ne rendez pas le prompt obligatoire en entrée de la décision), puis cliquez sur l'icône de sauvegarde.
 
 ![image-20260529174850134](img/README/image-20260529174850134.png)
 
-Now you can either add the *Prompt Assignment* Rule Set to the decision just like you added the other Rule Sets before or you can create it yourself. If you choose to create it yourself, please add the following variables from your decision as inputs to it:
+Vous pouvez maintenant soit ajouter le Rule Set _Prompt Assignment_ à la décision comme les autres Rule Sets, soit le créer vous-même. Si vous choisissez de le créer manuellement, ajoutez les variables suivantes de votre décision en entrée :
 
 -   assigned_department
 -   escalation_flag
@@ -154,28 +156,30 @@ Now you can either add the *Prompt Assignment* Rule Set to the decision just lik
 -   taret_response_hours
 -   urgency_tier
 
-And as output add the prompt variable (do not forget to click the save icon). Then switch to the *Rule set* tab, click on the *Add other* button, select the Rule type of *Assignment* and click *OK* - as we do not want to do a condition, but rather just fill in our prompt with a long value.
+Et en sortie, ajoutez la variable prompt (n'oubliez pas de cliquer sur l'icône de sauvegarde). Passez ensuite à l'onglet _Rule set_, cliquez sur le bouton _Add other_, sélectionnez le type de règle _Assignment_ puis cliquez sur _OK_ : ici, nous ne voulons pas définir de condition, mais simplement renseigner notre prompt avec une valeur longue.
 
 ![image-20260529175037923](img/README/image-20260529175037923.png)
 
-Next you are going to assign the prompt value by clicking on the pencil icon, in the *Expression Editor* removing all the values from the main editor and the copy and paste the value from below into it, then click the *Save* button, the save icon on the *Rule set* and return to the main decision.
+Ensuite, affectez la valeur du prompt en cliquant sur l'icône crayon. Dans l'_Expression Editor_, supprimez toutes les valeurs de l'éditeur principal puis copiez-collez la valeur ci-dessous. Cliquez sur le bouton _Save_, puis sur l'icône de sauvegarde du _Rule set_, et revenez à la décision principale.
 
 ```
-prompt = CAT('You are a professional Metro City 311 citizen communications specialist. Using the service request triage data below, write a warm, respectful, and clearly structured long-form citizen notification (2 to 4 paragraphs) that the person who filed the request can read to understand how their request has been triaged and what to expect next. Do not expose internal codes or jargon verbatim — translate them into plain, everyday language. Do not commit to outcomes beyond the target response time specified, and do not make political or judgmental statements about the city or about other requests. Request and triage context: Urgency tier: ', urgency_tier, '. Assigned department: ', assigned_department, '. Target response time (hours): ', target_response_hours, '. Resource allocation: ', resource_allocation, '. Escalation flag: ', escalation_flag, '. Internal reason code: ', reason, '. Structure your response as follows. First, open with a respectful thank-you for filing the request and confirm that Metro City has received it and takes it seriously. Second, explain in plain language what the ', urgency_tier, ' urgency tier means for this request — translate it into everyday expectations rather than quoting the tier label verbatim. Third, describe which department (', assigned_department, ') will handle the request and, in a single sentence, what level of resources (', resource_allocation, ') has been assigned. Fourth, clearly communicate the target response window of ', target_response_hours, ' hours, what the citizen can expect during that window, and how they will be notified of progress or completion. If the escalation flag ', escalation_flag, ' indicates an immediate escalation, briefly note that senior city operations have also been notified. Translate the internal reason ', reason, ' into a brief, plain-language note about why this particular triage decision was made. Fifth, close with clear next steps — how the citizen can check status, how to reach 311 with questions, and a clear instruction to call 911 for any life-threatening emergency. Tone: warm, accountable, professional, and never dismissive or bureaucratic. Length: 200 to 350 words. Write in the second person (you, your request).')
+prompt = CAT('You are a professional Metro City 311 citizen communications specialist. Using the service request triage data below, write a warm, respectful, and clearly structured long-form citizen notification (2 to 4 paragraphs) that the person who filed the request can read to understand how their request has been triaged and what to expect next. Do not expose internal codes or jargon verbatim — translate them into plain, everyday language. Do not commit to outcomes beyond the target response time specified, and do not make political or judgmental statements about the city or about other requests. Request and triage context: Urgency tier: ', urgency_tier, '. Assigned department: ', assigned_department, '. Target response time (hours): ', target_response_hours, '. Resource allocation: ', resource_allocation, '. Escalation flag: ', escalation_flag, '. Internal reason code: ', reason, '. Structure your response as follows. First, open with a respectful thank-you for filing the request and confirm that Metro City has received it and takes it seriously. Second, explain in plain language what the ', urgency_tier, ' urgency tier means for this request — translate it into everyday expectations rather than quoting the tier label verbatim. Third, describe which department (', assigned_department, ') will handle the request and, in a single sentence, what level of resources (', resource_allocation, ') has been assigned. Fourth, clearly communicate the target response window of ', target_response_hours, ' hours, what the citizen can expect during that window, and how they will be notified of progress or completion. If the escalation flag ', escalation_flag, ' indicates an immediate escalation, briefly note that senior city operations have also been notified. Translate the internal reason ', reason, ' into a brief, plain-language note about why this particular triage decision was made. Fifth, close with clear next steps — how the citizen can check status, how to reach 311 with questions, and a clear instruction to call 911 for any life-threatening emergency. Tone: warm, accountable, professional, and never dismissive or bureaucratic. Length: 200 to 350 words. Write in the second person (you, your request). Translate the answer in French.')
 ```
 
 ![image-20260529175321189](img/README/image-20260529175321189.png)
 
-This is a very simplistic approach to prompt engineering and also doesn't provide you with the ability to test and compare different large languages models. That is why SAS provides the [SAS Agentic AI Accelerator](https://github.com/sassoftware/sas-agentic-ai-accelerator) open-source project, which enables you to connect any LLM and do extensive prompt engineering & monitoring, but here we have a hard coded LLM (OpenAI GPT 5.4) available.
+Il s'agit d'une approche très simplifiée du prompt engineering et elle ne vous permet pas de tester et comparer différents grands modèles de langage. C'est pourquoi SAS propose le projet open source [SAS Agentic AI Accelerator](https://github.com/sassoftware/sas-agentic-ai-accelerator), qui permet de connecter n'importe quel LLM et de faire du prompt engineering ainsi que du monitoring avancés. Ici, nous disposons d'un LLM codé en dur (OpenAI GPT 5.4).
 
-### 5. Test the Decision
+### 5. Tester la décision
 
-1. In the decision click on the *Scoring* tab and then in there click on the *Scenarios* sub tab
+1. Dans la décision, cliquez sur l'onglet _Scoring_ puis sur le sous-onglet _Scenarios_
 
-2. Click on the *New test* button
+2. Cliquez sur le bouton _New test_
     ![image-20260529175345494](img/README/image-20260529175345494.png)
 
-3. Enter sample values:
+3. Dans la fenêtre *New Scenario* laissez le nom par défualt, choisissez *My folder* comme emplacement et l'emplacement de a table dans votre *CASUSER*.
+
+4. Saisissez des valeurs d'exemple :
 
    - citizen_account_age_days: 1921
    - citizen_engagement_score: 1.08
@@ -204,48 +208,53 @@ This is a very simplistic approach to prompt engineering and also doesn't provid
 
    ![image-20260529181023982](img/README/image-20260529181023982.png)
 
-4. Review the output by clicking on the Results icon once the *Status* as switched to a green check mark
+4. Consultez la sortie en cliquant sur l'icône Results une fois que le _Status_ est passé à une coche verte
     ![image-20260529181053235](img/README/image-20260529181053235.png)
 
-5. Feel free to further test with different scenarios to validate the logic:
-   - A low-priority park maintenance request should fall into the Low tier with scheduled queue
-   - A high-urgency request from a district with known equity gaps should trigger the equity-review escalation
-   - A medium request that has been open for more than 48 hours should be flagged for reassignment
+5. N'hésitez pas à tester d'autres scénarios pour valider la logique :
+   - Une demande de maintenance de parc peu prioritaire doit être classée en niveau **Faible**
+   - Une demande très urgente provenant d’un secteur présentant des enjeux d’équité doit déclencher une **escalade pour revue d’équité**
+   - Une demande de niveau **Moyen** ouverte depuis plus de 48 heures doit être signalée pour **réaffectation**
 
-### 6. Publish the Decision
+### 6. Publier la décision
 
-1. Click the **Validate** button and then **Publish** to make the decision available as a callable service
-2. Choose a **destination:**
-   - **CAS** — for batch execution against your full request backlog
-   - **MAS (Micro Analytic Service)** — for real-time, low-latency API calls from the 311 system - only one available here!
-   - **Container** — for deployment in external systems
-3. Please make sure to give it a unique name
-4. Once published, the decision is available as a REST API endpoint
+1. Cliquez sur **Validate**, puis sur **Publish** pour rendre la décision disponible sous forme de service appelable par d'autres outils
+2. Choisissez une **destination :**
+   - **CAS** — pour une exécution en batch sur l’ensemble de vos demandes  
+   - **MAS (Micro Analytic Service)** — pour des appels API en temps réel, à faible latence (ex. depuis le système 311) — la seule option disponible ici
+   - **Container** — pour un déploiement dans des systèmes externes 
+3. Veillez à lui attribuer un **nom unique**  
+4. Une fois publiée, la décision est accessible via un **endpoint API REST*
 
 ---
 
-## Using the SAS Intelligent Decisioning Copilot
+## Utilisation du Copilot de SAS Intelligent Decisioning 
 
-The Copilot in SAS Intelligent Decisioning is a conversational assistant that can answer questions about the documentation for **SAS Intelligent Decisioning**, **SAS Container Runtime**, and **SAS Micro Analytic Service**. Use it to quickly find information about how these products work without leaving the application.
+Le Copilot de SAS Intelligent Decisioning est un assistant conversationnel qui peut répondre à des questions sur la documentation de **SAS Intelligent Decisioning**, **SAS Container Runtime**, et **SAS Micro Analytic Service**. Utilisez-le pour trouver rapidement des informations sur le fonctionnement de ces produits sans quitter l'application.
 
-### What the Copilot Can Do
+### Ce que le Copilot peut faire
 
-- **Answer documentation questions** about SAS Intelligent Decisioning features, concepts, and workflows
-- **Explain SAS Micro Analytic Service (MAS)** deployment options, configuration, and API usage
-- **Clarify SAS Container Runtime** setup, publishing, and management
-- **Help you navigate** product capabilities by describing how specific features work
-- **Provide guidance** on decision flow concepts, rule set configuration, and publishing options based on the official documentation
+- **Répondre à des questions de documentation** sur les fonctionnalités, concepts et workflows de SAS Intelligent Decisioning
+- **Expliquer SAS Micro Analytic Service (MAS)**, ses options de déploiement, sa configuration et l'usage de ses API
+- **Clarifier SAS Container Runtime** concernant la mise en place, la publication et la gestion
+- **Vous aider à naviguer** dans les capacités du produit en décrivant le fonctionnement des fonctionnalités spécifiques
+- **Fournir des conseils** sur les concepts de flux de décision, la configuration des rule sets et les options de publication basés sur la documentation officielle
 
 ### Example Copilot Prompts
 
-- *"How do I publish a decision to MAS?"*
-- *"What is the difference between CAS and MAS as publishing destinations?"*
-- *"How does SAS Container Runtime work for deploying decisions?"*
-- *"What types of nodes can I add to a decision flow?"*
-- *"How do I configure input and output variables for a decision?"*
+- "Comment publier une décision dans le MAS?"
+    - *"How do I publish a decision to MAS?"*
+- "Quelle est la différence entre CAS et MAS lorsque je publie une décision?"
+    - *"What is the difference between CAS and MAS as publishing destinations?"*
+- "Comment SAS Container Runtime fonctionne-t-il pour le déploiement des décisions ?"
+    - *"How does SAS Container Runtime work for deploying decisions?"*
+- - *Quels types de nœuds puis-je ajouter à un flux de décision ?*
+    - *"What types of nodes can I add to a decision flow?"*
+- *Comment configurer les variables d'entrée et de sortie d'une décision ?*
+    - *"How do I configure input and output variables for a decision?"*
 - *"What are the publishing options for deploying a decision as a REST endpoint?"*
 
-The Copilot is a useful reference tool for quickly getting answers about the platform's capabilities while you are building your decision flows.
+Le Copilot est un outil de référence utile pour obtenir rapidement des réponses sur les capacités de la plateforme pendant que vous construisez vos flux de décision.
 
 ---
 
