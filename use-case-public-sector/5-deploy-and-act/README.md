@@ -265,11 +265,11 @@ A published SAS Intelligent Decisioning decision is exposed as a **REST API endp
 ### How This Works
 
 ```
-┌──────────────┐     ┌─────────────────────────┐     ┌──────────────────┐
-│  311 Chatbot │────>│  SAS Intelligent         │────>│  Triage          │
-│  Agent       │     │  Decisioning API         │     │  Recommendation  │
+┌──────────────┐     ┌───────────────────────────┐     ┌──────────────────┐
+│  311 Chatbot │────>│  SAS Intelligent          │────>│  Triage          │
+│  Agent       │     │  Decisioning API          │     │  Recommendation  │
 │  (LLM)       │<────│  /decisions/serviceTriage │<────│                  │
-└──────────────┘     └─────────────────────────┘     └──────────────────┘
+└──────────────┘     └───────────────────────────┘     └──────────────────┘
 ```
 
 **Example scenario:** A citizen calls the 311 hotline or uses the Metro City chatbot to report a problem. The chatbot agent (powered by an LLM) can:
@@ -309,16 +309,16 @@ An agentic decision flow goes beyond simple "input -> rules -> output." It can:
 ### Example: Automated Request Routing and Escalation Agent
 
 ```
-┌─────────────┐     ┌──────────────────┐     ┌──────────────────┐
-│  Event       │     │  Decision Flow   │     │  Actions         │
-│  Trigger     │────>│                  │────>│                  │
+┌──────────────┐     ┌───────────────────┐     ┌───────────────────┐
+│  Event       │     │  Decision Flow    │     │  Actions          │
+│  Trigger     │────>│                   │────>│                   │
 │              │     │  1. Score model   │     │  - Dispatch crew  │
 │  "New 311    │     │  2. Classify tier │     │  - Notify citizen │
 │   request"   │     │  3. Route dept    │     │  - Create work    │
 │   — or —     │     │  4. Allocate      │     │    order          │
 │  "SLA breach │     │     resources     │     │  - Update         │
 │   detected"  │     │  5. Check equity  │     │    dashboard      │
-└─────────────┘     └──────────────────┘     └──────────────────┘
+└──────────────┘     └───────────────────┘     └───────────────────┘
                               │
                               v
                     ┌──────────────────┐
@@ -337,42 +337,42 @@ This is **agentic** because the system autonomously:
 - Executes real-world actions (dispatching, notifications)
 - Learns from outcomes to improve future triage
 
-### Scaling Agentic Decisioning
+### Passage à l'échelle de la décision agentique
 
-In a production environment, this agentic workflow can process **15,000 requests per month** without manual intervention:
+Dans un environnement de production, ce workflow agentique peut traiter **15 000 demandes par mois** sans intervention manuelle :
 
-- **Real-time mode:** As each new 311 request arrives, score and triage it instantly
-- **Batch mode:** Every morning, re-score the open request backlog, identify SLA risks, and re-prioritize
-- **Event-driven mode:** When a request's SLA clock is about to expire, trigger automatic escalation
-- **Multi-decision chaining:** The triage decision calls a "resource optimization" decision which calls a "citizen notification" decision — creating a fully automated service delivery pipeline
+- **Mode temps réel (Real-time mode) :** chaque nouvelle demande 311 est évaluée et orientée instantanément dès sa réception.
+- **Mode batch (Batch mode) :** chaque matin, les demandes en attente sont réévaluées afin d'identifier les risques de non-respect des SLA et de redéfinir les priorités.
+- **Mode événementiel (Event-driven mode) :** lorsqu'une échéance SLA approche, une procédure d'escalade est automatiquement déclenchée.
+- **Orchestration de décisions (Multi-decision chaining) :** la décision de triage peut appeler une décision d'optimisation des ressources, qui elle-même appelle une décision de notification des citoyens, créant ainsi une chaîne de traitement entièrement automatisée.
 
-SAS Intelligent Decisioning provides the orchestration layer that turns individual models and rules into **enterprise-scale autonomous agents** for municipal service delivery.
-
----
-
-## Summary
-
-In this step you have:
-
-1. **Created a decision flow** that combines your urgency model with business rules to produce actionable triage recommendations
-2. **Added an LLM call** that turns the decision into a warm, citizen-friendly notification message
-3. **Used the Copilot** to get answers about SAS Intelligent Decisioning, MAS, and Container Runtime documentation
-4. **Published the decision** as a callable API endpoint
-5. **Learned how decisions work as tools** for the 311 chatbot agent
-6. **Explored agentic workflows** where decisions autonomously detect, reason, decide, and act on service requests
+SAS Intelligent Decisioning fournit la couche d'orchestration qui transforme des modèles et des règles métier isolés en **agents autonomes à l'échelle de l'entreprise**, capables d'automatiser et d'optimiser la fourniture de services municipaux.
 
 ---
 
-## Congratulations!
+## Résumé
 
-You have completed the full Data and AI Life Cycle for the Metro City citizen service request prioritization use case:
+Dans cette étape, vous avez :
 
-| Step | What You Did | SAS Technology |
-|------|-------------|---------------|
-| 1. Ask & Access | Understood the problem, generated synthetic data | SAS Data Maker |
-| 2. Prepare | Loaded, profiled, and joined data into an ABT | SAS Viya Workbench |
-| 3. Explore | Visually explored patterns with AI assistance | SAS Visual Analytics + Copilot |
-| 4. Model | Built, compared, and fairness-tested models across districts | SAS Model Studio + Copilot |
-| 5. Deploy & Act | Operationalized with automated triage decisions | SAS Intelligent Decisioning + Copilot |
+1. **Créé un flux de décision** combinant votre modèle d’urgence et des règles métiers pour produire des recommandations de triage actionnables
+2. **Ajouté un appel à un LLM** pour transformer la décision en un message de notification clair et adapté aux citoyens  
+3. **Utilisé SAS Viya Copilot** pour obtenir des informations sur SAS Intelligent Decisioning, MAS et Container Runtime 
+4. **Publié la décision** sous forme d’endpoint API appelable  
+5. **Compris le rôle des décisions comme outils** pour l’agent chatbot 311  
+6. **Exploré des workflows agentiques** où les décisions détectent, analysent, décident et agissent de manière autonome sur les demandes
 
-If you have time remaining, explore another use case or dive deeper into any step. Talk to your bootcamp mentor for follow-up topics or to share feedback.
+---
+
+## Félicitations !
+
+Vous avez terminé l'ensemble du cycle de vie Data & IA pour le cas d’usage de priorisation des demandes de services citoyens de Metro City  :
+
+| Étape           | Ce que vous avez fait                                         | Technologie SAS                       |
+| --------------- | ------------------------------------------------------------- | ------------------------------------- |
+| 1. Ask & Access | Compréhension du problème, génération de données synthétiques | SAS Data Maker                        |
+| 2. Prepare      | Chargement, profilage et jointure des données dans un ABT     | SAS Viya Workbench or SAS Studio      |
+| 3. Explore      | Exploration visuelle des schémas avec assistance IA           | SAS Visual Analytics + Copilot        |
+| 4. Model        | Construction, comparaison et test d'équité des modèles        | SAS Model Studio + Copilot            |
+| 5. Deploy & Act | Opérationnalisation via des décisions automatisées            | SAS Intelligent Decisioning + Copilot |
+
+S'il vous reste du temps, explorez un autre cas d'usage ou approfondissez n'importe quelle étape. Échangez avec votre mentor bootcamp pour des sujets de suivi ou pour partager vos retours.
