@@ -78,8 +78,9 @@ Après que le modèle ait évalué la demande, ajoutez des nœuds **Rule Set** p
 
 Il existe deux façons d’ajouter des **Rule Sets** à la décision :
 
-1.     _La méthode simple_, où vous utilisez les rule sets préconstruits en cliquant sur les trois points verticaux du nœud modèle puis en sélectionnant _Add > Rule Set_, ensuite dans la boîte de dialogue allez dans _SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Public Sector_ et ajoutez le rule set comme indiqué ci-dessous.
-2.    _La méthode pédagogique_, si vous voulez les créer vous-même, vous pouvez cliquer à droite sur _Objects_ (icône carte postale) puis glisser-déposer un Rule Set sur le nœud précédent. Cela ouvre une boîte de dialogue où vous devez nommer votre décision en conséquence ; laissez l'emplacement par défaut (_My Folder_), puis ajoutez les variables de la décision créée et commencez à construire les Rule Sets comme décrit ci-dessous. Les variables requises sont indiquées soit dans les colonnes, soit dans **Rule Conditions**. Le premier rule set à construire inclut des notes et des captures d'écran pour vous guider.
+1.    _La méthode simple_, où vous utilisez les rule sets préconstruits en cliquant sur les trois points verticaux du nœud modèle puis en sélectionnant _Add > Rule Set_, ensuite dans la boîte de dialogue allez dans _SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Public Sector_ et ajoutez le rule set comme indiqué ci-dessous.
+
+3.    _La méthode pédagogique_, si vous voulez les créer vous-même, vous pouvez cliquer à droite sur _Objects_ (icône carte postale) puis glisser-déposer un Rule Set sur le nœud précédent. Cela ouvre une boîte de dialogue où vous devez nommer votre décision en conséquence ; laissez l'emplacement par défaut (_My Folder_), puis ajoutez les variables de la décision créée et commencez à construire les Rule Sets comme décrit ci-dessous. Les variables requises sont indiquées soit dans les colonnes, soit dans **Rule Conditions**. Le premier rule set à construire inclut des notes et des captures d'écran pour vous guider.
 
 Nous vous recommandons d'essayer de construire au moins un de ces rule sets vous-même pour comprendre la démarche. Si vous avez des questions sur SAS Intelligent Decisioning, activez le copilot SAS Viya dans l'application via l'icône en haut à droite à côté de votre profil, ou demandez à l'un des mentors SAS présents sur site.
 
@@ -90,7 +91,7 @@ Nous vous recommandons d'essayer de construire au moins un de ces rule sets vous
 2.   Sur la droite, vous verrez le panneau _Properties_ pour ce nouveau _Rule Set_ avec un bouton _Open_ qui vous amène au _Rule set editor_ afin de construire la logique de décision ; cliquez sur ce bouton.
 3.   Une nouvelle interface s'ouvre sur l'onglet _Variables_ du _Rule Set_. Sous _Add variable_, utilisez l'icône dossier pour naviguer vers _My Folder_ et sélectionnez *Metro City Service Request Triage* que vous avez déjà créé.  Sélectionnez les variables **P_is_urgent1, target_response_hours** & **urgency_tier** puis ajoutez-les au Rule Set : **P_is_urgent1** est utilisée dans la colonne Rule Conditions du tableau ci-dessous, **urgency_tier** et **target_response_hours** ont leur propre colonne car elles reçoivent des valeurs.
      ![image-20260529174331866](img/README/image-20260529174331866.png)
-4.   Pour **P_is_urgent1 **, modifiez-la pour qu'elle soit requise en entrée puis cliquez sur l'icône de sauvegarde pour enregistrer ce changement. Les variables **urgency_tier** & **target_response_hours** n'ont pas encore de valeurs provenants de la décision, vous pouvez donc les laisser en sortie.
+4.   Pour **P_is_urgent1**, modifiez-la pour qu'elle soit requise en entrée puis cliquez sur l'icône de sauvegarde pour enregistrer ce changement. Les variables **urgency_tier** & **target_response_hours** n'ont pas encore de valeurs provenants de la décision, vous pouvez donc les laisser en sortie.
      ![image-20260529174428872](img/README/image-20260529174428872.png)
 5.   Allez dans l'onglet _Rule set_ puis cliquez sur le bouton _Add rule_.
      ![image-20260529174505488](img/README/image-20260529174505488.png)
@@ -141,7 +142,7 @@ These rules capture the dominant driver behind the triage decision and populate 
 | urgency_tier = 'Medium' | Standard service request within normal SLA |
 | Otherwise | Routine request scheduled for next available slot |
 
-### 4. Adding an LLM to the Mix
+### 4. Ajouter un LLM dans le flux
 
 Nous allons maintenant ajouter un Large Language Model à notre décision. Pour cela, ouvrez le panneau latéral _Objects_ (icône carte postale) et glissez-déposez un nœud Call LLM sur le nœud _End_. Ajoutez ensuite les variables manquantes comme pour le nœud modèle (ne rendez pas le prompt obligatoire en entrée de la décision), puis cliquez sur l'icône de sauvegarde.
 
@@ -258,11 +259,11 @@ Le Copilot est un outil de référence utile pour obtenir rapidement des répons
 
 ---
 
-## Decisions as Tools in Agentic Workflows
+## Les décisions comme outils dans des workflows agentiques
 
-A published SAS Intelligent Decisioning decision is exposed as a **REST API endpoint**. This means it can be called as a **tool** by any AI agent — including large language model (LLM) agents that use tool-calling capabilities.
+Une décision SAS Intelligent Decisioning publiée est exposée via un **endpoint API REST**. Cela signifie qu'elle peut être appelée comme un **outil** par n'importe quel agent IA, y compris les agents basés sur des grands modèles de langage (LLM) qui utilisent des capacités d'appel d'outils.
 
-### How This Works
+### Comment cela fonctionne
 
 ```
 ┌──────────────┐     ┌───────────────────────────┐     ┌──────────────────┐
@@ -272,41 +273,41 @@ A published SAS Intelligent Decisioning decision is exposed as a **REST API endp
 └──────────────┘     └───────────────────────────┘     └──────────────────┘
 ```
 
-**Example scenario:** A citizen calls the 311 hotline or uses the Metro City chatbot to report a problem. The chatbot agent (powered by an LLM) can:
+**Exemple de scénario :**  un citoyen contacte le service 311 ou utilise le chatbot de Metro City pour signaler un problème. L'agent conversationnel (alimenté par un LLM) peut :
 
-1. Collect the request details from the citizen through conversation
-2. **Call the SAS Intelligent Decisioning API** with the request data
-3. Receive back: "Critical — deploy emergency crew to Water Main Break, 4-hour SLA"
-4. Inform the citizen of the expected response time and confirm the request has been prioritized
-5. Simultaneously trigger the department dispatch workflow
+1. Recueillir les informations de la demande au cours de la conversation.
+2. **Appeler l'API SAS Intelligent Decisioning** avec les données de la demande.
+3. Recevoir une réponse telle que : « Critique — déployer une équipe d'urgence pour une rupture de canalisation, SLA de 4 heures ».
+4. Informer le citoyen du délai de traitement estimé et confirmer que sa demande a été priorisée.
+5. Déclencher simultanément le workflow d'affectation de l'équipe concernée.
 
-The decision becomes a **tool** in the agent's toolkit, just like a search function or a database query. This bridges the gap between analytical models and citizen-facing conversational AI.
+La décision devient un **outil** dans la boîte à outils de l'agent, comme une fonction de recherche ou une requête base de données. Cela crée un pont entre les modèles analytiques et l'IA conversationnelle.
 
-### Why This Matters
+### Pourquoi est-ce important ?
 
-- **Consistency:** Every 311 interaction uses the same triage logic — the rules and model scores are centralized, not hardcoded into chatbot prompts
-- **Governance:** The decision is version-controlled and auditable in SAS Intelligent Decisioning, not buried in an LLM's system prompt
-- **Separation of concerns:** Data scientists own the model, city operations staff own the rules, and the chatbot just calls the endpoint
-- **Real-time execution:** MAS endpoints return in milliseconds, fast enough for conversational use
-- **Public accountability:** Because the decision logic is documented and versioned, it can be reviewed under public records requests
+- **Cohérence :** chaque interaction avec le service 311 utilise la même logique de triage. Les règles et les scores des modèles sont centralisés et ne sont pas codés en dur dans les prompts du chatbot.
+- **Gouvernance :** la décision est versionnée et auditable dans SAS Intelligent Decisioning, au lieu d'être enfouie dans le prompt système d'un LLM.
+- **Séparation des responsabilités :** les data scientists gèrent les modèles, les équipes opérationnelles définissent les règles métier, et le chatbot se contente d'appeler l'API.
+- **Exécution en temps réel :** les endpoints MAS répondent en millisecondes, suffisamment vite pour un usage conversationnel.
+- **Responsabilité publique :** la logique de décision étant documentée et versionnée, elle peut être examinée dans le cadre de demandes d'accès aux informations publiques.
 
 ---
 
-## Decisions as Agentic Workflows
+## Les décisions comme workflows agentiques
 
-Beyond being called as tools, SAS Intelligent Decisioning can itself orchestrate **agentic workflows** — multi-step processes that autonomously execute a chain of decisions and actions.
+Au-delà de leur rôle d'outils appelables, SAS Intelligent Decisioning peut lui-même orchestrer des **workflows agentiques** : des processus en plusieurs étapes qui exécutent de façon autonome une chaîne de décisions et d'actions.
 
-### How a Decision Becomes an Agent
+### Comment une décision devient un agent
 
-An agentic decision flow goes beyond simple "input -> rules -> output." It can:
+Un flux de décision agentique va au-delà d'un simple "entrée → règles → sortie". Il peut :
 
-1. **Observe:** Receive a new service request or detect that an existing request has exceeded its SLA
-2. **Reason:** Score the request's urgency, check the department's current workload, review the district's equity status
-3. **Decide:** Select the optimal triage action, department routing, and resource allocation
-4. **Act:** Trigger downstream actions — dispatch a crew, send a citizen notification, create a work order, update the dashboard
-5. **Monitor:** Track whether the request is resolved within the SLA and feed that outcome back into future decisions
+1. **Observer :** recevoir une nouvelle demande de service ou détecter qu'une demande existante a dépassé son a dépassé son délai d'intervention cible.
+2. **Raisonner :** évaluer l'urgence de la demande, analyser la charge de travail actuelle du service concerné et vérifier les indicateurs d'équité du quartier.
+3. **Décider :** sélectionner l'action de triage optimale, le routage vers le service approprié et l'allocation des ressources.
+4. **Agir :** déclencher des actions en aval : envoyer une équipe sur le terrain, notifier le citoyen, créer un ordre de travail ou mettre à jour le tableau de bord.
+5. **Surveiller :** suivre la résolution de la demande dans le respect de l'objectif de délai de traitement et réinjecter ce résultat dans les décisions futures.
 
-### Example: Automated Request Routing and Escalation Agent
+### Exemple : agent automatisé de routage et d'escalade des demandes
 
 ```
 ┌──────────────┐     ┌───────────────────┐     ┌───────────────────┐
@@ -331,11 +332,12 @@ An agentic decision flow goes beyond simple "input -> rules -> output." It can:
                     └──────────────────┘
 ```
 
-This is **agentic** because the system autonomously:
-- Detects the trigger condition (new request or SLA breach)
-- Makes decisions without human intervention
-- Executes real-world actions (dispatching, notifications)
-- Learns from outcomes to improve future triage
+Ce système est **agentique** parce qu'il :
+
+- Détecte automatiquement les événements déclencheurs (nouvelle demande ou dépassement du délai d'intervention).
+- Prend des décisions sans intervention humaine.
+- Exécute des actions concrètes dans le monde réel (déploiement d'équipes, notifications, etc.).
+- Apprend des résultats obtenus afin d'améliorer les décisions futures.
 
 ### Passage à l'échelle de la décision agentique
 
@@ -370,7 +372,7 @@ Vous avez terminé l'ensemble du cycle de vie Data & IA pour le cas d’usage de
 | Étape           | Ce que vous avez fait                                         | Technologie SAS                       |
 | --------------- | ------------------------------------------------------------- | ------------------------------------- |
 | 1. Ask & Access | Compréhension du problème, génération de données synthétiques | SAS Data Maker                        |
-| 2. Prepare      | Chargement, profilage et jointure des données dans un ABT     | SAS Viya Workbench or SAS Studio      |
+| 2. Prepare      | Chargement, profilage et jointure des données dans un ABT     | SAS Viya Workbench ou SAS Studio      |
 | 3. Explore      | Exploration visuelle des schémas avec assistance IA           | SAS Visual Analytics + Copilot        |
 | 4. Model        | Construction, comparaison et test d'équité des modèles        | SAS Model Studio + Copilot            |
 | 5. Deploy & Act | Opérationnalisation via des décisions automatisées            | SAS Intelligent Decisioning + Copilot |
