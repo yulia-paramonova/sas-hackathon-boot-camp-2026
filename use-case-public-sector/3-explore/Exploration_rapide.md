@@ -1,4 +1,4 @@
-# Étape 3: Explore
+# Étape 3: Explore (rapide)
 
 Dans cette étape, vous utiliserez **SAS Visual Analytics** et son **Copilot** intégré pour explorer visuellement l’Analytical Base Table (ABT) que vous avez créée à l’Étape 2. L’objectif est de comprendre les facteurs qui expliquent l’urgence des demandes de service.
 
@@ -33,16 +33,16 @@ Vous pouvez aussi la charger directement en important le CSV via **Manage Data**
 - *"Quel pourcentage des demandes sont classifiés comme urgent ?"*
 
 1. Faites glisser la variable cible `is_urgent` sur l’espace de travail. La visualisation est sélectionnée automatiquement en fonction du type de variable. Ici, il s’agit d’une variable numérique (mesure).
-2. Dupliquez cette variable, puis convertissez-la en catégorie (clic droit -> Convertir en catégorie).
+2. Dupliquez cette variable, puis convertissez-la en catégorie (clic droit -> *Convertir en catégorie*).
 3. Faites-la glisser sous le premier graphique. Vous constaterez que la visualisation change. Sans modifier les données d’entrée, vous pouvez ainsi adapter le type de variable et accéder à différents types de graphiques.
-4. Examinez l’équilibre des classes — cela orientera votre stratégie de modélisation à l’Étape 4.
+4. Examinez l’équilibre des classes — cela orientera votre stratégie de modélisation à l’Étape 4.  
 *Optionnel : Créez un **diagramme circulaire** de la variable `is_urgent (1)`.*
 
 ### Relations avec d'autres variables
 
 1. Faites glisser une autre variable de votre choix sur la même page.
-2. Dans le menu de droite, cliquez sur la troisième icône (**Actions**) et activez-la.
-3. Cliquez ensuite sur une barre dans le deuxieme graphique. Observez comment l’ensemble des graphiques se met à jour. Grâce à cette interactivité, vous pouvez analyser les relations entre les variables ou construire des tableaux de bord interactifs.
+2. Dans le menu de droite, cliquez sur la troisième icône (**Actions**) et cohez la case *Activer les actions automatiques*.
+3. Cliquez ensuite sur une barre dans le deuxieme graphique. Observez comment l’ensemble des graphiques se met à jour. Grâce à cette interactivité, vous pouvez analyser les relations entre les variables ou construire des tableaux de bord interactifs.  
 *Optionnel : Tester d'autres variables. Observez comment leur distribution change en fonction de la catégorie séléctionnée. Vous pouvez explorer des segments précis comme "les demandes urgentes dans le quartier du centre-ville pendant les mois d'été".*
 
 
@@ -50,16 +50,19 @@ Vous pouvez aussi la charger directement en important le CSV via **Manage Data**
 
 **Objectif :** Identifier les facteurs qui influencent le plus la variable cible. Pour cela, utilisez la matrice de corrélation.  
 1. Sélectionnez toutes les variables numériques (en maintenant la touche *Shift*), puis faites-les glisser sur le “+” à côté de la page 1. 
-Cela ajoute une matrice de corrélation sur une nouvelle page. Vous pouvez agrandir (bouton en haut a droite à coté des 3 petits points) la vue pour mieux observer les relations.
+Cela ajoute une matrice de corrélation sur une nouvelle page. Vous pouvez agrandir (bouton en haut a droite à coté des 3 petits points) la vue pour mieux observer les relations.  
 *Quelles variables sont les plus fortement corrélées à la variable cible `is_urgent` ?* 
-3. Dans le menu de droite, cliquez sur la deuxième icône (**Rôles**) et ajustez les types si nécessaire. Vous verrez alors plus clairement les variables les plus corrélées avec la cible. Cependant, ces relations ne sont pas toujours faciles à interpréter. Utilisons maintenant les capacités ~~magiques~~ d’analyse automatisée de la plateforme.
+3. Dans le menu de droite, cliquez sur la deuxième icône (**Rôles**) et sélectionnez *Show correlations:Between two sets of measures*. Mettez la variable `is_urgent` dans la section *Y axis*. Vous verrez alors plus clairement les variables les plus corrélées avec la cible. Cependant, ces relations ne sont pas toujours faciles à interpréter. Utilisons maintenant les capacités ~~magiques~~ d’analyse automatisée de la plateforme.
 4. Dans le volet **Données** à gauche, sélectionnez la variable cible que vous avez convertie en catégorie `is_urgent (1)`. Faites un clic droit, puis choisissez *Expliquer automatiquement sur une nouvelle page*.
 5. Sur le nouvel objet, sélectionnez la cible = 1 (en haut à droite). Vous obtenez une analyse détaillée mettant en évidence les facteurs les plus influents.
-6. Agrandissez la visualisation à l’aide de l’icône d’agrandissement (à côté des trois points en haut à droite). Parcourez les différents onglets, en particulier la section *screening*, qui indique pourquoi certaines variables ont été retenues ou écartées. Consultez également l’onglet des variables importantes.
+6. Agrandissez la visualisation à l’aide de l’icône d’agrandissement (à côté des trois points en haut à droite). Parcourez les différents onglets, en particulier la section *screening*, qui indique pourquoi certaines variables ont été retenues ou écartées. Consultez également l’onglet des variables importantes.  
 *C’est typiquement le type d’analyse qu’un data scientist réaliserait au début d’un projet. Réaliser cette étape en code prendrait plus de temps ; ici, vous pouvez vous concentrer sur l’interprétation des résultats et la prise de décision.*
 8. Réduisez la vue, puis cliquez sur les trois points en haut à droite. Sélectionnez **Dupliquer sous Arbre de décision**. Faites glisser l’objet vers une nouvelle page pour disposer de plus d’espace.
 9. Félicitations, vous venez d’entraîner votre premier modèle de machine learning dans SAS Viya !  
-Vous pouvez demander au Copilot d’interpréter les résultats :  *"Explain the results of the decision tree."*
+Vous pouvez demander au Copilot d’interpréter les résultats :  
+-     Explain the results of the decision tree.
+-     Explain the results of the Page 3
+-     Which factors influence the urgency `is_urgent (1)`?
 
 ---
 ## Utiliser le Copilot de SAS Visual Analytics
