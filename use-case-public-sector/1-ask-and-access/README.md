@@ -55,7 +55,7 @@ Veuillez noter que si vous disposez déjà d’un compte SAS Communities, vous n
 
 1. Dans votre plan de données, cliquer sur **Add Data Source**  
 
-2. Naviguer vers le dossie `Bootcamp/use-case-public-sector/csv`  
+2. Naviguer vers le dossier `Bootcamp/use-case-public-sector/csv`  
 
 3. Cela permettra d’importer les quatre fichiers CSV suivants :
    - `service_requests.csv` — table principale au niveau des demandes
@@ -65,7 +65,7 @@ Veuillez noter que si vous disposez déjà d’un compte SAS Communities, vous n
 
 4. SAS Data Maker va analyser chaque table et afficher les types de colonnes, les distributions ainsi que des statistiques descriptives ![image-20260529135940784](img/README/image-20260529135940784.png)
 
-    Vous verrez ensuite une barre de chargement semblable à celle ci-dessous. Cette étape prend généralement moins de deux minutes — vous pouvez déjà commencer à consulter l’étape suivante pendant le chargement:
+    Vous verrez ensuite une barre de chargement semblable à celle ci-dessous. Cette étape prend généralement moins de deux minutes — vous pouvez déjà consulter l’étape suivante pendant le chargement:
 
     ![image-20260529140021786](img/README/image-20260529140021786.png)
 
@@ -75,7 +75,7 @@ Veuillez noter que si vous disposez déjà d’un compte SAS Communities, vous n
 
 #### 3. Définir les relations
 
-Le traitement exécuté pour analyser les tables tentera également de détecter les relations entre elles. Veuillez vérifier que ces relations sont correctement établies. Votre objectif est d’obtenir un schéma de relations similaire à celui présenté ci-dessous, même si ce ne sera pas le cas au départ.
+Le traitement exécuté pour analyser les tables tentera également de détecter les relations entre elles. Veuillez vérifier que ces relations sont correctement établies. Votre objectif est d’obtenir un schéma de relations similaire à celui présenté ci-dessous, même si ce ne sera pas le cas initialement.  
 
 ![image-20260529141405534](img/README/image-20260529141405534.png)
 
@@ -111,7 +111,7 @@ Prenez le temps d’explorer ces résultats afin de comprendre à quel point les
 #### 6. Génération
 
 1. **Output destination** : sélectionnez ici le chemin `datamakerdemodata:output` et définissez le *Format de sortie* selon votre préférence (par exemple *parquet*)
-2. Laissez toutes les autres options par défaut et cliquez sur le bouton Générer
+2. Laissez toutes les autres options par défaut et cliquez sur le bouton Générer  
     ![image-20260529141801238](img/README/image-20260529141801238.png)
 3. Un travail de génération est alors déclenché ; il va créer pour nous les données synthétiques pour chaque table  
 4. Une fois la génération terminée, nous obtenons un résumé de l'ensemble, une note indiquant où les données sont stockées et un échantillon des données synthétiques. Les données générées sont stockées dans un blob storage ; ne vous inquiétez pas, vous n'aurez rien à télécharger sur votre ordinateur portable, car nous mettrons les données à votre disposition dans SAS Viya et SAS Viya Workbench afin que vous puissiez continuer le travail.
