@@ -60,7 +60,7 @@ Travaillez sur les questions suivantes pour comprendre les schémas de réadmiss
 - *"Quel pourcentage de patients ont été réadmis dans les 30 jours ?"*
 -     What percentage of patients were readmitted within 30 days?
 
-Create a **bar chart** or **pie chart** of the `readmitted_30days` variable. Note the readmission rate — this establishes the class balance and the baseline your model needs to beat.
+Créez un **diagramme en barres** ou **diagramme circulaire** de la variable `readmitted_30days`. Examiner le taux de réadmission — cela permet d’établir l’équilibre des classes et la référence (baseline) que votre modèle (de l'étape 4) devra dépasser .
 
 ### Hypothesis 1: Comorbidity Burden Drives Readmission
 
