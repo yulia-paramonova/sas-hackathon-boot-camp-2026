@@ -23,36 +23,6 @@ Vous pouvez aussi la charger directement en important le CSV via **Manage Data**
 
 ---
 
-## Utiliser le Copilot de SAS Visual Analytics
-
-SAS Visual Analytics inclut un **Copilot** - un assistant IA qui accélère l’exploration des données. L’icône du Copilot se trouve en haut à droite. Il peut :
-
-- **Suggérer des visualisations** selon les variables sélectionnées
-- **Répondre à des questions** sur vos données en langage naturel
-- **Générer des insights** en détectant automatiquement des schémas intéressants
-- **Créer des graphiques** à partir de requêtes en langage courant 
-
-### Comment utiliser le Copilot
-
-1. Cliquez sur l’icône **Copilot** pour ouvrir le panneau
-2. Tapez une question ou une demande en langage naturel
-3. Le Copilot suggère ou crée une visualisation dans votre rapport
-4. Vous pouvez affiner le résultat avec des requêtes supplémentaires
-5. Un clic droit dans le panneau de chat vous propose des suggestions de prompts pour vous aider.
-
-![image-20260528142454478](img/README/image-20260528142454478.png)
-
-### Conseils et mises en garde Copilot
-
-Quelques comportements à garder à l’esprit lors de cette étape :
-
-- **Référez‑vous aux colonnes par leur nom exact.** Les requêtes (prompts) de ce guide utilisent des noms de colonnes entourés d’accents graves  (e.g., `` `is_urgent` ``, `` `district_avg_response_time` ``). Copilot fonctionne mieux lorsque vous faites la même chose. Des termes vagues comme *"district"* ou *"request type"*  échouent souvent, car ces colonnes brutes n’existent pas dans l’ABT.
-- **Les graphiques apparaissent parfois sur une autre page.** Si une visualisation générée apparaît sur une autre page du rapport, faites‑la glisser vers la page sur laquelle vous travaillez.
-- **Ignorez les suggestions visant à reclasser des mesures numériques en catégories.** Copilot recommande parfois de transformer des colonnes numériques (e.g., `district_avg_request_count`) en catégories. Refusez ces suggestions — ce sont des mesures et elles doivent le rester.
-- **Si un graphique ne répond pas à la question, reformulez.** Demandez à Copilot un type de graphique précis et des rôles de colonnes précis plutôt qu’une question ouverte (e.g., *"Crée un diagramme en barres avec `inherent_urgency` sur l'axe x et la moyenne de `is_urgent` sur l'axe y"*).
-  
----
-
 ## Exploration guidée
 
 ### Comprendre la variable cible
@@ -91,6 +61,35 @@ Cela ajoute une matrice de corrélation sur une nouvelle page. Vous pouvez agran
 9. Félicitations, vous venez d’entraîner votre premier modèle de machine learning dans SAS Viya !  
 Vous pouvez demander au Copilot d’interpréter les résultats :  *"Explain the results of the decision tree."*
 
+---
+## Utiliser le Copilot de SAS Visual Analytics
+
+SAS Visual Analytics inclut un **Copilot** - un assistant IA qui accélère l’exploration des données. L’icône du Copilot se trouve en haut à droite. Il peut :
+
+- **Suggérer des visualisations** selon les variables sélectionnées
+- **Répondre à des questions** sur vos données en langage naturel
+- **Générer des insights** en détectant automatiquement des schémas intéressants
+- **Créer des graphiques** à partir de requêtes en langage courant 
+
+### Comment utiliser le Copilot
+
+1. Cliquez sur l’icône **Copilot** pour ouvrir le panneau
+2. Tapez une question ou une demande en langage naturel **(en anglais)**
+3. Le Copilot suggère ou crée une visualisation dans votre rapport ou interprete les résultats
+4. Vous pouvez affiner le résultat avec des requêtes supplémentaires
+5. Un clic droit dans le panneau de chat vous propose des suggestions de prompts pour vous aider.
+
+![image-20260528142454478](img/README/image-20260528142454478.png)
+
+### Conseils et mises en garde Copilot
+
+Quelques comportements à garder à l’esprit lors de cette étape :
+
+- **Référez‑vous aux colonnes par leur nom exact.** Les requêtes (prompts) de ce guide utilisent des noms de colonnes entourés d’accents graves  (e.g., `` `is_urgent` ``, `` `district_avg_response_time` ``). Copilot fonctionne mieux lorsque vous faites la même chose. Des termes vagues comme *"district"* ou *"request type"*  échouent souvent, car ces colonnes brutes n’existent pas dans l’ABT.
+- **Les graphiques apparaissent parfois sur une autre page.** Si une visualisation générée apparaît sur une autre page du rapport, faites‑la glisser vers la page sur laquelle vous travaillez.
+- **Ignorez les suggestions visant à reclasser des mesures numériques en catégories.** Copilot recommande parfois de transformer des colonnes numériques (e.g., `district_avg_request_count`) en catégories. Refusez ces suggestions — ce sont des mesures et elles doivent le rester.
+- **Si un graphique ne répond pas à la question, reformulez.** Demandez à Copilot un type de graphique précis et des rôles de colonnes précis plutôt qu’une question ouverte (e.g., *"Crée un diagramme en barres avec `inherent_urgency` sur l'axe x et la moyenne de `is_urgent` sur l'axe y"*).
+  
 ---
 
 N'hésitez pas à enregistrer le rapport. L'emplacement par défaut est "Mon dossier" (My Folder), ce qui est idéal ici pour ne pas encombrer l'espace de travail des autres. Vous pouvez également lui donner un nom afin qu'il soit plus facile de vous rappeler le sujet de ce rapport.
