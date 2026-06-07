@@ -69,9 +69,11 @@ Les quatre jeux de données capturent chacun une dimension différente de la pre
 - **Variables liées aux médicaments:** nombre total de médicaments par patient, nombre de médicaments à haut risque, indicateur de polymédication (5+ médicaments), classes de médicaments uniques
 - **Caractéristiques cliniques:** catégories d’IMC (insuffisance pondérale/normal/surpoids/obésité), classification de la pression artérielle (normale/élevée/hypertension stade 1/hypertension stade 2), catégories de niveau de glucose, score de risque clinique
 - **Caractéristiques d’admission:** catégories de durée de séjour (court/moyen/long), indicateur d’admission en urgence, encodage du mode de sortie
-- **Patient features:** age, gender, insurance type, primary diagnosis category, comorbidity count
+- **Caractéristiques des patients:** âge, sexe, type d’assurance, catégorie de diagnostic principal, nombre de comorbidités
+- 
 
-The final ABT will be saved as a CSV file that can then be promoted into CAS for use in SAS Visual Analytics and SAS Model Studio.
+L’ABT finale sera enregistrée en fichier CSV, puis pourra être promue dans CAS pour une utilisation dans SAS Visual Analytics et SAS Model Studio.
+
 
 ---
 
