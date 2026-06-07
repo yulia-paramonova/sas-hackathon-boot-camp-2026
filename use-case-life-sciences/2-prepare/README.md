@@ -31,30 +31,32 @@ Une fois connecté à SAS Viya Workbench, vous devrez d’abord choisir l’envi
 
  ![image-20260527164013080](img/README/image-20260527164013080.png)
 
-### 2. Load the Data & Use Cases
+### 2. Charger les données et les cas d’usage
 
-Now as the first step you will clone the GitHub repository to your SAS Viya Workbench environment by first opening up a terminal and running the git clone command below: 
+La première étape consiste à cloner le dépôt GitHub dans votre environnement SAS Viya Workbench en ouvrant un terminal et en exécutant la commande suivante :  
 
 ```bash
 git clone https://github.com/sascommunities/sas-hackathon-boot-camp-2026.git
 ```
 
-If you are in Visual Studio Code you can try to either use the keyboard shortcut CTRL+´ or if that doesn't work for you follow the click path in the screenshot below:
+Si vous êtes dans Visual Studio Code, vous pouvez utiliser le raccourci clavier CTRL+´, ou suivre le chemin indiqué dans la capture ci-dessous :
+
 
 ![image-20260527164702224](img/README/image-20260527164702224.png)
 
-After you have run the git clone command you should the following folder structure and from there just navigate to your use case and the 2-prepare to see the files.
+Après avoir exécuté la commande git clone, vous devriez voir la structure de dossiers suivante. Naviguez ensuite vers votre cas d’usage et le dossier 2-prepare pour accéder aux fichiers.
 
 ![image-20260527170112447](img/README/image-20260527170112447.png)
 
-### 3. Create a Data Card
 
-A **data card** is a concise summary document that describes each dataset — its purpose, size, column names, data types, and any quality notes. Data cards are a best practice in responsible AI because they provide transparency about the data flowing into models. For each table you will produce:
+### 3. Créer une Data Card
 
-- Number of rows and columns
-- Column names with data types
-- Count of missing values per column
-- Sample rows
+Une **data card** est un document synthétique décrivant chaque jeu de données — son objectif, sa taille, les noms de colonnes, les types de données et toute remarque de qualité. Les data cards sont une bonne pratique en matière d’IA responsable, car elles apportent de la transparence sur les données utilisées dans les modèles. Pour chaque table, vous produirez :
+
+- Nombre de lignes et de colonnes
+- Noms des colonnes et types de données
+- Nombre de valeurs manquantes par colonne
+- Exemples de lignes
 
 ### 4. Get Basic Summary Statistics
 
