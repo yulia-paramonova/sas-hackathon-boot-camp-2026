@@ -90,17 +90,16 @@ Les trois scripts produisent le même fichier :  **`life_sciences_abt.csv`** dan
 
 ---
 
-## Output
+## Résultat
 
-After running any of the scripts you will have:
+Après avoir exécuté l’un des scripts, vous obtiendrez :
 
-| File | Description |
+| Fichier | Description |
 |------|-------------|
-| `data/life_sciences_abt.csv` | The joined, feature-engineered, patient-level dataset ready for modeling |
-| Console output | Data card information, summary statistics, and readmission distribution for review |
-
+| `data/life_sciences_abt.csv` | Le jeu de données joint, enrichi et prêt pour la modélisation |
+| Sortie console  | Informations de data card, statistiques descriptives des réadmissions pour révision |
 ---
 
-## Next Steps
+## Prochaines étapes
 
-Proceed to **[Step 3: Explore](../3-explore/)** to visually explore the data in SAS Visual Analytics using its built-in Copilot.
+Passez à  **[Step 3: Explore](../3-explore/)** pour explorer visuellement les données dans SAS Visual Analytics grâce à son Copilot intégré.
