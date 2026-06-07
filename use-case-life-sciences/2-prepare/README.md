@@ -66,9 +66,9 @@ Pour les colonnes numériques, calculez les statistiques descriptives (moyenne, 
 
 Les quatre jeux de données capturent chacun une dimension différente de la prestation de services de Metro City. Pour construire un modèle prédictif, nous devons les combiner en une seule table au niveau des demandes, où chaque ligne correspond à une demande de service et chaque colonne à une caractéristique. Les transformations clés sont :
 
-- **Medication features:** total medication count per patient, high-risk medication count, polypharmacy flag (5+ medications), unique medication classes
-- **Clinical features:** BMI categories (underweight/normal/overweight/obese), blood pressure classification (normal/elevated/hypertension stage 1/hypertension stage 2), glucose level categories, clinical risk score
-- **Admission features:** length of stay categories (short/medium/long), emergency admission flag, discharge disposition encoding
+- **Variables liées aux médicaments:** nombre total de médicaments par patient, nombre de médicaments à haut risque, indicateur de polymédication (5+ médicaments), classes de médicaments uniques
+- **Caractéristiques cliniques:** catégories d’IMC (insuffisance pondérale/normal/surpoids/obésité), classification de la pression artérielle (normale/élevée/hypertension stade 1/hypertension stade 2), catégories de niveau de glucose, score de risque clinique
+- **Caractéristiques d’admission:** catégories de durée de séjour (court/moyen/long), indicateur d’admission en urgence, encodage du mode de sortie
 - **Patient features:** age, gender, insurance type, primary diagnosis category, comorbidity count
 
 The final ABT will be saved as a CSV file that can then be promoted into CAS for use in SAS Visual Analytics and SAS Model Studio.
