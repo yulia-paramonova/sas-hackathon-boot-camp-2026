@@ -24,37 +24,41 @@ L’Analytical Base Table (ABT) doit déjà être chargée dans la bibliothèque
 Vous pouvez aussi la charger directement en important le CSV via **Manage Data**.
 ---
 
-## Using the SAS Visual Analytics Copilot
+## Utiliser le Copilot de SAS Visual Analytics
 
-SAS Visual Analytics includes a **Copilot** — an AI assistant that helps you explore data faster. You can find the Copilot icon in the top right hand corner. The Copilot can:
+SAS Visual Analytics inclut un **Copilot** - un assistant IA qui accélère l’exploration des données. L’icône du Copilot se trouve en haut à droite. Il peut :
 
-- **Suggest visualizations** based on the variables you select
-- **Answer questions** about your data in natural language
-- **Generate insights** by automatically scanning for interesting patterns
-- **Build charts** from plain-language prompts
+- **Suggérer des visualisations** selon les variables sélectionnées
+- **Répondre à des questions** sur vos données en langage naturel
+- **Générer des insights** en détectant automatiquement des schémas intéressants
+- **Créer des graphiques** à partir de requêtes en langage courant 
 
-### How to Use the Copilot
 
-1. Click the **Copilot** icon to open the assistant panel
-2. Type a question or request in natural language
-3. The Copilot will suggest or create a visualization directly in your report
-4. You can refine the result by following up with additional prompts
-5. You can right click into the chat panel and get suggestions on prompts to help you.
+### Comment utiliser le Copilot
+
+1. Cliquez sur l’icône **Copilot** pour ouvrir le panneau
+2. Tapez une question ou une demande en langage naturel
+3. Le Copilot suggère ou crée une visualisation dans votre rapport
+4. Vous pouvez affiner le résultat avec des requêtes supplémentaires
+5. Un clic droit dans le panneau de chat vous propose des suggestions de prompts pour vous aider.
 
 ![image-20260528142442820](img/README/image-20260528142442820.png)
 
 ---
 
-## Guided Exploration: Questions to Ask
+## Exploration guidée : Questions à poser
 
-Work through the following questions to build your understanding of the readmission patterns. For each question, try creating the visualization manually **and/or** by asking the Copilot.
+Travaillez sur les questions suivantes pour comprendre les schémas de réadmission. Pour chaque question, essayez de créer la visualisation manuellement **et/ou** via le Copilot.
 
-### Understanding the Target Variable
 
-**Goal:** Get a baseline understanding of readmission in the dataset.
+### Comprendre la variable cible
 
-- *"Show me the distribution of readmitted patients"*
-- *"What percentage of patients were readmitted within 30 days?"*
+**Objectif :** Obtenir une compréhension de base de la réadmission dans le jeu de données.
+
+- *"Montre-moi la distribution des patients réadmis"*
+-     Show me the distribution of readmitted patients
+- *"Quel pourcentage de patients ont été réadmis dans les 30 jours ?"*
+-     What percentage of patients were readmitted within 30 days?
 
 Create a **bar chart** or **pie chart** of the `readmitted_30days` variable. Note the readmission rate — this establishes the class balance and the baseline your model needs to beat.
 
