@@ -76,17 +76,17 @@ L’ABT finale sera enregistrée en fichier CSV, puis pourra être promue dans C
 
 ---
 
-## Choose Your Language
+## Choisissez votre langage
 
-Pick **one** language and run its script. You do not need to run all three — they each produce the same output. If you are unsure which to choose, pick the one you are most comfortable with.
+Choisissez **un** langage et exécutez son script. Vous n’avez pas besoin d’exécuter les trois — ils produisent tous le même résultat. Si vous hésitez, prenez celui que vous maîtrisez le mieux.
 
-| Language | File | How to Run |
+| Langage | Fichier | Comment exécuter |
 |----------|------|------------|
-| **SAS** | [`data_preparation.sas`](data_preparation.sas) | Open the file and click the **Run** button in the toolbar above the editor |
-| **Python** | [`data_preparation.py`](data_preparation.py) | Open the file and click the **Run** button in the toolbar above the editor |
-| **R** | [`data_preparation.R`](data_preparation.R) | R scripts do not have a toolbar Run button. Open a terminal (*Terminal > New Terminal*) and run: `Rscript data_preparation.R` |
+| **SAS** | [`data_preparation.sas`](data_preparation.sas) |Ouvrez le fichier et cliquez sur **Run** dans la barre d’outils |
+| **Python** | [`data_preparation.py`](data_preparation.py) | Ouvrez le fichier et cliquez sur **Run** dans la barre d’outils |
+| **R** | [`data_preparation.R`](data_preparation.R) | Les scripts R n’ont pas de bouton Run. Ouvrez un terminal (*Terminal > New Terminal*) et exécutez : `Rscript data_preparation.R` |
 
-All three scripts produce the same output: a file called **`life_sciences_abt.csv`** in the `data/` folder. After the script finishes, **refresh the Explorer pane** to see the new file.
+Les trois scripts produisent le même fichier :  **`life_sciences_abt.csv`** dans le dossier  `data/` . Après exécution, **rafraîchissez le panneau Explorer** pour voir le nouveau fichier.
 
 ---
 
