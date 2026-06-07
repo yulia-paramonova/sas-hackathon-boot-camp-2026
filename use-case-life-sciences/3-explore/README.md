@@ -62,9 +62,9 @@ Travaillez sur les questions suivantes pour comprendre les schémas de réadmiss
 
 Créez un **diagramme en barres** ou **diagramme circulaire** de la variable `readmitted_30days`. Examiner le taux de réadmission — cela permet d’établir l’équilibre des classes et la référence (baseline) que votre modèle (de l'étape 4) devra dépasser .
 
-### Hypothesis 1: Comorbidity Burden Drives Readmission
+### Hypothèse 1: Le poids des comorbidités influence la réadmission
 
-**Goal:** Validate whether patients with more comorbidities are readmitted at higher rates.
+**Objectif:** Vérifier si les patients présentant davantage de comorbidités sont réadmis à des taux plus élevés.
 
 - *"Compare the average comorbidity count between readmitted and non-readmitted patients"*
 - *"Show me readmission rate by number of comorbidities"*
