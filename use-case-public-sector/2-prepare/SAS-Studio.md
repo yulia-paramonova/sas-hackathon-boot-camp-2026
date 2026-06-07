@@ -2,20 +2,20 @@
 
 Dans cette étape, vous allez travailler dans **SAS Studio** pour charger les quatre jeux de données Metro City, les profiler et les joindre dans une **Analytical Base Table (ABT)** prête pour l’exploration dans SAS Visual Analytics et la modélisation dans SAS Model Studio.
 
-SAS Studio vous offre la liberté de coder dans le langage de votre choix. Nous fournissons un code équivalent en **SAS**, **Python**, and **R** — choisissez celui avec lequel vous êtes le plus à l’aise ou essayez les trois.
+SAS Studio vous offre la liberté de coder dans le langage de votre choix. Nous fournissons un code équivalent en **SAS**, **Python**, et **R** — choisissez celui avec lequel vous êtes le plus à l’aise ou essayez les trois.
 
 ---
 
 ## Accès aux données
 
-Les quatre fichiers CSV sont disponibles dans la même structure de dossiers que dans l’Étape 1 :
+Les quatre fichiers CSV sont disponibles dans la même structure de dossiers que dans l’Étape 1 :  
 
 ```
 SAS-Hackathon-Bootcamp-2026/use-case-public-sector/data
-├── service_requests.csv         (500 enregistrements)
-├── citizens.csv                 (300 enregistrements)
-├── department_performance.csv   (96 enregistrements)
-└── request_history.csv          (~3,456 enregistrements)
+├── service_requests.csv         (500 lignes)
+├── citizens.csv                 (300 lignes)
+├── department_performance.csv   (96 lignes)
+└── request_history.csv          (~3,456 lignes)
 ```
 
 ---
@@ -24,9 +24,7 @@ SAS-Hackathon-Bootcamp-2026/use-case-public-sector/data
 
 ### 1. Charger les données et les cas d’usage
 
-La première étape consiste à cloner le dépôt GitHub dans votre environnement SAS Studio en ouvrant un terminal et en exécutant la commande suivante :
-
-Maintenant, dans un premier temps, vous allez cloner le dépôt GitHub dans votre environnement SAS Studio en ouvrant d’abord un programme SAS et en exécutant le code ci‑dessous, qui clonera le dépôt dans le système de fichiers.
+La première étape consiste à cloner le dépôt GitHub dans votre environnement SAS Studio en ouvrant un terminal et en exécutant la commande suivante :  
 
 ```SAS
 data _null_;
@@ -49,19 +47,19 @@ Une **data card** est un document synthétique décrivant chaque jeu de données
 
 ### 3. Obtenir des statistiques descriptives de base
 
-Pour les colonnes numériques, calculez les statistiques descriptives (moyenne, médiane, écart-type, min, max). Pour les colonnes catégorielles, calculez les fréquences. Cela vous donne une première vue des distributions et des éventuels problèmes de qualité avant de commencer le feature engineering.
+Pour les colonnes numériques, calculez les statistiques descriptives (moyenne, médiane, écart-type, min, max). Pour les colonnes catégorielles, calculez les fréquences. Cela vous donne une première vue des distributions et des éventuels problèmes de qualité avant de commencer la création de variables *(feature engineering)*.
 
-### 4. Engineer Features et construire l'Analytical Base Table
+### 4. Créer de variables et construire l'Analytical Base Table
 
 Les quatre jeux de données capturent chacun une dimension différente de la prestation de services de Metro City. Pour construire un modèle prédictif, nous devons les combiner en une seule table au niveau des demandes, où chaque ligne correspond à une demande de service et chaque colonne à une caractéristique. Les transformations clés sont :
 
-- **Caractéristiques temporelles:**  jour de la semaine, indicateur week-end, mois, trimestre extrait de la date de soumission
-- **Caractéristiques de la demande:** encodage du type de demande, indicateur d’urgence propre au type de demande
-- **Caractéristiques des départements:** temps de réponse moyen, taux de résolution, nombre d'employés, et charge de travail issus des données de performance du département
-- **Caractéristiques des quartiers:** volume de demandes et schémas historiques de réponse basés sur l’historique des demandes
-- **Caractéristiques des citoyens:** nombre de demandes précédentes, historique de satisfaction, score d’engagement, ancienneté du compte
+- **Caractéristiques temporelles :**  jour de la semaine, indicateur week-end, mois, trimestre extrait de la date de soumission
+- **Caractéristiques de la demande :** encodage du type de demande, indicateur d’urgence propre au type de demande
+- **Caractéristiques des départements :** temps de réponse moyen, taux de résolution, nombre d'employés et charge de travail issus des données de performance du département
+- **Caractéristiques des quartiers :** volume de demandes et schémas historiques de réponse basés sur l’historique des demandes
+- **Caractéristiques des citoyens :** nombre de demandes précédentes, historique de satisfaction, score d’engagement, ancienneté du compte
 
-La variable cible `is_urgent` est dérivée de `priority_level`: 1 si la priorité est Critique ou Élevée, 0 sinon.
+La variable cible `is_urgent` est dérivée de `priority_level` : 1 si la priorité est Critique ou Élevée, 0 sinon.
 
 L’ABT finale sera enregistrée en fichier CSV, puis pourra être promue dans CAS pour une utilisation dans SAS Visual Analytics et SAS Model Studio.
 
@@ -87,8 +85,8 @@ Après avoir exécuté l’un des scripts, vous obtiendrez :
 
 | Fichier | Description |
 |------|-------------|
-| `data/public_sector_abt.csv` | Le jeu de données join, feature-engineered, et prêt pour la modélisation au niveau des demandes |
-| Sortie console | Informations de data card, statistiques descriptives, et distribution du niveau d’urgence pour revue |
+| `data/public_sector_abt.csv` | Le jeu de données joint, enrichi et prêt pour la modélisation au niveau des demandes |
+| Sortie console | Informations de data card, statistiques descriptives et distribution du niveau d’urgence pour revue |
 
 ---
 
