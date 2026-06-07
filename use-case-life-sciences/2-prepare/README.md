@@ -70,7 +70,6 @@ Les quatre jeux de données capturent chacun une dimension différente de la pre
 - **Caractéristiques cliniques:** catégories d’IMC (insuffisance pondérale/normal/surpoids/obésité), classification de la pression artérielle (normale/élevée/hypertension stade 1/hypertension stade 2), catégories de niveau de glucose, score de risque clinique
 - **Caractéristiques d’admission:** catégories de durée de séjour (court/moyen/long), indicateur d’admission en urgence, encodage du mode de sortie
 - **Caractéristiques des patients:** âge, sexe, type d’assurance, catégorie de diagnostic principal, nombre de comorbidités
-- 
 
 L’ABT finale sera enregistrée en fichier CSV, puis pourra être promue dans CAS pour une utilisation dans SAS Visual Analytics et SAS Model Studio.
 
