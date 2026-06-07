@@ -1,12 +1,13 @@
-# Step 3: Explore
+# Étape 3 : Explore
 
-In this step you will use **SAS Visual Analytics** and its built-in **Copilot** to visually explore the Analytical Base Table (ABT) you created in Step 2. The goal is to understand the patterns behind patient readmission before building a predictive model.
+Dans cette étape, vous utiliserez **SAS Visual Analytics** et son **Copilot** intégré pour explorer visuellement l’Analytical Base Table (ABT) que vous avez créée à l’Étape 2. L’objectif est de comprendre les schémas qui expliquent les réadmissions des patients avant de construire un modèle prédictif.
 
 ---
 
-## Prerequisites
 
-The analytical base table should already be loaded into the **Public** CAS library. If you completed Step 2 the data was saved as `life_sciences_abt.csv`. Your bootcamp environment has this pre-loaded as a CAS table named **`LIFE_SCIENCES_ABT`** in the **Public** caslib.
+## Prérequis
+
+L’Analytical Base Table (ABT) doit déjà être chargée dans la bibliothèque CAS **Public**. Si vous avez terminé l’Étape 2, les données ont été enregistrées sous `life_sciences_abt.csv`. Votre environnement Bootcamp contient déjà cette table CAS préchargée sous le nom **`LIFE_SCIENCES_ABT`** dans la caslib **Public** .
 
 ---
 
