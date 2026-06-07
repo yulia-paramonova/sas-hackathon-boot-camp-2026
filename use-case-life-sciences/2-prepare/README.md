@@ -58,9 +58,9 @@ Une **data card** est un document synthétique décrivant chaque jeu de données
 - Nombre de valeurs manquantes par colonne
 - Exemples de lignes
 
-### 4. Get Basic Summary Statistics
+### 4. Obtenir des statistiques descriptives de base
 
-For numeric columns, compute descriptive statistics (mean, median, standard deviation, min, max). For categorical columns, compute frequency counts. This gives you a first look at distributions and potential data quality issues before you begin feature engineering.
+Pour les colonnes numériques, calculez les statistiques descriptives (moyenne, médiane, écart-type, min, max). Pour les colonnes catégorielles, calculez les fréquences. Cela vous donne une première vue des distributions et des éventuels problèmes de qualité avant de commencer l’ingénierie des variables.
 
 ### 5. Engineer Features and Build the Analytical Base Table
 
