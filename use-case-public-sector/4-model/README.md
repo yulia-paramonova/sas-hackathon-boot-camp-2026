@@ -17,7 +17,7 @@ La table de base analytique (`PUBLIC_SECTOR_ABT`) doit être disponible dans la 
 3. Configurez le projet :
    - **Name:** *Metro City Service Request Urgency Prediction*
    - **Project Type:** *Data Mining and Machine Learning*
-   - **Data Source:** sélectionnez `PUBLIC_SECTOR_ABT` depuis le caslib Public
+   - **Data Source:** sélectionnez `PUBLIC_SECTOR_ABT` depuis la caslib Public
    - Laissez **Template, Location & Description** par défaut
    - **Target Variable** (variable cible/à expliquer) : `is_urgent`
 4. Cliquez sur **Save**
@@ -39,13 +39,13 @@ SAS Model Studio inclut un **Copilot** qui agit comme un assistant de modélisat
 
 ### Ce que le Copilot peut faire
 
-- **Recommander des configurations de pipeline** — demandez-lui de proposer la meilleure approche pour un problème de classification binaire où le recall de la classe positive est critique  
-*Suggest the best approach for a binary classification problem where recall on the positive class is critical*
-- **Expliquer les résultats des modèles** — demandez-lui d’interpréter l’importance des variables, les métriques de comparaison des modèles  
-*Interpret feature importance, model comparison metrics*
+- **Recommander des configurations de pipeline** — demandez-lui de proposer la meilleure approche pour un problème de classification binaire où le recall de la classe positive est critique
+-       Suggest the best approach for a binary classification problem where recall on the positive class is critical
+- **Expliquer les résultats des modèles** — demandez-lui d’interpréter l’importance des variables, les métriques de comparaison des modèles
+-       Interpret feature importance, model comparison metrics
 - **Générer des nœuds de pipeline** — décrivez votre besoin et le Copilot peut ajouter des nœuds
-- **Répondre à des questions méthodologiques** — par exemple « Qu’est-ce que le gradient boosting ? » ou « Comment fonctionne l’oversampling ? »  
-*"What is gradient boosting?" or "How does oversampling work?"*
+- **Répondre à des questions méthodologiques** — par exemple « Qu’est-ce que le gradient boosting ? » ou « Comment fonctionne l’oversampling ? »
+-       "What is gradient boosting?" or "How does oversampling work?"
 
 ### Example Copilot Prompts
 
@@ -148,7 +148,7 @@ Une fois que les deux approches (ou l'une d'entre elles) ont été terminées, o
 | **Accuracy** - Précision | Pourcentage global de prédictions correctes  | > 85% |
 | **Recall (Sensitivity)** - Rappel (Sensibilité) | Proportion de demandes urgentes réelles correctement identifiées | > 90% |
 | **AUC-ROC** | Capacité globale à distinguer les demandes urgentes des non urgentes | >= 0.85 |
-| **Misclassification Rate** - Taux de mauvaise de classification | Pourcentage de prédictions incorrectes | <= 0.15 |
+| **Misclassification Rate** - Taux de mauvaise classification | Pourcentage de prédictions incorrectes | <= 0.15 |
 | **F1 Score** | Moyenne harmonique de la précision et du rappel | >= 0.80 |
 | **KS Statistic** | Séparation maximale entre les distributions cumulées | >= 0.50 |
 
@@ -194,13 +194,13 @@ L'évaluation de l'équité permet de s'assurer que le modèle fonctionne de man
 
 ### Interprétation des résultats
 
-- Si **la parité démographique (Demographic Parity)** est inférieur à 0,80, le modèle signale de manière disproportionnée un groupe d'âge comme urgent tout en sous-signalant l'autre
+- Si **la parité démographique (Demographic Parity)** est inférieure à 0,80, le modèle signale de manière disproportionnée un groupe d'âge comme urgent tout en sous-signalant l'autre
 - Si l'écart en matière d'**égalité des chances (Equal Opportunity)** dépasse 0,10, le modèle détecte mieux les demandes urgentes pour un groupe d'âge que pour l'autre — ce qui signifie qu'un groupe bénéficie d'un triage moins efficace
 - Examinez la **répartition des scores (Score Distribution)** par groupe : les courbes des deux groupes devraient présenter une forme similaire
 
 ### L'importance de l'évaluation de l'équité
 
-L'évaluation de l'équité dans l'IA du secteur public n'est pas seulement une question d'éthique : c'est une exigence de gouvernance ayant un impact direct sur les citoyens :
+L'évaluation de l'équité dans l'IA du secteur public n'est pas seulement une question d’éthique : c’est une exigence de gouvernance ayant un impact direct sur les citoyens.
 
 1. **Service équitable :** chaque groupe démographique mérite la même qualité de prédiction de l'urgence
 2. **Confiance du public :** les citoyens font davantage confiance aux algorithmes gouvernementaux lorsqu'il existe des preuves documentées de tests d'équité
@@ -222,7 +222,7 @@ Une fois que vous avez sélectionné votre modèle champion et vérifié son éq
 2. Faites un clic droit sur le modèle champion et sélectionnez **Enregistrer le modèle** (ou utilisez le menu : *Actions* > *Enregistrer le modèle*)
     ![image-20260529153304379](img/README/image-20260529153304379.png)
 3. Confirmez l'emplacement, qui est `/Model Repositories/DM Repository`, puis cliquez sur OK
-4. Attendez que l'enregistrement se termine dans cette fenêtre contextuelle, puis vous pouvez la fermer, cliquer à nouveau avec le bouton droit sur le modèle et sélectionner **Gérer les modèles**
+4. Attendez que l'enregistrement se termine dans cette fenêtre contextuelle, puis vous pouvez la fermer et cliquer à nouveau avec le bouton droit sur le modèle et sélectionner **Gérer les modèles**
 5. Vous serez alors redirigé vers **SAS Model Manager**, où vous pourrez consulter la fiche de ce modèle
 6. Explorez la fiche du modèle, qui est remplie automatiquement au fur et à mesure que vous développez et gérez le modèle sur SAS Viya. L'onglet Aperçu (Overview) offre un résumé général du modèle, y compris un aperçu de la précision d'apprentissage, de l'équité d'apprentissage, de la capacité de généralisation et des variables influentes du modèle.
     ![image-20260529153337755](img/README/image-20260529153337755.png)
