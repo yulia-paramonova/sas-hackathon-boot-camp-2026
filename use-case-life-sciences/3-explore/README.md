@@ -11,16 +11,17 @@ L’Analytical Base Table (ABT) doit déjà être chargée dans la bibliothèque
 
 ---
 
-## Accessing the Data in SAS Visual Analytics
 
-1. Open **SAS Visual Analytics** from the SAS Viya home page (or use the main menu in the top right corner and click on *Explore and Visualize*)
-2. Click **New Report**
-3. In the data panel click on the Add Data button and from the available tables please select **LIFE_SCIENCES_ABT**
+## Accéder aux données dans SAS Visual Analytics
+
+1. Ouvrez **SAS Visual Analytics** depuis la page d’accueil SAS Viya (ou via le menu principal en haut à droite → *Explore and Visualize*)
+2. Cliquez sur **New Report**
+3. Dans le panneau de données, cliquez sur *Add Data* et sélectionnez **LIFE_SCIENCES_ABT**
     ![image-20260528142056258](img/README/image-20260528142056258.png)
-4. Add it as your data source — you should see all the features from Step 2 listed in the data items pane on the left
+4. Ajoutez-la comme source de données — vous devriez voir toutes les variables créées à l’Étape 2 dans le panneau de gauche
 
-> **Tip:** If the table does not appear in the Public caslib, ask your SAS Mentor to help promote it. You can also load it directly by uploading the CSV through the **Manage Data** interface.
-
+> **Astuce:** Si la table n’apparaît pas dans la caslib Public, demandez à un mentor SAS de vous aider à la promouvoir.
+Vous pouvez aussi la charger directement en important le CSV via **Manage Data**.
 ---
 
 ## Using the SAS Visual Analytics Copilot
