@@ -1,30 +1,35 @@
-# Step 2: Prepare
+# Étape 2 : Prepare
 
-In this step you will work in **SAS Viya Workbench** to load the four MedCare datasets, profile them, and join them into a single **Analytical Base Table (ABT)** that is ready for exploration in SAS Visual Analytics and modeling in SAS Model Studio.
+Dans cette étape, vous allez travailler dans **SAS Viya Workbench** pour charger les quatre jeux de données Metro City, les profiler et les joindre dans une **Analytical Base Table (ABT)** prête pour l’exploration dans SAS Visual Analytics et la modélisation dans SAS Model Studio.
 
-SAS Viya Workbench gives you the freedom to code in the language of your choice. We provide equivalent code in **SAS**, **Python**, and **R** — pick the one you are most comfortable with or try all three.
+SAS Viya Workbench vous offre la liberté de coder dans le langage de votre choix. Nous fournissons un code équivalent en **SAS**, **Python** et **R** — choisissez celui avec lequel vous êtes le plus à l’aise ou essayez les trois.
 
 ---
 
-## Accessing the Data
+---
 
-The four CSV files are available in the same folder structure from Step 1:
+## Accès aux données
+
+Les quatre fichiers CSV sont disponibles dans la même structure de dossiers que dans l’Étape 1 :  
 
 ```
 SAS-Hackathon-Bootcamp-2026/use-case-life-sciences/data
-├── patients.csv          (500 records)
-├── admissions.csv        (500 records)
-├── clinical_measures.csv (500 records)
-└── medications.csv       (326 records)
+├── patients.csv          (500 lignes)
+├── admissions.csv        (500 lignes)
+├── clinical_measures.csv (500 lignes)
+└── medications.csv       (326 lignes)
 ```
 
 ---
 
-## What You Will Do
 
-### 1. Setup your Environment in SAS Viya Workbench
+## Ce que vous allez faire
 
-Once you are logged into SAS Viya Workbench you will first have to chose the programming environment that you want to use and which languages. Once you do that a second tab will open up and you will have to wait for moment until the programming environment shows up. ![image-20260527164013080](img/README/image-20260527164013080.png)
+### 1. Configurer votre environnement dans SAS Viya Workbench
+
+Une fois connecté à SAS Viya Workbench, vous devrez d’abord choisir l’environnement de programmation et les langages que vous souhaitez utiliser. Une fois cela fait, un second onglet s’ouvrira et vous devrez patienter jusqu’à ce que l’environnement s'affiche.
+
+ ![image-20260527164013080](img/README/image-20260527164013080.png)
 
 ### 2. Load the Data & Use Cases
 
