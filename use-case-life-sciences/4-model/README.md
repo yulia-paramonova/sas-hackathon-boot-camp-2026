@@ -185,35 +185,36 @@ Une IA de confiance exige que les modèles ne discriminent pas injustement certa
 
 Le type d’assurance est une dimension clé de l’équité en santé pour plusieurs raisons :  
 
-1. **Socioeconomic proxy:** Insurance type is strongly correlated with socioeconomic status, race, and ethnicity. Medicaid patients are disproportionately from lower-income and minority communities. If the model systematically assigns higher risk scores to Medicaid patients, it may be reinforcing existing health disparities rather than addressing them.
+1. **Proxy socio-économique :** le type d’assurance est fortement corrélé au statut socio-économique, à l’origine ethnique et à la race. Les patients Medicaid sont souvent issus de populations à revenus plus faibles ou minoritaires. Si le modèle attribue systématiquement des scores de risque plus élevés à ces patients, il peut renforcer les inégalités existantes au lieu de les réduire.  
 
-2. **Equity of care:** If the model's accuracy differs across insurance groups — for example, catching 90% of readmissions among Commercial patients but only 60% among Medicaid patients — then the resulting care coordination efforts will disproportionately benefit one population over another. This violates the principle of equitable care delivery.
+2. **Équité des soins :** si la précision du modèle varie selon les groupes d’assurance — par exemple 90 % des réadmissions détectées chez les patients Commercial contre 60 % chez les patients Medicaid — les efforts de coordination des soins bénéficieront davantage à certains groupes, ce qui va à l’encontre du principe d’équité.   
 
-3. **Resource allocation:** High-risk flags trigger interventions such as follow-up calls, home health referrals, and care manager assignments. If the model over-flags one insurance group, those patients may consume a disproportionate share of limited care management resources — or conversely, if it under-flags a group, those patients miss out on services they need.
+3. **Allocation des ressources :** les patients identifiés à risque déclenchent des actions (suivi téléphonique, soins à domicile, coordination). Si le modèle sur-identifie un groupe, celui-ci peut consommer une part disproportionnée des ressources. À l’inverse, une sous-identification prive certains patients de services nécessaires.  
 
-4. **Regulatory and reputational risk:** CMS and the Office for Civil Rights monitor for disparities in care delivery. A model that systematically disadvantages patients by payer type could expose MedCare to regulatory scrutiny and reputational harm.
+4. **Risque réglementaire et réputationnel :** les organismes comme le CMS surveillent les disparités de soins. Un modèle biaisé selon le type d’assurance peut exposer l’organisation à des risques réglementaires et d’image.  
 
-### Running the Fairness Assessment
+### Exécution de l’évaluation de l’équité
 
-1. As we set the `ins_Medicaid` variable to be assess for fairness we get this assessments with every model
-4. Review the fairness metrics:
+1. En définissant la variable `ins_Medicaid` comme variable à évaluer en termes d’équité, vous obtenez ces analyses pour chaque modèle  
+2. Examinez les métriques d’équité :
 
-| Metric | What It Measures | Acceptable Range |
+| Métrique | Ce qu’elle mesure | Intervalle acceptable |
 |--------|-----------------|------------------|
-| **Demographic Parity** | Are readmission predictions distributed equally across insurance types? | Ratio > 0.80 |
-| **Equal Opportunity** | Is the sensitivity (true positive rate) similar across insurance types? | Difference < 0.10 |
-| **Predictive Parity** | Is the precision similar across insurance types? | Difference < 0.10 |
-| **Calibration** | Does a 70% predicted probability mean 70% actual readmission for all groups? | Slope close to 1.0 |
+| **Demographic Parity (Parité démographique)** | Les prédictions de réadmission sont-elles distribuées équitablement entre les types d’assurance ? | Ratio > 0.80 |
+| **Equal Opportunity (Égalité des chances)** | La sensibilité est-elle similaire entre les groupes ? | Différence < 0.10 |
+| **Predictive Parity (Parité prédictive)** | La précision est-elle similaire entre les groupes ? | Différence < 0.10 |
+| **Calibration (Calibrage)** | Une probabilité de 70 % correspond-elle à 70 % de réadmissions pour tous les groupes ? | Pente proche de 1.0 |
 
-### Interpreting Results
+### Interprétation des résultats
 
-- If **Demographic Parity** is below 0.80, the model disproportionately flags one insurance group as high-risk
-- If **Equal Opportunity** difference exceeds 0.10, the model catches readmissions in one group better than another
-- Review the **Score Distribution** by group — both groups should have similarly shaped curves
 
-### The Value of Fairness Assessment
+- Si la **Demographic Parity (Parité démographique)** est inférieure à 0,80, le modèle privilégie un groupe dans l’identification des risques  
+- Si la différence d’**Equal Opportunity (Égalité des chances)** dépasse 0,10, le modèle détecte mieux les réadmissions pour un groupe que pour un autre  
+- Examinez la **Score Distribution (distribution des scores)** par groupe — les courbes doivent être similaires  
 
-Fairness assessment is not just an ethical checkbox — it provides **direct clinical and business value**:
+### L'importance de l'évaluation de l'équité
+
+L’évaluation de l’équité n’est pas qu’une exigence éthique — elle apporte une **valeur clinique et business directe** :
 
 1. **Better patient outcomes:** A model that performs equally well across insurance groups leads to more effective care coordination for everyone
 2. **Trust:** Clinical staff, hospital leadership, and regulators trust models more when they can see documented fairness evidence
