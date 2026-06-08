@@ -1,4 +1,4 @@
-# Étape 3 : Explorer
+# Étape 3 : Explore (Niveau avancé)
 
 Dans cette étape, vous allez utiliser **SAS Visual Analytics** et son **Copilot** intégré pour explorer visuellement la table de base analytique (ABT) que vous avez créée à l'étape 2. L'objectif est de comprendre les schémas de l'attrition client avant de construire un modèle prédictif.
 
