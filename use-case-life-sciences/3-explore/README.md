@@ -180,21 +180,21 @@ Utilisez des **filtres** et des **interactions** entre les visualisations — le
 
 ---
 
-## Key Takeaways to Carry Forward
+## Points clés à retenir
 
-Before moving on to Step 4, summarize what you have learned:
+Avant de passer à l'étape 4, résumez ce que vous avez appris.
 
-1. **Which hypotheses were confirmed?** (likely H1, H3, and H4)
-2. **Which features show the strongest separation** between readmitted and non-readmitted patients?
-3. **Are there any surprising patterns** the Copilot surfaced?
-4. **What is the class balance?** (important for model training strategy)
+1. **Quelles hypothèses ont été confirmées ?** (probablement H1, H3, and H4)
+2. **Quels features (variables) montrent la séparation la plus nette** entre les patients réadmis et non réadmis ?
+3. **Existe-t-il des schémas surprenants** que le Copilot a mis en évidence ?
+4. **Quel est l’équilibre des classes ?** (important pour la stratégie d’entraînement du modèle)
 
-These insights will directly inform the model building approach in the next step.
+Ces analyses éclaireront directement l’approche de modélisation à adopter lors de l’étape suivante.
 
-Finally feel free to save the report, the default location is My Folder, which is ideal here as to not clutter up the workspace for everybody else. You can also give it a name so that it is easier to remember what this report is about.
+Enfin, n'hésitez pas à enregistrer le rapport. L'emplacement par défaut est "Mon dossier" (My Folder), ce qui est idéal ici pour ne pas encombrer l'espace de travail des autres. Vous pouvez également lui donner un nom afin qu'il soit plus facile de vous rappeler le sujet de ce rapport.
 
 ---
 
-## Next Steps
+## Étapes suivantes
 
-Proceed to **[Step 4: Model](../4-model/)** to build and compare predictive models in SAS Model Studio.
+Passez à **[Step 4: Model](../4-model/)** pour construire et comparer des modèles prédictifs dans SAS Model Studio.
