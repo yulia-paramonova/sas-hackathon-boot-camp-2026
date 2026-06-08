@@ -1,46 +1,52 @@
 # Step 4: Model
 
-In this step you will use **SAS Model Studio** to build, compare, and evaluate patient readmission prediction models. SAS Model Studio provides a visual pipeline interface, a built-in **Copilot**, **AutoML** capabilities, and tools for custom model building — all with integrated fairness assessment. At the end you will register your champion model to **SAS Model Manager**.
+Dans cette étape, vous utiliserez **SAS Model Studio** pour construire, comparer et évaluer des modèles de prédiction du risque de réadmission des patients. SAS Model Studio offre une interface visuelle de pipeline, un **Copilot** intégré, des capacités d’**AutoML**, ainsi que des outils pour le développement de modèles personnalisés — le tout avec une évaluation intégrée de l’équité. À la fin, vous enregistrerez votre modèle champion dans **SAS Model Manager**.
 
 ---
 
 ## Prerequisites
 
-The analytical base table (`LIFE_SCIENCES_ABT`) should be available in the **Public** CAS library. If you went through Step 2 & Step 3 before this one you will have a comprehensive understanding of the data already, if not take a second longer to read through the columns to get an understanding of the data.
+La table de base analytique (`LIFE_SCIENCES_ABT`) doit être disponible dans la bibliothèque CAS **Public**. Si vous avez déjà réalisé les étapes 2 et 3, vous avez une bonne compréhension des données ; sinon, prenez un peu de temps pour parcourir les colonnes afin de mieux les comprendre.
 
 ---
 
 ## Opening SAS Model Studio
 
-1. From the SAS Viya home page, open **SAS Model Studio** (under *Build Models* in the main menu)
-2. Click **New Project**
-3. Configure the project:
+1. Depuis la page d’accueil SAS Viya, ouvrez **SAS Model Studio** (dans *Build Models* du menu principal)
+2.  Cliquez sur **New Project**
+3. Configurez le projet :
    - **Name:** *MedCare Patient Readmission Prediction*
    - **Project Type:** *Data Mining and Machine Learning*
-   - **Data Source:** Select `LIFE_SCIENCES_ABT` from the Public caslib
-   - Leave the **Template, Location & Description** as they are by default
-   - **Target Variable:** `readmitted_30days`
-4. Click **Save**
+   - **Data Source:** sélectionnez `LIFE_SCIENCES_ABT` depuis la caslib Public
+   - Laissez **Template, Location & Description** par défaut
+   - **Target Variable** (variable cible/à expliquer) : `readmitted_30days`
+4. Cliquez sur **Save**
     ![image-20260529144108273](img/README/image-20260529144108273.png)
-5. Once the SAS Model Studio project has opened on the Data tab, select the variable `readmitted_30days` and set its Role to ´Target´
+5. Une fois le projet ouvert sur l’onglet Data, sélectionnez la variable `readmitted_30days` et définissez son rôle sur `Target` *(à expliquer)*  
     ![image-20260529144236588](img/README/image-20260529144236588.png)
-6. On the same tab look for the variable `ins_Medicaid` and activate the checkbox `Assess this variable for bias`, this will enable us to talk more about the Trustworthy AI features of SAS Model Studio and then click over to the *Pipelines* tab to get started.
+6. Sur le même onglet, trouvez la variable `ins_Medicaid` et activez la case `Assess this variable for bias`. Cela permettra d’illustrer les fonctionnalités de Trustworthy AI dans SAS Model Studio. Passez ensuite à l’onglet *Pipelines* pour commencer.  
     ![image-20260529144314430](img/README/image-20260529144314430.png)
 
-The project is now ready for us to start modelling.
+Le projet est maintenant prêt pour commencer la modélisation.
 
 ---
 
-## Using the SAS Model Studio Copilot
+## Utilisation du Copilot de SAS Model Studio
 
-SAS Model Studio includes a **Copilot** that acts as your AI-powered modeling assistant. Access it from the Copilot icon in the toolbar.
+SAS Model Studio inclut un **Copilot** qui agit comme un assistant de modélisation basé sur l’IA. Accédez-y via l’icône Copilot dans la barre d’outils.  
 
-### What the Copilot Can Do
+*Pour le moment, SAS Viya Copilot fonctionne uniquement en anglais. Nous vous recommandons donc de formuler vos requêtes (prompts) en anglais afin d’obtenir des résultats fiables et de qualité.*
 
-- **Recommend pipeline configurations** — ask it to suggest the best approach for a binary classification problem with imbalanced data
-- **Explain model results** — ask it to interpret feature importance, model comparison metrics, or fairness reports
-- **Generate pipeline nodes** — describe what you want and the Copilot can add nodes to your pipeline
-- **Answer methodology questions** — ask about techniques like "What is gradient boosting?" or "How does oversampling work for imbalanced clinical data?"
+### Ce que le Copilot peut faire
+
+- **Recommander des configurations de pipeline** — demandez-lui de proposer la meilleure approche pour un problème de classification binaire avec des données déséquilibrées
+- **Expliquer les résultats des modèles** — demandez-lui d’interpréter l’importance des variables, les métriques de comparaison des modèles
+- **Générer des nœuds de pipeline** — décrivez votre besoin et le Copilot peut ajouter des nœuds
+- **Répondre à des questions méthodologiques** — par exemple « Qu’est-ce que le gradient boosting ? » ou « Comment fonctionne l’oversampling ? »
+   -      Suggest the best approach for a binary classification problem with imbalanced data
+   -      Interpret feature importance, model comparison metrics
+   -      What is gradient boosting?
+   -      How does oversampling work for imbalanced clinical data?
 
 ### Example Copilot Prompts
 
@@ -65,83 +71,86 @@ Unlike many machine learning applications, clinical predictive models must be **
 
 ---
 
-## Approach 1: AutoML (Recommended Starting Point)
+## Approche 1 : AutoML (Point de départ recommandé)
 
-AutoML automatically trains and compares multiple algorithms, handles preprocessing, and selects the best model. This is the fastest way to establish a strong baseline.
+AutoML entraîne et compare automatiquement plusieurs algorithmes, gère le prétraitement et sélectionne le meilleur modèle. C’est la façon la plus rapide d’obtenir une baseline solide.
 
-### Setting Up AutoML
+### Configuration d’AutoML
 
-1. In your project pipeline, click **New Pipeline** and select **Automatically generate the pipeline**
-2. Configure AutoML settings:
-   - **Maximum Time:** Set a time budget (e.g., 5 minutes for the bootcamp)
-3. Click **Save**
-4. Now the Pipeline is going to be built for us.
+1. Dans votre pipeline, cliquez sur **New Pipeline** puis sélectionnez **Automatically generate the pipeline**
+2. Configurez :  
+   - **Maximum Time :** définissez la durée (ex. 5 minutes pour le bootcamp) 
+3. Cliquez sur **Save**
+4. Le pipeline est ensuite généré automatiquement
 
-### What AutoML Does
+### Ce que fait AutoML
 
-AutoML will automatically:
+AutoML va automatiquement :
 
-- Test multiple algorithms (logistic regression, decision trees, random forests, gradient boosting, neural networks, support vector machines)
-- Handle feature preprocessing (missing value imputation, encoding)
-- Tune hyperparameters
-- Compare models on the validation set
-- Rank models by the chosen optimization metric
+- Tester plusieurs algorithmes (régression logistique, arbres, forêts aléatoires, gradient boosting, réseaux neuronaux, SVM)  
+- Gérer le prétraitement (valeurs manquantes, encodage)  
+- Optimiser les hyperparamètres  
+- Comparer les modèles sur l’échantillon de validation  
+- Classer les modèles selon la métrique choisie
 
-### Reviewing AutoML Results
+### Analyse des résultats AutoML
 
-After the run completes:
+Après exécution :  
 
-1. Open the **Model Comparison** node to see all models ranked by AUC
-2. Click on individual models to see:
-   - **Fit Statistics:** AUC, misclassification rate, Gini coefficient, KS statistic
-   - **ROC Chart:** Visual comparison of model discrimination
-   - **Variable Importance:** Which features matter most
-   - **Score Rankings:** How well the model separates high-risk from low-risk patients
-3. The top model is automatically selected as the **champion**
+1. Ouvrez le nœud **Model Comparison** pour voir le classement des modèles 
+2. Cliquez sur un modèle pour voir :  
+   - **Fit Statistics :** AUC, taux d’erreur, Gini, KS  
+   - **ROC Chart :** comparaison visuelle de la capacité de discrimination du modèle  
+   - **Variable Importance :** quelles sont les caractéristiques les plus importantes  
+   - **Score Rankings :** dans quelle mesure le modèle distingue les demandes urgentes des demandes non urgentes  
+3. Le meilleur modèle est automatiquement défini comme **champion**  
 
-> **What to expect:** For this dataset, gradient boosting or random forest models typically achieve an AUC of 0.75-0.82. Logistic regression is usually close behind at 0.72-0.78.
+> **À quoi s'attendre :** pour cet ensemble de données, les modèles de gradient boosting ou de forêt aléatoire atteignent généralement un AUC compris entre 0,75 et 0,82.
+La régression logistique suit généralement de près, avec des valeurs comprises entre 0,72 et 0,78.
 
 ---
 
-## Approach 2: Custom Pipeline Building
+## Approche 2 : Création d'un pipeline personnalisé
 
-If you want more control — or want to experiment with specific model types — build a custom pipeline step by step.
+Si vous souhaitez disposer d'un plus grand contrôle — ou si vous souhaitez tester des types de modèles spécifiques —, créez un pipeline personnalisé étape par étape.
 
-### Recommended Pipeline Nodes
+### Nœuds de pipeline recommandés
 
-Add these nodes in sequence by clicking **Add Node** in the pipeline canvas:
+Ajoutez ces nœuds dans l'ordre en cliquant sur **Add Node** dans l'espace de travail du pipeline :
 
-1. **Data** — Your input table (already connected)
-3. **Imputation** — Handle any remaining missing values (mean for numeric, mode for categorical)
-5. **Model Nodes** — Add one or more of the following:
-   - **Logistic Regression** — Interpretable baseline model; coefficients map directly to clinical risk factors
-   - **Forest** — Random forest ensemble; provides robust performance with variable importance
-   - **Gradient Boosting** — Often the best performer; offers partial dependence plots for interpretation
-6. **Model Comparison** — Automatically compares all model nodes and selects the champion
+1. **Data** —  Votre table d'entrée (déjà connectée)
+3. **Imputation** — Traite les valeurs manquantes restantes (moyenne pour les valeurs numériques, mode pour les valeurs catégorielles)
+5. **Model Nodes** —  Ajoutez un ou plusieurs des nœuds suivants :
+   - **Logistic Regression** — Modèle de référence interprétable
+   - **Forest** — Ensemble de forêts aléatoires
+   - **Gradient Boosting** — Souvent le plus performant
+6. **Model Comparison** — Compare automatiquement tous les nœuds de modèle et sélectionne le meilleur
 
-### Configuring Individual Models
+### Configuration des modèles individuels
 
 **Logistic Regression:**
-- Selection-process stopping criterion: Significance level
-- Entry significance level: 0.05
-- This gives you interpretable odds ratios for each clinical risk factor
+- Critère d'arrêt du processus de sélection : niveau de significativité    
+*Selection-process stopping criterion: Significance level*
+- Niveau de significativité d'entrée : 0,05  
+*Entry significance level: 0.05*
+- Cela vous donne des coefficients interprétables pour chaque caractéristique
 
 **Forest (Random Forest):**
-- Number of trees: 200
-- Maximum depth: 10
-- Go to the Post-training Properties and activate *HyperSHAP* under the Local Interpretability section. This is used to explain the model predictions
+- Nombre d'arbres (*Number of trees*) : 200
+- Profondeur maximale (*Maximum depth*) : 10
+- Accédez aux propriétés post-entraînement et activez *HyperSHAP* dans la section Interprétabilité locale. Cela sert à expliquer les prédictions du modèle  
 
 **Gradient Boosting:**
-- Number of trees: 150
-- Learning rate: 0.1
-- Maximum depth: 5
-- Subsample rate: 0.8
+- Nombre d'arbres (*Number of trees*) : 150
+- Taux d'apprentissage (*Learning rate*) : 0.1
+- Profondeur maximale (*Maximum depth*) : 5
+- Taux de sous-échantillonnage (*Subsample rate*) : 0.8
 
-### Running the Custom Pipeline
+### Exécution du pipeline personnalisé
 
-1. Verify all nodes are connected in the pipeline canvas
-2. Click **Run Pipeline** (or right-click the Model Comparison node and select *Run*)
-3. Wait for all models to finish training
+1. Vérifiez que tous les nœuds sont connectés dans le canevas du pipeline
+2. Cliquez sur **Run Pipeline** (ou cliquez avec le bouton droit sur le nœud Comparaison des modèles et sélectionnez *Run*)
+3. Attendez que tous les modèles aient terminé leur apprentissage
 
 ---
 
