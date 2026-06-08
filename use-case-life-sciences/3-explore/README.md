@@ -27,7 +27,7 @@ Vous pouvez aussi la charger directement en important le CSV via **Manage Data**
 
 ### Comprendre la variable cible
 
-**Objectif :** Obtenir une compréhension de base de l'urgence dans le jeu de données.
+**Objectif :** Obtenir une compréhension de base de la réadmission dans le jeu de données.
 
 - *"Quelle est la distribution des patients réadmis ?"*
 - *"Quel est le pourcentage de patients réadmis dans les 30 jours ?"*
