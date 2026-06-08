@@ -1,14 +1,15 @@
-# Step 2: Prepare
 
-In this step you will work in **SAS Studio** to load the four PremierBank datasets, profile them, and join them into a single **Analytical Base Table (ABT)** that is ready for exploration in SAS Visual Analytics and modeling in SAS Model Studio.
+# Étape 2: Prepare
 
-SAS Studio gives you the freedom to code in the language of your choice or build a visual flow. We provide equivalent code in **SAS**, **Python**, and **R** — pick the one you are most comfortable with or try all three.
+Dans cette étape, vous allez travailler dans **SAS Studio** pour charger les quatre jeux de données MedCare, les profiler et les joindre dans une **Analytical Base Table (ABT)** prête pour l’exploration dans SAS Visual Analytics et la modélisation dans SAS Model Studio.
+
+SAS Studio vous offre la liberté de coder dans le langage de votre choix. Nous fournissons un code équivalent en **SAS**, **Python**, et **R** — choisissez celui avec lequel vous êtes le plus à l’aise ou essayez les trois.
 
 ---
 
-## Accessing the Data
+## Accès aux données
 
-The four CSV files are available in the same folder structure from Step 1:
+Les quatre fichiers CSV sont disponibles dans la même structure de dossiers que dans l’Étape 1 :  
 
 ```
 SAS-Hackathon-Bootcamp-2026/use-case-life-sciences/data
@@ -20,11 +21,12 @@ SAS-Hackathon-Bootcamp-2026/use-case-life-sciences/data
 
 ---
 
-## What You Will Do
+## Ce que vous allez faire
 
-### 1. Load the Data & Use Cases
+### 1. Charger les données et les cas d’usage
 
-Now as the first step you will clone the GitHub repository to your SAS Studio environment by first opening up a SAS program and running the below code which will clone the repository to the file system:
+La première étape consiste à cloner le dépôt GitHub dans votre environnement SAS Studio en ouvrant un terminal et en exécutant la commande suivante :  
+
 
 ```SAS
 data _null_;
@@ -32,18 +34,19 @@ data _null_;
 run;
 ```
 
-Once you have run this code snippet navigate to the SAS Server pane and the expand the *SAS Server > Home > data > sas-hackathon-bootcamp-2026* from here the familiar structure of this repository are available.
+Une fois cet extrait de code exécuté, accédez au panneau SAS Server, puis développez *SAS Server > Home > data > sas-hackathon-bootcamp-2026*. À partir de là, la structure familière de ce dépôt est disponible.
+
 
 ![image-20260528135335744](img/SAS-Studio/image-20260528135335744.png)
 
-### 2. Create a Data Card
+### 2. Créer une Data Card
 
-A **data card** is a concise summary document that describes each dataset — its purpose, size, column names, data types, and any quality notes. Data cards are a best practice in responsible AI because they provide transparency about the data flowing into models. For each table you will produce:
+Une **data card** est un document synthétique décrivant chaque jeu de données — — son objectif, sa taille, les noms de colonnes, les types de données et toute remarque de qualité. Les data cards sont une bonne pratique en matière d’IA responsable, car elles apportent de la transparence sur les données utilisées dans les modèles. Pour chaque table, vous produirez :
 
-- Number of rows and columns
-- Column names with data types
-- Count of missing values per column
-- Sample rows
+- Nombre de lignes et de colonnes
+- Noms des colonnes et types de données
+- Nombre de valeurs manquantes par colonne
+- Exemples de lignes
 
 ### 3. Get Basic Summary Statistics
 
