@@ -131,37 +131,37 @@ Nous vous recommandons d’essayer de créer au moins un de ces ensembles de rè
 | Modéré | Tout | Protocole de suivi standard | 5 |
 | Faible | Tout | Sortie classique (poursuite du suivi) | 14 |
 
-**Rule Set: Intervention Assignment**
+**Rule Set: Attribution des interventions**
 
 | Rule Conditions | intervention |
 |-----------|-------------|
-| polypharmacy_flag = 1 | Medication reconciliation by clinical pharmacist |
-| clinical_risk_score >= 3 | Urgent PCP follow-up within 48 hours |
-| emergency_flag = 1 AND comorbidity_count >= 3 | Care manager assignment + social work consult |
-| comorbidity_count >= 4 | Chronic disease management enrollment |
-| Otherwise | Automated discharge instructions + patient portal reminder |
+| polypharmacy_flag = 1 | Revue de la médication par un pharmacien clinicien |
+| clinical_risk_score >= 3 | Suivi urgent avec le médecin traitant (PCP) sous 48 heures |
+| emergency_flag = 1 ET comorbidity_count >= 3 | Attribution à un gestionnaire de soins + consultation en travail social |
+| comorbidity_count >= 4 | Inscription à un programme de gestion des maladies chroniques |
+| Sinon | Instructions de sortie automatisées + rappel via le portail patient |
 
-**Rule Set: Priority Assignment**
+**Rule Set: Attribution des priorités**
 
 | Rule Conditions | priority |
 |-----------|----------|
-| risk_tier = 'Critical' AND comorbidity_count >= 3 | Urgent |
-| risk_tier = 'Critical' OR (risk_tier = 'High' AND polypharmacy_flag = 1) | High |
-| risk_tier = 'High' OR risk_tier = 'Moderate' | Normal |
-| risk_tier = 'Low' | Routine |
+| risk_tier = 'Très élevé' ET comorbidity_count >= 3 | Urgent |
+| risk_tier = 'Très élevé' OU (risk_tier = 'High' ET polypharmacy_flag = 1) | Élevé |
+| risk_tier = 'Élevé' OU risk_tier = 'Modéré' | Normal |
+| risk_tier = 'Faible' | Routine |
 
-**Rule Set: Reason Assignment**
+**Rule Set: Attribution de la raison**
 
-These rules capture the dominant driver behind the care plan and populate the `reason` variable used downstream by the LLM:
+Ces règles capturent le facteur principal à l’origine du plan de soins et alimentent la variable `reason`, utilisée en aval par le LLM :
 
-| Rule Conditions | reason |
+| Rule Conditions | raison |
 |-----------|----------|
-| emergency_flag = 1 AND comorbidity_count >= 3 | Multiple chronic conditions with emergency admission |
-| polypharmacy_flag = 1 AND clinical_risk_score >= 3 | Complex medication regimen with elevated clinical risk |
-| comorbidity_count >= 4 | Multiple concurrent chronic conditions |
-| clinical_risk_score >= 3 | Elevated clinical risk score at discharge |
-| polypharmacy_flag = 1 | Complex medication regimen |
-| Otherwise | Standard discharge with routine monitoring |
+| emergency_flag = 1 ET comorbidity_count >= 3 | Multiples maladies chroniques avec admission en urgence |
+| polypharmacy_flag = 1 ET clinical_risk_score >= 3 | Schéma médicamenteux complexe avec risque clinique élevé |
+| comorbidity_count >= 4 | Multiples maladies chroniques concomitantes |
+| clinical_risk_score >= 3 | Score de risque clinique élevé à la sortie |
+| polypharmacy_flag = 1 | Schéma médicamenteux complexe |
+| Sinon | Sortie standard avec suivi de routine |
 
 ### 4. Adding an LLM to the Mix
 
