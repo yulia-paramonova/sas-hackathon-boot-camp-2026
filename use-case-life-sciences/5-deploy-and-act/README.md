@@ -120,16 +120,16 @@ Nous vous recommandons d’essayer de créer au moins un de ces ensembles de rè
 | P_readmitted_30days1 >= 0.40 | Modéré |
 | P_readmitted_30days1 < 0.40 | Faible |
 
-**Rule Set: Care Plan Assignment**
+**Rule Set: Attribution du plan de soins**
 
 | risk_tier | discharge_disposition | care_plan | follow_up_days |
 |-----------|----------------------|-----------|----------------|
-| Très élevé | Any | Intensive transitional care | 1 |
-| Élevé | Home | Home health referral + phone follow-up | 2 |
-| Élevé | SNF | SNF care coordination + pharmacy consult | 3 |
-| Élevé | Home Health | Enhanced home health with daily check-ins | 2 |
-| Modéré | Any | Standard follow-up protocol | 5 |
-| Faible | Any | Routine discharge (continue monitoring) | 14 |
+| Très élevé | Tout | Soins de transition intensifs | 1 |
+| Élevé | Domicile | Orientation vers soins à domicile + suivi téléphonique | 2 |
+| Élevé | SNF | Coordination des soins SNF + consultation pharmaceutique | 3 |
+| Élevé | Soins à domicile | Soins à domicile renforcés avec suivi quotidien | 2 |
+| Modéré | Tout | Protocole de suivi standard | 5 |
+| Faible | Tout | Sortie classique (poursuite du suivi) | 14 |
 
 **Rule Set: Intervention Assignment**
 
