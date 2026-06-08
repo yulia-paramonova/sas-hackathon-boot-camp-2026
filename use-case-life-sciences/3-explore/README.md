@@ -101,9 +101,9 @@ Créez un **histogramme** de `length_of_stay` coloré par `readmitted_30days`. C
 - *"Montre-moi les taux de réadmission par type d’admission"*
 -     Show me readmission rates by admission type
 
-Create a **stacked bar chart** showing readmission proportions for emergency vs. non-emergency admissions using the `emergency_flag` variable.
+Créez un **diagramme en barres empilées** montrant les proportions de réadmission pour les admissions en urgence versus non urgentes en utilisant la variable `emergency_flag`.
 
-> **What to look for:** Emergency admissions should have a meaningfully higher readmission rate than elective admissions, reflecting less controlled discharge planning.
+> **À observer :** Les admissions en urgence devraient présenter un taux de réadmission significativement plus élevé que les admissions programmées, reflétant une planification de sortie moins maîtrisée.
 
 ### Hypothesis 4: Medication Complexity Increases Risk
 
