@@ -77,13 +77,16 @@ Créez des **box plots** de `comorbidity_count` regroupés par `readmitted_30day
 
 > **À observer :** Les patients réadmis devraient présenter un nombre moyen de comorbidités plus élevé. Recherchez un effet de seuil — le risque peut s’accélérer au-delà d’un certain nombre de pathologies.
 
-### Hypothesis 2: Length of Stay Signals Severity
+### Hypothèse 2: La durée de séjour reflète la gravité
 
-**Goal:** Determine whether length of stay predicts readmission.
+**Objectif:** Déterminer si la durée de séjour permet de prédire la réadmission
 
-- *"Show me the distribution of length of stay by readmission status"*
-- *"What is the average length of stay for readmitted vs. non-readmitted patients?"*
-- *"Is there a U-shaped relationship between length of stay and readmission?"*
+- *"Montre-moi la distribution de la durée de séjour en fonction du statut de réadmission."*
+-     Show me the distribution of length of stay by readmission status
+- *"Quelle est la durée moyenne de séjour pour les patients réadmis par rapport à ceux non réadmis ?"*
+-     What is the average length of stay for readmitted vs. non-readmitted patients?
+- *"Existe-t-il une relation en forme de U entre la durée de séjour et la réadmission ?"*
+-     Is there a U-shaped relationship between length of stay and readmission?
 
 Create a **histogram** of `length_of_stay` colored by `readmitted_30days`. Also create a **bar chart** using the LOS category variables (`los_Short`, `los_Medium`, `los_Long`) to compare readmission rates across categories.
 
