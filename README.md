@@ -122,3 +122,7 @@ Sur cet écran de connexion, vous devrez d’abord saisir le nom d’utilisateur
 ![image-20260527175642540](img/README/image-20260527175642540.png)
 
 Une fois le mot de passe saisi et la connexion réussie, vous serez redirigé vers **SAS Viya**.
+
+---
+
+## Pour recevoir votre certificat de participation, merci de compléter ce formulaire après avoir terminé vos exercices : [Retour à chaud SAS Hackathon Bootcamp 2026](https://forms.office.com/r/8zN0xBVQtK)
