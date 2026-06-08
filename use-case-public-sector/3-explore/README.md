@@ -1,4 +1,4 @@
-# Étape 3: Explore (rapide)
+# Étape 3: Explore
 
 Dans cette étape, vous utiliserez **SAS Visual Analytics** et son **Copilot** intégré pour explorer visuellement l’Analytical Base Table (ABT) que vous avez créée à l’Étape 2. L’objectif est de comprendre les facteurs qui expliquent l’urgence des demandes de service.
 
