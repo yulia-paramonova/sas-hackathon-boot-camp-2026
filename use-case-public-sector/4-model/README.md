@@ -22,7 +22,7 @@ La table de base analytique (`PUBLIC_SECTOR_ABT`) doit être disponible dans la 
    - **Target Variable** (variable cible/à expliquer) : `is_urgent`
 4. Cliquez sur **Save**
     ![image-20260529152912346](img/README/image-20260529152912346.png)
-5. Une fois le projet ouvert sur l’onglet Data, sélectionnez la variable `is_urgent` et définissez son rôle sur `Target`
+5. Une fois le projet ouvert sur l’onglet Data, sélectionnez la variable `is_urgent` et définissez son rôle sur `Target` *(à expliquer)*  
     ![image-20260529153017456](img/README/image-20260529153017456.png)
 6. Sur le même onglet, trouvez la variable `age_65+` et activez la case `Assess this variable for bias`. Cela permettra d’illustrer les fonctionnalités de Trustworthy AI dans SAS Model Studio. Passez ensuite à l’onglet *Pipelines* pour commencer. 
     ![image-20260529153035379](img/README/image-20260529153035379.png)
