@@ -47,14 +47,14 @@ Une **data card** est un document synthétique décrivant chaque jeu de données
 - Noms des colonnes et types de données
 - Nombre de valeurs manquantes par colonne
 - Exemples de lignes
+- 
+### 3. Obtenir des statistiques descriptives de base
 
-### 3. Get Basic Summary Statistics
+Pour les colonnes numériques, calculez les statistiques descriptives (moyenne, médiane, écart-type, min, max). Pour les colonnes catégorielles, calculez les fréquences. Cela vous donne une première vue des distributions et des éventuels problèmes de qualité avant de commencer la création de variables *(feature engineering)*.
 
-For numeric columns, compute descriptive statistics (mean, median, standard deviation, min, max). For categorical columns, compute frequency counts. This gives you a first look at distributions and potential data quality issues before you begin feature engineering.
+### 4. 4. Créer les variables et construire la table analytique (Analytical Base Table)
 
-### 4. Engineer Features and Build the Analytical Base Table
-
-The four datasets each capture a different dimension of the patient encounter. To build a predictive model we need to aggregate these into a single patient-level table where each row is one patient and each column is a feature. The key transformations are:
+Les quatre jeux de données capturent chacun une dimension différente du parcours du patient. To build a predictive model we need to aggregate these into a single patient-level table where each row is one patient and each column is a feature. The key transformations are:
 
 - **Medication features:** total medication count per patient, high-risk medication count, polypharmacy flag (5+ medications), unique medication classes
 - **Clinical features:** BMI categories (underweight/normal/overweight/obese), blood pressure classification (normal/elevated/hypertension stage 1/hypertension stage 2), glucose level categories, clinical risk score
