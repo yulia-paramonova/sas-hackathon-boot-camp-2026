@@ -29,7 +29,6 @@ Cela transforme la prédiction d’un modèle en une **décision clinique action
 
 Si vous avez des questions concernant SAS Intelligent Decisioning, activez le copilot SAS Viya dans l’application via l’icône située en haut à droite, à côté de votre profil, ou adressez-vous à l’un des mentors SAS présents sur site.
 
-
 ---
 
 ## Création d’une décision de risque de réadmission à la sortie
@@ -38,67 +37,68 @@ Si vous avez des questions concernant SAS Intelligent Decisioning, activez le co
 ### 1. Ouvrez SAS Intelligent Decisioning
 
 1. Depuis le menu principal SAS Viya, allez dans **SAS Intelligent Decisioning** (sous **Build Decisions**)
-2. Click **New Decision**
-3. Name it: *MedCare Discharge Readmission Risk Decision*
-4. Leave the Description, Location and Workflow on default and click OK
+2. Cliquez sur **New Decision**
+3. Nommez-la : *MedCare Discharge Readmission Risk Decision*
+4. Laissez Description, Emplacement et Workflow par défaut, puis cliquez sur OK
     ![image-20260529155022595](img/README/image-20260529155022595.png)
-5. Navigate to the *Variables* tab, click on the *Add variable* dropdown and either select *Custom variable* if you want to add them all yourself of *Decision* if you want to copy it from the template (this is faster). The manual steps are described in the below sub steps 1 & 2 while the copy is described in step 3:
+5. Allez dans l’onglet *Variables*, cliquez sur *Add variable* puis choisissez *Custom variable* pour les saisir manuellement *(étape 1 et 2)* ou *Decision* pour les copier depuis un modèle (plus rapide) *(étape 3)*. 
     ![image-20260529160009592](img/README/image-20260529160009592.png)
-    1. Define the **input variables** (these will be passed in when the decision is called) - The structure is: `name` (data type):
-        1. `comorbidity_count` (decimal)
-        2. `emergency_flag` (decimal)
-        3. `polypharmacy_flag` (decimal)
-        4. `clinical_risk_score` (decimal)
-        5. `discharged_home` (decimal)
-        6. `discharge_disposition` (character)
-    2. Define the **output variables** (what the decision returns)  - The structure is: `name` (data type) - Explanation (this is just for us as context):
-        1. `risk_tier` (character) - the patient's readmission risk level
-        2. `care_plan` (character) - the recommended post-discharge care plan
-        3. `intervention` (character) - specific intervention to execute
-        4. `priority` (character) - urgency of care coordination
-        5. `reason` (character) - why this care plan was selected
-        6. `follow_up_days` (decimal) - when the first follow-up should occur
-        7. Now click OK to add all of them
+   
+    1. Définissez les **variables d'entrée** (celles-ci seront transmises lorsque la décision sera prise) - La structure est: `nom` (type de donnée) - Explication (juste pour nous pour le contexte):
+        1. `comorbidity_count` (décimal)
+        2. `emergency_flag` (décimal)
+        3. `polypharmacy_flag` (décimal)
+        4. `clinical_risk_score` (décimal)
+        5. `discharged_home` (décimal)
+        6. `discharge_disposition` (caractère)
+           
+    2. Définissez les **variables de sortie** (celles-ci seront renvoyées par la décision) - La structure est: `nom` (type de donnée) - Explication (juste pour nous pour le contexte):
+        1. `risk_tier` (caractère) - le niveau de risque de réadmission du patient
+        2. `care_plan` (caractère) - le plan de soins recommandé après la sortie
+        3. `intervention` (caractère) -  l’intervention spécifique à exécuter
+        4. `priority` (caractère) - le niveau d’urgence de la coordination des soins
+        5. `reason` (caractère) - la raison pour laquelle ce plan de soins a été sélectionné
+        6. `follow_up_days` (décimal) - quand est-ce que le premier suivi doit avoir lieu
+        7. Cliquez OK pour ajouter toutes les variables
             ![image-20260529161044174](img/README/image-20260529161044174.png)
-    3. Copy the **variables** from a template decision:
-        1. Click on the folder icon in the *Decision* input field
-        2. Navigate to *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Life Sciences* select *MedCare Discharge Readmission Risk Decision* and click OK
-        3. Click on the *Add all* icon in the middle of the dialogue to bring all the variables into your decision and then click the Add button
+           
+    4. Copiez les **variables** depuis un template de décision:
+        1. Cliquez sur le fichier *Decision*
+        2. Naviguez vers *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Life Sciences* sélectionnez *MedCare Discharge Readmission Risk Decision* et cliquez sur OK
+        3. Cliquez sur l'icône *Add all* au milieu du dialogue pour importer toutes les varibales dans votre décision puis appuyez sur le boutton *Add*
 
-Once you have added the variables (no matter which way you choose) please click on the save icon in the upper right hand corner. It is recommended that anytime you change something about the variables before you continue to quickly use this icon to save the changes.
+Une fois les variables ajoutées, pensez à cliquer sur l'icône *enregistrer* en haut à droite. Il est recommandé que vous enregistriez votre fichier dès que vous changez quelque chose en lien avec des variables.
+
+Vous pouvez également activer le Copilot SAS Viya à travers l'icône en haut à droite pour poser des questions sur SAS Intelligent Decisioning pour approfondir votre compréhension de l'application.
 
 
-From here you can also always activate the SAS Viya Copilot via the icon in the top right hand corner to ask questions about SAS Intelligent Decisioning to deepen your understanding of the application.
+### 2. Ajoutez le nœud Modèle
 
-### 2. Add the Model Node
-
-1. Switch to the *Decision Flow* tab.
-2. In the decision flow canvas, you can either right click the *Start* node and from the context menu select *Add below > Model* or on the right hand side click on the icon that looks a little bit like a postcard and from that side bar drag & drop a model node onto the *Start* node.
+1. Passez à l’onglet *Decision Flow*.
+2. Dans le canvas de flux de décision, vous pouvez soit faire un clic droit sur le nœud *Start* et dans le menu contextuel sélectionner *Add below > Model*, soit sur le côté droit cliquer sur l’icône qui ressemble un peu à une carte postale et depuis cette barre latérale glisser-déposer un nœud modèle sur le nœud *Start*.
     ![image-20260529161415141](img/README/image-20260529161415141.png)
-3. Select your registered champion model from SAS Model Manager or the pre-registered champion model by navigating to *DM Repository > MedCare Patient Readmission Prediction_1 > Version 1 > GAM (SAS Automatically Generated Pipeline* and click OK.
+3. Sélectionnez votre modèle champion enregistré depuis SAS Model Manager ou le modèle champion pré-enregistré en naviguant vers *DM Repository > MedCare Patient Readmission Prediction_1 > Version 1 > GAM (SAS Automatically Generated Pipeline* puis cliquez sur OK.
     ![image-20260529161613719](img/README/image-20260529161613719.png)
-4. Upon doing this you will see a little red error icon next to the model and that is because it is missing variable inputs and outputs - we will address this in the next steps.
-5. Map the input variables to the model's expected features:
-    1. For the inputs map `clinical_risk_score`, `discharge_disposition` and the `discharged_home` should be mapped automatically.
+4. Après cela, vous verrez une petite icône d’erreur rouge à côté du modèle, et cela est dû au fait qu’il manque des variables d’entrée et de sortie — nous allons corriger cela dans les étapes suivantes.
+5. Associez les variables d’entrée aux caractéristiques attendues du modèle :
+    1.  Pour les entrées, `clinical_risk_score`, `discharge_disposition` et `discharged_home` devraient être automatiquement mappées.
         ![image-20260529162205954](img/README/image-20260529162205954.png)
-    2. For the outputs we are going to be clicking the *More* menu up top and select *Add missing variables* this will add all of the required output variables to our decision - if you copied the variables using the template they are already present - in the dialogue please make sure to deselect them from the Output as we will create our own custom outputs - and since we changed something about the variables remember to click the save icon (you will be asked to remove not used variables just select no, as we will be using those in the next steps).
+    2.Pour les sorties, nous allons cliquer sur le menu *More* en haut puis sélectionner *Add missing variables*. Cela ajoutera toutes les variables de sortie requises à notre décision — si vous avez copié les variables en utilisant le modèle, elles sont déjà présentes — dans la boîte de dialogue, assurez‑vous de les désélectionner de la sortie car nous allons créer nos propres sorties personnalisées — et comme nous avons modifié quelque chose concernant les variables, n’oubliez pas de cliquer sur l’icône de sauvegarde (il vous sera demandé de supprimer les variables non utilisées, sélectionnez simplement non, car nous les utiliserons dans les étapes suivantes).
         ![image-20260529162348798](img/README/image-20260529162348798.png)
 
 
+### 3. Ajouter des règles métier
 
+Après que le modèle ait évalué la demande, ajoutez des nœuds **Rule Set** pour déterminer la décision de prêt. Pour cela, assurez‑vous d’abord d’avoir cliqué sur l’icône de sauvegarde de votre décision, puis nous ajouterons des Rule Sets à notre décision.
 
-### 3. Add Business Rules
+Il existe deux façons d’ajouter des **Rule Sets** à la décision :
 
-After the model scores the application, add **Rule Set** nodes to determine the lending decision. For this make first sure that you have clicked the save icon of your decision and than we will be adding Rule Sets to our decision.
+1.    *La méthode simple*, utilisez les ensembles de règles (rule sets) préconstruits en cliquant sur les trois points verticaux du nœud du modèle, puis en sélectionnant *Add > Rule Set*, ensuite, dans la boîte de dialogue, naviguez vers *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Life Sciences* et ajoutez l’ensemble de règles comme indiqué ci-dessous.
+2.    *La méthode d'apprentissage*, si vous souhaitez les créer vous-même, allez sur le côté droit, cliquez sur *Objects* icône en forme de carte postale) puis faites glisser-déposer un Rule Set sur le nœud précédent. Cela ouvrira une boîte de dialogue dans laquelle vous devrez nommer votre décision de manière appropriée. Laissez l’emplacement par défaut (*My Folder*) - Ensuite, ajoutez les variables de la décision que vous avez créée et commencez à construire les ensembles de règles comme décrit ci-dessous. Les variables requises sont indiquées soit dans les colonnes, soit dans les **Rule Conditions**. Le premier ensemble de règles que nous allons construire comporte des notes et des captures d’écran expliquant comment procéder.
 
-There are two ways of adding **Rule Sets** to the decision:
+Nous vous recommandons d’essayer de créer au moins un de ces ensembles de règles vous-même afin de comprendre comment cela fonctionne. Si vous avez des questions concernant SAS Intelligent Decisioning, activez le copilote SAS Viya dans l’application via l’icône en haut à droite à côté de votre profil, ou demandez à l’un des mentors SAS sur place.
 
-1.    *The easy way*, where you use the pre build rule sets by clicking on the three vertical dots on the model node and selecting *Add > Rule Set*, then in the dialogue navigate to *SAS Content > SAS Hackathon Bootcamp 2026 > Use Case Life Sciences* and add the rule set as specified below.
-2.    *The learning way*, if you want to create them yourself you can go to the right hand side click on the *Objects* (postcard icon) and drag & drop a Rule Set onto the previous node. This will open up a dialogue where you should name your decision correspondingly, please leave the location as the default (*My Folder*) - then add the variables from the decision you created and start building the Rule Sets as described below - the required variables are noted either as the columns or in the **Rule Conditions**. The first rule set we will be building has notes and screenshots attached on how to do this.
-
-We recommend you try to build at least one of these rule sets yourself to get an understanding of how it is done. If you have any questions around SAS Intelligent Decisioning activate the SAS Viya copilot within the application via the icon in the top right hand corner next to your profile or ask one of the onsite SAS Mentors.
-
-**Rule Set: Risk Tier Classification**
+**Rule Set: Classification du niveau de risque**
 
 1.   From the *Objects* side panel drag and drop a *Rule Set* node onto the *Model* node you already have in your decision. Then enter the name from above and click *Save*
      ![image-20260529163854583](img/README/image-20260529163854583.png)
