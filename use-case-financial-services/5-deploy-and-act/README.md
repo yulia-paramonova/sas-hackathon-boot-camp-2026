@@ -47,7 +47,7 @@ Si vous avez des questions sur SAS Intelligent Decisioning, activez le Copilot S
     ![image-20260529080338969](img/README/image-20260529080338969.png)
     
     1. Définissez les **variables d'entrée** (celles-ci seront transmises lorsque la décision sera prise) - La structure est: `nom` (type de donnée):
-        1. `loan_id` (charactère)
+        1. `loan_id` (alphanumérique)
         2. `credit_score` (décimal)
         3. `debt_to_income` (décimal)
         4. `loan_to_value` (décimal)
