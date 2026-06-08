@@ -65,8 +65,8 @@ Cela ajoute une matrice de corrélation sur une nouvelle page. Vous pouvez agran
    ![ER_PS_4](img/Exploration_rapide/ER_PS_4.png)
 9. Félicitations, vous venez d’entraîner votre premier modèle de machine learning dans SAS Viya !  
 Vous pouvez demander au Copilot d’interpréter les résultats :  
--     Explain the results of the decision tree.
--     Explain the results of the Page 3
+-     Interpret the results of the decision tree.
+-     Interpret the results of the Page 3
 -     Which factors influence the urgency `is_urgent (1)`?
 ---
 ## Utiliser le Copilot de SAS Visual Analytics
