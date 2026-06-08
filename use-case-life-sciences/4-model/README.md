@@ -216,56 +216,56 @@ Le type d’assurance est une dimension clé de l’équité en santé pour plus
 
 L’évaluation de l’équité n’est pas qu’une exigence éthique — elle apporte une **valeur clinique et business directe** :
 
-1. **Better patient outcomes:** A model that performs equally well across insurance groups leads to more effective care coordination for everyone
-2. **Trust:** Clinical staff, hospital leadership, and regulators trust models more when they can see documented fairness evidence
-3. **Risk reduction:** Proactively identifying bias prevents costly remediation and regulatory issues later
-4. **Health equity:** Documented fairness assessment demonstrates MedCare's commitment to equitable care regardless of payer status
+1. **Meilleurs résultats patients :** un modèle performant de manière homogène améliore la coordination des soins pour tous 
+2. **Confiance :** les équipes médicales et les régulateurs font davantage confiance aux modèles avec des preuves documentées d’équité 
+3. **Réduction des risques :** identifier les biais en amont évite des corrections coûteuses ultérieures  
+4. **Équité en santé :** cela démontre l’engagement de MedCare envers un accès équitable aux soins
 
-> **Tip:** Ask the Copilot *"Is my model fair across insurance types?"* to get a plain-language interpretation of the fairness metrics.
+> **Conseil :** Demandez au Copilot *"Is my model fair across insurance types?"* pour obtenir une interprétation en langage clair des métriques d’équité.
 
 ---
 
-## Registering to SAS Model Manager
+## Enregistrement dans SAS Model Manager
 
-Once you have selected your champion model and reviewed its fairness, register it to **SAS Model Manager** for governance, version control, and deployment.
+Une fois que vous avez sélectionné votre modèle champion et vérifié son équité, enregistrez-le dans **SAS Model Manager** à des fins de gouvernance, de contrôle des versions et de déploiement.
 
 ### Steps to Register
 
-1. In the Pipeline Comparison tab, identify your overall **champion model** (the one with the best KS (Youden))
-2. Right-click the champion model and select **Register Model** (or use the menu: *Actions* > *Register Model*)
+1. Dans l'onglet « Pipeline Comparison », identifiez votre **modèle champion** global (celui qui présente le meilleur KS (Youden))
+2. Faites un clic droit sur le modèle champion et sélectionnez **Enregistrer le modèle** (ou utilisez le menu : *Actions* > *Enregistrer le modèle*)
     ![image-20260529151408862](img/README/image-20260529151408862.png)
-3. Confirm the Location which is /Model Repositories/DM Repository and click OK
-4. Wait for the registration to finish in this pop up, then you can close and right click the model again and select **Manage Models**
-5. Now we will be navigated into SAS Model Manager where we can review the Model Card of this model
-6. Explore the Model Card that is populated automatically as you develop and manage the model on SAS Viya. The Overview tab offers a high-level summary of the model, including an overview of the model's training accuracy, training fairness, generalizability, and influential variables.
+3. Confirmez l'emplacement, qui est `/Model Repositories/DM Repository`, puis cliquez sur OK
+4. Attendez que l'enregistrement se termine dans cette fenêtre contextuelle, puis vous pouvez la fermer et cliquer à nouveau avec le bouton droit sur le modèle et sélectionner **Gérer les modèles**
+5. Vous serez alors redirigé vers **SAS Model Manager**, où vous pourrez consulter la fiche de ce modèle
+6. Explorez la fiche du modèle, qui est remplie automatiquement au fur et à mesure que vous développez et gérez le modèle sur SAS Viya. L'onglet Aperçu (Overview) offre un résumé général du modèle, y compris un aperçu de la précision d'apprentissage, de l'équité d'apprentissage, de la capacité de généralisation et des variables influentes du modèle.
     ![image-20260529151516744](img/README/image-20260529151516744.png)
 
-### What Registration Provides
+### Avantages de l'enregistrement
 
-Once registered in SAS Model Manager, your model benefits from:
+Une fois enregistré dans SAS Model Manager, votre modèle bénéficie des avantages suivants :
 
-- **Version control:** Track changes across model iterations
-- **Performance monitoring:** Set up automated performance tracking over time — critical for clinical models where patient populations shift
-- **Governance:** Maintain an audit trail of who built the model, what data was used, and what fairness checks were performed
-- **Deployment readiness:** The model can be published to CAS, MAS (Micro Analytic Service), or a container for scoring
-- **Model card:** Auto-generated documentation capturing inputs, outputs, performance, and lineage — essential for clinical AI governance
+- **Contrôle des versions :** suivez les modifications apportées au fil des itérations du modèle
+- **Surveillance des performances :** configurez un suivi automatisé des performances au fil du temps
+- **Gouvernance :** conservez une piste d'audit indiquant qui a créé le modèle, quelles données ont été utilisées et quels contrôles d'équité ont été effectués
+- **Préparation au déploiement :** le modèle peut être publié sur CAS, MAS (Micro Analytic Service) ou dans un conteneur à des fins de scoring
+- **Fiche de modèle :** documentation générée automatiquement qui répertorie les entrées, les sorties, les performances et la traçabilité — un élément essentiel pour la gouvernance de l'IA clinique
 
-> **Tip:** Ask the Copilot *"Register this model to Model Manager"* and it will walk you through the process.
-
----
-
-## Summary
-
-At this point you have:
-
-1. Built models using AutoML and/or custom pipelines
-2. Compared models on AUC, sensitivity, and other metrics with clinical interpretability in mind
-3. Assessed fairness across insurance types to ensure equitable care delivery
-4. Registered your champion model to SAS Model Manager
-5. Viewed the Model Card in SAS Model Manager
+> **Astuce :** demandez au Copilot *« Enregistrer ce modèle dans Model Manager »* `Register this model to Model Manager` et il vous guidera tout au long du processus.
 
 ---
 
-## Next Steps
+## Résumé
 
-Proceed to **[Step 5: Deploy & Act](../5-deploy-and-act/)** to create a decision flow in SAS Intelligent Decisioning that operationalizes your model.
+À ce stade, vous avez :
+
+1. Construit des modèles avec AutoML et/ou des pipelines personnalisés  
+2. Comparé les modèles sur l’AUC, la sensibilité et d’autres métriques en tenant compte de l’interprétabilité clinique  
+3. Évalué l’équité selon les types d’assurance pour garantir une prise en charge équitable  
+4. Enregistré votre modèle champion dans SAS Model Manager  
+5. Consulté la fiche du modèle dans SAS Model Manager
+
+---
+
+##  Étapes suivantes
+
+Passez à l'**[Étape 5 : Deploy & Act](../5-deploy-and-act/)** pour créer un flux décisionnel dans SAS Intelligent Decisioning qui permettra de mettre votre modèle en pratique.
