@@ -83,7 +83,7 @@ Vous pouvez également activer le Copilot SAS Viya à travers l'icône en haut �
 5. Associez les variables d’entrée aux caractéristiques attendues du modèle :
     1.  Pour les entrées, `clinical_risk_score`, `discharge_disposition` et `discharged_home` devraient être automatiquement mappées.
         ![image-20260529162205954](img/README/image-20260529162205954.png)
-    2.Pour les sorties, nous allons cliquer sur le menu *More* en haut puis sélectionner *Add missing variables*. Cela ajoutera toutes les variables de sortie requises à notre décision — si vous avez copié les variables en utilisant le modèle, elles sont déjà présentes — dans la boîte de dialogue, assurez‑vous de les désélectionner de la sortie car nous allons créer nos propres sorties personnalisées — et comme nous avons modifié quelque chose concernant les variables, n’oubliez pas de cliquer sur l’icône de sauvegarde (il vous sera demandé de supprimer les variables non utilisées, sélectionnez simplement non, car nous les utiliserons dans les étapes suivantes).
+    2. Pour les sorties, nous allons cliquer sur le menu *More* en haut puis sélectionner *Add missing variables*. Cela ajoutera toutes les variables de sortie requises à notre décision — si vous avez copié les variables en utilisant le modèle, elles sont déjà présentes — dans la boîte de dialogue, assurez‑vous de les désélectionner de la sortie car nous allons créer nos propres sorties personnalisées — et comme nous avons modifié quelque chose concernant les variables, n’oubliez pas de cliquer sur l’icône de sauvegarde (il vous sera demandé de supprimer les variables non utilisées, sélectionnez simplement non, car nous les utiliserons dans les étapes suivantes).
         ![image-20260529162348798](img/README/image-20260529162348798.png)
 
 
@@ -100,9 +100,9 @@ Nous vous recommandons d’essayer de créer au moins un de ces ensembles de rè
 
 **Rule Set: Classification du niveau de risque**
 
-1.   From the *Objects* side panel drag and drop a *Rule Set* node onto the *Model* node you already have in your decision. Then enter the name from above and click *Save*
+1.   Depuis le panneau latéral *Objects* glissez-déposez un nœud *Rule Set* sur le nœud *Model* déjà présent dans votre décision. Saisissez ensuite le nom ci-dessus et cliquez sur *Save*
      ![image-20260529163854583](img/README/image-20260529163854583.png)
-2.   Now on the right hand side you will see the *Properties* pane for this new *Rule Set* and there is a button *Open* that will take you to the *Rule set editor* so that you can build the decision so click on that button.
+2.  Sur la droite, vous verrez le panneau *Properties* pour ce nouveau *Rule Set* avec un bouton *Open* qui vous amène au *Rule set editor* afin de construire la logique de décision ; cliquez sur ce bouton.
 3.   A new UI opened up for you on the *Variables* tab for the *Rule Set*, under *Add variable* select, via the folder icon navigate to *My Folder* and select the *MedCare Discharge Readmission Risk Decision* that you have already created. Select the **P_readmitted_30days1 ** & **risk_tier** variables and add it to the Rule Set - the **P_readmitted_30days1 ** variable is specified in the Rule Conditions column in the table below and the **risk_tier** variable has its own column as it gets assigned values.
      ![image-20260529164239556](img/README/image-20260529164239556.png)
 4.   For the **P_readmitted_30days1 ** change it so that it is required as an input and then click on the save icon to add this change. The **risk_tier** currently doesn't have any value from the decision so we can just leave it as an output.
@@ -116,21 +116,21 @@ Nous vous recommandons d’essayer de créer au moins un de ces ensembles de rè
 
 | Rule Conditions | risk_tier |
 |-----------|-----------|
-| P_readmitted_30days1 >= 0.80 | Critical |
-| P_readmitted_30days1 >= 0.60 | High |
-| P_readmitted_30days1 >= 0.40 | Moderate |
-| P_readmitted_30days1 < 0.40 | Low |
+| P_readmitted_30days1 >= 0.80 | Très élevé |
+| P_readmitted_30days1 >= 0.60 | Élevé |
+| P_readmitted_30days1 >= 0.40 | Modéré |
+| P_readmitted_30days1 < 0.40 | Faible |
 
 **Rule Set: Care Plan Assignment**
 
 | risk_tier | discharge_disposition | care_plan | follow_up_days |
 |-----------|----------------------|-----------|----------------|
-| Critical | Any | Intensive transitional care | 1 |
-| High | Home | Home health referral + phone follow-up | 2 |
-| High | SNF | SNF care coordination + pharmacy consult | 3 |
-| High | Home Health | Enhanced home health with daily check-ins | 2 |
-| Moderate | Any | Standard follow-up protocol | 5 |
-| Low | Any | Routine discharge (continue monitoring) | 14 |
+| Très élevé | Any | Intensive transitional care | 1 |
+| Élevé | Home | Home health referral + phone follow-up | 2 |
+| Élevé | SNF | SNF care coordination + pharmacy consult | 3 |
+| Élevé | Home Health | Enhanced home health with daily check-ins | 2 |
+| Modéré | Any | Standard follow-up protocol | 5 |
+| Faible | Any | Routine discharge (continue monitoring) | 14 |
 
 **Rule Set: Intervention Assignment**
 
