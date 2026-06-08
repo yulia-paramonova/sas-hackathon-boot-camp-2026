@@ -106,7 +106,7 @@ Nous vous recommandons d'essayer de construire au moins un de ces rule sets vous
 
 2.   Sur la droite, vous verrez le panneau _Properties_ pour ce nouveau _Rule Set_ avec un bouton _Open_ qui vous amène au _Rule set editor_ afin de construire la logique de décision ; cliquez sur ce bouton.
 
-3.   Une nouvelle interface s'ouvre sur l'onglet _Variables_ du _Rule Set_. Sous _Add variable_, utilisez l'icône dossier pour naviguer vers _My Folder_ et sélectionnez *PremierBank Loan Approval Decision* que vous avez déjà créé. Sélectionnez les variables **P_defaulted1** & **risk_tier** puis ajoutez-les au Rule Set : - the **P_defaulted1** est utilisée dans la colonne Rule Conditions du tableau ci-dessous, et **risk_tier** a sa propre colonne car elle reçoit des valeurs.
+3.   Une nouvelle interface s'ouvre sur l'onglet _Variables_ du _Rule Set_. Sous _Add variable_, cliquez sur *Décision* et utilisez l'icône dossier pour naviguer vers _My Folder_ et sélectionnez *PremierBank Loan Approval Decision* que vous avez déjà créé. Sélectionnez les variables **P_defaulted1** & **risk_tier** puis ajoutez-les au Rule Set : - the **P_defaulted1** est utilisée dans la colonne Rule Conditions du tableau ci-dessous, et **risk_tier** a sa propre colonne car elle reçoit des valeurs.
 
      ![image-20260529085521013](img/README/image-20260529085521013.png)
 
