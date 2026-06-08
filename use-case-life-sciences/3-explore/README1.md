@@ -1,4 +1,4 @@
-# Étape 3 : Explore
+# Étape 3 : Explore (Niveau avancé)
 
 Dans cette étape, vous utiliserez **SAS Visual Analytics** et son **Copilot** intégré pour explorer visuellement l’Analytical Base Table (ABT) que vous avez créée à l’Étape 2. L’objectif est de comprendre les schémas qui expliquent les réadmissions des patients avant de construire un modèle prédictif.
 
