@@ -105,17 +105,20 @@ Créez un **diagramme en barres empilées** montrant les proportions de réadmis
 
 > **À observer :** Les admissions en urgence devraient présenter un taux de réadmission significativement plus élevé que les admissions programmées, reflétant une planification de sortie moins maîtrisée.
 
-### Hypothesis 4: Medication Complexity Increases Risk
+### Hypothèse 4: La complexité médicamenteuse augmente le risque
 
-**Goal:** Test whether polypharmacy and high-risk medications predict readmission.
+**Objectif:** Tester si la polymédication et les médicaments à haut risque permettent de prédire la réadmission.
 
-- *"Compare medication counts between readmitted and non-readmitted patients"*
-- *"What is the readmission rate for patients with polypharmacy?"*
-- *"Show me the impact of high-risk medications on readmission"*
+- *"Comparez le nombre de médicaments entre les patients réadmis et ceux non réadmis."*
+-     Compare medication counts between readmitted and non-readmitted patients
+- *"Quel est le taux de réadmission pour les patients en polymédication ?"*
+-     What is the readmission rate for patients with polypharmacy?
+- *"Montre-moi l’impact des médicaments à haut risque sur la réadmission."*
+-     Show me the impact of high-risk medications on readmission
 
-Create **box plots** of `medication_count` and `high_risk_med_count` grouped by `readmitted_30days`. Create a **bar chart** comparing readmission rates for `polypharmacy_flag` = 0 vs. 1.
+Créez des **box plots** de `medication_count` et `high_risk_med_count` regroupés par `readmitted_30days`. Créez également un **diagramme en barres** comparant les taux de réadmission pour `polypharmacy_flag` = 0 vs. 1.
 
-> **What to look for:** Patients on more medications — especially high-risk medications — should have higher readmission rates due to adherence challenges and drug interaction risks.
+> **À observer :** Les patients prenant davantage de médicaments — en particulier des médicaments à haut risque — devraient présenter des taux de réadmission plus élevés en raison des difficultés d’observance et des risques d’interactions médicamenteuses.
 
 ### Hypothesis 5: Abnormal Clinical Measures Predict Readmission
 
