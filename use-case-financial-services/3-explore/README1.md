@@ -1,4 +1,4 @@
-# Étape 3: Explore
+# Étape 3: Explore (Niveau avancé)
 
 Dans cette étape, vous allez utiliser **SAS Visual Analytic**s et son **Copilot** intégré pour explorer visuellement l’Analytical Base Table (ABT) que vous avez créée à l’Étape 2. L’objectif est de comprendre les schémas liés au défaut de paiement avant de construire un modèle prédictif.
 
