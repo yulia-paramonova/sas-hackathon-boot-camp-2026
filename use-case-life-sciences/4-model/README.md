@@ -58,16 +58,17 @@ SAS Model Studio inclut un **Copilot** qui agit comme un assistant de modélisat
 
 ---
 
-## Clinical Interpretability Requirements
+## Exigences en matière d'interprétabilité clinique
 
-Unlike many machine learning applications, clinical predictive models must be **interpretable** — care teams need to understand *why* a patient was flagged as high-risk in order to trust the recommendation and take appropriate action. This has several implications for model selection:
+Contrairement à de nombreuses applications d'apprentissage automatique, les modèles prédictifs cliniques doivent être **interprétables** : les équipes soignantes doivent comprendre *pourquoi* un patient a été identifié comme présentant un risque élevé afin de pouvoir se fier à la recommandation et prendre les mesures appropriées. Cela a plusieurs implications pour le choix du modèle :
 
-1. **Explainability over pure performance:** A gradient boosting model with AUC 0.78 and clear feature importance may be preferred over a neural network with AUC 0.80 but opaque reasoning
-2. **Feature importance must align with clinical knowledge:** If the model's top predictors do not make clinical sense, stakeholders will not adopt it
-3. **Individual-level explanations:** Care teams need to know why *this specific patient* was flagged — not just which features matter on average. Look for models that support individual prediction explanations
-4. **Regulatory context:** Under CMS quality reporting requirements, hospitals must be able to explain their quality improvement interventions. A black-box model is harder to defend
+1. **L’explicabilité prime sur la performance brute :** un modèle de gradient boosting avec un AUC de 0,78 et une importance des variables claire peut être préféré à un réseau de neurones avec un AUC de 0,80 mais un raisonnement opaque  
+2. **L’importance des variables doit être cohérente avec les connaissances cliniques :** si les principaux prédicteurs du modèle n’ont pas de sens d’un point de vue clinique, les parties prenantes ne l’adopteront pas  
+3. **Des explications au niveau individuel :** les équipes soignantes doivent comprendre pourquoi *ce patient précis* a été identifié — pas seulement quels facteurs sont importants en moyenne. Privilégiez des modèles qui permettent d’expliquer les prédictions à l’échelle individuelle  
+4. **Contexte réglementaire :** dans le cadre des exigences de reporting qualité du CMS, les hôpitaux doivent être capables d’expliquer leurs interventions d’amélioration de la qualité. Un modèle « boîte noire » est plus difficile à justifier  
 
-> **Tip:** Ask the Copilot *"Which model type gives the best balance of accuracy and clinical interpretability for readmission prediction?"*
+> **Conseil :** Demandez au Copilot *« Quel type de modèle offre le meilleur équilibre entre précision et interprétabilité clinique pour la prédiction des réadmissions ? »*
+-    `Which model type gives the best balance of accuracy and clinical interpretability for readmission prediction?`
 
 ---
 
