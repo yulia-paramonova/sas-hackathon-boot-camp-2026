@@ -92,12 +92,14 @@ Créez un **histogramme** de `length_of_stay` coloré par `readmitted_30days`. C
 
 > **À observer :** Les séjours très courts (potentiellement liés à une sortie prématurée) et les séjours très longs (patients très graves) peuvent tous deux être associés à un risque élevé, créant ainsi une forme en U.
 
-### Hypothesis 3: Emergency Admissions Carry Higher Risk
+### Hypothèse 3: Les admissions en urgence sont associées à un risque plus élevé
 
-**Goal:** Explore whether unplanned admissions predict readmission.
+**Objectif:** Examiner si les admissions non planifiées permettent de prédire la réadmission.
 
-- *"What is the readmission rate for emergency vs. elective admissions?"*
-- *"Show me readmission rates by admission type"*
+- *"Quel est le taux de réadmission pour les admissions en urgence par rapport aux admissions programmées ?"*
+-     What is the readmission rate for emergency vs. elective admissions?
+- *"Montre-moi les taux de réadmission par type d’admission"*
+-     Show me readmission rates by admission type
 
 Create a **stacked bar chart** showing readmission proportions for emergency vs. non-emergency admissions using the `emergency_flag` variable.
 
