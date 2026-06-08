@@ -88,9 +88,9 @@ Créez des **box plots** de `comorbidity_count` regroupés par `readmitted_30day
 - *"Existe-t-il une relation en forme de U entre la durée de séjour et la réadmission ?"*
 -     Is there a U-shaped relationship between length of stay and readmission?
 
-Create a **histogram** of `length_of_stay` colored by `readmitted_30days`. Also create a **bar chart** using the LOS category variables (`los_Short`, `los_Medium`, `los_Long`) to compare readmission rates across categories.
+Créez un **histogramme** de `length_of_stay` coloré par `readmitted_30days`. Créez également un **diagramme en barres** utilisant les variables de catégorie de durée de séjour (`los_Short`, `los_Medium`, `los_Long`)  afin de comparer les taux de réadmission entre les différentes catégories.
 
-> **What to look for:** Very short stays (potential premature discharge) and very long stays (very sick patients) may both carry elevated risk, creating a U-shaped pattern.
+> **À observer :** Les séjours très courts (potentiellement liés à une sortie prématurée) et les séjours très longs (patients très graves) peuvent tous deux être associés à un risque élevé, créant ainsi une forme en U.
 
 ### Hypothesis 3: Emergency Admissions Carry Higher Risk
 
