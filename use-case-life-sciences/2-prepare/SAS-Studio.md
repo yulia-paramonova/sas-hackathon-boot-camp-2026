@@ -52,44 +52,43 @@ Une **data card** est un document synthétique décrivant chaque jeu de données
 
 Pour les colonnes numériques, calculez les statistiques descriptives (moyenne, médiane, écart-type, min, max). Pour les colonnes catégorielles, calculez les fréquences. Cela vous donne une première vue des distributions et des éventuels problèmes de qualité avant de commencer la création de variables *(feature engineering)*.
 
-### 4. 4. Créer les variables et construire la table analytique (Analytical Base Table)
+### 4. Créer des variables et construire l’Analytical Base Table
 
-Les quatre jeux de données capturent chacun une dimension différente du parcours du patient. To build a predictive model we need to aggregate these into a single patient-level table where each row is one patient and each column is a feature. The key transformations are:
+Les quatre jeux de données capturent chacun une dimension différente de la prestation de services de Metro City. Pour construire un modèle prédictif, nous devons les combiner en une seule table au niveau des demandes, où chaque ligne correspond à une demande de service et chaque colonne à une caractéristique. Les transformations clés sont :
 
-- **Medication features:** total medication count per patient, high-risk medication count, polypharmacy flag (5+ medications), unique medication classes
-- **Clinical features:** BMI categories (underweight/normal/overweight/obese), blood pressure classification (normal/elevated/hypertension stage 1/hypertension stage 2), glucose level categories, clinical risk score
-- **Admission features:** length of stay categories (short/medium/long), emergency admission flag, discharge disposition encoding
-- **Patient features:** age, gender, insurance type, primary diagnosis category, comorbidity count
+- **Variables liées aux médicaments:** nombre total de médicaments par patient, nombre de médicaments à haut risque, indicateur de polymédication (5+ médicaments), classes de médicaments uniques
+- **Caractéristiques cliniques:** catégories d’IMC (insuffisance pondérale/normal/surpoids/obésité), classification de la pression artérielle (normale/élevée/hypertension stade 1/hypertension stade 2), catégories de niveau de glucose, score de risque clinique
+- **Caractéristiques d’admission:** catégories de durée de séjour (court/moyen/long), indicateur d’admission en urgence, encodage du mode de sortie
+- **Caractéristiques des patients:** âge, sexe, type d’assurance, catégorie de diagnostic principal, nombre de comorbidités
 
-The final ABT will be saved as a CSV file that can then be promoted into CAS for use in SAS Visual Analytics and SAS Model Studio.
+L’ABT finale sera enregistrée en fichier CSV, puis pourra être promue dans CAS pour une utilisation dans SAS Visual Analytics et SAS Model Studio.
 
 ---
 
-## Choose Your Language
+## Choisissez votre langage
 
-Pick **one** language and run its script. You do not need to run all three — they each produce the same output. If you are unsure which to choose, pick the one you are most comfortable with.
+Choisissez **un** langage et exécutez son script. Vous n’avez pas besoin d’exécuter les trois — ils produisent tous le même résultat. Si vous hésitez, prenez celui que vous maîtrisez le mieux.
 
-| Language   | File                                                         |
+| Language   | Fichier                                                         |
 | ---------- | ------------------------------------------------------------ |
 | **SAS**    | [`data_preparation_studio.sas`](data_preparation_studio.sas) |
 | **Python** | [`data_preparation_studio.py`](data_preparation_studio.py)   |
 | **R**      | [`data_preparation_studio.R`](data_preparation_studio.R)     |
 
-All three scripts produce the same output: a file called **`life_sciences_abt.csv`** in the `data/` folder. After the script finishes, **refresh the Explorer pane** to see the new file.
+Les trois scripts produisent le même fichier :  **`life_sciences_abt.csv`** dans le dossier  `data/` . Après exécution, **rafraîchissez le panneau Explorer** pour voir le nouveau fichier.
+
 
 ---
+## Résultat
 
-## Output
+Après avoir exécuté l’un des scripts, vous obtiendrez :
 
-After running any of the scripts you will have:
-
-| File | Description |
+| Fichier | Description |
 |------|-------------|
-| `data/life_sciences_abt.csv` | The joined, feature-engineered, patient-level dataset ready for modeling |
-| Console output | Data card information, summary statistics, and readmission distribution for review |
-
+| `data/life_sciences_abt.csv` | Le jeu de données joint, enrichi et prêt pour la modélisation |
+| Sortie console  | Informations de data card, statistiques descriptives des réadmissions pour révision |
 ---
 
-## Next Steps
+## Prochaines étapes
 
-Proceed to **[Step 3: Explore](../3-explore/)** to visually explore the data in SAS Visual Analytics using its built-in Copilot.
+Passez à  **[Step 3: Explore](../3-explore/)** pour explorer visuellement les données dans SAS Visual Analytics grâce à son Copilot intégré.
