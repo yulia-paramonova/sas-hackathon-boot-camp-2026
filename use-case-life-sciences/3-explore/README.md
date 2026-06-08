@@ -166,17 +166,17 @@ Lors de la création de tableaux de bord et de rapports à partir de données pa
 - **Désidentification:** Les données synthétiques issues de l’étape 1 éliminent entièrement ces préoccupations — un avantage clé du workflow SAS Data Maker.
 ---
 
-## Building Your Report
+## Construire votre rapport
 
-As you work through the questions above, organize your findings into a report:
+Au fur et à mesure que vous progressez dans les questions ci-dessus, organisez vos résultats dans un rapport :
 
-1. **Overview Page:** Readmission distribution, key summary stats
-2. **Clinical Profile Page:** Comorbidities, clinical measures, lab results by readmission status
-3. **Admission Page:** Length of stay, admission type, discharge disposition patterns
-4. **Medication Page:** Medication count, polypharmacy, high-risk medications
-5. **Risk Factors Page:** Clinical risk score, insurance type, age distributions
+1. **Page d'ensemble:** : Distribution des réadmissions, principales statistiques descriptives
+2. **Page profil clinique:** Comorbidités, mesures cliniques, résultats de laboratoire selon le statut de réadmission
+3. **Page admission:** Durée de séjour, type d’admission, modes de sortie
+4. **Page médicaments:** Nombre de médicaments, polymédication, médicaments à haut risque
+5. **Page facteurs de risque:** Score de risque clinique, type d’assurance, distributions d’âge
 
-Use **filters** and **interactions** between visualizations — clicking a bar in one chart should filter the others. This lets you drill into segments like "Medicare patients with 3+ comorbidities admitted through the emergency department."
+Utilisez des **filtres** et des **interactions** entre les visualisations — le fait de cliquer sur une barre dans un graphique doit filtrer les autres. Cela vous permet d’explorer en détail des segments tels que « les patients Medicare avec 3+ comorbidités admis via le service des urgences ».
 
 ---
 
