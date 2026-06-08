@@ -1,37 +1,45 @@
-# Step 5: Deploy & Act
+# Étape 5: Deploy & Act
 
-In this final step you will use **SAS Intelligent Decisioning** to operationalize your readmission prediction model by embedding it in an automated discharge decision flow. You will also explore its **Copilot** and learn how decisions can function as **tools in agentic workflows** — or become agentic workflows themselves.
+Dans cette dernière étape, vous utiliserez **SAS Intelligent Decisioning** pour opérationnaliser votre modèle de prédiction des réadmissions en l’intégrant dans un flux automatisé de décision de sortie.  
+Vous explorerez également son **Copilot** et apprendrez comment les décisions peuvent fonctionner comme des **outils dans des workflows agentiques** — ou devenir elles-mêmes des workflows agentiques.
 
 ---
 
-## Prerequisites
+## Prérequis
 
 Your champion model should be registered in **SAS Model Manager** from Step 4. SAS Intelligent Decisioning will pull the model directly from the Model Manager registry. If you did not register your own do not worry a default one is provided.
 
----
-
-## What is SAS Intelligent Decisioning?
-
-SAS Intelligent Decisioning is the platform for creating, managing, and executing business decisions that combine analytical models, business rules, and contextual logic into a single decision flow. Instead of just scoring a patient with a model, a decision flow can:
-
-- Score the patient's readmission probability
-- Classify it into a risk tier
-- Apply clinical rules (e.g., "always flag patients with 4+ comorbidities for care management review")
-- Branch logic based on diagnosis category and discharge disposition
-- Select the appropriate post-discharge care plan and intervention
-- Return a complete discharge recommendation
-
-This turns a model prediction into an **actionable clinical decision**.
-
-If you have any questions around SAS Intelligent Decisioning activate the SAS Viya copilot within the application via the icon in the top right hand corner next to your profile or ask one of the onsite SAS Mentors.
+Votre modèle champion doit être enregistré dans **SAS Model Manager** à l’étape 4.
+SAS Intelligent Decisioning récupérera directement le modèle depuis le registre de Model Manager.
+Si vous n’avez pas enregistré votre propre modèle, ne vous inquiétez pas : un modèle par défaut est fourni.
 
 ---
 
-## Creating a Discharge Readmission Risk Decision
+## Qu'est ce que SAS Intelligent Decisioning?
 
-### 1. Open SAS Intelligent Decisioning
+SAS Intelligent Decisioning est la plateforme permettant de créer, gérer et exécuter des décisions métier qui combinent des modèles analytiques, des règles métier et une logique contextuelle au sein d’un flux de décision unique.
+Au lieu de simplement scorer un patient à l’aide d’un modèle, un flux de décision peut :
 
-1. From the SAS Viya main menu, navigate to **SAS Intelligent Decisioning** (under *Build Decisions*)
+- Évaluer (scorer) la probabilité de réadmission du patient
+- La classer dans une catégorie de risque
+- Appliquer des règles cliniques (ex : « toujours signaler les patients ayant 4 comorbidités ou plus pour une revue de gestion des soins »)
+- Appliquer une logique conditionnelle en fonction de la catégorie de diagnostic et du type de sortie
+- Sélectionner le plan de soins post-sortie et l’intervention appropriés
+- Fournir une recommandation complète de sortie
+
+Cela transforme la prédiction d’un modèle en une **décision clinique actionable**.  
+
+Si vous avez des questions concernant SAS Intelligent Decisioning, activez le copilot SAS Viya dans l’application via l’icône située en haut à droite, à côté de votre profil, ou adressez-vous à l’un des mentors SAS présents sur site.
+
+
+---
+
+## Création d’une décision de risque de réadmission à la sortie
+
+
+### 1. Ouvrez SAS Intelligent Decisioning
+
+1. Depuis le menu principal SAS Viya, allez dans **SAS Intelligent Decisioning** (sous **Build Decisions**)
 2. Click **New Decision**
 3. Name it: *MedCare Discharge Readmission Risk Decision*
 4. Leave the Description, Location and Workflow on default and click OK
