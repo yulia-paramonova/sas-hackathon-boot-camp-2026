@@ -292,7 +292,7 @@ Une décision SAS Intelligent Decisioning publiée est exposée via un **endpoin
 
 La décision devient un **outil** dans la boîte à outils de l'agent, comme une fonction de recherche de documents ou une recherche de clients. Cela crée un pont entre les modèles analytiques et l'IA conversationnelle dans une industrie fortement réglementée.
 
-### Pour c'est important
+### Pourquoi c'est important
 
 - **Cohérence :** Chaque interaction d'agent utilise la même logique de décision - aucune différence entre les agents de crédit ou les succursales
 - **Gouvernance :** La décision est versionnée et auditable dans SAS Intelligent Decisioning, au lieu d'être enfouie dans le prompt système d'un LLM
@@ -311,8 +311,8 @@ Au-delà de leur rôle d'outils appelables, SAS Intelligent Decisioning peut lui
 Un flux de décision agentique va au-delà d'un simple "entrée → règles → sortie". Il peut :
 
 1. **Observer :** Recevoir un événement déclencheur (par ex. un demandeur a manqué son deuxième paiement consécutif)
-2. **Raisonner :** Évaluez la probabilité de défaut actualisée du demandeur, vérifiez son niveau de risque actuel et analysez son historique de paiement
-3. **Décider :** Choisissez l'intervention optimale : modifier les conditions, accorder un délai de grâce, faire appel au recouvrement ou poursuivre la surveillance
+2. **Raisonner :** Évaluer la probabilité de défaut actualisée du demandeur, vérifiez son niveau de risque actuel et analysez son historique de paiement
+3. **Décider :** Choisisser l'intervention optimale : modifier les conditions, accorder un délai de grâce, faire appel au recouvrement ou poursuivre la surveillance
 4. **Agir :** Déclencher des actions aval : envoyer un courrier, constituer un dossier de restructuration, ajuster la cote de risque du prêt, informer le chargé de prêt
 5. **Surveiller :** Suivre si l'emprunteur reprend ses paiements et intégrer ce résultat dans les décisions futures
 
