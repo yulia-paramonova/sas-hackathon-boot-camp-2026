@@ -27,10 +27,10 @@ Vous pouvez aussi la charger directement en important le CSV via **Manage Data**
 
 ### Comprendre la variable cible
 
-**Objectif :** Obtenir une compréhension de base de l'urgence dans le jeu de données.
+**Objectif :** Obtenir une compréhension de base du défaut dans le jeu de données.
 
-- *"Quelle est la distribution des patients réadmis ?"*
-- *"Quel est le pourcentage de patients réadmis dans les 30 jours ?"*
+- *"Quelle est la distribution des prêts en défaut ?"*
+- *"Quel est le pourcentage de prêts en défaut  ?"*
 
 1. Faites glisser la variable cible `defaulted` sur l’espace de travail. La visualisation est sélectionnée automatiquement en fonction du type de variable. Ici, il s’agit d’une variable numérique (mesure).
 2. Dupliquez cette variable (clic droit : *Dupliquer*), puis convertissez-la en catégorie (clic droit : *Convertir en catégorie*).
