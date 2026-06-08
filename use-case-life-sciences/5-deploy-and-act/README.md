@@ -1,43 +1,37 @@
-# Étape 5: Deploy & Act
+# Step 5: Deploy & Act
 
-Dans cette dernière étape, vous utiliserez **SAS Intelligent Decisioning** pour opérationnaliser votre modèle de prédiction des réadmissions en l’intégrant dans un flux automatisé de décision de sortie.  
-Vous explorerez également son **Copilot** et apprendrez comment les décisions peuvent fonctionner comme des **outils dans des workflows agentiques** — ou devenir elles-mêmes des workflows agentiques.
-
----
-
-## Prérequis
-
-Votre modèle champion doit être enregistré dans **SAS Model Manager** à l’étape 4.
-SAS Intelligent Decisioning récupérera directement le modèle depuis le registre de Model Manager.
-Si vous n’avez pas enregistré votre propre modèle, ne vous inquiétez pas : un modèle par défaut est fourni.
+In this final step you will use **SAS Intelligent Decisioning** to operationalize your readmission prediction model by embedding it in an automated discharge decision flow. You will also explore its **Copilot** and learn how decisions can function as **tools in agentic workflows** — or become agentic workflows themselves.
 
 ---
 
-## Qu'est ce que SAS Intelligent Decisioning?
+## Prerequisites
 
-SAS Intelligent Decisioning est la plateforme permettant de créer, gérer et exécuter des décisions métier qui combinent des modèles analytiques, des règles métier et une logique contextuelle au sein d’un flux de décision unique.
-Au lieu de simplement scorer un patient à l’aide d’un modèle, un flux de décision peut :
-
-- Évaluer (scorer) la probabilité de réadmission du patient
-- La classer dans une catégorie de risque
-- Appliquer des règles cliniques (ex : « toujours signaler les patients ayant 4 comorbidités ou plus pour une revue de gestion des soins »)
-- Appliquer une logique conditionnelle en fonction de la catégorie de diagnostic et du type de sortie
-- Sélectionner le plan de soins post-sortie et l’intervention appropriés
-- Fournir une recommandation complète de sortie
-
-Cela transforme la prédiction d’un modèle en une **décision clinique actionable**.  
-
-Si vous avez des questions concernant SAS Intelligent Decisioning, activez le copilot SAS Viya dans l’application via l’icône située en haut à droite, à côté de votre profil, ou adressez-vous à l’un des mentors SAS présents sur site.
-
+Your champion model should be registered in **SAS Model Manager** from Step 4. SAS Intelligent Decisioning will pull the model directly from the Model Manager registry. If you did not register your own do not worry a default one is provided.
 
 ---
 
-## Création d’une décision de risque de réadmission à la sortie
+## What is SAS Intelligent Decisioning?
 
+SAS Intelligent Decisioning is the platform for creating, managing, and executing business decisions that combine analytical models, business rules, and contextual logic into a single decision flow. Instead of just scoring a patient with a model, a decision flow can:
 
-### 1. Ouvrez SAS Intelligent Decisioning
+- Score the patient's readmission probability
+- Classify it into a risk tier
+- Apply clinical rules (e.g., "always flag patients with 4+ comorbidities for care management review")
+- Branch logic based on diagnosis category and discharge disposition
+- Select the appropriate post-discharge care plan and intervention
+- Return a complete discharge recommendation
 
-1. Depuis le menu principal SAS Viya, allez dans **SAS Intelligent Decisioning** (sous **Build Decisions**)
+This turns a model prediction into an **actionable clinical decision**.
+
+If you have any questions around SAS Intelligent Decisioning activate the SAS Viya copilot within the application via the icon in the top right hand corner next to your profile or ask one of the onsite SAS Mentors.
+
+---
+
+## Creating a Discharge Readmission Risk Decision
+
+### 1. Open SAS Intelligent Decisioning
+
+1. From the SAS Viya main menu, navigate to **SAS Intelligent Decisioning** (under *Build Decisions*)
 2. Click **New Decision**
 3. Name it: *MedCare Discharge Readmission Risk Decision*
 4. Leave the Description, Location and Workflow on default and click OK
@@ -164,13 +158,13 @@ These rules capture the dominant driver behind the care plan and populate the `r
 | polypharmacy_flag = 1 | Complex medication regimen |
 | Otherwise | Standard discharge with routine monitoring |
 
-### 4. Adding an LLM to the Mix
+### 4. Ajouter un LLM
 
-We are going to be adding a Large Language Model to our decision now. For this please open up the *Objects* side bar (postcard icon) and drag & drop a Call LLM node onto the *End* node. Then go ahead and add the missing variables like you did for the model node (do not make the prompt a required input for the decision) - and make sure to click on the save icon.
+Nous allons maintenant ajouter un Large Language Model à notre décision. Pour cela, ouvrez le panneau latéral _Objects_ (icône carte postale) et glissez-déposez un nœud Call LLM sur le nœud _End_. Ajoutez ensuite les variables manquantes comme pour le nœud modèle (ne rendez pas le prompt obligatoire en entrée de la décision), puis cliquez sur l'icône de sauvegarde.
 
 ![image-20260529171156226](img/README/image-20260529171156226.png)
 
-Now you can either add the *Prompt Assignment* Rule Set to the decision just like you added the other Rule Sets before or you can create it yourself. If you choose to create it yourself, please add the following variables from your decision as inputs to it:
+Vous pouvez maintenant soit ajouter le Rule Set _Prompt Assignment_ à la décision comme les autres Rule Sets, soit le créer vous-même. Si vous choisissez de le créer manuellement, ajoutez les variables suivantes de votre décision en entrée :
 
 -   care_plan
 -   follow_up_days
@@ -179,30 +173,28 @@ Now you can either add the *Prompt Assignment* Rule Set to the decision just lik
 -   reason
 -   risk_tier
 
-And as output add the prompt variable (do not forget to click the save icon). Then switch to the *Rule set* tab, click on the *Add other* button, select the Rule type of *Assignment* and click *OK* - as we do not want to do a condition, but rather just fill in our prompt with a long value.
-
+Et en sortie, ajoutez la variable prompt (n'oubliez pas de cliquer sur l'icône de sauvegarde). Passez ensuite à l'onglet _Rule set_, cliquez sur le bouton _Add other_, sélectionnez le type de règle _Assignment_ puis cliquez sur _OK_ : ici, nous ne voulons pas définir de condition, mais simplement renseigner notre prompt avec une valeur longue.
 ![image-20260529171254888](img/README/image-20260529171254888.png)
 
-Next you are going to assign the prompt value by clicking on the pencil icon, in the *Expression Editor* removing all the values from the main editor and the copy and paste the value from below into it, then click the *Save* button, the save icon on the *Rule set* and return to the main decision.
-
+Ensuite, affectez la valeur du prompt en cliquant sur l'icône crayon. Dans l'_Expression Editor_, supprimez toutes les valeurs de l'éditeur principal puis copiez-collez la valeur ci-dessous. Cliquez sur le bouton _Save_, puis sur l'icône de sauvegarde du _Rule set_, et revenez à la décision principale.
 ```
 prompt = CAT('You are a compassionate MedCare patient education specialist. Using the patient discharge data and care plan below, write a warm, respectful, and clearly structured long-form discharge summary (3 to 5 paragraphs) that a patient with no clinical background can read to understand their next steps after leaving the hospital. Do not expose clinical codes or jargon verbatim — translate them into plain, everyday language. Do not provide medical advice beyond what the care plan specifies, do not diagnose, and do not predict outcomes. Patient and care plan context: Assigned risk tier: ', risk_tier, '. Recommended care plan: ', care_plan, '. Specific intervention: ', intervention, '. First follow-up in (days): ', follow_up_days, '. Care coordination priority: ', priority, '. Internal reason code: ', reason, '. Structure your response as follows. First, open with a warm, personal acknowledgment that the patient is being discharged today and that MedCare is committed to supporting their recovery at home. Do not explicitly state the ', risk_tier, ' risk tier — instead, frame the care plan as tailored to their individual situation. Second, explain the recommended care plan ', care_plan, ' in plain language and describe what the patient can expect in the coming days. Third, explain the specific intervention ', intervention, ' — including who will reach out, what the purpose is, and why it matters for their recovery. Translate the internal reason ', reason, ' into an empathetic, plain-language explanation of why this extra level of support is being offered. Fourth, clearly communicate the follow-up timeline (within ', follow_up_days, ' days), what kind of follow-up it is, and what the patient needs to do to prepare. Reflect the ', priority, ' care coordination priority in the tone — more proactive and immediate for urgent priority, calmer and routine for standard priority. Fifth, close with clear guidance on warning signs that require immediate attention (calling 911 or going to the emergency room) and reassure the patient that their care team is available for questions. Tone: warm, respectful, reassuring, and never alarming or condescending. Length: 300 to 450 words. Write in the second person (you, your recovery). Always include a clear reminder to call 911 or go to the emergency room for any life-threatening symptoms.')
 ```
 
 ![image-20260529171608495](img/README/image-20260529171608495.png)
 
-This is a very simplistic approach to prompt engineering and also doesn't provide you with the ability to test and compare different large languages models. That is why SAS provides the [SAS Agentic AI Accelerator](https://github.com/sassoftware/sas-agentic-ai-accelerator) open-source project, which enables you to connect any LLM and do extensive prompt engineering & monitoring, but here we have a hard coded LLM (OpenAI GPT 5.4) available.
+Il s'agit d'une approche très simplifiée du prompt engineering et elle ne vous permet pas de tester et comparer différents grands modèles de langage. C'est pourquoi SAS propose le projet open source [SAS Agentic AI Accelerator](https://github.com/sassoftware/sas-agentic-ai-accelerator), qui permet de connecter n'importe quel LLM et de faire du prompt engineering ainsi que du monitoring avancés. Ici, nous disposons d'un LLM codé en dur (OpenAI GPT 5.4).
 
-### 5. Test the Decision
+### 5. Tester la décision
 
-1. In the decision click on the *Scoring* tab and then in there click on the *Scenarios* sub tab
+1. Dans la décision, cliquez sur l'onglet _Scoring_ puis sur le sous-onglet _Scenarios_
 
-2. Click on the *New test* button
+2. Cliquez sur le bouton _New test_
     ![image-20260529094624231](../../use-case-financial-services/5-deploy-and-act/img/README/image-20260529094624231.png)
 
-3. In the *New Scenario* window leave the name on the provided default, set the location to *My Folder* and the output table location to your *CASUSER* - see screenshot below
+3. Dans la fenêtre *New Scenario* laissez le nom par défualt, choisissez *My folder* comme emplacement et l'emplacement de a table dans votre *CASUSER*.
 
-4. Enter sample values:
+4. Saisissez des valeurs d'exemple :
    - clinical_risk_score: 3
    - comorbidity_count: 4
    - discharge_disposition: Home
@@ -212,98 +204,102 @@ This is a very simplistic approach to prompt engineering and also doesn't provid
    
    ![image-20260529171953925](img/README/image-20260529171953925.png)
    
-5. Review the output
+5. Consultez la sortie en cliquant sur l'icône Results une fois que le _Status_ est passé à une coche verte
 
-6. Feel free to further test with different scenarios to validate the logic:
-   - A low-risk patient being discharged home should receive routine discharge instructions
-   - A patient with polypharmacy should trigger a medication reconciliation intervention
-   - A Critical-risk patient with 3+ comorbidities should be flagged as Urgent priority with intensive transitional care
+6.  N'hésitez pas à tester d'autres scénarios pour valider la logique :
+   - Un patient à faible risque sortant à domicile devrait recevoir des instructions de sortie routinières
+   - Un patient avec polypharmacie devrait déclencher une intervention de conciliation médicamenteuse
+   - Un patient à risque critique avec 3+ comorbidités devrait être signalé comme priorité urgente avec des soins de transition intensifs
 
-### 6. Publish the Decision
+### 6. Publier la décision
 
-1. Click the **Validate** button and then **Publish** to make the decision available as a callable service
-2. Choose a **destination:**
-   - **CAS** — for batch execution against your full patient population at discharge
-   - **MAS (Micro Analytic Service)** — for real-time, low-latency API calls during the discharge workflow - only one available here!
-   - **Container** — for deployment in external systems (e.g., integration with Epic EHR)
-3. Please make sure to give it a unique name
-4. Once published, the decision is available as a REST API endpoint
-
----
-
-## Using the SAS Intelligent Decisioning Copilot
-
-The Copilot in SAS Intelligent Decisioning is a conversational assistant that can answer questions about the documentation for **SAS Intelligent Decisioning**, **SAS Container Runtime**, and **SAS Micro Analytic Service**. Use it to quickly find information about how these products work without leaving the application.
-
-### What the Copilot Can Do
-
-- **Answer documentation questions** about SAS Intelligent Decisioning features, concepts, and workflows
-- **Explain SAS Micro Analytic Service (MAS)** deployment options, configuration, and API usage
-- **Clarify SAS Container Runtime** setup, publishing, and management
-- **Help you navigate** product capabilities by describing how specific features work
-- **Provide guidance** on decision flow concepts, rule set configuration, and publishing options based on the official documentation
-
-### Example Copilot Prompts
-
-- *"How do I publish a decision to MAS?"*
-- *"What is the difference between CAS and MAS as publishing destinations?"*
-- *"How does SAS Container Runtime work for deploying decisions?"*
-- *"What types of nodes can I add to a decision flow?"*
-- *"How do I configure input and output variables for a decision?"*
-- *"How do I integrate a decision with an external EHR system via REST API?"*
-
-The Copilot is a useful reference tool for quickly getting answers about the platform's capabilities while you are building your decision flows.
+1. Cliquez sur le boutton **Validate** puis sur **Publish** pour rendre la décision disponible par appel
+2. Choisissez une **destination** :
+   - **CAS** - pour le calcul par lots *(batch)* de l'ensemble du portefeuille de prêts
+   - **MAS (Micro Analytic Service)** - pour les appels API en temps réel pendant le processus de demande de prêt - un seul est disponible ici !
+   - **Container** -  pour déploiement dans le système d'octroi de prêts de la banque
+3. Faites bien attention à lui attribuer un **nom unique**
+4. Une fois publiée, la décision est disponible en tant qu'un point de terminaison *(endpoint)* de REST API
 
 ---
 
-## Decisions as Tools in Agentic Workflows
+## Utilisation du Copilot de SAS Intelligent Decisioning 
 
-A published SAS Intelligent Decisioning decision is exposed as a **REST API endpoint**. This means it can be called as a **tool** by any AI agent — including large language model (LLM) agents that use tool-calling capabilities.
+Le Copilot de SAS Intelligent Decisioning est un assistant conversationnel qui peut répondre à des questions sur la documentation de **SAS Intelligent Decisioning**, **SAS Container Runtime**, et **SAS Micro Analytic Service**. Utilisez-le pour trouver rapidement des informations sur le fonctionnement de ces produits sans quitter l'application.
 
-### How This Works
+### Ce que le Copilot peut faire
+
+- **Répondre à des questions de documentation** sur les fonctionnalités, concepts et workflows de SAS Intelligent Decisioning
+- **Expliquer SAS Micro Analytic Service (MAS)**, ses options de déploiement, sa configuration et l'usage de ses API
+- **Clarifier SAS Container Runtime** concernant la mise en place, la publication et la gestion
+- **Vous aider à naviguer** dans les capacités du produit en décrivant le fonctionnement des fonctionnalités spécifiques
+- **Fournir des conseils** sur les concepts de flux de décision, la configuration des rule sets et les options de publication basés sur la documentation officielle
+
+### Exemples de prompts Copilot 
+
+- "Comment publier une décision dans le MAS?"
+    - *"How do I publish a decision to MAS?"*
+- "Quelle est la différence entre CAS et MAS lorsque je publie une décision?"
+    - *"What is the difference between CAS and MAS as publishing destinations?"*
+- "Comment SAS Container Runtime fonctionne-t-il pour le déploiement des décisions ?"
+    - *"How does SAS Container Runtime work for deploying decisions?"*
+- - *Quels types de nœuds puis-je ajouter à un flux de décision ?*
+    - *"What types of nodes can I add to a decision flow?"*
+- *Comment configurer les variables d'entrée et de sortie d'une décision ?*
+    - *"How do I configure input and output variables for a decision?"*
+- *Quelles sont les options pour générer des codes d'action défavorable dans un flux de décision ?*
+    - *"What are the options for generating adverse action codes in a decision flow?"*
+
+Le Copilot est un outil de référence utile pour obtenir rapidement des réponses sur les capacités de la plateforme pendant que vous construisez vos flux de décision.
+
+---
+
+## Les décisions comme outils dans des workflows agentiques
+
+Une décision SAS Intelligent Decisioning publiée est exposée via un **endpoint API REST**. Cela signifie qu'elle peut être appelée comme un **outil** par n'importe quel agent IA, y compris les agents basés sur des *large language models* (LLM) qui utilisent des capacités d'appel d'outils.
+
+### Comment cela fonctionne
 
 ```
-┌──────────────┐     ┌─────────────────────────┐     ┌──────────────────┐
-│   AI Agent   │────>│  SAS Intelligent         │────>│  Care Plan       │
-│  (e.g. LLM)  │     │  Decisioning API         │     │  Recommendation  │
-│              │<────│  /decisions/readmitRisk   │<────│                  │
-└──────────────┘     └─────────────────────────┘     └──────────────────┘
+┌──────────────┐     ┌─────────────────────────┐     ┌────────────────┐
+│   Agent IA   │────>│  SAS Intelligent        │────>│  Décision      │
+│  (Loan       │     │  API de décision        │     │  de prêts      │
+│   Officer    │     │  /decisions/loanApproval│     │  + Adverse     │
+│   Agent)     │<────│                         │<────│  Action Codes  │
+└──────────────┘     └─────────────────────────┘     └────────────────┘
 ```
+**Exemple de scénario :** Un conseiller en prêts (titulaire d’un LLM) accompagne un demandeur tout au long du processus de demande en ligne. Le conseiller peut :
 
-**Example scenario:** A clinical decision support agent (powered by an LLM) is assisting a care team during the discharge planning process. The agent can:
+1. Recueillir les informations du demandeur via une interface conversationnelle.
+2. **Appeler l'API SAS Intelligent Decisioning** avec les données de la demande.
+3. Recevoir la réponse : " Refusé – AA01 : Score de crédit trop faible ; AA03 : Antécédents de retards de paiement ".
+4. Communiquer la décision au demandeur en lui fournissant l'avis de refus requis.
+5. Si la décision est « À examiner » *(Review)*, transmettre le dossier à un analyste de crédit avec l'évaluation complète des risques.
 
-1. Pull the patient's clinical data from the EHR
-2. **Call the SAS Intelligent Decisioning API** with the patient's features
-3. Receive back: "High risk — home health referral + medication reconciliation, follow-up in 2 days"
-4. Present this recommendation to the discharging physician with clinical rationale, enabling a more informed discharge plan
+La décision devient un **outil** dans la boîte à outils de l'agent, comme une fonction de recherche de documents ou une recherche de clients. Cela crée un pont entre les modèles analytiques et l'IA conversationnelle dans une industrie fortement réglementée.
 
-The decision becomes a **tool** in the agent's toolkit, just like a medication interaction checker or a lab result lookup. This bridges the gap between analytical models and clinical workflow.
+### Pourquoi c'est important
 
-### Why This Matters
-
-- **Consistency:** Every discharge uses the same evidence-based decision logic — the rules and model scores are centralized, not dependent on individual clinician memory
-- **Governance:** The decision is version-controlled and auditable in SAS Intelligent Decisioning, not buried in an LLM's system prompt
-- **Separation of concerns:** Data scientists own the model, clinical leaders own the rules, and the AI agent just calls the endpoint
-- **Real-time execution:** MAS endpoints return in milliseconds, fast enough for use during the discharge conversation
-
+- **Cohérence :** Chaque interaction d'agent utilise la même logique de décision - aucune différence entre les agents de crédit ou les succursales
+- **Gouvernance :** La décision est versionnée et auditable dans SAS Intelligent Decisioning, au lieu d'être enfouie dans le prompt système d'un LLM
+- **Séparation des responsabilités :** Les data scientists pilotent le modèle, e risque de crédit définit les règles, la conformité définit les contraintes d'équité, et l'agent IA se contente d'appeler le point de terminaison *(endpoint)*.
+- **Exécution en temps réel :** Les endpoints MAS répondent en millisecondes, suffisamment vite pour le traitement des applications en temps réel
 ---
+## Les décisions comme workflows agentiques
 
-## Decisions as Agentic Workflows
+Au-delà de leur rôle d'outils appelables, SAS Intelligent Decisioning peut lui-même orchestrer des **workflows agentiques** : des processus en plusieurs étapes qui exécutent de façon autonome une chaîne de décisions et d'actions.
 
-Beyond being called as tools, SAS Intelligent Decisioning can itself orchestrate **agentic workflows** — multi-step processes that autonomously execute a chain of decisions and actions.
+### Comment une décision devient un agent
 
-### How a Decision Becomes an Agent
+Un flux de décision agentique va au-delà d'un simple "entrée → règles → sortie". Il peut :
 
-An agentic decision flow goes beyond simple "input -> rules -> output." It can:
+1. **Observer :** Recevoir un événement déclencheur (par ex. un patient a été sorti et aucun rendez-vous de suivi n’est programmé dans les 48 heures))
+2. **Raisonner :** Évaluer le risque de réadmission du patient, vérifier son plan de soins, examiner le statut de la conciliation médicamenteuse
+3. **Décider :** Sélectionner l’action d’escalade appropriée à partir des ensembles de règles
+4. **Agir :** Déclencher des actions en aval — planifier un appel de suivi, alerter le gestionnaire de soins, envoyer un message via le portail patient, créer une tâche dans le dossier médical électronique (DME)
+5. **Surveiller :** Suivre si le patient participe au suivi, renouvelle ses médicaments ou présente des signes de détérioration — et réinjecter ce résultat dans les décisions futures
 
-1. **Observe:** Receive a trigger event (e.g., a patient has been discharged and no follow-up appointment is scheduled within 48 hours)
-2. **Reason:** Score the patient's readmission risk, check their care plan, review medication reconciliation status
-3. **Decide:** Select the appropriate escalation action from the rule sets
-4. **Act:** Trigger downstream actions — schedule a follow-up call, alert the care manager, send a patient portal message, create an EHR task
-5. **Monitor:** Track whether the patient attends follow-up, refills medications, or shows signs of deterioration — and feed that outcome back into future decisions
-
-### Example: Automated Post-Discharge Monitoring Agent
-
+### Exemple : Agent de surveillance automatisée de portefeuille
 ```
 ┌─────────────┐     ┌──────────────────┐     ┌──────────────────┐
 │  Event       │     │  Decision Flow   │     │  Actions         │
@@ -328,47 +324,46 @@ An agentic decision flow goes beyond simple "input -> rules -> output." It can:
                     └──────────────────┘
 ```
 
-This is **agentic** because the system autonomously:
-- Detects the trigger condition (missed follow-up window)
-- Makes decisions without human intervention
-- Executes real-world clinical actions
-- Learns from outcomes to improve future predictions
+C'est **agentique** parce que le système, de manière autonome :
+- Détecte la condition de déclenchement (fenêtre de suivi manquée)
+- Prend des décisions sans intervention humaine
+- Exécute des actions dans le monde réel
+- Apprend à partir des résultats 
 
-### Scaling Agentic Decisioning
+### Passage à l'échelle de la décision agentique
 
-In a production environment, this agentic workflow can process **hundreds of discharges per day** without manual intervention:
+En environnement de production, ce workflow agentique peut traiter **des centaines de sorties par jour** sans intervention manuelle :
 
-- **Batch mode:** Every morning, score all patients discharged in the past 24 hours, identify high-risk ones, trigger care coordination actions
-- **Event-driven mode:** As soon as a patient is discharged, trigger the flow in real time from the EHR discharge event
-- **Multi-decision chaining:** One decision flow calls another — e.g., the readmission risk decision calls a "medication reconciliation priority" decision which calls a "follow-up scheduling optimization" decision
-
-SAS Intelligent Decisioning provides the orchestration layer that turns individual models and rules into **enterprise-scale autonomous clinical agents**.
-
----
-
-## Summary
-
-In this step you have:
-
-1. **Created a decision flow** that combines your readmission model with clinical rules to produce actionable care plan recommendations at discharge
-2. **Added an LLM call** that turns the decision into a warm, patient-friendly discharge summary
-3. **Used the Copilot** to get answers about SAS Intelligent Decisioning, MAS, and Container Runtime documentation
-4. **Published the decision** as a callable API endpoint
-5. **Learned how decisions work as tools** for LLM-powered clinical decision support agents
-6. **Explored agentic workflows** where decisions autonomously detect, reason, decide, and act in post-discharge monitoring
+- **Mode batch:** Chaque matin, évaluer tous les patients sortis au cours des dernières 24 heures, identifier ceux à haut risque, déclencher des actions de coordination des soins
+- **Mode événementiel:** Dès qu’un patient est sorti, déclencher le flux en temps réel à partir de l’événement de sortie du DSE
+- **Chaînage multi-décisions :**  Un flux de décision en déclenche un autre: par exemple, la décision sur le risque de réadmission appelle une décision de "priorité de conciliation médicamenteuse", qui appelle une décision d’"optimisation de la planification du suivi ".
+- 
+Copilot said: SAS Intelligent Decisioning fournit la couche d’orchestration qui transforme des modèles et des règles individuels en **agents cliniques autonomes à l’échelle de l’entreprise**.
 
 ---
 
-## Congratulations!
+## Résumé
 
-You have completed the full Data and AI Life Cycle for the MedCare patient readmission use case:
+Dans cette étape, vous avez :
+1. **Créé un flux de décision** qui combine votre modèle de réadmission avec des règles cliniques pour produire des recommandations de plan de soins exploitables à la sortie  
+2. **Ajouté un appel à un LLM** qui transforme la décision en un résumé de sortie compréhensible pour le patient  
+3. **Utilisé le Copilot** pour obtenir des réponses sur SAS Intelligent Decisioning, MAS et la documentation Container Runtime  
+4. **Publié la décision** comme un endpoint API appelable  
+5. **Appris comment les décisions fonctionnent comme des outils** pour des agents de support à la décision clinique alimentés par LLM  
+6. **Exploré des workflows agentiques** où les décisions détectent, raisonnent, décident et agissent de manière autonome dans le suivi post-sortie
 
-| Step | What You Did | SAS Technology |
-|------|-------------|---------------|
-| 1. Ask & Access | Understood the problem, generated synthetic data | SAS Data Maker |
-| 2. Prepare | Loaded, profiled, and joined data into an ABT | SAS Viya Workbench |
-| 3. Explore | Visually explored patterns with AI assistance | SAS Visual Analytics + Copilot |
-| 4. Model | Built, compared, and fairness-tested models | SAS Model Studio + Copilot |
-| 5. Deploy & Act | Operationalized with automated clinical decisions | SAS Intelligent Decisioning + Copilot |
+---
 
-If you have time remaining, explore another use case or dive deeper into any step. Talk to your bootcamp mentor for follow-up topics or to share feedback.
+## Félicitations !
+
+Vous avez terminé l'ensemble du cycle de vie Data & IA pour le cas d'usage service financier :
+
+| Étape           | Ce que vous avez fait                                         | Technologie SAS                       |
+| --------------- | ------------------------------------------------------------- | ------------------------------------- |
+| 1. Ask & Access | Compréhension du problème, génération de données synthétiques | SAS Data Maker                        |
+| 2. Prepare      | Chargement, profilage et jointure des données dans un ABT     | SAS Viya Workbench                    |
+| 3. Explore      | Exploration visuelle des schémas avec assistance IA           | SAS Visual Analytics + Copilot        |
+| 4. Model        | Construction, comparaison et test d'équité des modèles        | SAS Model Studio + Copilot            |
+| 5. Deploy & Act | Opérationnalisation via des décisions automatisées            | SAS Intelligent Decisioning + Copilot |
+
+S'il vous reste du temps, explorez un autre cas d'usage ou approfondissez n'importe quelle étape. Échangez avec votre mentor bootcamp pour des sujets de suivi ou pour partager vos retours.
