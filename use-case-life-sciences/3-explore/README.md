@@ -137,30 +137,33 @@ Créez des **box plots** de `blood_pressure_systolic`, `glucose_level`, et `bmi`
 
 > **À observer :** Les patients présentant des résultats de laboratoire anormaux, une hypertension, une glycémie de type diabétique ou des valeurs extrêmes d’IMC devraient montrer un risque de réadmission plus élevé. Le composite `clinical_risk_score` devrait présenter une relation dose-réponse claire avec la réadmission.
 
-### Correlation and Multi-Variable Exploration
+### Corrélation et exploration multi-variable
 
-**Goal:** Find feature interactions and the strongest predictors.
+**Objectif:** Identifiez les interactions entre variables et les prédicteurs les plus forts.
 
-- *"Which features are most correlated with readmission?"*
-- *"Show me a correlation matrix of the top 10 numeric features"*
-- *"Create a decision tree to show which factors split readmitted from non-readmitted patients"*
+- *"Quelles variables sont les plus corrélées avec la réadmission?"*
+- *"Montrez-moi une matrice de corrélation des 10 principales variables numériques"*
+- *"Créez un arbre de décision montrant quels facteurs distinguent les patients réadmis des patients non réadmis "*
 
-Use the Copilot's **automated analysis** feature to let it scan for the strongest relationships.
+-     Which features are most correlated with readmission?
+-     Show me a correlation matrix of the top 10 numeric features
+-     Create a decision tree to show which factors split readmitted from non-readmitted patientsCreate a decision tree with `is_urgent` as the target
 
-> **What to look for:** The Copilot may surface interactions you wouldn't have checked manually, such as "patients with high comorbidity count AND emergency admission AND polypharmacy have a readmission probability above 60%."
+Utilisez la fonctionnalité **d'analyse automatisée** du Copilot pour rechercher les relations les plus fortes.
+
+> **À observer :** Le Copilot peut mettre en évidence des interactions que vous n’auriez pas examinées manuellement, comme par exemple : « les patients avec un nombre élevé de comorbidités ET une admission en urgence ET une polymédication ont une probabilité de réadmission supérieure à 60 % ».
 
 ---
 
-## HIPAA Considerations for Visualizations
+## Considérations HIPAA pour les visualisations
 
-When building dashboards and reports from patient data, keep these principles in mind:
+Lors de la création de tableaux de bord et de rapports à partir de données patients, gardez ces principes à l’esprit :
 
-- **Avoid small cell sizes:** If a filter combination results in fewer than 10 patients, suppress the result to prevent potential re-identification
-- **Aggregate, do not display individual records:** Show distributions and averages, not patient-level detail
-- **Role-based access:** When publishing reports, ensure access is restricted to authorized clinical and administrative staff
-- **Audit trails:** SAS Visual Analytics logs all report access and data queries — this supports HIPAA compliance requirements
-- **De-identification:** The synthetic data from Step 1 eliminates these concerns entirely — a key benefit of the SAS Data Maker workflow
-
+- **Évitez les cellules de petite taille:** Si une combinaison de filtres aboutit à moins de 10 patients, masquez le résultat afin de prévenir toute ré-identification potentielle.
+- **Agrégerez sans afficher les données individuelles:** Présentez des distributions et des moyennes, et non des données au niveau patient.
+- **Contrôle d’accès basé sur les rôles:** Lors de la publication des rapports, assurez-vous que l’accès est restreint au personnel clinique et administratif autorisé.
+- **Pistes d’audit:** SAS Visual Analytics enregistre tous les accès aux rapports et les requêtes de données — cela contribue à la conformité aux exigences HIPAA.
+- **Désidentification:** Les données synthétiques issues de l’étape 1 éliminent entièrement ces préoccupations — un avantage clé du workflow SAS Data Maker.
 ---
 
 ## Building Your Report
