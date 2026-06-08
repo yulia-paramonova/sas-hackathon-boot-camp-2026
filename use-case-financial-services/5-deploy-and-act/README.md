@@ -56,10 +56,10 @@ Si vous avez des questions sur SAS Intelligent Decisioning, activez le Copilot S
         7. `loan_amount` (décimal)
         
     2. Définissez les **variables de sortie** (celles-ci seront renvoyées par la décision)  - La structure est: `nom` (type de donnée) - Explication (juste pour nous pour le context):
-        1. `decision` (charactère) - Approuver, Examiner, or Refuser
-        2. `risk_tier` (charactère) - classification du risque
-        3. `conditions` (charactère) - conditions associés
-        4. `reason` (charactère) - motif de refus
+        1. `decision` (alphanumérique) - Approuver, Examiner, or Refuser
+        2. `risk_tier` (alphanumérique) - classification du risque
+        3. `conditions` (alphanumérique) - conditions associés
+        4. `reason` (alphanumérique) - motif de refus
         5. `rate_adjustment` (décimal) - ajustement du taux
         6. Cliquez OK pour ajouter toutes les variables
         
