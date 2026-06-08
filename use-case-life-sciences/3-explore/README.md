@@ -64,11 +64,13 @@ Cela ajoute une matrice de corrélation sur une nouvelle page. Vous pouvez agran
 8. Réduisez la vue, puis cliquez sur les trois points en haut à droite. Sélectionnez **Dupliquer sous Arbre de décision**. Faites glisser l’objet vers une nouvelle page pour disposer de plus d’espace.
    ![ER_LS_4](img/Exploration_rapide_LS/ER_LS_4.png)
 9. Félicitations, vous venez d’entraîner votre premier modèle de machine learning dans SAS Viya !  
-Vous pouvez demander au Copilot d’interpréter les résultats :  
+Vous pouvez demander au SAS Viya Copilot d’interpréter les résultats :  
 -     Interpret the results of the decision tree.
 -     Interpret the results of the Page 3
 -     Which factors influence the readmissions `readmitted_30days (1)`?
+
 ---
+
 ## Utiliser le Copilot de SAS Visual Analytics
 
 SAS Visual Analytics inclut un **Copilot** - un assistant IA qui accélère l’exploration des données. L’icône du Copilot se trouve en haut à droite. Il peut :
@@ -96,6 +98,31 @@ Quelques comportements à garder à l’esprit lors de cette étape :
 - **Les graphiques apparaissent parfois sur une autre page.** Si une visualisation générée apparaît sur une autre page du rapport, faites‑la glisser vers la page sur laquelle vous travaillez.
 - **Ignorez les suggestions visant à reclasser des mesures numériques en catégories.** Copilot recommande parfois de transformer des colonnes numériques (e.g., `comorbidity_count`) en catégories. Dupliquez ces variables et convertissez les variables dupliquées en catégories.
 - **Si un graphique ne répond pas à la question, reformulez.** Demandez à Copilot un type de graphique précis et des rôles de colonnes précis plutôt qu’une question ouverte (e.g., *"Crée un diagramme en barres avec `comorbidity_count` sur l'axe x et la moyenne de `readmitted_30days` sur l'axe y"*).
+
+---
+
+## Optionnel : Exploration en autonomie
+Vous pouvez désormais explorer les données par vous‑même. Essayez de créer des visualisations manuellement **et/ou** via le Copilot. 
+Voici quelques pistes d’analyse :  
+- `comorbidity_count` et `readmitted_30days` : les patients réadmis devraient présenter un nombre moyen de comorbidités plus élevé. Recherchez un effet de seuil — le risque peut s’accélérer au-delà d’un certain nombre de pathologies.  
+- `length_of_stay` et `readmitted_30days` : les séjours très courts (potentiellement liés à une sortie prématurée) et les séjours très longs (patients très graves) peuvent tous deux être associés à un risque élevé, créant ainsi une forme en U.  
+- `emergency_flag` et `readmitted_30days` : les admissions en urgence devraient présenter un taux de réadmission significativement plus élevé que les admissions programmées, reflétant une planification de sortie moins maîtrisée.
+- `medication_count`, `high_risk_med_count` et `readmitted_30days` : les patients prenant davantage de médicaments — en particulier des médicaments à haut risque — devraient présenter des taux de réadmission plus élevés en raison des difficultés d’observance et des risques d’interactions médicamenteuses.
+- `blood_pressure_systolic`, `glucose_level`, `bmi` et `readmitted_30days` : les patients présentant des résultats de laboratoire anormaux, une hypertension, une glycémie de type diabétique ou des valeurs extrêmes d’IMC devraient montrer un risque de réadmission plus élevé. Le composite `clinical_risk_score` devrait présenter une relation dose-réponse claire avec la réadmission.
+- Le Copilot peut mettre en évidence des interactions que vous n’auriez pas examinées manuellement, comme par exemple : « les patients avec un nombre élevé de comorbidités ET une admission en urgence ET une polymédication ont une probabilité de réadmission supérieure à 60 % ».
+
+---
+
+## Considérations HIPAA pour les visualisations
+
+Lors de la création de tableaux de bord et de rapports à partir de données patients, gardez ces principes à l’esprit :
+
+- **Évitez les cellules de petite taille:** Si une combinaison de filtres aboutit à moins de 10 patients, masquez le résultat afin de prévenir toute ré-identification potentielle.
+- **Agrégerez sans afficher les données individuelles:** Présentez des distributions et des moyennes, et non des données au niveau patient.
+- **Contrôle d’accès basé sur les rôles:** Lors de la publication des rapports, assurez-vous que l’accès est restreint au personnel clinique et administratif autorisé.
+- **Pistes d’audit:** SAS Visual Analytics enregistre tous les accès aux rapports et les requêtes de données — cela contribue à la conformité aux exigences HIPAA.
+- **Désidentification:** Les données synthétiques issues de l’étape 1 éliminent entièrement ces préoccupations — un avantage clé du workflow SAS Data Maker.
+
   
 ---
 
