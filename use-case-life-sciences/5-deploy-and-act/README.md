@@ -7,8 +7,6 @@ Vous explorerez également son **Copilot** et apprendrez comment les décisions 
 
 ## Prérequis
 
-Your champion model should be registered in **SAS Model Manager** from Step 4. SAS Intelligent Decisioning will pull the model directly from the Model Manager registry. If you did not register your own do not worry a default one is provided.
-
 Votre modèle champion doit être enregistré dans **SAS Model Manager** à l’étape 4.
 SAS Intelligent Decisioning récupérera directement le modèle depuis le registre de Model Manager.
 Si vous n’avez pas enregistré votre propre modèle, ne vous inquiétez pas : un modèle par défaut est fourni.
