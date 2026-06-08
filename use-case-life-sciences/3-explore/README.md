@@ -66,13 +66,16 @@ Créez un **diagramme en barres** ou **diagramme circulaire** de la variable `re
 
 **Objectif:** Vérifier si les patients présentant davantage de comorbidités sont réadmis à des taux plus élevés.
 
-- *"Compare the average comorbidity count between readmitted and non-readmitted patients"*
-- *"Show me readmission rate by number of comorbidities"*
-- *"Is there a threshold of comorbidity count where readmission risk increases sharply?"*
+- *"Compare le nombre moyen de comorbidités entre les patients réadmis et ceux non réadmis`"*
+-     Compare the average comorbidity count between readmitted and non-readmitted patients
+- *"Montrez-moi le taux de réadmission en fonction du nombre de comorbidités*
+-     Show me readmission rate by number of comorbiditie
+- *"Existe-t-il un seuil du nombre de comorbidités à partir duquel le risque de réadmission augmente fortement ?"*
+-      Is there a threshold of comorbidity count where readmission risk increases sharply?
 
-Create **box plots** of `comorbidity_count` grouped by `readmitted_30days`. Also create a **bar chart** showing readmission rate at each comorbidity count level.
+Créez des **box plots** de `comorbidity_count` regroupés par `readmitted_30days`. Créez également un **diagramme en barres** montrant le taux de réadmission pour chaque niveau de comorbidité.
 
-> **What to look for:** Readmitted patients should have a higher average comorbidity count. Look for a threshold effect — risk may accelerate above a certain number of conditions.
+> **À observer :** Les patients réadmis devraient présenter un nombre moyen de comorbidités plus élevé. Recherchez un effet de seuil — le risque peut s’accélérer au-delà d’un certain nombre de pathologies.
 
 ### Hypothesis 2: Length of Stay Signals Severity
 
