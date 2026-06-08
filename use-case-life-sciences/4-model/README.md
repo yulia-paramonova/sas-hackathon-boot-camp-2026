@@ -68,7 +68,7 @@ Contrairement à de nombreuses applications d'apprentissage automatique, les mod
 4. **Contexte réglementaire :** dans le cadre des exigences de reporting qualité du CMS, les hôpitaux doivent être capables d’expliquer leurs interventions d’amélioration de la qualité. Un modèle « boîte noire » est plus difficile à justifier  
 
 > **Conseil :** Demandez au Copilot *« Quel type de modèle offre le meilleur équilibre entre précision et interprétabilité clinique pour la prédiction des réadmissions ? »*
--    `Which model type gives the best balance of accuracy and clinical interpretability for readmission prediction?`
+-      `Which model type gives the best balance of accuracy and clinical interpretability for readmission prediction?`
 
 ---
 
@@ -155,33 +155,35 @@ Ajoutez ces nœuds dans l'ordre en cliquant sur **Add Node** dans l'espace de tr
 
 ---
 
-## Comparing Models
+## Comparaison des modèles
 
-Once both (or either) approach has completed, open the **Model Comparison** results:
+Une fois que les deux approches (ou l'une d'entre elles) ont été terminées, ouvrez les résultats du **Model Comparison** :  
 
-| Metric | What It Tells You | Target |
-|--------|-------------------|--------|
-| **AUC-ROC** | Overall ability to distinguish readmitted from non-readmitted patients | >= 0.75 |
-| **Sensitivity (Recall)** | Proportion of actual readmissions correctly identified | >= 0.80 |
-| **Misclassification Rate** | Percentage of incorrect predictions | <= 0.25 |
-| **KS Statistic** | Maximum separation between cumulative distributions | >= 0.30 |
-| **Specificity** | Proportion of non-readmissions correctly identified | >= 0.50 |
+| Indicateur | Ce qu'il indique | Cible |
+|------------|------------------|--------|
+| **AUC-ROC** | Capacité globale à distinguer les patients réadmis des non-réadmis | >= 0.75 |
+| **Misclassification Rate** - Taux de mauvaise classification | Pourcentage de prédictions incorrectes | <= 0.25 |
+| **KS Statistic** | Séparation maximale entre les distributions cumulées | >= 0.30 |
+| **Recall (Sensitivity)** - Rappel (Sensibilité) | Proportion des réadmissions réelles correctement identifiées | >= 0.80 |
+| **Specificity** - Spécificité | Proportion des non-réadmissions correctement identifiées | >= 0.50 |
 
-Review the **ROC Overlay Chart** to visually compare how well each model separates the two classes. The model closest to the top-left corner performs best.
+Examinez le **ROC Overlay Chart** pour comparer visuellement la capacité de chaque modèle à séparer les deux classes. Le modèle le plus proche du coin supérieur gauche est le plus performant.  
 
-Review the **Variable Importance** chart for your champion model — the top predictors should align with what you found in Step 3 (likely `comorbidity_count`, `emergency_flag`, `length_of_stay`, `clinical_risk_score`, `medication_count`).
+Examinez le graphique **Variable Importance** de votre modèle champion — les principaux prédicteurs doivent correspondre à ceux identifiés à l’étape 3 (probablement `comorbidity_count`, `emergency_flag`, `length_of_stay`, `clinical_risk_score`, `medication_count`).  
 
-> **Note on sensitivity vs. specificity:** For readmission prediction, **sensitivity is prioritized over specificity**. Missing a high-risk patient who gets readmitted (false negative) has much worse consequences — CMS penalties, patient harm — than flagging a patient who turns out fine (false positive). The false positive cost is a phone call or extra follow-up; the false negative cost is a preventable readmission.
+> **Remarque sur sensibilité vs spécificité :** pour la prédiction des réadmissions, **la sensibilité est prioritaire par rapport à la spécificité**. Ne pas identifier un patient à haut risque qui sera réadmis (faux négatif) a des conséquences bien plus graves — pénalités CMS, risque pour le patient — que signaler un patient qui ne sera finalement pas réadmis (faux positif). Le coût d’un faux positif se limite à un appel ou un suivi supplémentaire ; celui d’un faux négatif est une réadmission évitable.
 
 ---
 
-## Fairness Assessment
 
-Trustworthy AI requires that models do not discriminate unfairly against protected groups. In this use case we will assess fairness with respect to **insurance type** — specifically whether the model treats Medicare, Medicaid, Commercial, and Uninsured patients equitably.
+## Évaluation de l’équité
 
-### Why Insurance Type?
+Une IA de confiance exige que les modèles ne discriminent pas injustement certains groupes protégés. Dans ce cas d’usage, nous évaluons l’équité par rapport au **type d’assurance** — plus précisément si le modèle traite de manière équitable les patients Medicare, Medicaid, Commercial et non assurés.
 
-Insurance type is a critical fairness dimension in healthcare for several reasons:
+
+### Pourquoi le type d’assurance ?
+
+Le type d’assurance est une dimension clé de l’équité en santé pour plusieurs raisons :  
 
 1. **Socioeconomic proxy:** Insurance type is strongly correlated with socioeconomic status, race, and ethnicity. Medicaid patients are disproportionately from lower-income and minority communities. If the model systematically assigns higher risk scores to Medicaid patients, it may be reinforcing existing health disparities rather than addressing them.
 
