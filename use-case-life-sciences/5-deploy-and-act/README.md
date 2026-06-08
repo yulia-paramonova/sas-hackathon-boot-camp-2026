@@ -71,7 +71,6 @@ Une fois les variables ajoutées, pensez à cliquer sur l'icône *enregistrer* e
 
 Vous pouvez également activer le Copilot SAS Viya à travers l'icône en haut à droite pour poser des questions sur SAS Intelligent Decisioning pour approfondir votre compréhension de l'application.
 
-
 ### 2. Ajoutez le nœud Modèle
 
 1. Passez à l’onglet *Decision Flow*.
@@ -100,18 +99,18 @@ Nous vous recommandons d’essayer de créer au moins un de ces ensembles de rè
 
 **Rule Set: Classification du niveau de risque**
 
-1.   Depuis le panneau latéral *Objects* glissez-déposez un nœud *Rule Set* sur le nœud *Model* déjà présent dans votre décision. Saisissez ensuite le nom ci-dessus et cliquez sur *Save*
+1.   Depuis le panneau latéral *Objects* glissez-déposez un nœud *Rule Set* sur le nœud *Model* déjà présent dans votre décision. Saisissez ensuite le nom ci-dessus et cliquez sur *Save*. 
      ![image-20260529163854583](img/README/image-20260529163854583.png)
 2.  Sur la droite, vous verrez le panneau *Properties* pour ce nouveau *Rule Set* avec un bouton *Open* qui vous amène au *Rule set editor* afin de construire la logique de décision ; cliquez sur ce bouton.
-3.   A new UI opened up for you on the *Variables* tab for the *Rule Set*, under *Add variable* select, via the folder icon navigate to *My Folder* and select the *MedCare Discharge Readmission Risk Decision* that you have already created. Select the **P_readmitted_30days1 ** & **risk_tier** variables and add it to the Rule Set - the **P_readmitted_30days1 ** variable is specified in the Rule Conditions column in the table below and the **risk_tier** variable has its own column as it gets assigned values.
+3.  Une nouvelle interface s'ouvre sur l'onglet *Variables* du *Rule Set*. Sous *Add variable*, utilisez l'icône dossier pour naviguer vers *My Folder* et sélectionnez *MedCare Discharge Readmission Risk Decision* que vous avez déjà créé. Sélectionnez les variables **P_readmitted_30days1** & **risk_tier** puis ajoutez-les au Rule Set : - la variable **P_readmitted_30days1** est utilisée dans la colonne Rule Conditions du tableau ci-dessous, et **risk_tier** a sa propre colonne car elle reçoit des valeurs.
      ![image-20260529164239556](img/README/image-20260529164239556.png)
-4.   For the **P_readmitted_30days1 ** change it so that it is required as an input and then click on the save icon to add this change. The **risk_tier** currently doesn't have any value from the decision so we can just leave it as an output.
+4.   Pour **P_readmitted_30days1** modifiez-la pour qu'elle soit requise en entrée puis cliquez sur l'icône de sauvegarde pour enregistrer ce changement. La variable **risk_tier** n'a pas encore de valeur provenant de la décision, vous pouvez donc la laisser en sortie.
      ![image-20260529164320438](img/README/image-20260529164320438.png)
-5.   Navigate to the *Rule set* tab and click on the *Add rule* button
+5.    Allez dans l'onglet *Rule set* puis cliquez sur le bouton *Add rule*.
      ![image-20260529164508583](img/README/image-20260529164508583.png)
-6.   Change the operator from the default of equal to greater than and then enter the comparison in the *IF* condition, in the THEN assignment change the variable to **risk_tier** and enter the corresponding value into the field enclosed in single quotes.
+6.   Remplacez l'opérateur par défaut (égal) par **plus grand que** puis saisissez la comparaison dans la condition *IF*. Dans l'affectation THEN, choisissez la variable **risk_tier** et saisissez la valeur correspondante entre guillemets simples. 
      ![image-20260529164433028](img/README/image-20260529164433028.png)
-7.   Next click on *Add rule* and click on the *IF* statement dropdown and change it to an *ELSE* condition. This will combine the additional condition into one rule. From here continue to enter all the rest of the conditions and assignments as listed below and once you are done click on the save icon and then either use the little *x* icon in the right hand corner or click on *** MedCare Discharge Readmission Risk Decision (1.0)* in the breadcrumb navigation up top to navigate back to the decision.
+7.   Cliquez ensuite sur *Add rule* puis dans la liste déroulante de l'instruction *IF* assez à une condition *ELSE*. Cela permet de combiner les conditions supplémentaires dans une seule règle. Continuez ensuite à saisir le reste des conditions et affectations comme indiqué ci-dessous. Une fois terminé, cliquez sur l'icône de sauvegarde puis utilisez soit la petite croix *x* en haut à droite, soit *** MedCare Discharge Readmission Risk Decision (1.0)* dans le fil d'Ariane en haut, pour revenir à la décision.
      ![image-20260529164659061](img/README/image-20260529164659061.png)
 
 | Rule Conditions | risk_tier |
